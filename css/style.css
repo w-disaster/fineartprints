@@ -1,19 +1,13 @@
-img{
+/*img{
     max-height: 400px;
-    width: 100%;
+    max-width: 100%;
+    text-align: center;
 }
-
-p {
+*/
+p{
     vertical-align: bottom;
     text-align: center;
 }
 
-div{
-    height: 100%;
-}
 
-aside > section > ul > li > img{
-    width: 50px;
-    float: left;
-    margin-right: 5px;
-}
+
