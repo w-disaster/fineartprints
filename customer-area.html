@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <title>Customer Area</title>
+    </head>
+    <body class="bg-light">  
+        <div class="container-fluid px-0">
+            <div class="row m-0 sticky-top">
+                <div class="header col-12 col-md-4 bg-dark p-0">
+                    <h2 class="text-left text-white text-monospace mt-1 text-center">Fine Art Prints</h2>
+                </div>
+                <div class="aside col-12 col-md-8 bg-dark p-0">
+                    <ul class="nav text-center p-0">
+                        <li class="col-2 col-md-2 offset-md-1 nav-item p-0"><a class="nav-link text-white bg-dark" href="index.html">Home</a></li>
+                        <li class="col-2 col-md-2 nav-item p-0"><a class="nav-link text-white bg-dark" href="archivio.html">Products</a></li>
+                        <li class="col-3 col-md-2 nav-item p-0"><a class="nav-link text-white bg-dark" href="contatti.html">About us</a></li>
+                        <li class="col-2 col-md-2 offset-1 nav-item"><a class="nav-link bg-dark" href="contatti.html"><i class="glyphicon glyphicon-user" style="font-size:20px;color:white;"></i></a></li>
+                        <li class="col-2 col-md-2 nav-item "><a class="nav-link bg-dark" href="contatti.html"><i class="glyphicon glyphicon-shopping-cart" style="font-size:20px;color:white;"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row mx-0 mt-4 mb-4">
+                <div class="col-10 col-md-5 offset-1 offset-md-1 px-0 bg-white border mb-4">
+                    <form class="m-0">
+                        <h2 class="text-dark pl-4">Personal informations</h2>
+                        <fieldset disabled class="px-0">
+                            <div class="form-group row text-center">
+                                <label for="name" class="col-5">Name:</label>
+                                <input type="text" class="form-control col-6" id="name"/>
+                            </div>
+                            <div class="form-group row text-center">
+                                <label for="surname" class="col-5">Surname:</label>
+                                <input type="text" class="form-control col-6" id="surname"/>
+                            </div>
+                            <div class="form-group row text-center">
+                                <label for="password"  class="col-5">Password</label>
+                                <input type="password" class="form-control col-6" id="password"/>
+                            </div>
+                            <div class="form-group row text-center">
+                                <label for="email" class="col-5">Email</label>
+                                <input type="email" class="form-control col-6" id="email"/>
+                            </div>
+                            <div class="form-group row text-center">
+                                <label for="phone"  class="col-5">Phone</label>
+                                <input type="number" class="form-control col-6" id="phone"/>
+                            </div>
+                            <div class="form-group row text-center">
+                                <label for="password"  class="col-5">Province</label>
+                                <input type="text" class="form-control col-6" id="province"/>
+                            </div>
+                            <div class="form-group row text-center">
+                                <label for="city"  class="col-5">City</label>
+                                <input type="text" class="form-control col-6" id="city"/>
+                            </div>
+                            <div class="form-group row text-center">
+                                <label for="address"  class="col-5">Address</label>
+                                <input type="text" class="form-control col-6" id="adress"/>
+                            </div>
+                            <div class="form-group row text-center">
+                                <label for="postal_code"  class="col-5">Postal Code</label>
+                                <input type="number" class="form-control col-6" id="postal_code"/>
+                            </div>
+                            <div class="form-group row text-center">
+                                <label for="birth_date" class="col-5">Birth date</label>
+                                <input type="date" class="form-control col-6" id="birth_date"/>
+                            </div>
+                           <div class="form-group text-right">
+                                 <!--<button type="submit" class="btn btn-light">Invia</button>-->
+                            </div>
+                        </fieldset>
+                        <div class="form-group col-6 col-md-4 offset-3 offset-md-4">
+                            <a class="btn btn-dark border col-12 col-md-12 p-3" href="#">Modify</a>
+                       </div>
+                    </form>      
+                </div>
+                <div class="aside col-10 col-md-5 offset-1 offset-md-0 px-0 mb-4 bg-white border">
+                    <h2 class="text-dark pl-4 col-md-12">Payement informations</h2>
+                    <div class="row p-0">
+                        <div class="col-10 col-md-10 offset-1 offset-md-1">
+                            <table class="table table-bordered text-center">
+                                <tr>
+                                    <th id="owner">Owner</th><th id="last_digits">Last 4 digits</th><th id="expire date">Expire Date</th><th id="expire date">Action</th>
+                                </tr>
+                                <tr>
+                                    <th id="biro">Biro Biro</th><td headers="digits birobiro">2483</td><td headers="expdate birobiro">12/20</td><td headers="action biro biro"><a class="btn btn-dark border col-md-12" href="#">Remove</a></td>
+                                </tr>
+                                <tr>
+                                    <th id="biro">Biro Biro</th><td headers="digits birobiro">2483</td><td headers="expdate birobiro">12/20</td><td headers="action biro biro"><a class="btn btn-dark border col-md-12" href="#">Remove</a></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row p-0">
+                        <form class="col-10 col-md-10 offset-1 offset-md-1">
+                            <fieldset class="px-0 border">
+                                <div class="form-group row text-center mt-3">
+                                    <label for="name" class="col-5">Name:</label>
+                                    <input type="text" class="form-control col-6" id="name"/>
+                                </div>
+                                <div class="form-group row text-center">
+                                    <label for="postal_code"  class="col-5">Number</label>
+                                    <input type="number" class="form-control col-6" id="postal_code"/>
+                                </div>
+                                <div class="form-group row text-center">
+                                    <label for="expire_date" class="col-5">Expire date</label>
+                                    <input type="date" class="form-control col-6" id="expire_date"/>
+                                </div>
+                                <div class="form-group text-center col-6 col-md-6 offset-3 offset-md-3">
+                                     <button type="submit" class="btn btn-dark col-12 col-md-12 p-3">Add</button>
+                                </div>
+                            </fieldset>
+                        </form>    
+                    </div>  
+                </div>
+            </div>
+
+            <div class="row m-0">
+                <footer class="col-12 col-md-12 px-0 bg-dark py-3">
+                    <ul class="nav text-center">
+                        <li class="col-3 col-md-3 offset-1 offset-md-1 nav-item mt-2 px-5"><a class="nav-link text-center text-white bg-dark" href="contatti.html">Contacts</a></li>
+                        <li class="col-2 col-md-2 nav-item mt-2"><img src="./assets/icons/facebook.svg" alt=""/></li>
+                        <li class="col-2 col-md-2 nav-item mt-2"><img src="./assets/icons/twitter.svg" alt=""/></li>
+                        <li class="col-2 col-md-2 nav-item mt-2"><img src="./assets/icons/instagram.svg" alt=""/></li>
+                    </ul>
+                </footer>
+            </div>
+
+     
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+</html>
+    
