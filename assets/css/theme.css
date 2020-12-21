@@ -1,0 +1,137 @@
+body {
+  font-family: Montserrat;
+}
+
+a:hover {
+  color: #e64f13 !important;
+  text-decoration: none;
+}
+
+.subtle-pattern {
+  background-color: #f1f2f3;
+  background-image:
+    url("../img/swirl_pattern.jpg"),
+    url("../img/swirl_pattern.jpg");
+  background-position: -1px -1px, -1px -1px;
+}
+
+.card-title {
+  font-size: 1.5em;
+}
+
+.block-content,
+.block-header {
+  border-radius: 12px;
+}
+
+.block-heading {
+  padding-top: 3em !important;
+  padding-bottom: 2em;
+  background: white;
+  border-radius: 0 0 12px 12px;
+}
+
+.text-info {
+  color: #004FA3 !important;
+}
+
+.btn-primary {
+  background-color: #004FA3 !important;
+}
+
+.bg-info#contr {
+  background-color: #004FA3 !important;
+}
+
+hr.new1 {
+  border-top: 1px solid red;
+}
+
+.clean-block {
+  padding-bottom: 50px;
+  padding-top: 50px;
+  margin-bottom: 40px;
+  text-align: center;
+  text-align: center;
+  max-width: 420px;
+  margin: auto;
+  opacity: .7;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .075);
+  background-color: #fff;
+  padding: 40px;
+}
+
+@media (min-width:576px) {
+  .clean-block {
+    padding-bottom: 100px
+  }
+
+  .clean-block .block-heading {
+    padding-top: 80px
+  }
+}
+
+.product-info {
+  padding: 0 15px 0 1.5em
+}
+
+summary {
+  display: list-item;
+  cursor: pointer;
+  background-color: #f7fbff;
+  height: 100%;
+  padding: 30px;
+  
+}
+
+.summary h3 {
+  text-align: center;
+  font-size: 1.25em;
+  font-weight: 600;
+  padding-top: 16px;
+  padding-bottom: 28px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #1d4f88
+}
+
+.summary h4 {
+  padding-bottom: 18px;
+  margin-bottom: 0;
+  background: #fff;
+  padding-left: 20px;
+  padding-right: 20px
+}
+
+.summary .text {
+  font-size: .65em;
+  font-weight: 600
+}
+
+.summary .price {
+  font-size: .6em;
+  float: right;
+  margin-top: 10px
+}
+
+.summary button {
+  margin-top: 20px;
+  font-weight: 600;
+  font-size: 1em;
+  padding: 10px 0
+}
+
+.summary-w-top-ruler {
+  border-top: 1px solid rgba(0, 0, 0, .1);
+  padding-top: 30px
+}
+
+.summary p {
+  font-size: .9em
+}
+
+.gallery {
+  padding: 20px;
+  background-color: #f6f6f6
+}
