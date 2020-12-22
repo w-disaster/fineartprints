@@ -36,6 +36,17 @@
   }
   ?>
 
+  <div class="row">
+    <footer class="col-12 col-md-12 px-0 bg-dark py-3">
+        <ul class="nav text-center">
+            <li class="col-3 col-md-3 offset-1 offset-md-1 nav-item mt-2 px-5"><a class="nav-link text-center text-white bg-dark" href="contatti.html">Contacts</a></li>
+            <li class="col-2 col-md-2 nav-item mt-2"><a href="#" class="fa fa-facebook text-white mx-3 rounded" style="font-size:24px;"></a></li>
+            <li class="col-2 col-md-2 nav-item mt-2"><a href="#" class="fa fa-twitter text-white mx-3 rounded" style="font-size:24px;"></a></li>
+            <li class="col-2 col-md-2 nav-item mt-2"><a href="#" class="fa fa-instagram text-white mx-3 rounded" style=" font-size:24px;"></a></li>
+        </ul>
+    </footer>
+  </div>      
+
 </div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
