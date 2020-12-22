@@ -1,0 +1,61 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.wrapper {
+  height: 100%;
+}
+
+h1,
+h2 {
+  font-size: 1.7em;
+}
+
+.sidebar .list-group {
+  width: 15em;
+}
+
+svg.bi {
+	position: relative;
+	left: -5px;
+	top: -1px;
+	display: inline-block;
+	vertical-align: middle;
+ }
+
+.sidebar {
+  height: 100%;
+  width: 25%;
+  background-color: #fff;
+  position: fixed !important;
+  z-index: 1;
+  overflow: auto;
+  display: none;
+}
+
+button.sidebar-opener {
+  display: inline-block;
+}
+
+main, footer, nav {
+  margin-left: 0%;
+}
+
+@media (min-width: 992px) {
+
+  .sidebar {
+    display: block;
+    width: 25%;
+  }
+
+  button.sidebar-opener {
+    display: none;
+  }
+
+  main, footer, nav {
+    margin-left: 25%;
+  }
+}
