@@ -9,8 +9,7 @@ body {
   height: 100%;
 }
 
-h1,
-h2 {
+h3 {
   font-size: 1.7em;
 }
 
@@ -63,13 +62,7 @@ main, footer, nav {
 
 .list-group-item {
   width: 100%;
-  position: relative;
-display: block;
-text-align: inherit;
   border: none;
+  border-bottom: solid 1px rgb(201, 198, 198);
   padding: 1em;
-}
-
-.list-group-item + .list-group-item {
-  border-top-width: 0;
 }
