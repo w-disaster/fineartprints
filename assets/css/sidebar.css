@@ -18,15 +18,7 @@ h2 {
   width: 15em;
 }
 
-svg.bi {
-	position: relative;
-	left: -5px;
-	top: -1px;
-	display: inline-block;
-	vertical-align: middle;
- }
-
-.sidebar {
+div.sidebar {
   height: 100%;
   width: 25%;
   background-color: #fff;
@@ -34,9 +26,14 @@ svg.bi {
   z-index: 1;
   overflow: auto;
   display: none;
+  min-width: 230px;
 }
 
 button.sidebar-opener {
+  display: inline-block;
+}
+
+button.sidebar-closer {
   display: inline-block;
 }
 
@@ -46,16 +43,33 @@ main, footer, nav {
 
 @media (min-width: 992px) {
 
-  .sidebar {
-    display: block;
+  div.sidebar {
+    display: block !important;
     width: 25%;
   }
 
   button.sidebar-opener {
     display: none;
   }
+  
+  button.sidebar-closer {
+    display: none;
+  }
 
   main, footer, nav {
     margin-left: 25%;
   }
+}
+
+.list-group-item {
+  width: 100%;
+  position: relative;
+display: block;
+text-align: inherit;
+  border: none;
+  padding: 1em;
+}
+
+.list-group-item + .list-group-item {
+  border-top-width: 0;
 }
