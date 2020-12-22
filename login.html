@@ -1,50 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Login</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/sign-in.css">
     <link rel="shortcut icon" type="image/jpg" href="assets/icons/file-richtext.svg" />
 </head>
-<body>
-    <main class="bg-img">
-        <div class="container pb-4 pl-4 pr-4">
-            <div class="row">
-                <div class="container block-content mt-4 pt-5 pb-3">
-                    <div class="col-4 offset-6 bg-white p-4 rounded mb-4 mr-5 mt-5">
-                        <h1 class="text-center text-info">Sign-in</h1>
-                        <form class="needs-validation" novalidate>
-                            <div class="form-row">
-                                <label for="email">Email</label>
-                                <input id="email" type="email" class="form-control is-invalid" required>
-                                <div class="invalid-feedback">
-                                    Please provide a correct email.
-                                </div>
-                            </div>
-                            <div class="form-row mt-2">
-                                <label for="password">Password</label>
-                                <div class="input-group mb-3">
-                                    <input id="password" type="password" class="form-control is-invalid" required>
-                                    <div class="input-group-append">
-                                        <span id="toggle_hidden_pass" class="input-group-text"><img
-                                                src="./assets/icons/eye.svg" alt="toggle password hidden" width="16"
-                                                height="16"></span>
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Please provide a correct password.
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="btn btn-primary btn-block mt-4" type="button">Continue</button>
-                        </form>
-                    </div>
+
+<body class="text-center bg-img">
+    <form class="align-self-start form-signin bg-white needs-validation rounded-lg" novalidate>
+        <h1 class="text-center">Sign-in</h1>
+        <div class="form-row">
+            <label for="email">Email</label>
+            <input id="email" type="email" class="form-control is-invalid" required>
+            <div class="invalid-feedback">
+                Please provide a correct email.
+            </div>
+        </div>
+        <div class="form-row mt-2">
+            <label for="password">Password</label>
+            <div class="input-group">
+                <input id="password" type="password" class="form-control is-invalid" required>
+                <div class="input-group-append">
+                    <span id="toggle_hidden_pass" class="input-group-text"><img src="./assets/icons/eye.svg"
+                            alt="toggle password hidden" width="16" height="16"></span>
+                </div>
+                <div class="invalid-feedback">
+                    Please provide a correct password.
                 </div>
             </div>
         </div>
-    </main>
+        <button class="btn btn-primary btn-block mt-4" type="button">Continue</button>
+    </form>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
@@ -53,4 +44,5 @@
         crossorigin="anonymous"></script>
     <script src="assets/js/password-toggle-hide.js"></script>
 </body>
+
 </html>

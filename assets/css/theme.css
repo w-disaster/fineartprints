@@ -1,5 +1,7 @@
-body {
+html, body {
   font-family: Montserrat;
+  height: 100%;
+  margin: 0;
 }
 
 a:hover {
@@ -15,6 +17,15 @@ a:hover {
   background-position: -1px -1px, -1px -1px;
 }
 
+.bg-img {
+  background-color: #cccccc;
+  background-image:
+    url("../img/sail.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+
 .card-title {
   font-size: 1.5em;
 }
@@ -25,8 +36,7 @@ a:hover {
 }
 
 .block-heading {
-  padding-top: 3em !important;
-  padding-bottom: 2em;
+  padding-bottom: 1em;
   background: white;
   border-radius: 0 0 12px 12px;
 }
