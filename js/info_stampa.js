@@ -10,10 +10,14 @@ const info = `<section class="bg-white border mt-4 px-5 py-3">
 
 $(document).ready(function(){
     $("img").hover(function(){
-        $(this).fadeTo("fast", 0.5);
+        $(this).addClass('transition');
+
+        //$(this).fadeTo("fast", 0.5);
         aside.innerHTML += info;
     }, function(){
-        $(this).fadeTo(0, 1);
+        $(this).removeClass('transition');
+
+        //$(this).fadeTo(0, 1);
         aside.innerHTML = aside.innerHTML.replace(info, "");
     });
 });
