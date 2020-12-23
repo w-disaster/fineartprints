@@ -1,51 +1,66 @@
-    <div class="row">
-      
-      <div class="col-12">
-        <div class="container-fluid bg-white mt-4 mb-4 px-5 py-4">
-            <h2>Categorie</h2>
-            
-            <div class="row">
-                <div class="col-6 col-md-3 p-0 mb-4 border text-center">
-                    <a href="#">
-                        <img class="img-fluid" src="<?php echo UPLOAD_DIR."img2.jpeg" ?>" alt="" />
-                    </a>                </div>
-                <div class="col-6 col-md-3 p-0 mb-4 border text-center">
-                    <a href="#">
-                        <img class="img-fluid" src="<?php echo UPLOAD_DIR."img2.jpeg" ?>" alt="" />
-                    </a>
-                </div>
-                <div class="col-6 col-md-3 p-0 mb-4 border text-center">
-                    <a href="#">
-                        <img class="img-fluid" src="<?php echo UPLOAD_DIR."img2.jpeg" ?>" alt="" />
-                    </a>                </div>
-                <div class="col-6 col-md-3 p-0 mb-4 border text-center">
-                    <a href="#">
-                        <img class="img-fluid" src="<?php echo UPLOAD_DIR."img2.jpeg" ?>" alt="" />
-                    </a>
-                </div>
-            </div>
+<link rel="stylesheet" href="css/categories_style.css" >
+<script src="js/info_category.js" type="text/javascript"></script>
 
-            <div class="row">
-                <div class="col-6 col-md-3 p-0 mb-4 border text-center">
-                    <a href="#">
-                        <img class="img-fluid" src="<?php echo UPLOAD_DIR."img2.jpeg" ?>" alt="" />
-                    </a>                </div>
-                <div class="col-6 col-md-3 p-0 mb-4 border text-center">
-                    <a href="#">
-                        <img class="img-fluid" src="<?php echo UPLOAD_DIR."img2.jpeg" ?>" alt="" />
-                    </a>
-                </div>
-                <div class="col-6 col-md-3 p-0 mb-4 border text-center">
-                    <a href="#">
-                        <img class="img-fluid" src="<?php echo UPLOAD_DIR."img2.jpeg" ?>" alt="" />
-                    </a>                </div>
-                <div class="col-6 col-md-3 p-0 mb-4 border text-center">
-                    <a href="#">
-                        <img class="img-fluid" src="<?php echo UPLOAD_DIR."img2.jpeg" ?>" alt="" />
-                    </a>
-                </div>
-            </div>
-        </div>
-      </div>
+<h2>Categories</h2>
+<div class="row border m-0 px-5 py-4">
+    <div class="col-6 col-md-3 d-flex align-items-center  py-5">
+        <a href="#">
+            <img class="img-fluid" src="upload/film1.webp" alt="" />
+        </a>
+        <a href="#" class="middle text-white bg-dark"><h3>Categoria</h3></a>
     </div>
+    <div class="col-6 col-md-3 d-flex align-items-center  py-5">
+        <a href="#">
+            <img class="img-fluid" src="upload/street1.webp" alt="" />
+        </a>
+        <a href="#" class="middle text-white bg-dark"><h3>Categoria</h3></a>
+
+    </div>
+    <div class="col-6 col-md-3 d-flex align-items-center  py-5">
+        <a href="#">
+            <img class="img-fluid" src="upload/space2.webp" alt="" />
+        </a>
+        <a href="#" class="middle text-white bg-dark"><h3>Categoria</h3></a>
+
+    </div>
+    <div class="col-6 col-md-3 d-flex align-items-center  py-5">
+        <a href="#">
+            <img class="img-fluid" src="upload/nature4.webp" alt="" />
+        </a>
+        <a href="#" class="middle text-white bg-dark"><h3>Categoria</h3></a>
+
+    </div>
+</div>
+
+<div class="row border m-0 px-5 py-4">
+<div class="col-6 col-md-3 d-flex align-items-center  py-5">
+        <a href="#">
+            <img class="img-fluid" src="upload/edificio1.webp" alt="" />
+        </a>
+        <a href="#" class="middle text-white bg-dark"><h3>Categoria</h3></a>
+    </div>
+    <div class="col-6 col-md-3 d-flex align-items-center  py-5">
+        <a href="#">
+            <img class="img-fluid" src="upload/nature1.webp" alt="" />
+        </a>
+        <a href="#" class="middle text-white bg-dark"><h3>Categoria</h3></a>
+
+    </div>
+    <div class="col-6 col-md-3 d-flex align-items-center  py-5">
+        <a href="#">
+            <img class="img-fluid" src="upload/street4.webp" alt="" />
+        </a>
+        <a href="#" class="middle text-white bg-dark"><h3>Categoria</h3></a>
+
+    </div>
+    <div class="col-6 col-md-3 d-flex align-items-center  py-5">
+        <a href="#">
+            <img class="img-fluid" src="upload/edificio4.webp" alt="" />
+        </a>
+        <a href="#" class="middle text-white bg-dark"><h3>Categoria</h3></a>
+
+    </div>
+</div>
+
+
 
