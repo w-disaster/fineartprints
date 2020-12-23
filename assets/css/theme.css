@@ -41,6 +41,10 @@ a:hover {
   border-radius: 0 0 12px 12px;
 }
 
+div.sp-wrap {
+  max-width: 800px !important;
+}
+
 h2 {
   font-size: 1.1em;
 }
