@@ -1,8 +1,8 @@
 html,
 body {
   font-family: Montserrat;
-  height: 100%;
-  margin: 0;
+  height: 100vh; 
+  /* viewport-percentage lengths https://www.w3.org/TR/css3-values/#viewport-relative-lengths */
 }
 
 a:hover {
