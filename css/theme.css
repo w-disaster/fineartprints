@@ -37,3 +37,8 @@ a:hover {
 .btn-primary {
   background-color: #004FA3 !important;
 }
+
+.flex-flow-row-wrap {
+  display: flex;
+  flex-flow: row wrap;
+}
