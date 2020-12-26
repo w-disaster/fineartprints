@@ -1,0 +1,39 @@
+html,
+body {
+  font-family: Montserrat;
+  height: 100vh; 
+  /* viewport-percentage lengths https://www.w3.org/TR/css3-values/#viewport-relative-lengths */
+}
+
+.subtle-pattern {
+  background-color: #f1f2f3;
+  background-image:
+  url("../upload/swirl_pattern.jpg"),
+  url("../upload/swirl_pattern.jpg");
+  background-position: -1px -1px, -1px -1px;
+}
+
+a:hover {
+  color: #e64f13 !important;
+  text-decoration: none;
+}
+
+.card-title {
+  font-size: 1.5em;
+}
+
+.text-info {
+  color: #004FA3 !important;
+}
+
+.text-success {
+  color: #176204 !important;
+}
+
+.text-warning {
+  color: #933A10 !important;
+}
+
+.btn-primary {
+  background-color: #004FA3 !important;
+}
