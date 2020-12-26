@@ -5,8 +5,12 @@ body {
   margin: 0;
 }
 
-.wrapper {
-  height: 100%;
+.navbar {
+  z-index: 2;
+}
+
+h2 {
+  font-size: 1.1em;
 }
 
 h3 {
@@ -15,6 +19,13 @@ h3 {
 
 .sidebar .list-group {
   width: 15em;
+}
+
+.list-group-item {
+  width: 100%;
+  border: none;
+  border-bottom: solid 1px rgb(201, 198, 198);
+  padding: 1em;
 }
 
 div.sidebar {
@@ -36,7 +47,9 @@ button.sidebar-closer {
   display: inline-block;
 }
 
-main, footer, nav {
+main,
+footer,
+nav {
   margin-left: 0%;
 }
 
@@ -50,19 +63,14 @@ main, footer, nav {
   button.sidebar-opener {
     display: none;
   }
-  
+
   button.sidebar-closer {
     display: none;
   }
 
-  main, footer, nav {
+  main,
+  footer,
+  nav {
     margin-left: 25%;
   }
-}
-
-.list-group-item {
-  width: 100%;
-  border: none;
-  border-bottom: solid 1px rgb(201, 198, 198);
-  padding: 1em;
 }
