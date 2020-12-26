@@ -3,7 +3,7 @@
 -- *--------------------------------------------
 -- * DB-MAIN version: 11.0.1              
 -- * Generator date: Dec 19 2018              
--- * Generation date: Sat Dec 26 16:35:45 2020 
+-- * Generation date: Sat Dec 26 17:22:40 2020 
 -- * LUN file: /srv/www/htdocs/fineartprints/db/FINEARTPRINTS.lun 
 -- * Schema: fineartprints/3 
 -- ********************************************* 
@@ -63,7 +63,7 @@ create table Make_passpartout_available (
      Passpartout_id char(140) not null,
      constraint ID_Make_passpartout_available_ID primary key (Passpartout_id, Email));
 
-create table Order (
+create table Prints_order (
      Order_id int not null,
      Ship_city char(140),
      Ship_postal_code int,
@@ -142,7 +142,7 @@ alter table Art_print add constraint REF_Art_p_Print_FK
 
 alter table Final_product add constraint EQU_Final_Order_FK
      foreign key (Order_id)
-     references Order (Order_id);
+     references Prints_order (Order_id);
 
 alter table Final_product add constraint REF_Final_Passp_FK
      foreign key (Passpartout_id)
@@ -173,11 +173,11 @@ alter table Make_passpartout_available add constraint REF_Make__User_FK
      references User (Email);
 
 -- Not implemented
--- alter table Order add constraint ID_Order_CHK
+-- alter table Prints_order add constraint ID_Order_CHK
 --     check(exists(select * from Final_product
 --                  where Final_product.Order_id = Order_id)); 
 
-alter table Order add constraint REF_Order_Payme_FK
+alter table Prints_order add constraint REF_Order_Payme_FK
      foreign key (Email, Card_number)
      references Payment_Info (Email, Card_number);
 
@@ -199,7 +199,7 @@ alter table Picture add constraint REF_Pictu_User_FK
 
 alter table Tracking_notification add constraint REF_Track_Order_FK
      foreign key (Order_id)
-     references Order (Order_id);
+     references Prints_order (Order_id);
 
 
 -- Index Section
@@ -245,10 +245,10 @@ create index REF_Make__User_IND
      on Make_passpartout_available (Email);
 
 create unique index ID_Order_IND
-     on Order (Order_id);
+     on Prints_order (Order_id);
 
 create index REF_Order_Payme_IND
-     on Order (Email, Card_number);
+     on Prints_order (Email, Card_number);
 
 create unique index ID_Passpartout_IND
      on Passpartout (Passpartout_id);
