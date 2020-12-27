@@ -1,6 +1,6 @@
 html,
 body {
-  font-family: Montserrat;
+  /*font-family: Montserrat;*/
   height: 100vh; 
   /* viewport-percentage lengths https://www.w3.org/TR/css3-values/#viewport-relative-lengths */
 }

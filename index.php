@@ -3,7 +3,7 @@ require_once 'bootstrap.php';
 
 //Base Template
 $templateParams["titolo"] = "Shop";
-$templateParams["nome"] = "order.php";
+$templateParams["nome"] = "shop.html";
 
 require 'template/base.php';
 ?>

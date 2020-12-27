@@ -11,7 +11,7 @@ const info = `<section class="bg-white border mt-4 px-5 py-3">
 $(document).ready(function(){
     $("img").hover(function(){
         $(this).addClass('transition');
-        
+        console.log(aside);
         //$(this).fadeTo("fast", 0.5);
         aside.innerHTML += info;
     }, function(){
