@@ -26,7 +26,7 @@ create table Art_print (
 
 create table Category (
      Name char(140) not null,
-     Image longblob not null,
+     Image varchar(140) not null,
      Orientation char(140) not null,
      constraint ID_Category_ID primary key (Name));
 
@@ -56,7 +56,7 @@ create table Final_product (
 
 create table Frame (
      Frame_id char(9) not null,
-     Image char(1) not null,
+     Image varchar(140) not null,
      Description char(140) not null,
      Price float(9) not null,
      constraint ID_Frame_ID primary key (Frame_id));
@@ -73,7 +73,7 @@ create table Make_passpartout_available (
 
 create table Passpartout (
      Passpartout_id char(140) not null,
-     Image char(1) not null,
+     Image varchar(140) not null,
      Specifications char(140) not null,
      Price_per_cm2 float(9) not null,
      constraint ID_Passpartout_ID primary key (Passpartout_id));
@@ -87,7 +87,7 @@ create table Picture (
      Title char(140) not null,
      Description char(140) not null,
      Author char(140) not null,
-     Image char(1) not null,
+     Image varchar(140) not null,
      Base_price float(9) not null,
      Orientation char(140) not null,
      Category_name char(140) not null,
@@ -96,7 +96,7 @@ create table Picture (
 
 create table Print_technique (
      Technique_id char(9) not null,
-     Image char(1) not null,
+     Image varchar(140) not null,
      Description char(140) not null,
      Price_per_cm2 float(9) not null,
      constraint ID_Print_technique_ID primary key (Technique_id));
