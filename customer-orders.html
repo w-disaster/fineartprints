@@ -35,19 +35,21 @@
         <div class="flex-grow-1 subtle-pattern">
             <main class="h-100 container-fluid px-0">   
                 <div class="row mx-0 mt-3">
-                    <div class="col-4 col-md-2 offset-1 offset-md-1 bg-dark border-right p-0">
-                        <a class="col-12 col-md-12 btn btn-dark m-0" href="customer-area.html">Profile</a>
-                    </div>
-                    <div class="col-4 col-md-2 bg-dark p-0">
-                        <a class="col-12 col-md-12 btn btn-dark m-0" href="#">My orders</a>
-                    </div>
+                    <ul class="nav nav-pills col-10 col-md-5 offset-1 offset-md-1">
+                        <li class="nav-item col-5 col-md-5 text-center p-0">
+                          <a class="nav-link" href="customer-area.html">Profile</a>
+                        </li>
+                        <li class="nav-item col-5 col-md-5 text-center p-0">
+                          <a class="nav-link active" href="#">My orders</a>
+                        </li>
+                      </ul>
                 </div>
                 <div class="col-10 col-md-10 offset-1 offset-md-1 px-0 bg-white border mb-4">
                     <ul class="nav col-12 col-md-12 p-0">
                         <h2 class="offset-md-1 offset-1 my-3">My orders</h2>
                         <li class="nav item mb-1">
-                            <div class="row p-0 col-12 col-md-12 ml-1">
-                                <div class="col-10 offset-1 col-md-10 offset-md-1 bg-dark text-white p-0">
+                            <div class="row p-0 col-12 col-md-12 ml-1 d-flex align-items-center">
+                                <div class="col-10 offset-1 col-md-10 offset-md-1 bg-primary text-white p-0">
                                     <ul class="nav text-center">
                                         <li class="nav-item col-4 col-md-4 m-0 py-2">Ship date: 25/12/2020</li>
                                         <li class="nav-item col-4 col-md-4 m-0 py-2">Total: 40€</li>
@@ -55,36 +57,37 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="row col-md-12 p-0 ml-1">
-                                <ul class="nav col-10 offset-1 offset-md-1 col-md-10 bg-light">
-                                    <li class="nav-item">
-                                        <ul>
-                                            <li class="row border-bottom">
-                                                <img class="col-10 offset-1 offset-md-0 col-md-4 p-0 my-3" src="./upload/img6.jpeg" alt=""/>
-                                                <div class="col-12 col-md-8 my-3">
-                                                    <a class="col-12 col-md-12" href="#">Product name</a>
-                                                    <p class="col-12 col-md-12">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe atque reiciendis dolor nemo iste. Accusamus, porro quis aliquid at accusantium molestias eligendi assumenda corporis et ea? Cum enim ut doloremque.</p>
-                                                    <p class="col-12 col-md-12">Price: 25€</p>
-                                                </div>
-                                            </li>
-                                            <li class="row border-bottom">
-                                                <img class="col-10 offset-1 offset-md-0 col-md-4 p-0 my-3" src="./upload/img6.jpeg" alt=""/>
-                                                <div class="col-12 col-md-8 my-3">
-                                                    <a class="col-12 col-md-12" href="#">Product name</a>
-                                                    <p class="col-12 col-md-12">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe atque reiciendis dolor nemo iste. Accusamus, porro quis aliquid at accusantium molestias eligendi assumenda corporis et ea? Cum enim ut doloremque.</p>
-                                                    <p class="col-12 col-md-12">Price: 15€</p>
-                                                </div>
-                                            </li>
-                                        </ul>
+                    <div class="row col-md-12 p-0 ml-1">
+                        <ul class="nav col-10 offset-1 offset-md-1 col-md-10 bg-light">
+                            <li class="nav-item">
+                                <ul class="pl-4">
+                                    <li class="row border-bottom">
+                                        <div class="col-10 offset-1 offset-md-0 col-md-4 p-0 my-3 text-center">
+                                            <img class="img-fluid" src="./upload/abstract2.webp" style="max-height:200px" alt=""/>
+                                        </div>
+                                        <div class="col-12 col-md-8 my-3">
+                                            <a class="col-12 col-md-12" href="#">Product name</a>
+                                            <p class="col-12 col-md-12">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe atque reiciendis dolor nemo iste. Accusamus, porro quis aliquid at accusantium molestias eligendi assumenda corporis et ea? Cum enim ut doloremque.</p>
+                                            <p class="col-12 col-md-12">Price: 25€</p>
+                                        </div>
+                                    </li>
+                                    <li class="row border-bottom">
+                                        <div class="col-12 offset-0 offset-md-0 col-md-4 p-0 my-3 text-center">
+                                            <img class="img-fluid" src="./upload/img6.jpeg" style="max-height:200px" alt=""/>
+                                        </div>
+                                        <div class="col-12 col-md-8 my-3">
+                                            <a class="col-12 col-md-12" href="#">Product name</a>
+                                            <p class="col-12 col-md-12">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe atque reiciendis dolor nemo iste. Accusamus, porro quis aliquid at accusantium molestias eligendi assumenda corporis et ea? Cum enim ut doloremque.</p>
+                                            <p class="col-12 col-md-12">Price: 15€</p>
+                                        </div>
                                     </li>
                                 </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
             </main>
         </div>
-
         <div class="row m-0">
             <footer class="col-12 col-md-12 px-0 bg-dark py-3">
                 <ul class="nav text-center">
