@@ -28,7 +28,6 @@ create table Category (
      Name char(140) not null,
      Image longblob not null,
      Orientation char(140) not null,
-     Description char(140) not null,
      constraint ID_Category_ID primary key (Name));
 
 create table Credit_Card (
