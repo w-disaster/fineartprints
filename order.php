@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="css/order_style.css" >
 
-<div class="row">
-          <div class="col-12 col-md-7 mb-4">
+<div class="row my-4">
+          <div class="col-12 col-md-7">
             <div class="container-fluid p-0 flex-flow-row-wrap">
               <div class="row border m-0 px-4 py-4 gray-background">
                 <div class="col-12">
@@ -162,7 +162,7 @@
           <div class="col-12 col-md-5 mb-4">
             <div class="gray-background p-4">
               <h3>Order summary</h3>
-              <table class="table form-summary border">
+              <table class="table form-summary border my-4">
                 <tr>
                   <td>Print1</td>
                   <td>100,00 €</td>

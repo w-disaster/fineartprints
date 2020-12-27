@@ -11,8 +11,8 @@ h3{
     margin: 0;
 }
 
-p{
-    text-align: center;
+p, h6{
+    text-align: center !important;
 }
   
 .transition {

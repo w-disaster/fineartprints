@@ -35,13 +35,13 @@
 <div class="row border m-0 px-5 py-4">
 <div class="col-6 col-md-3 d-flex align-items-center py-5">
         <a href="#">
-            <img class="img-fluid" src="upload/edificio1.webp" alt="" />
+            <img class="img-fluid" src="upload/architecture1.webp" alt="" />
         </a>
         <a href="#" class="middle text-white bg-dark"><h3>Architecture</h3></a>
     </div>
     <div class="col-6 col-md-3 d-flex align-items-center py-5">
         <a href="#">
-            <img class="img-fluid" src="upload/il_postino.jpeg" alt="" />
+            <img class="img-fluid" src="upload/il_postino.webp" alt="" />
         </a>
         <a href="#" class="middle text-white bg-dark"><h3>Fine arts</h3></a>
 
@@ -55,7 +55,7 @@
     </div>
     <div class="col-6 col-md-3 d-flex align-items-center py-5">
         <a href="#">
-            <img class="img-fluid" src="upload/edificio3.webp" alt="" />
+            <img class="img-fluid" src="upload/architecture3.webp" alt="" />
         </a>
         <a href="#" class="middle text-white bg-dark"><h3>Varie</h3></a>
 
