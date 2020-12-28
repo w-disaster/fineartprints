@@ -1,6 +1,5 @@
 html,
 body {
-  /*font-family: Montserrat;*/
   height: 100vh; 
   /* viewport-percentage lengths https://www.w3.org/TR/css3-values/#viewport-relative-lengths */
 }
@@ -23,7 +22,7 @@ a:hover {
 }
 
 .text-info {
-  color: #004FA3 !important;
+  color: black !important;
 }
 
 .text-success {

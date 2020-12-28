@@ -41,7 +41,7 @@ body {
 .bg-img {
     background-color: #cccccc;
     background-image:
-      url("../img/sail.jpg");
+      url("../upload/sail.webp");
       background-repeat: no-repeat;
       background-size: cover;
       height: 100%;
