@@ -80,18 +80,18 @@
         <?php $i = 0; ?>
         <?php foreach($templateParams["pictures"] as $picture): ?>
 
-        <?php if($i == 0): ?> <div class="row border m-0 px-3 py-4"> <?php endif; ?>
+        <?php if($i == 0): ?> <div class="row border m-0 px-3 pt-4 pb-2"> <?php endif; ?>
           
-        <div class="col-6 col-md-3 d-flex flex-column align-self-center pt-3">
-          <a href="#">
-            <img class="img-fluid mb-4" src="<?php echo UPLOAD_DIR.$picture["Image"];?>" alt="<?php echo $picture["Title"];?>" />
-          </a>
-          <h6><?php echo $picture["Title"];?></h6>
-          <p><?php echo $picture["Base_price"];?> €</p>
-        </div>
+          <div class="col-6 col-md-3 d-flex flex-column align-self-center pt-3">
+            <a href="#">
+              <img class="img-fluid mb-3" src="<?php echo UPLOAD_DIR.$picture["Image"];?>" alt="<?php echo $picture["Title"];?>" />
+            </a>
+            <h6 class="mt-3"><?php echo $picture["Title"];?></h6>
+            <p><?php echo $picture["Base_price"];?> €</p>
+          </div>
           
-          <?php if($i == 3): $i = -1; ?> </div> <?php endif; ?>
-          <?php $i++ ?>
+        <?php if($i == 3): $i = -1; ?> </div> <?php endif; ?>
+        <?php $i++ ?>
         <?php endforeach; ?>
       </main>
     </div>

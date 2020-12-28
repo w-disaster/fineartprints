@@ -1,22 +1,34 @@
 const aside = document.querySelector("aside");
-const info = `<section class="bg-white border mt-4 px-5 py-3">
-        <h2>Descrizione stampa</h2>
-        <ul class="nav flex-column">
-            <li>Autore</li>
-            <li>Descrizione stampa artistica</li>
-            <li>Costo</li>
-        </ul>
-    </section>`;
+let info = "";
 
 $(document).ready(function(){
     $("img").hover(function(){
         $(this).addClass('transition');
-        console.log(aside);
+        let title = $(this).parent().parent().children('h6').text();
+
+        title = title.replaceAll(" ", "%");
+
+        $.getJSON("api-print.php?title=" + title, function(data){
+            info = `<section class="bg-white border mt-4 px-5 py-3">
+                <h2>` + data["Title"] + `</h2>
+                <ul class="nav flex-column align-text-left">
+                    <li class="p-2"> <h5>Description</h5>` +  data["Description"] + `</li>
+                    <li class="p-2"> <h5>Category</h5>` + data["Category_name"] + `</li>
+                    <li class="p-2"> <h5>Author</h5>` + data["Author"] + `</li>
+                </ul>
+            </section>`;
+            aside.innerHTML += info;
+        });
+
         //$(this).fadeTo("fast", 0.5);
-        aside.innerHTML += info;
+        
     }, function(){
         $(this).removeClass('transition');
         //$(this).fadeTo(0, 1);
+        aside.innerHTML = aside.innerHTML.replace(info, "");
+    });
+
+    $(".col-12, .col-3").hover(function(){
         aside.innerHTML = aside.innerHTML.replace(info, "");
     });
 });

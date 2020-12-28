@@ -11,7 +11,11 @@ h3{
     margin: 0;
 }
 
-p, h6{
+.container-fluid > .col-12 h6{
+    text-align: left !important;
+}
+
+.container-fluid .col-12:last-child{
     text-align: center !important;
 }
   
