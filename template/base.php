@@ -29,9 +29,9 @@
             <li class="nav-item"><a class="nav-link" href="features.html">Products</a></li>
             <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
             <li class="nav-item"><a class="nav-link navbar-brand" href="about-us.html"><img
-                  src="./assets/icons/person-circle.svg" alt="your profile" width="32" height="32"></a>
+                  src="<?php echo UPLOAD_DIR.'/icons/person-circle.svg'?>" alt="your profile" width="32" height="32"></a>
             </li>
-            <li class="nav-item"><a class="nav-link navbar-brand" href="about-us.html"><img src="./assets/icons/bag.svg"
+            <li class="nav-item"><a class="nav-link navbar-brand" href="about-us.html"><img src="<?php echo UPLOAD_DIR.'/icons/bag.svg'?>"
                   alt="cart" width="32" height="32"></a></li>
           </ul>
         </div>

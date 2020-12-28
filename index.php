@@ -7,6 +7,5 @@ $templateParams["nome"] = "shop.php";
 
 $templateParams["pictures"] = $dbh->getAllPictures();
 
-
 require 'template/base.php';
 ?>
