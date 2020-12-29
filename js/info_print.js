@@ -2,6 +2,7 @@ const aside = document.querySelector("aside");
 let info = "";
 
 $(document).ready(function(){
+
     $("img").hover(function(){
         $(this).addClass('transition');
         let title = $(this).parent().parent().children('h6').text();
@@ -18,7 +19,7 @@ $(document).ready(function(){
                     <li class="p-2"> <h5>Publish date</h5>` + data["Publish_date"] + `</li>
                 </ul>
             </section>`;
-            //aside.innerHTML += info;
+            aside.innerHTML += info;
         });
 
         //$(this).fadeTo("fast", 0.5);
@@ -26,12 +27,7 @@ $(document).ready(function(){
     }, function(){
         $(this).removeClass('transition');
         //$(this).fadeTo(0, 1);
-        //aside.innerHTML = aside.innerHTML.replace(info, "");
-    });
-
-    $(".col-12, .col-3").hover(function(){
         aside.innerHTML = aside.innerHTML.replace(info, "");
+        info = "";
     });
-
-    
 });

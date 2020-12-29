@@ -33,6 +33,9 @@ if(isset($_POST["authors"]) || isset($_POST["order"]) || isset($_POST["technique
         $order = $_POST["order"];
         $query_order = "ORDER BY ";
         switch($order){
+            case "none":
+                $query_order = "";
+                break;
             case "publish_date":
                 $query_order = $query_order."Picture.Publish_date DESC";
                 break;
@@ -47,7 +50,7 @@ if(isset($_POST["authors"]) || isset($_POST["order"]) || isset($_POST["technique
 
 
     $query = $query.$query_authors."AND ".$query_techniques." ".$query_order;
-    //var_dump($query);
+    var_dump($query);
     $templateParams["pictures"] = $dbh->query($query);
 }else{
     $templateParams["pictures"] = $dbh->getAllPictures();
