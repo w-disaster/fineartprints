@@ -2,72 +2,77 @@
   <div class="col-12 col-md-3">
     <aside>
       <section class="bg-white border mt-4 px-5 py-3 w-100">
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-            value="option1" checked>
-          <label class="form-check-label ml-3" for="exampleRadios1">
-            Tutti
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
-            value="option2">
-          <label class="form-check-label ml-3" for="exampleRadios2">
-            In sconto: %
-          </label>
-        </div>
-
-        <div class="dropdown show mt-3 mb-3">
-          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Order by
-          </a>
-
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Publish date</a>
-            <a class="dropdown-item" href="#">Most popular</a>
-            <a class="dropdown-item" href="#">Cost: rising</a>
-            <a class="dropdown-item" href="#">Cost: decreasing</a>
+        <form action="index.php" method="POST">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+              value="option1" checked>
+            <label class="form-check-label ml-3" for="exampleRadios1">
+              Tutti
+            </label>
           </div>
-        </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
+              value="option2">
+            <label class="form-check-label ml-3" for="exampleRadios2">
+              In sconto: %
+            </label>
+          </div>
 
-        <p>
-        <h2>Tecniche</h2>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-          <label class="form-check-label ml-3" for="defaultCheck1">
-            Stampa su tela
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-          <label class="form-check-label ml-3" for="defaultCheck1">
-            Olio su tela
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-          <label class="form-check-label ml-3" for="defaultCheck1">
-            Stampa su carta
-          </label>
-        </div>
-        </p>
+          <div class="dropdown show mt-3 mb-3">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Order by
+            </a>
 
-        <p class="mt-3">
-          <h2>Autori</h2>
-          <?php $authors = array(); 
-            for($i = 0; $i < count($templateParams["pictures"]); $i++): $authors[$i] = $templateParams["pictures"][$i]["Author"];
-            endfor;
-          ?>
-          <?php foreach(array_unique($authors) as $author): ?>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-              <label class="form-check-label ml-3" for="defaultCheck1">
-                <?php echo $author; ?>
-              </label>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Publish date</a>
+              <a class="dropdown-item" href="#">Most popular</a>
+              <a class="dropdown-item" href="#">Cost: rising</a>
+              <a class="dropdown-item" href="#">Cost: decreasing</a>
             </div>
-          <?php endforeach; ?>
-        </p>
+          </div>
+
+          <p>
+          <h2>Tecniche</h2>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label ml-3" for="defaultCheck1">
+              Stampa su tela
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label ml-3" for="defaultCheck1">
+              Olio su tela
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label ml-3" for="defaultCheck1">
+              Stampa su carta
+            </label>
+          </div>
+          </p>
+
+          <p class="mt-3">
+            <h2>Autori</h2>
+            <?php $authors = array(); 
+              for($i = 0; $i < count($templateParams["pictures"]); $i++): $authors[$i] = $templateParams["pictures"][$i]["Author"];
+              endfor;
+            ?>
+            <?php foreach(array_unique($authors) as $author): ?>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label ml-3" for="defaultCheck1">
+                  <?php echo $author; ?>
+                </label>
+              </div>
+            <?php endforeach; ?>
+          </p>
+
+          <button type="submit" class="btn btn-primary mt-3 mb-3">Filter</button>
+
+        </form>
       </section>
     </aside>
   </div>

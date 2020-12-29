@@ -27,5 +27,13 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getPicturesFromAuthor($i){
+        $stmt = $this->db->prepare("SELECT Title, Image, Author, Base_price FROM Picture WHERE Author=?");
+        $stmt->bind_param("s", $i);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>

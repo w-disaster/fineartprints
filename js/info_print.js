@@ -31,4 +31,10 @@ $(document).ready(function(){
     $(".col-12, .col-3").hover(function(){
         aside.innerHTML = aside.innerHTML.replace(info, "");
     });
+
+    $(".form-check-input").click(function(){
+        if($(this).is(":checked")){
+            console.log("cisono");
+        }
+    })
 });
