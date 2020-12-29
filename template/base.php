@@ -38,7 +38,7 @@
       </div>
     </nav>
 
-  <div class="flex-grow-1">
+  <div class="flex-grow-1 subtle-pattern">
     <div class="container-fluid bg-white flex-flow-row-wrap">
 
       <?php 

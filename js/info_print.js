@@ -9,15 +9,16 @@ $(document).ready(function(){
         title = title.replaceAll(" ", "%");
 
         $.getJSON("api-print.php?title=" + title, function(data){
-            info = `<section class="bg-white border mt-4 px-5 py-3">
+            info = `<section class="bg-white border my-4 px-5 py-3">
                 <h2>` + data["Title"] + `</h2>
                 <ul class="nav flex-column align-text-left">
                     <li class="p-2"> <h5>Description</h5>` +  data["Description"] + `</li>
                     <li class="p-2"> <h5>Category</h5>` + data["Category_name"] + `</li>
                     <li class="p-2"> <h5>Author</h5>` + data["Author"] + `</li>
+                    <li class="p-2"> <h5>Publish date</h5>` + data["Publish_date"] + `</li>
                 </ul>
             </section>`;
-            aside.innerHTML += info;
+            //aside.innerHTML += info;
         });
 
         //$(this).fadeTo("fast", 0.5);
@@ -25,16 +26,12 @@ $(document).ready(function(){
     }, function(){
         $(this).removeClass('transition');
         //$(this).fadeTo(0, 1);
-        aside.innerHTML = aside.innerHTML.replace(info, "");
+        //aside.innerHTML = aside.innerHTML.replace(info, "");
     });
 
     $(".col-12, .col-3").hover(function(){
         aside.innerHTML = aside.innerHTML.replace(info, "");
     });
 
-    $(".form-check-input").click(function(){
-        if($(this).is(":checked")){
-            console.log("cisono");
-        }
-    })
+    
 });
