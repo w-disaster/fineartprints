@@ -1,4 +1,4 @@
-<main class="h-100">
+<main class="h-100 col-12">
     <div class="container pb-5 pl-4 pr-4">
         <div class="row">
             <div class="container shadow-sm bg-white border pb-1 mt-4 pt-5">
