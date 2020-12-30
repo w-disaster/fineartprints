@@ -1,7 +1,6 @@
 <?php
 require_once 'bootstrap.php';
 
-$templateParams["js"] = "js/slideshow.js";
 $templateParams["titolo"] = "Home";
 $templateParams["nome"] = "home-template.php";
 

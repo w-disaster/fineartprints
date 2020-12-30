@@ -77,3 +77,5 @@
         </div>
     </div>
 </main>
+
+<script src="js/slideshow.js" type="text/javascript"></script>
