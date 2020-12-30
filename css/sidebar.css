@@ -6,14 +6,7 @@ h3 {
   width: 15em;
 }
 
-/*.list-group-item {
-  width: 100%;
-  border: none;
-  border-bottom: solid 1px rgb(201, 198, 198);
-  padding: 1em;
-}*/
-
-.print-section-title {
+.section-title {
   border: none;
   border-top: solid 2px black;
   padding-top: 0.2em;
@@ -27,4 +20,9 @@ aside > a:hover {
   background-color: rgb(221, 215, 215) !important;
   color: #e64f13 !important;
   text-decoration: none;
+}
+
+.list-group{
+  max-height: 65vh;
+  overflow: scroll;
 }
