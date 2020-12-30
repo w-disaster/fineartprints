@@ -5,7 +5,9 @@ require_once 'bootstrap.php';
 if(isset($_POST["authors"]) || isset($_POST["order"]) || isset($_POST["techniques"]) || isset($_POST["sale"])){
     
     $query = "SELECT * FROM Picture WHERE ";
-
+    
+    /* AUTHOR */
+    $query_authors = "1 "; 
     if(isset($_POST["authors"])){
         $authors = $_POST["authors"];
         $query_authors = "Picture.Author IN (";
@@ -14,9 +16,10 @@ if(isset($_POST["authors"]) || isset($_POST["order"]) || isset($_POST["technique
             $query_authors = $query_authors."'".$authors[$i]."', ";
         }
         $query_authors = $query_authors."'".$authors[$n - 1]."') ";
-    } else { 
-        $query_authors = "1 "; 
     }
+
+    /* TECHNIQUE */
+    $query_techniques = "1 ";
     if(isset($_POST["techniques"])){
         $techniques = $_POST["techniques"];
         $query_techniques = "Picture.Title = Art_print.Picture_title AND Art_print.Technique_id = Print_technique.Technique_id AND Print_technique.Description IN (";
@@ -25,9 +28,18 @@ if(isset($_POST["authors"]) || isset($_POST["order"]) || isset($_POST["technique
             $query_techniques = $query_techniques."'".$techniques[$i]."', ";
         }
         $query_techniques = $query_techniques."'".$authors[$n - 1]."') ";
-    } else {
-        $query_techniques = "1 ";
     }
+
+    /* SELECT (ALL / DISCOUNT) */
+    $query_select = "1 ";
+    if(isset($_POST["select"])){
+        $select = $_POST["select"];
+        if($select == "sale"){
+            $query_select = "Picture.Discount > 0 ";
+        }
+    }
+
+    /* ORDER */
     $query_order = "";
     if(isset($_POST["order"])){
         $order = $_POST["order"];
@@ -40,21 +52,29 @@ if(isset($_POST["authors"]) || isset($_POST["order"]) || isset($_POST["technique
                 $query_order = $query_order."Picture.Publish_date DESC";
                 break;
             case "cost_rising":
-                $query_order = $query_order."Picture.Base_price ASC";
+                $query_order = $query_order."Picture.Base_price - (Picture.Base_price * Picture.Discount)/100 ASC";
                 break;
             case "cost_decreasing":
-                $query_order = $query_order."Picture.Base_price DESC";
+                $query_order = $query_order."Picture.Base_price - (Picture.Base_price * Picture.Discount)/100 DESC";
                 break;
         }
     }
 
-
-    $query = $query.$query_authors."AND ".$query_techniques." ".$query_order;
-    var_dump($query);
+    $query = $query.$query_authors."AND ".$query_techniques."AND ".$query_select.$query_order;
     $templateParams["pictures"] = $dbh->query($query);
+
 }else{
     $templateParams["pictures"] = $dbh->getAllPictures();
 }
+
+/* TECNICHE */
+$query = "SELECT DISTINCT Description FROM Print_technique";
+$templateParams["print_techniques"] = $dbh->query($query);
+
+/* AUTORI */
+$query = "SELECT DISTINCT Author FROM Picture";
+$templateParams["authors"] = $dbh->query($query);
+
 /*
 $technique_array = [];
 foreach($templateParams["pictures"] as $picture){

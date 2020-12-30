@@ -10,7 +10,7 @@ class DatabaseHelper{
     }
 
     public function getAllPictures(){
-        $stmt = $this->db->prepare("SELECT Title, Image, Author, Base_price FROM Picture ORDER BY RAND() LIMIT 12");
+        $stmt = $this->db->prepare("SELECT Title, Image, Author, Base_price, Discount FROM Picture ORDER BY RAND() LIMIT 12");
 
         $stmt->execute();
         $result = $stmt->get_result();
@@ -19,7 +19,7 @@ class DatabaseHelper{
     }
 
     public function getPictureFromTitle($i){
-        $stmt = $this->db->prepare("SELECT Title, Description, Author, Category_name, Publish_date FROM Picture WHERE Title=?");
+        $stmt = $this->db->prepare("SELECT Title, Description, Author, Category_name, Publish_date, Discount FROM Picture WHERE Title=?");
         $stmt->bind_param("s", $i);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -43,6 +43,8 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+
 
     
     
