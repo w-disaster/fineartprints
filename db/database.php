@@ -5,7 +5,7 @@ class DatabaseHelper{
     public function __construct($servername, $username, $password, $dbname, $port){
         $this->db = new mysqli($servername, $username, $password, $dbname, $port);
         if ($this->db->connect_error) {
-            die("Connection failed: " . $db->connect_error);
+            die("Connection failed: " . $this->db->connect_error);
         }        
     }
 
@@ -19,7 +19,7 @@ class DatabaseHelper{
     }
 
     public function getPictureFromTitle($i){
-        $stmt = $this->db->prepare("SELECT Title, Description, Author, Category_name, Publish_date, Discount FROM Picture WHERE Title=?");
+        $stmt = $this->db->prepare("SELECT * FROM Picture WHERE Title=?");
         $stmt->bind_param("s", $i);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -27,9 +27,28 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getTecnhiquesFromPictureTitle($i){
-        $stmt = $this->db->prepare("SELECT Description FROM Print_technique WHERE Print_technique.Technique_id = Art_print.Technique_id AND Art_print.Picture_title=?");
+    public function getTechniquesFromPictureTitle($i){
+        $stmt = $this->db->prepare("SELECT Description FROM Print_technique, Art_print WHERE Print_technique.Technique_id = Art_print.Technique_id AND Art_print.Picture_title=?");
         $stmt->bind_param("s", $i);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getFramesFromSeller($seller) {
+        $stmt = $this->db->prepare("SELECT Frame.Frame_id, Image, Description, Price FROM Make_frame_available, Frame WHERE Make_frame_available.Email = ? AND Make_frame_available.Frame_id = Frame.Frame_id");
+        $stmt->bind_param("s", $seller);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getPasspartoutsFromSeller($seller) {
+        $stmt = $this->db->prepare("SELECT Passpartout.Passpartout_id, Image, Specifications, Price_per_cm2 FROM Make_passpartout_available, Passpartout WHERE 
+        Make_passpartout_available.Email = ? AND Make_passpartout_available.Passpartout_id = Passpartout.Passpartout_id");
+        $stmt->bind_param("s", $seller);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -44,10 +63,6 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-
-
-    
-    
     public function getSlideShowPictures($n=6){
         $stmt = $this->db->prepare("SELECT Image FROM picture WHERE Orientation='landscape'
          ORDER BY RAND() LIMIT ?");

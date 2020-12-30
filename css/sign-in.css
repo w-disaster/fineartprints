@@ -37,12 +37,3 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-
-.bg-img {
-    background-color: #cccccc;
-    background-image:
-      url("../upload/sail.webp");
-      background-repeat: no-repeat;
-      background-size: cover;
-      height: 100%;
-}
