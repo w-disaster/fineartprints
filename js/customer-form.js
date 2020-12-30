@@ -1,6 +1,7 @@
 $(document).ready(function(){
     
     $("#edit").click(function() {
+        $("#personal_fieldset").prop("disabled",false);
         $("#edit").hide();
         $("#save").removeClass("d-none");
         $("#cancel").removeClass("d-none");

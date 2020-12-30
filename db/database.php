@@ -82,13 +82,59 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function insertNewCustomer($email, $birth_date, $password, $name, $surname, $phone, $city, 
+    public function addCustomer($email, $birth_date, $password, $name, $surname, $phone, $city, 
     $postal_code, $province, $address){
         $customer = "customer";
         $stmt = $this->db->prepare("INSERT INTO user (Email, Birth_date, Password, Name, Surname, Phone, City, Postal_Code,
          Province, Address, Role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
-        $stmt->bind_param("sssssisisss", $email, $birth_date, $password, $name, $surname, $phone, $city, 
+        $stmt->bind_param("sssssisiss", $email, $birth_date, $password, $name, $surname, $phone, $city, 
         $postal_code, $province, $address, $customer);
+        $stmt->execute();
+    }
+
+    public function getCustomer(){
+        $customer = "customer";
+        $email = "gino.lippa@prints.com"; /*$_SESSION["email"];*/
+        $stmt = $this->db->prepare("SELECT Email, Birth_date, Name, Surname, Phone, City, Postal_code,
+         Province, Address FROM user WHERE Email = ? AND Role = ?;");
+        $stmt->bind_param("ss", $email, $customer);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function updateCustomer($email, $birth_date, $password, $name, $surname, $phone, $city, 
+    $postal_code, $province, $address){
+        $customer = "customer";
+        $email = "gino.lippa@prints.com"; /*$_SESSION["email"];*/
+        $stmt = $this->db->prepare("UPDATE user SET Email = ?, Birth_date = ?, Password = ?, Name = ?, Surname = ?, Phone = ?, City = ?, Postal_Code = ?,
+         Province = ?, Address = ?, Role = ? WHERE Email = ?");
+        $stmt->bind_param("sssssisissss", $email, $birth_date, $password, $name, $surname, $phone, $city, 
+        $postal_code, $province, $address,$customer, $email);
+        $stmt->execute();
+    }
+
+    public function getPaymentInfo(){
+        $email = "gino.lippa@prints.com"; /*$_SESSION["email"];*/
+        $stmt = $this->db->prepare("SELECT Owner, Card_number, Expire_date FROM payment_info, credit_card WHERE payment_info.Card_number = credit_card.Number AND Email = ?;");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function deletePaymentInfo($card){
+        $stmt = $this->db->prepare("DELETE FROM payment_info WHERE Card_number = ?;");
+        $stmt->bind_param("i", $card);
+        $stmt->execute();
+    }
+
+    public function addPaymentInfo($number){
+        $email = "gino.lippa@prints.com"; /*$_SESSION["email"];*/
+        $stmt = $this->db->prepare("INSERT INTO payment_info (Card_number, Email) VALUES (?, ?);");
+        $stmt->bind_param("is", $number, $email);
         $stmt->execute();
     }
 }
