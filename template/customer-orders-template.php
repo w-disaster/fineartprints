@@ -15,22 +15,35 @@
             <div class="form-group mt-3 col-5 col-md-4 p-0">
                 <label for="ship_option">Ship options</label>
                 <select id="ship_option" name="ship_option" class="form-control col-10">
+                    <?php if (isset($_POST['ship_option'])): ?>
+                    <option <?php if ($_POST['ship_option'] == 'All') { ?>selected="true" <?php }; ?>value="All">All</option>
+                    <option <?php if ($_POST['ship_option'] == 'Shipped') { ?>selected="true" <?php }; ?>value="Shipped">Shipped</option>
+                    <option <?php if ($_POST['ship_option'] == 'Transit') { ?>selected="true" <?php }; ?>value="Transit">In transit</option>
+                    <?php else: ?>
                     <option value="All" selected>All</option>
                     <option value="Shipped">Shipped</option>
                     <option value="Transit">In transit</option>
+                    <?php endif; ?>
                 </select>
             </div>
             <div class="form-group mt-3 col-5 col-md-4 ml-1 p-0">
                 <label for="date_option">Order date options</label>
                 <select id="date_option" name="date_option" class="form-control col-10">
-                    <option value="1000" selected>All</option>
+                <?php if (isset($_POST['date_option'])): ?>
+                    <option <?php if ($_POST['date_option'] == '1000') { ?>selected="true" <?php }; ?>value="1000">All</option>
+                    <option <?php if ($_POST['date_option'] == '1') { ?>selected="true" <?php }; ?>value="1">Last month</option>
+                    <option <?php if ($_POST['date_option'] == '3') { ?>selected="true" <?php }; ?>value="3">Last 3 months</option>
+                    <option <?php if ($_POST['date_option'] == '12') { ?>selected="true" <?php }; ?>value="12">Last year</option>
+                    <?php else: ?>
+                        <option value="1000" selected>All</option>
                     <option value="1">Last month</option>
                     <option value="3">Last 3 months</option>
                     <option value="12">Last year</option>
+                    <?php endif; ?>
                 </select>
             </div>
             <div class="form-group col-6 offset-2 col-md-3 offset-md-0 mt-5">
-                <button type="submit" class="btn btn-primary col-md-12 border">Apply</button>
+                <button id="btn" type="submit" class="btn btn-primary col-md-12 border">Apply</button>
             </div>
         </form>
         <?php foreach($templateParams["orders"] as $order): ?>

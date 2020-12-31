@@ -1,24 +1,27 @@
 <main class="h-100 container-fluid pb-5 px-4">
-    <div class="container col-10 col-lg-10 offset-1 offset-lg-1 shadow-sm bg-white border pb-1 mt-4 pt-1 px-0 mb-5">
+    <div class="container col-10 offset-1 shadow-sm bg-white border pb-1 mt-4 pt-1 px-0 mb-5">
         <div class="row m-0 h-50">
-            <div class="col-12 col-lg-7 p-0 m-0 d-flex align-items-center">
-                <div class="col-2 col-lg-2 p-1 m-0 text-center">
-                    <a class="btn btn-primary" id="left" href="#">L</a>
-                </div>                            
-                <div id="div-img" class="col-8 col-lg-8 p-0 my-3 text-center">
+            <div id="carouselExampleControls" class="carousel slide col-12 col-lg-7 p-0 px-1" data-ride="carousel">
+                <div id="carousel" class="carousel-inner">
                 </div>
-                <div class="col-2 col-lg-2 p-1 m-0 text-center">
-                    <a class="btn btn-primary" id="right" href="#">R</a>
-                </div>                 
-            </div>
-            <div class=" col-10 offset-1 col-lg-4 offset-lg-0 align-self-center">
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span id="left" class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span id="right" class="sr-only">Next</span>
+                </a>
+            </div>                 
+       
+            <div class=" col-10 offset-1 col-md-5 offset-md-0 align-self-center">
                 <div class="aside py-0">
-                    <p class="col-12 col-lg-12 text-center"
+                    <p class="col-12 text-center"
                         style="font-size: 20px;">Discover thousands of art prints of all types and
                         genres, from
                         all over
                         the world</p>
-                    <div class="col-12 col-lg-12 py-3 text-center">
+                    <div class="col-12 col-md-12 py-3 text-center">
                         <button class="btn-primary border px-4 py-2" style="font-size:20px" href="#">Explore</button>
                     </div>  
                 </div>
