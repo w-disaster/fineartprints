@@ -1,8 +1,8 @@
 <?php
 require_once 'bootstrap.php';
 
-$templateParams["titolo"] = "Seller Area - Profile - Fine Art Prints";
-$templateParams["nome"] = "seller-profile-template.php";
+$templateParams["title"] = "Seller Area - Profile - Fine Art Prints";
+$templateParams["name"] = "seller-profile-template.php";
 
 require 'template/base.php';
 ?>

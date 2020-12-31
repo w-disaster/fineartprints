@@ -23,6 +23,6 @@ aside > a:hover {
 }
 
 .list-group{
-  max-height: 65vh;
+  max-height: 50vh;
   overflow: scroll;
 }

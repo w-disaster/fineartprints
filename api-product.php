@@ -1,14 +1,17 @@
 <?php
 require_once 'bootstrap.php';
+require_once 'utils/functions.php';
 
-$title = $_GET['title'];
+$templateParams["name"] = "product-page-template.php";
 
+$title = $_GET['title'] ?? "Product page";
 $templateParams["title"] = $title;
-$templateParams["nome"] = "product-page-template.php";
+$print = $dbh->getPictureFromTitle($title)[0];
+//$techniques = $dbh->getTechniquesFromPictureTitle($title);
+$frames = $dbh->getFramesFromSeller($print["Email"]);
+$passpartouts = $dbh->getPasspartoutsFromSeller($print["Email"]);
 
-$print = $dbh->getPictureFromTitle($title);
-
-//$templateParams[""]
+var_dump_plus($passpartouts);
 
 require 'template/base.php';
 ?>
