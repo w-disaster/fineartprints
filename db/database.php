@@ -102,7 +102,7 @@ class DatabaseHelper{
         $role = "customer";
         $stmt = $this->db->prepare("INSERT INTO user (Email, Birth_date, Password, Name, Surname, Phone, City, Postal_Code,
          Province, Address, Role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
-        $stmt->bind_param("sssssisiss", $email, $birth_date, $password, $name, $surname, $phone, $city, 
+        $stmt->bind_param("sssssisisss", $email, $birth_date, $password, $name, $surname, $phone, $city, 
         $postal_code, $province, $address, $role);
         $stmt->execute();
     }
@@ -110,7 +110,7 @@ class DatabaseHelper{
     public function getCustomer(){
         $role = "customer";
         $email = "gino.lippa@prints.com"; /*$_SESSION["email"];*/
-        $stmt = $this->db->prepare("SELECT Email, Birth_date, Name, Surname, Phone, City, Postal_code,
+        $stmt = $this->db->prepare("SELECT Email, Birth_date, Name, Surname, Password, Phone, City, Postal_code,
          Province, Address FROM user WHERE Email = ? AND Role = ?;");
         $stmt->bind_param("ss", $email, $role);
         $stmt->execute();
@@ -130,9 +130,22 @@ class DatabaseHelper{
         $stmt->execute();
     }
 
+    public function getCreditCard($owner, $expire_date, $card){
+        echo $expire_date;
+        $email = "gino.lippa@prints.com"; /*$_SESSION["email"];*/
+        $stmt = $this->db->prepare("SELECT Number FROM credit_card
+         WHERE Owner = ? AND Expire_date = ? AND Number = ?;");
+        $stmt->bind_param("ssi", $owner, $expire_date, $card);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getPaymentInfo(){
         $email = "gino.lippa@prints.com"; /*$_SESSION["email"];*/
-        $stmt = $this->db->prepare("SELECT Owner, Card_number, Expire_date FROM payment_info, credit_card WHERE payment_info.Card_number = credit_card.Number AND Email = ?;");
+        $stmt = $this->db->prepare("SELECT Owner, Card_number, Expire_date 
+        FROM payment_info, credit_card WHERE payment_info.Card_number = credit_card.Number AND Email = ?;");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
