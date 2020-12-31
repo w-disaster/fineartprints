@@ -9,7 +9,7 @@
     integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   <link rel="shortcut icon" type="image/jpg" href="upload/icons/file-richtext.svg" />
   <link rel="stylesheet" href="css/theme.css">
-  <link rel="stylesheet" href="css/shop_style.css">
+  <link rel="stylesheet" href="css/<?php echo $templateParams["css"]; ?>">
 
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
@@ -38,28 +38,23 @@
       </div>
     </nav>
 
-  <div class="flex-grow-1 subtle-pattern">
-    <div class="container-fluid bg-white flex-flow-row-wrap subtle-pattern">
+    <?php 
+      if(isset($templateParams["name"])){
+        require($templateParams["name"]);
+    }
+    ?>
 
-      <?php 
-        if(isset($templateParams["nome"])){
-          require($templateParams["nome"]);
-      }
-      ?>
-    </div>
-  </div>
-
-  <div class="row m-0">
-      <footer class="col-12 col-md-12 px-0 bg-dark py-3">
-        <ul class="nav text-center">
-          <li class="col-3 col-md-3 offset-1 offset-md-1 nav-item mt-2 px-5"><a
-              class="nav-link text-center text-white bg-dark" href="contatti.html">Contacts</a></li>
-          <li class="col-2 col-md-2 nav-item mt-2"><img src="upload/icons/facebook.svg" alt="" /></li>
-          <li class="col-2 col-md-2 nav-item mt-2"><img src="upload/icons/twitter.svg" alt="" /></li>
-          <li class="col-2 col-md-2 nav-item mt-2"><img src="upload/icons/instagram.svg" alt="" /></li>
-        </ul>
-      </footer>
-  </div> 
+    <div class="row m-0">
+        <footer class="col-12 col-md-12 px-0 bg-dark py-3">
+          <ul class="nav text-center">
+            <li class="col-3 col-md-3 offset-1 offset-md-1 nav-item mt-2 px-5"><a
+                class="nav-link text-center text-white bg-dark" href="api-about-us.php">About us</a></li>
+            <li class="col-2 col-md-2 nav-item mt-2"><img src="<?php echo UPLOAD_DIR?>icons/facebook.svg" alt="facebook profile" /></li>
+            <li class="col-2 col-md-2 nav-item mt-2"><img src="<?php echo UPLOAD_DIR?>icons/twitter.svg" alt="twitter profile" /></li>
+            <li class="col-2 col-md-2 nav-item mt-2"><img src="<?php echo UPLOAD_DIR?>icons/instagram.svg" alt="instragram page" /></li>
+          </ul>
+        </footer>
+    </div> 
 
 </div>
 

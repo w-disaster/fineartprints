@@ -15,6 +15,14 @@ p{
     text-align: center;
 }
 
+.border-2 {
+    border-width: 2px !important;
+}
+
+.container-fluid{
+    border-collapse: collapse !important;
+}
+
 .middle {
     border-radius: 4px;
     padding: 10px 20px;
