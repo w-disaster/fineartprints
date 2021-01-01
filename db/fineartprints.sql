@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Dec 29, 2020 at 01:43 PM
--- Server version: 10.5.8-MariaDB
--- PHP Version: 7.4.13
+-- Host: 127.0.0.1
+-- Creato il: Gen 01, 2021 alle 23:39
+-- Versione del server: 10.4.14-MariaDB
+-- Versione PHP: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,215 +24,206 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Art_print`
+-- Struttura della tabella `art_print`
 --
 
-CREATE TABLE `Art_print` (
+CREATE TABLE `art_print` (
   `Technique_id` int(5) NOT NULL,
   `Picture_title` char(140) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `Art_print`
+-- Dump dei dati per la tabella `art_print`
 --
 
-INSERT INTO `Art_print` (`Technique_id`, `Picture_title`) VALUES
-(05, 'Space print n.1'),
-(09,'Space print n.1'),
-(05,'Space print n.2'),
-(09,'Space print n.2'),
-(05,'Space print n.3'),
-(09,'Space print n.3'),
-(05,'Film print n.1'),
-(05,'Film print n.2'),
-(05,'Film print n.3'),
-(05,'Film print n.4'),
-(05,'Film print n.5'),
-(09,'Film print n.1'),
-(09,'Film print n.2'),
-(09,'Film print n.3'),
-(09,'Film print n.4'),
-(09,'Film print n.5'),
-(05,'Street print n.1'),
-(05,'Street print n.2'),
-(05,'Street print n.3'),
-(05,'Street print n.4'),
-(09,'Street print n.1'),
-(09,'Street print n.2'),
-(09,'Street print n.3'),
-(09,'Street print n.4'),
-(05,'Nature print n.1'),
-(05,'Nature print n.2'),
-(05,'Nature print n.3'),
-(05,'Nature print n.4'),
-(05,'Nature print n.5'),
-(05,'Nature print n.6'),
-(05,'Nature print n.7'),
-(09,'Nature print n.1'),
-(09,'Nature print n.2'),
-(09,'Nature print n.3'),
-(09,'Nature print n.4'),
-(09,'Nature print n.5'),
-(09,'Nature print n.6'),
-(09,'Nature print n.7'),
-(01,'Abstract print n.1'),
-(02,'Abstract print n.1'),
-(03,'Abstract print n.1'),
-(04,'Abstract print n.1'),
-(05,'Abstract print n.1'),
-(06,'Abstract print n.2'),
-(02,'Abstract print n.2'),
-(03,'Abstract print n.2'),
-(04,'Abstract print n.2'),
-(05,'Abstract print n.2'),
-(06,'Abstract print n.3'),
-(07,'Abstract print n.3'),
-(03,'Abstract print n.3'),
-(04,'Abstract print n.3'),
-(05,'Abstract print n.3'),
-(06,'Abstract print n.4'),
-(07,'Abstract print n.4'),
-(08,'Abstract print n.4'),
-(04,'Abstract print n.4'),
-(05,'Abstract print n.4'),
-(06,'Abstract print n.5'),
-(07,'Abstract print n.5'),
-(08,'Abstract print n.5'),
-(09,'Abstract print n.5'),
-(05,'Abstract print n.5'),
-(06,'Abstract print n.6'),
-(07,'Abstract print n.6'),
-(08,'Abstract print n.6'),
-(09,'Abstract print n.6'),
-(05,'Abstract print n.6'),
-(01,'Black and white building'),
-(02,'Black and white building'),
-(03,'Black and white building'),
-(04,'Black and white building'),
-(05,'Black and white building'),
-(03,'Modern spiral building'),
-(04,'Modern spiral building'),
-(05,'Modern spiral building'),
-(06,'Modern spiral building'),
-(07,'Modern spiral building'),
-(05,'Skyscraper on fog'),
-(06,'Skyscraper on fog'),
-(07,'Skyscraper on fog'),
-(08,'Skyscraper on fog'),
-(09,'Skyscraper on fog'),
-(02,'White building'),
-(03,'White building'),
-(04,'White building'),
-(05,'White building'),
-(06,'White building'),
-
-(01,'Golconda'),
-(02,'Golconda'),
-(03,'Golconda'),
-(04,'Golconda'),
-(05,'Golconda'),
-(06,'Golconda'),
-(07,'Golconda'),
-(08,'Golconda'),
-(09,'Golconda'),
-
-(01,'Portrait of Joseph Roulin'),
-(02,'Portrait of Joseph Roulin'),
-(03,'Portrait of Joseph Roulin'),
-(04,'Portrait of Joseph Roulin'),
-(05,'Portrait of Joseph Roulin'),
-(06,'Portrait of Joseph Roulin'),
-(07,'Portrait of Joseph Roulin'),
-(08,'Portrait of Joseph Roulin'),
-(09,'Portrait of Joseph Roulin'),
-
-(01,'The persistence of memory'),
-(02,'The persistence of memory'),
-(03,'The persistence of memory'),
-(04,'The persistence of memory'),
-(05,'The persistence of memory'),
-(06,'The persistence of memory'),
-(07,'The persistence of memory'),
-(08,'The persistence of memory'),
-(09,'The persistence of memory'),
-
-(01,'Impression, Sunrise'),
-(02,'Impression, Sunrise'),
-(03,'Impression, Sunrise'),
-(04,'Impression, Sunrise'),
-(05,'Impression, Sunrise'),
-(06,'Impression, Sunrise'),
-(07,'Impression, Sunrise'),
-(08,'Impression, Sunrise'),
-(09,'Impression, Sunrise'),
-
-(01,'The Cardsharps'),
-(02,'The Cardsharps'),
-(03,'The Cardsharps'),
-(04,'The Cardsharps'),
-(05,'The Cardsharps'),
-(06,'The Cardsharps'),
-(07,'The Cardsharps'),
-(08,'The Cardsharps'),
-(09,'The Cardsharps'),
-
-(01,'Lady with an Ermine'),
-(02,'Lady with an Ermine'),
-(03,'Lady with an Ermine'),
-(04,'Lady with an Ermine'),
-(05,'Lady with an Ermine'),
-(06,'Lady with an Ermine'),
-(07,'Lady with an Ermine'),
-(08,'Lady with an Ermine'),
-(09,'Lady with an Ermine'),
-
-(01,'Girl with a pearl earring'),
-(02,'Girl with a pearl earring'),
-(03,'Girl with a pearl earring'),
-(04,'Girl with a pearl earring'),
-(05,'Girl with a pearl earring'),
-(06,'Girl with a pearl earring'),
-(07,'Girl with a pearl earring'),
-(08,'Girl with a pearl earring'),
-(09,'Girl with a pearl earring'),
-
-(01,'Portrait of Lucina Brembati'),
-(02,'Portrait of Lucina Brembati'),
-(03,'Portrait of Lucina Brembati'),
-(04,'Portrait of Lucina Brembati'),
-(05,'Portrait of Lucina Brembati'),
-(06,'Portrait of Lucina Brembati'),
-(07,'Portrait of Lucina Brembati'),
-(08,'Portrait of Lucina Brembati'),
-(09,'Portrait of Lucina Brembati'),
-
-(01,'After Lunch (The Trellis)'),
-(02,'After Lunch (The Trellis)'),
-(03,'After Lunch (The Trellis)'),
-(04,'After Lunch (The Trellis)'),
-(05,'After Lunch (The Trellis)'),
-(06,'After Lunch (The Trellis)'),
-(07,'After Lunch (The Trellis)'),
-(08,'After Lunch (The Trellis)'),
-(09,'After Lunch (The Trellis)');
+INSERT INTO `art_print` (`Technique_id`, `Picture_title`) VALUES
+(1, 'Abstract print n.1'),
+(2, 'Abstract print n.1'),
+(3, 'Abstract print n.1'),
+(4, 'Abstract print n.1'),
+(5, 'Abstract print n.1'),
+(2, 'Abstract print n.2'),
+(3, 'Abstract print n.2'),
+(4, 'Abstract print n.2'),
+(5, 'Abstract print n.2'),
+(6, 'Abstract print n.2'),
+(3, 'Abstract print n.3'),
+(4, 'Abstract print n.3'),
+(5, 'Abstract print n.3'),
+(6, 'Abstract print n.3'),
+(7, 'Abstract print n.3'),
+(4, 'Abstract print n.4'),
+(5, 'Abstract print n.4'),
+(6, 'Abstract print n.4'),
+(7, 'Abstract print n.4'),
+(8, 'Abstract print n.4'),
+(5, 'Abstract print n.5'),
+(6, 'Abstract print n.5'),
+(7, 'Abstract print n.5'),
+(8, 'Abstract print n.5'),
+(9, 'Abstract print n.5'),
+(5, 'Abstract print n.6'),
+(6, 'Abstract print n.6'),
+(7, 'Abstract print n.6'),
+(8, 'Abstract print n.6'),
+(9, 'Abstract print n.6'),
+(1, 'After Lunch (The Trellis)'),
+(2, 'After Lunch (The Trellis)'),
+(3, 'After Lunch (The Trellis)'),
+(4, 'After Lunch (The Trellis)'),
+(5, 'After Lunch (The Trellis)'),
+(6, 'After Lunch (The Trellis)'),
+(7, 'After Lunch (The Trellis)'),
+(8, 'After Lunch (The Trellis)'),
+(9, 'After Lunch (The Trellis)'),
+(1, 'Black and white building'),
+(2, 'Black and white building'),
+(3, 'Black and white building'),
+(4, 'Black and white building'),
+(5, 'Black and white building'),
+(5, 'Film print n.1'),
+(9, 'Film print n.1'),
+(5, 'Film print n.2'),
+(9, 'Film print n.2'),
+(5, 'Film print n.3'),
+(9, 'Film print n.3'),
+(5, 'Film print n.4'),
+(9, 'Film print n.4'),
+(5, 'Film print n.5'),
+(9, 'Film print n.5'),
+(1, 'Girl with a pearl earring'),
+(2, 'Girl with a pearl earring'),
+(3, 'Girl with a pearl earring'),
+(4, 'Girl with a pearl earring'),
+(5, 'Girl with a pearl earring'),
+(6, 'Girl with a pearl earring'),
+(7, 'Girl with a pearl earring'),
+(8, 'Girl with a pearl earring'),
+(9, 'Girl with a pearl earring'),
+(1, 'Golconda'),
+(2, 'Golconda'),
+(3, 'Golconda'),
+(4, 'Golconda'),
+(5, 'Golconda'),
+(6, 'Golconda'),
+(7, 'Golconda'),
+(8, 'Golconda'),
+(9, 'Golconda'),
+(1, 'Impression, Sunrise'),
+(2, 'Impression, Sunrise'),
+(3, 'Impression, Sunrise'),
+(4, 'Impression, Sunrise'),
+(5, 'Impression, Sunrise'),
+(6, 'Impression, Sunrise'),
+(7, 'Impression, Sunrise'),
+(8, 'Impression, Sunrise'),
+(9, 'Impression, Sunrise'),
+(1, 'Lady with an Ermine'),
+(2, 'Lady with an Ermine'),
+(3, 'Lady with an Ermine'),
+(4, 'Lady with an Ermine'),
+(5, 'Lady with an Ermine'),
+(6, 'Lady with an Ermine'),
+(7, 'Lady with an Ermine'),
+(8, 'Lady with an Ermine'),
+(9, 'Lady with an Ermine'),
+(3, 'Modern spiral building'),
+(4, 'Modern spiral building'),
+(5, 'Modern spiral building'),
+(6, 'Modern spiral building'),
+(7, 'Modern spiral building'),
+(5, 'Nature print n.1'),
+(9, 'Nature print n.1'),
+(5, 'Nature print n.2'),
+(9, 'Nature print n.2'),
+(5, 'Nature print n.3'),
+(9, 'Nature print n.3'),
+(5, 'Nature print n.4'),
+(9, 'Nature print n.4'),
+(5, 'Nature print n.5'),
+(9, 'Nature print n.5'),
+(5, 'Nature print n.6'),
+(9, 'Nature print n.6'),
+(5, 'Nature print n.7'),
+(9, 'Nature print n.7'),
+(1, 'Portrait of Joseph Roulin'),
+(2, 'Portrait of Joseph Roulin'),
+(3, 'Portrait of Joseph Roulin'),
+(4, 'Portrait of Joseph Roulin'),
+(5, 'Portrait of Joseph Roulin'),
+(6, 'Portrait of Joseph Roulin'),
+(7, 'Portrait of Joseph Roulin'),
+(8, 'Portrait of Joseph Roulin'),
+(9, 'Portrait of Joseph Roulin'),
+(1, 'Portrait of Lucina Brembati'),
+(2, 'Portrait of Lucina Brembati'),
+(3, 'Portrait of Lucina Brembati'),
+(4, 'Portrait of Lucina Brembati'),
+(5, 'Portrait of Lucina Brembati'),
+(6, 'Portrait of Lucina Brembati'),
+(7, 'Portrait of Lucina Brembati'),
+(8, 'Portrait of Lucina Brembati'),
+(9, 'Portrait of Lucina Brembati'),
+(5, 'Skyscraper on fog'),
+(6, 'Skyscraper on fog'),
+(7, 'Skyscraper on fog'),
+(8, 'Skyscraper on fog'),
+(9, 'Skyscraper on fog'),
+(5, 'Space print n.1'),
+(9, 'Space print n.1'),
+(5, 'Space print n.2'),
+(9, 'Space print n.2'),
+(5, 'Space print n.3'),
+(9, 'Space print n.3'),
+(5, 'Street print n.1'),
+(9, 'Street print n.1'),
+(5, 'Street print n.2'),
+(9, 'Street print n.2'),
+(5, 'Street print n.3'),
+(9, 'Street print n.3'),
+(5, 'Street print n.4'),
+(9, 'Street print n.4'),
+(1, 'The Cardsharps'),
+(2, 'The Cardsharps'),
+(3, 'The Cardsharps'),
+(4, 'The Cardsharps'),
+(5, 'The Cardsharps'),
+(6, 'The Cardsharps'),
+(7, 'The Cardsharps'),
+(8, 'The Cardsharps'),
+(9, 'The Cardsharps'),
+(1, 'The persistence of memory'),
+(2, 'The persistence of memory'),
+(3, 'The persistence of memory'),
+(4, 'The persistence of memory'),
+(5, 'The persistence of memory'),
+(6, 'The persistence of memory'),
+(7, 'The persistence of memory'),
+(8, 'The persistence of memory'),
+(9, 'The persistence of memory'),
+(2, 'White building'),
+(3, 'White building'),
+(4, 'White building'),
+(5, 'White building'),
+(6, 'White building');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Category`
+-- Struttura della tabella `category`
 --
 
-CREATE TABLE `Category` (
+CREATE TABLE `category` (
   `Name` char(140) NOT NULL,
   `Image` char(50) NOT NULL,
   `Orientation` char(140) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `Category`
+-- Dump dei dati per la tabella `category`
 --
 
-INSERT INTO `Category` (`Name`, `Image`, `Orientation`) VALUES
+INSERT INTO `category` (`Name`, `Image`, `Orientation`) VALUES
 ('Abstract', 'abstract1.webp', 'portrait'),
 ('Architecture', 'architecture1.webp', 'landscape'),
 ('Film', 'film1.webp', 'portrait'),
@@ -244,20 +235,20 @@ INSERT INTO `Category` (`Name`, `Image`, `Orientation`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Credit_Card`
+-- Struttura della tabella `credit_card`
 --
 
-CREATE TABLE `Credit_Card` (
+CREATE TABLE `credit_card` (
   `Expire_date` char(10) NOT NULL,
   `Owner` char(140) NOT NULL,
   `Number` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `Credit_Card`
+-- Dump dei dati per la tabella `credit_card`
 --
 
-INSERT INTO `Credit_Card` (`Expire_date`, `Owner`, `Number`) VALUES
+INSERT INTO `credit_card` (`Expire_date`, `Owner`, `Number`) VALUES
 ('12/40', 'Gino Lippa', 1234567890123456),
 ('10/50', 'Mario Rossi', 2345678901234567),
 ('08/34', 'Luigi Gialli', 3456789012345678),
@@ -266,10 +257,10 @@ INSERT INTO `Credit_Card` (`Expire_date`, `Owner`, `Number`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Final_product`
+-- Struttura della tabella `final_product`
 --
 
-CREATE TABLE `Final_product` (
+CREATE TABLE `final_product` (
   `Picture_title` char(140) NOT NULL,
   `Technique_id` int(5) NOT NULL,
   `Frame_id` int(5) NOT NULL,
@@ -278,16 +269,17 @@ CREATE TABLE `Final_product` (
   `Art_print_height` int(11) NOT NULL,
   `Passpartout_width` int(11) NOT NULL,
   `Order_id` int(11) NOT NULL,
-  `Company_name` char(1) NOT NULL
+  `Company_name` char(1) NOT NULL,
+  `Price` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Frame`
+-- Struttura della tabella `frame`
 --
 
-CREATE TABLE `Frame` (
+CREATE TABLE `frame` (
   `Frame_id` int(5) NOT NULL,
   `Image` char(50) NOT NULL,
   `Description` char(140) NOT NULL,
@@ -295,10 +287,10 @@ CREATE TABLE `Frame` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `Frame`
+-- Dump dei dati per la tabella `frame`
 --
 
-INSERT INTO `Frame` (`Frame_id`, `Image`, `Description`, `Price`) VALUES
+INSERT INTO `frame` (`Frame_id`, `Image`, `Description`, `Price`) VALUES
 (7820, 'frame01.webp', 'Vienna Chateau 20 Silver', 47),
 (7821, 'frame02.webp', 'Vienna Chateau 20 Gold', 59),
 (7822, 'frame03.webp', 'Affresco Oro', 47),
@@ -312,10 +304,10 @@ INSERT INTO `Frame` (`Frame_id`, `Image`, `Description`, `Price`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Make_frame_available`
+-- Struttura della tabella `make_frame_available`
 --
 
-CREATE TABLE `Make_frame_available` (
+CREATE TABLE `make_frame_available` (
   `Email` char(140) NOT NULL,
   `Frame_id` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -323,10 +315,10 @@ CREATE TABLE `Make_frame_available` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Make_passpartout_available`
+-- Struttura della tabella `make_passpartout_available`
 --
 
-CREATE TABLE `Make_passpartout_available` (
+CREATE TABLE `make_passpartout_available` (
   `Email` char(140) NOT NULL,
   `Passpartout_id` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -334,10 +326,10 @@ CREATE TABLE `Make_passpartout_available` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Passpartout`
+-- Struttura della tabella `passpartout`
 --
 
-CREATE TABLE `Passpartout` (
+CREATE TABLE `passpartout` (
   `Passpartout_id` int(5) NOT NULL,
   `Image` char(50) NOT NULL,
   `Specifications` char(140) NOT NULL,
@@ -345,10 +337,10 @@ CREATE TABLE `Passpartout` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `Passpartout`
+-- Dump dei dati per la tabella `passpartout`
 --
 
-INSERT INTO `Passpartout` (`Passpartout_id`, `Image`, `Specifications`, `Price_per_cm2`) VALUES
+INSERT INTO `passpartout` (`Passpartout_id`, `Image`, `Specifications`, `Price_per_cm2`) VALUES
 (8001, 'pass01.webp', 'Bianco', 11),
 (8002, 'pass02.webp', 'Bianco Naturale', 12.24),
 (8003, 'pass03.webp', 'Nero', 12.24),
@@ -359,28 +351,28 @@ INSERT INTO `Passpartout` (`Passpartout_id`, `Image`, `Specifications`, `Price_p
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Payment_Info`
+-- Struttura della tabella `payment_info`
 --
 
-CREATE TABLE `Payment_Info` (
+CREATE TABLE `payment_info` (
   `Card_number` bigint(20) NOT NULL,
   `Email` char(140) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `Payment_Info`
+-- Dump dei dati per la tabella `payment_info`
 --
 
-INSERT INTO `Payment_Info` (`Card_number`, `Email`) VALUES
+INSERT INTO `payment_info` (`Card_number`, `Email`) VALUES
 (1234567890123456, 'gino.lippa@prints.com');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Picture`
+-- Struttura della tabella `picture`
 --
 
-CREATE TABLE `Picture` (
+CREATE TABLE `picture` (
   `Title` char(140) NOT NULL,
   `Description` varchar(1000) NOT NULL,
   `Author` char(140) NOT NULL,
@@ -394,10 +386,10 @@ CREATE TABLE `Picture` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `Picture`
+-- Dump dei dati per la tabella `picture`
 --
 
-INSERT INTO `Picture` (`Title`, `Description`, `Author`, `Image`, `Base_price`, `Discount`, `Publish_date`, `Orientation`, `Category_name`, `Email`) VALUES
+INSERT INTO `picture` (`Title`, `Description`, `Author`, `Image`, `Base_price`, `Discount`, `Publish_date`, `Orientation`, `Category_name`, `Email`) VALUES
 ('Abstract print n.1', 'Minim nulla est nostrud dolore mollit id laborum Lorem ullamco aliquip velit qui aliquip. Eu ipsum aute aute proident esse do. Excepteur id Lorem deserunt reprehenderit amet cupidatat. Est do ea est eiusmod sunt proident pariatur ex nostrud esse duis. Ad ipsum esse nulla adipisicing quis occaecat sunt pariatur id non adipisicing. Est magna irure aliqua consequat ut incididunt adipisicing eu ipsum aliquip incididunt. Ipsum laborum magna ex reprehenderit velit.', 'Luca Fabri', 'abstract1.webp', 50, 0, '2020-10-22 22:00:00', 'portrait', 'Abstract', 'cippa.pino@prints.com'),
 ('Abstract print n.2', 'Minim nulla est nostrud dolore mollit id laborum Lorem ullamco aliquip velit qui aliquip. Eu ipsum aute aute proident esse do. Excepteur id Lorem deserunt reprehenderit amet cupidatat. Est do ea est eiusmod sunt proident pariatur ex nostrud esse duis. Ad ipsum esse nulla adipisicing quis occaecat sunt pariatur id non adipisicing. Est magna irure aliqua consequat ut incididunt adipisicing eu ipsum aliquip incididunt. Ipsum laborum magna ex reprehenderit velit.', 'Luca Fabri', 'abstract2.webp', 80, 0, '2020-11-04 23:00:00', 'portrait', 'Abstract', 'cippa.pino@prints.com'),
 ('Abstract print n.3', 'Minim nulla est nostrud dolore mollit id laborum Lorem ullamco aliquip velit qui aliquip. Eu ipsum aute aute proident esse do. Excepteur id Lorem deserunt reprehenderit amet cupidatat. Est do ea est eiusmod sunt proident pariatur ex nostrud esse duis. Ad ipsum esse nulla adipisicing quis occaecat sunt pariatur id non adipisicing. Est magna irure aliqua consequat ut incididunt adipisicing eu ipsum aliquip incididunt. Ipsum laborum magna ex reprehenderit velit.', 'Luca Fabri', 'abstract3.webp', 90, 0, '2020-10-21 22:00:00', 'landscape', 'Abstract', 'cippa.pino@prints.com'),
@@ -441,10 +433,10 @@ INSERT INTO `Picture` (`Title`, `Description`, `Author`, `Image`, `Base_price`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Prints_order`
+-- Struttura della tabella `prints_order`
 --
 
-CREATE TABLE `Prints_order` (
+CREATE TABLE `prints_order` (
   `Order_id` int(11) NOT NULL,
   `Ship_city` char(140) DEFAULT NULL,
   `Ship_postal_code` int(11) DEFAULT NULL,
@@ -455,13 +447,20 @@ CREATE TABLE `Prints_order` (
   `Card_number` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dump dei dati per la tabella `prints_order`
+--
+
+INSERT INTO `prints_order` (`Order_id`, `Ship_city`, `Ship_postal_code`, `Ship_address`, `Order_date`, `Shipped_date`, `Email`, `Card_number`) VALUES
+(1, 'Senigallia', 60007, 'Via Biroccio 8', '2021-01-01', NULL, 'gino.lippa@prints.com', 1234567890123456);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Print_technique`
+-- Struttura della tabella `print_technique`
 --
 
-CREATE TABLE `Print_technique` (
+CREATE TABLE `print_technique` (
   `Technique_id` int(5) NOT NULL,
   `Image` char(50) NOT NULL,
   `Description` char(140) NOT NULL,
@@ -469,37 +468,37 @@ CREATE TABLE `Print_technique` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `Print_technique`
+-- Dump dei dati per la tabella `print_technique`
 --
 
-INSERT INTO `Print_technique` (`Technique_id`, `Image`, `Description`, `Price_per_cm2`) VALUES
-(01, 'canvas.webp', "Print on Artist\'s Canvas", 12),
-(02, 'handmade.webp', 'Hand painted oil painting on Canvas', 12),
-(03, 'varnished.webp', 'Print on Varnished Canvas', 2),
-(04, 'craft.webp', 'Print on Craft Paper', 6),
-(05, 'satin.webp', 'Print on Satin Photographic Paper', 3),
-(06, 'watercolor.webp', 'Print on Watercolor', 4),
-(07, 'wood.webp', 'Print on natural wood', 9),
-(08, 'plexiglas.webp', 'Print on Plexiglas', 5),
-(09, 'glass.webp', 'Print on Glass', 5);
+INSERT INTO `print_technique` (`Technique_id`, `Image`, `Description`, `Price_per_cm2`) VALUES
+(1, 'canvas.webp', 'Print on Artist\'s Canvas', 12),
+(2, 'handmade.webp', 'Hand painted oil painting on Canvas', 12),
+(3, 'varnished.webp', 'Print on Varnished Canvas', 2),
+(4, 'craft.webp', 'Print on Craft Paper', 6),
+(5, 'satin.webp', 'Print on Satin Photographic Paper', 3),
+(6, 'watercolor.webp', 'Print on Watercolor', 4),
+(7, 'wood.webp', 'Print on natural wood', 9),
+(8, 'plexiglas.webp', 'Print on Plexiglas', 5),
+(9, 'glass.webp', 'Print on Glass', 5);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Shipper`
+-- Struttura della tabella `shipper`
 --
 
-CREATE TABLE `Shipper` (
+CREATE TABLE `shipper` (
   `Company_name` char(140) NOT NULL,
   `Phone` char(15) NOT NULL,
   `Price` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `Shipper`
+-- Dump dei dati per la tabella `shipper`
 --
 
-INSERT INTO `Shipper` (`Company_name`, `Phone`, `Price`) VALUES
+INSERT INTO `shipper` (`Company_name`, `Phone`, `Price`) VALUES
 ('Bartolini', '0712345678', 5),
 ('DHL Express', '0719427618', 0),
 ('SDA Carrier Express', '0714212345', 7.5),
@@ -508,26 +507,31 @@ INSERT INTO `Shipper` (`Company_name`, `Phone`, `Price`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Tracking_notification`
+-- Struttura della tabella `tracking_notification`
 --
 
-CREATE TABLE `Tracking_notification` (
+CREATE TABLE `tracking_notification` (
   `Tracking_notification_id` int(11) NOT NULL,
-  `Description` char(140) NOT NULL,
+  `Description` char(30) NOT NULL,
   `Data` date NOT NULL,
-  `City` char(140) NOT NULL,
-  `Postal_code` int(11) NOT NULL,
-  `Address` char(140) NOT NULL,
-  `Order_id` int(11) NOT NULL
+  `Order_id` int(11) NOT NULL,
+  `Status` varchar(4) DEFAULT 'new'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `tracking_notification`
+--
+
+INSERT INTO `tracking_notification` (`Tracking_notification_id`, `Description`, `Data`, `Order_id`, `Status`) VALUES
+(1, 'Shipped', '2021-01-14', 1, 'new');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `User`
+-- Struttura della tabella `user`
 --
 
-CREATE TABLE `User` (
+CREATE TABLE `user` (
   `Email` char(140) NOT NULL,
   `Birth_date` date NOT NULL,
   `Password` char(140) NOT NULL,
@@ -542,43 +546,43 @@ CREATE TABLE `User` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `User`
+-- Dump dei dati per la tabella `user`
 --
 
-INSERT INTO `User` (`Email`, `Birth_date`, `Password`, `Name`, `Surname`, `Phone`, `City`, `Postal_code`, `Province`, `Address`, `Role`) VALUES
+INSERT INTO `user` (`Email`, `Birth_date`, `Password`, `Name`, `Surname`, `Phone`, `City`, `Postal_code`, `Province`, `Address`, `Role`) VALUES
 ('cippa.pino@prints.com', '1990-01-20', 'pass2020', 'Cippa', 'Pino', '0714512309', 'Cesena', 47521, 'FC', 'Via Giuseppe Ungaretti', 'seller'),
 ('gino.lippa@prints.com', '1996-10-17', 'pass2020', 'Gino', 'Lippa', '0714529816', 'Senigallia', 60019, 'AN', 'Viale dei pini 11', 'customer');
 
 --
--- Indexes for dumped tables
+-- Indici per le tabelle scaricate
 --
 
 --
--- Indexes for table `Art_print`
+-- Indici per le tabelle `art_print`
 --
-ALTER TABLE `Art_print`
+ALTER TABLE `art_print`
   ADD PRIMARY KEY (`Picture_title`,`Technique_id`),
   ADD UNIQUE KEY `ID_Art_print_IND` (`Picture_title`,`Technique_id`),
   ADD KEY `REF_Art_p_Print_IND` (`Technique_id`);
 
 --
--- Indexes for table `Category`
+-- Indici per le tabelle `category`
 --
-ALTER TABLE `Category`
+ALTER TABLE `category`
   ADD PRIMARY KEY (`Name`),
   ADD UNIQUE KEY `ID_Category_IND` (`Name`);
 
 --
--- Indexes for table `Credit_Card`
+-- Indici per le tabelle `credit_card`
 --
-ALTER TABLE `Credit_Card`
+ALTER TABLE `credit_card`
   ADD PRIMARY KEY (`Number`),
   ADD UNIQUE KEY `ID_Credit_Card_IND` (`Number`);
 
 --
--- Indexes for table `Final_product`
+-- Indici per le tabelle `final_product`
 --
-ALTER TABLE `Final_product`
+ALTER TABLE `final_product`
   ADD PRIMARY KEY (`Picture_title`,`Technique_id`,`Frame_id`,`Passpartout_id`),
   ADD UNIQUE KEY `ID_Final_product_IND` (`Picture_title`,`Technique_id`,`Frame_id`,`Passpartout_id`),
   ADD KEY `EQU_Final_Print_IND` (`Order_id`),
@@ -587,149 +591,149 @@ ALTER TABLE `Final_product`
   ADD KEY `REF_Final_Shipp_IND` (`Company_name`);
 
 --
--- Indexes for table `Frame`
+-- Indici per le tabelle `frame`
 --
-ALTER TABLE `Frame`
+ALTER TABLE `frame`
   ADD PRIMARY KEY (`Frame_id`),
   ADD UNIQUE KEY `ID_Frame_IND` (`Frame_id`);
 
 --
--- Indexes for table `Make_frame_available`
+-- Indici per le tabelle `make_frame_available`
 --
-ALTER TABLE `Make_frame_available`
+ALTER TABLE `make_frame_available`
   ADD PRIMARY KEY (`Frame_id`,`Email`),
   ADD UNIQUE KEY `ID_Make_frame_available_IND` (`Frame_id`,`Email`),
   ADD KEY `REF_Make__User_1_IND` (`Email`);
 
 --
--- Indexes for table `Make_passpartout_available`
+-- Indici per le tabelle `make_passpartout_available`
 --
-ALTER TABLE `Make_passpartout_available`
+ALTER TABLE `make_passpartout_available`
   ADD PRIMARY KEY (`Passpartout_id`,`Email`),
   ADD UNIQUE KEY `ID_Make_passpartout_available_IND` (`Passpartout_id`,`Email`),
   ADD KEY `REF_Make__User_IND` (`Email`);
 
 --
--- Indexes for table `Passpartout`
+-- Indici per le tabelle `passpartout`
 --
-ALTER TABLE `Passpartout`
+ALTER TABLE `passpartout`
   ADD PRIMARY KEY (`Passpartout_id`),
   ADD UNIQUE KEY `ID_Passpartout_IND` (`Passpartout_id`);
 
 --
--- Indexes for table `Payment_Info`
+-- Indici per le tabelle `payment_info`
 --
-ALTER TABLE `Payment_Info`
+ALTER TABLE `payment_info`
   ADD PRIMARY KEY (`Email`,`Card_number`),
   ADD UNIQUE KEY `ID_Payment_Info_IND` (`Email`,`Card_number`),
   ADD KEY `REF_Payme_Credi_IND` (`Card_number`);
 
 --
--- Indexes for table `Picture`
+-- Indici per le tabelle `picture`
 --
-ALTER TABLE `Picture`
+ALTER TABLE `picture`
   ADD PRIMARY KEY (`Title`),
   ADD UNIQUE KEY `ID_Picture_IND` (`Title`),
   ADD KEY `REF_Pictu_Categ_IND` (`Category_name`),
   ADD KEY `REF_Pictu_User_IND` (`Email`);
 
 --
--- Indexes for table `Prints_order`
+-- Indici per le tabelle `prints_order`
 --
-ALTER TABLE `Prints_order`
+ALTER TABLE `prints_order`
   ADD PRIMARY KEY (`Order_id`),
   ADD UNIQUE KEY `ID_Prints_order_IND` (`Order_id`),
   ADD KEY `REF_Print_Payme_IND` (`Email`,`Card_number`);
 
 --
--- Indexes for table `Print_technique`
+-- Indici per le tabelle `print_technique`
 --
-ALTER TABLE `Print_technique`
+ALTER TABLE `print_technique`
   ADD PRIMARY KEY (`Technique_id`),
   ADD UNIQUE KEY `ID_Print_technique_IND` (`Technique_id`);
 
 --
--- Indexes for table `Shipper`
+-- Indici per le tabelle `shipper`
 --
-ALTER TABLE `Shipper`
+ALTER TABLE `shipper`
   ADD PRIMARY KEY (`Company_name`),
   ADD UNIQUE KEY `ID_Shipper_IND` (`Company_name`);
 
 --
--- Indexes for table `Tracking_notification`
+-- Indici per le tabelle `tracking_notification`
 --
-ALTER TABLE `Tracking_notification`
+ALTER TABLE `tracking_notification`
   ADD PRIMARY KEY (`Tracking_notification_id`),
   ADD UNIQUE KEY `ID_Tracking_notification_IND` (`Tracking_notification_id`),
   ADD KEY `REF_Track_Print_IND` (`Order_id`);
 
 --
--- Indexes for table `User`
+-- Indici per le tabelle `user`
 --
-ALTER TABLE `User`
+ALTER TABLE `user`
   ADD PRIMARY KEY (`Email`),
   ADD UNIQUE KEY `ID_User_IND` (`Email`);
 
 --
--- Constraints for dumped tables
+-- Limiti per le tabelle scaricate
 --
 
 --
--- Constraints for table `Art_print`
+-- Limiti per la tabella `art_print`
 --
-ALTER TABLE `Art_print`
-  ADD CONSTRAINT `REF_Art_p_Pictu` FOREIGN KEY (`Picture_title`) REFERENCES `Picture` (`Title`),
-  ADD CONSTRAINT `REF_Art_p_Print_FK` FOREIGN KEY (`Technique_id`) REFERENCES `Print_technique` (`Technique_id`);
+ALTER TABLE `art_print`
+  ADD CONSTRAINT `REF_Art_p_Pictu` FOREIGN KEY (`Picture_title`) REFERENCES `picture` (`Title`),
+  ADD CONSTRAINT `REF_Art_p_Print_FK` FOREIGN KEY (`Technique_id`) REFERENCES `print_technique` (`Technique_id`);
 
 --
--- Constraints for table `Final_product`
+-- Limiti per la tabella `final_product`
 --
-ALTER TABLE `Final_product`
-  ADD CONSTRAINT `EQU_Final_Print_FK` FOREIGN KEY (`Order_id`) REFERENCES `Prints_order` (`Order_id`),
-  ADD CONSTRAINT `REF_Final_Art_p` FOREIGN KEY (`Picture_title`,`Technique_id`) REFERENCES `Art_print` (`Picture_title`, `Technique_id`),
-  ADD CONSTRAINT `REF_Final_Frame_FK` FOREIGN KEY (`Frame_id`) REFERENCES `Frame` (`Frame_id`),
-  ADD CONSTRAINT `REF_Final_Passp_FK` FOREIGN KEY (`Passpartout_id`) REFERENCES `Passpartout` (`Passpartout_id`),
-  ADD CONSTRAINT `REF_Final_Shipp_FK` FOREIGN KEY (`Company_name`) REFERENCES `Shipper` (`Company_name`);
+ALTER TABLE `final_product`
+  ADD CONSTRAINT `EQU_Final_Print_FK` FOREIGN KEY (`Order_id`) REFERENCES `prints_order` (`Order_id`),
+  ADD CONSTRAINT `REF_Final_Art_p` FOREIGN KEY (`Picture_title`,`Technique_id`) REFERENCES `art_print` (`Picture_title`, `Technique_id`),
+  ADD CONSTRAINT `REF_Final_Frame_FK` FOREIGN KEY (`Frame_id`) REFERENCES `frame` (`Frame_id`),
+  ADD CONSTRAINT `REF_Final_Passp_FK` FOREIGN KEY (`Passpartout_id`) REFERENCES `passpartout` (`Passpartout_id`),
+  ADD CONSTRAINT `REF_Final_Shipp_FK` FOREIGN KEY (`Company_name`) REFERENCES `shipper` (`Company_name`);
 
 --
--- Constraints for table `Make_frame_available`
+-- Limiti per la tabella `make_frame_available`
 --
-ALTER TABLE `Make_frame_available`
-  ADD CONSTRAINT `REF_Make__Frame` FOREIGN KEY (`Frame_id`) REFERENCES `Frame` (`Frame_id`),
-  ADD CONSTRAINT `REF_Make__User_1_FK` FOREIGN KEY (`Email`) REFERENCES `User` (`Email`);
+ALTER TABLE `make_frame_available`
+  ADD CONSTRAINT `REF_Make__Frame` FOREIGN KEY (`Frame_id`) REFERENCES `frame` (`Frame_id`),
+  ADD CONSTRAINT `REF_Make__User_1_FK` FOREIGN KEY (`Email`) REFERENCES `user` (`Email`);
 
 --
--- Constraints for table `Make_passpartout_available`
+-- Limiti per la tabella `make_passpartout_available`
 --
-ALTER TABLE `Make_passpartout_available`
-  ADD CONSTRAINT `REF_Make__Passp` FOREIGN KEY (`Passpartout_id`) REFERENCES `Passpartout` (`Passpartout_id`),
-  ADD CONSTRAINT `REF_Make__User_FK` FOREIGN KEY (`Email`) REFERENCES `User` (`Email`);
+ALTER TABLE `make_passpartout_available`
+  ADD CONSTRAINT `REF_Make__Passp` FOREIGN KEY (`Passpartout_id`) REFERENCES `passpartout` (`Passpartout_id`),
+  ADD CONSTRAINT `REF_Make__User_FK` FOREIGN KEY (`Email`) REFERENCES `user` (`Email`);
 
 --
--- Constraints for table `Payment_Info`
+-- Limiti per la tabella `payment_info`
 --
-ALTER TABLE `Payment_Info`
-  ADD CONSTRAINT `REF_Payme_Credi_FK` FOREIGN KEY (`Card_number`) REFERENCES `Credit_Card` (`Number`),
-  ADD CONSTRAINT `REF_Payme_User` FOREIGN KEY (`Email`) REFERENCES `User` (`Email`);
+ALTER TABLE `payment_info`
+  ADD CONSTRAINT `REF_Payme_Credi_FK` FOREIGN KEY (`Card_number`) REFERENCES `credit_card` (`Number`),
+  ADD CONSTRAINT `REF_Payme_User` FOREIGN KEY (`Email`) REFERENCES `user` (`Email`);
 
 --
--- Constraints for table `Picture`
+-- Limiti per la tabella `picture`
 --
-ALTER TABLE `Picture`
-  ADD CONSTRAINT `REF_Pictu_Categ_FK` FOREIGN KEY (`Category_name`) REFERENCES `Category` (`Name`),
-  ADD CONSTRAINT `REF_Pictu_User_FK` FOREIGN KEY (`Email`) REFERENCES `User` (`Email`);
+ALTER TABLE `picture`
+  ADD CONSTRAINT `REF_Pictu_Categ_FK` FOREIGN KEY (`Category_name`) REFERENCES `category` (`Name`),
+  ADD CONSTRAINT `REF_Pictu_User_FK` FOREIGN KEY (`Email`) REFERENCES `user` (`Email`);
 
 --
--- Constraints for table `Prints_order`
+-- Limiti per la tabella `prints_order`
 --
-ALTER TABLE `Prints_order`
-  ADD CONSTRAINT `REF_Print_Payme_FK` FOREIGN KEY (`Email`,`Card_number`) REFERENCES `Payment_Info` (`Email`, `Card_number`);
+ALTER TABLE `prints_order`
+  ADD CONSTRAINT `REF_Print_Payme_FK` FOREIGN KEY (`Email`,`Card_number`) REFERENCES `payment_info` (`Email`, `Card_number`);
 
 --
--- Constraints for table `Tracking_notification`
+-- Limiti per la tabella `tracking_notification`
 --
-ALTER TABLE `Tracking_notification`
-  ADD CONSTRAINT `REF_Track_Print_FK` FOREIGN KEY (`Order_id`) REFERENCES `Prints_order` (`Order_id`);
+ALTER TABLE `tracking_notification`
+  ADD CONSTRAINT `REF_Track_Print_FK` FOREIGN KEY (`Order_id`) REFERENCES `prints_order` (`Order_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

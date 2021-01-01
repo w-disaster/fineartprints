@@ -1,7 +1,7 @@
 <?php
 require_once 'bootstrap.php';
-$templateParams["titolo"] = "Sign-up";
-$templateParams["nome"] = "sign-up-template.php";
+$templateParams["title"] = "Sign-up";
+$templateParams["name"] = "sign-up-template.php";
 $isnamevalid = "";
 $issurnamevalid = "";
 $ispasswordvalid = "";

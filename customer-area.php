@@ -1,8 +1,8 @@
 <?php
 require_once 'bootstrap.php';
 
-$templateParams["titolo"] = "Customer area";
-$templateParams["nome"] = "customer-area-template.php";
+$templateParams["title"] = "Customer area";
+$templateParams["name"] = "customer-area-template.php";
 
 $msgerr = "";
 $msgerrcolor = "text-danger";

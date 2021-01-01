@@ -1,8 +1,8 @@
 <?php
 require_once 'bootstrap.php';
 
-$templateParams["titolo"] = "Customer orders";
-$templateParams["nome"] = "customer-orders-template.php";
+$templateParams["title"] = "Customer orders";
+$templateParams["name"] = "customer-orders-template.php";
 
 $ship="All";
 $date=1000;
