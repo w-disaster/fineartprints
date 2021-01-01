@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Creato il: Gen 01, 2021 alle 23:39
+-- Host: localhost
+-- Creato il: Gen 01, 2021 alle 23:06
 -- Versione del server: 10.4.14-MariaDB
--- Versione PHP: 7.4.10
+-- Versione PHP: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,19 +24,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `art_print`
+-- Struttura della tabella `Art_print`
 --
 
-CREATE TABLE `art_print` (
+CREATE TABLE `Art_print` (
   `Technique_id` int(5) NOT NULL,
   `Picture_title` char(140) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `art_print`
+-- Dump dei dati per la tabella `Art_print`
 --
 
-INSERT INTO `art_print` (`Technique_id`, `Picture_title`) VALUES
+INSERT INTO `Art_print` (`Technique_id`, `Picture_title`) VALUES
 (1, 'Abstract print n.1'),
 (2, 'Abstract print n.1'),
 (3, 'Abstract print n.1'),
@@ -210,45 +210,46 @@ INSERT INTO `art_print` (`Technique_id`, `Picture_title`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `category`
+-- Struttura della tabella `Category`
 --
 
-CREATE TABLE `category` (
+CREATE TABLE `Category` (
   `Name` char(140) NOT NULL,
   `Image` char(50) NOT NULL,
   `Orientation` char(140) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `category`
+-- Dump dei dati per la tabella `Category`
 --
 
-INSERT INTO `category` (`Name`, `Image`, `Orientation`) VALUES
+INSERT INTO `Category` (`Name`, `Image`, `Orientation`) VALUES
 ('Abstract', 'abstract1.webp', 'portrait'),
-('Architecture', 'architecture1.webp', 'landscape'),
+('Architecture', 'architecture3.webp', 'landscape'),
 ('Film', 'film1.webp', 'portrait'),
-('Fine arts', 'il_postino.webp', 'portrait'),
+('Fine arts', 'postman-roulin.jpeg', 'portrait'),
 ('Nature', 'nature1.webp', 'portrait'),
 ('Space', 'space1.webp', 'portrait'),
-('Street', 'street1.webp', 'portrait');
+('Street', 'street1.webp', 'portrait'),
+('Texture and patterns', 'textureandpatterns1.webp', 'portrait');
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `credit_card`
+-- Struttura della tabella `Credit_Card`
 --
 
-CREATE TABLE `credit_card` (
+CREATE TABLE `Credit_Card` (
   `Expire_date` char(10) NOT NULL,
   `Owner` char(140) NOT NULL,
   `Number` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `credit_card`
+-- Dump dei dati per la tabella `Credit_Card`
 --
 
-INSERT INTO `credit_card` (`Expire_date`, `Owner`, `Number`) VALUES
+INSERT INTO `Credit_Card` (`Expire_date`, `Owner`, `Number`) VALUES
 ('12/40', 'Gino Lippa', 1234567890123456),
 ('10/50', 'Mario Rossi', 2345678901234567),
 ('08/34', 'Luigi Gialli', 3456789012345678),
@@ -257,10 +258,10 @@ INSERT INTO `credit_card` (`Expire_date`, `Owner`, `Number`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `final_product`
+-- Struttura della tabella `Final_product`
 --
 
-CREATE TABLE `final_product` (
+CREATE TABLE `Final_product` (
   `Picture_title` char(140) NOT NULL,
   `Technique_id` int(5) NOT NULL,
   `Frame_id` int(5) NOT NULL,
@@ -269,17 +270,16 @@ CREATE TABLE `final_product` (
   `Art_print_height` int(11) NOT NULL,
   `Passpartout_width` int(11) NOT NULL,
   `Order_id` int(11) NOT NULL,
-  `Company_name` char(1) NOT NULL,
-  `Price` int(4) NOT NULL
+  `Company_name` char(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `frame`
+-- Struttura della tabella `Frame`
 --
 
-CREATE TABLE `frame` (
+CREATE TABLE `Frame` (
   `Frame_id` int(5) NOT NULL,
   `Image` char(50) NOT NULL,
   `Description` char(140) NOT NULL,
@@ -287,10 +287,10 @@ CREATE TABLE `frame` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `frame`
+-- Dump dei dati per la tabella `Frame`
 --
 
-INSERT INTO `frame` (`Frame_id`, `Image`, `Description`, `Price`) VALUES
+INSERT INTO `Frame` (`Frame_id`, `Image`, `Description`, `Price`) VALUES
 (7820, 'frame01.webp', 'Vienna Chateau 20 Silver', 47),
 (7821, 'frame02.webp', 'Vienna Chateau 20 Gold', 59),
 (7822, 'frame03.webp', 'Affresco Oro', 47),
@@ -304,10 +304,10 @@ INSERT INTO `frame` (`Frame_id`, `Image`, `Description`, `Price`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `make_frame_available`
+-- Struttura della tabella `Make_frame_available`
 --
 
-CREATE TABLE `make_frame_available` (
+CREATE TABLE `Make_frame_available` (
   `Email` char(140) NOT NULL,
   `Frame_id` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -315,10 +315,10 @@ CREATE TABLE `make_frame_available` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `make_passpartout_available`
+-- Struttura della tabella `Make_passpartout_available`
 --
 
-CREATE TABLE `make_passpartout_available` (
+CREATE TABLE `Make_passpartout_available` (
   `Email` char(140) NOT NULL,
   `Passpartout_id` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -326,10 +326,10 @@ CREATE TABLE `make_passpartout_available` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `passpartout`
+-- Struttura della tabella `Passpartout`
 --
 
-CREATE TABLE `passpartout` (
+CREATE TABLE `Passpartout` (
   `Passpartout_id` int(5) NOT NULL,
   `Image` char(50) NOT NULL,
   `Specifications` char(140) NOT NULL,
@@ -337,10 +337,10 @@ CREATE TABLE `passpartout` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `passpartout`
+-- Dump dei dati per la tabella `Passpartout`
 --
 
-INSERT INTO `passpartout` (`Passpartout_id`, `Image`, `Specifications`, `Price_per_cm2`) VALUES
+INSERT INTO `Passpartout` (`Passpartout_id`, `Image`, `Specifications`, `Price_per_cm2`) VALUES
 (8001, 'pass01.webp', 'Bianco', 11),
 (8002, 'pass02.webp', 'Bianco Naturale', 12.24),
 (8003, 'pass03.webp', 'Nero', 12.24),
@@ -351,28 +351,28 @@ INSERT INTO `passpartout` (`Passpartout_id`, `Image`, `Specifications`, `Price_p
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `payment_info`
+-- Struttura della tabella `Payment_Info`
 --
 
-CREATE TABLE `payment_info` (
+CREATE TABLE `Payment_Info` (
   `Card_number` bigint(20) NOT NULL,
   `Email` char(140) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `payment_info`
+-- Dump dei dati per la tabella `Payment_Info`
 --
 
-INSERT INTO `payment_info` (`Card_number`, `Email`) VALUES
+INSERT INTO `Payment_Info` (`Card_number`, `Email`) VALUES
 (1234567890123456, 'gino.lippa@prints.com');
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `picture`
+-- Struttura della tabella `Picture`
 --
 
-CREATE TABLE `picture` (
+CREATE TABLE `Picture` (
   `Title` char(140) NOT NULL,
   `Description` varchar(1000) NOT NULL,
   `Author` char(140) NOT NULL,
@@ -386,31 +386,31 @@ CREATE TABLE `picture` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `picture`
+-- Dump dei dati per la tabella `Picture`
 --
 
-INSERT INTO `picture` (`Title`, `Description`, `Author`, `Image`, `Base_price`, `Discount`, `Publish_date`, `Orientation`, `Category_name`, `Email`) VALUES
-('Abstract print n.1', 'Minim nulla est nostrud dolore mollit id laborum Lorem ullamco aliquip velit qui aliquip. Eu ipsum aute aute proident esse do. Excepteur id Lorem deserunt reprehenderit amet cupidatat. Est do ea est eiusmod sunt proident pariatur ex nostrud esse duis. Ad ipsum esse nulla adipisicing quis occaecat sunt pariatur id non adipisicing. Est magna irure aliqua consequat ut incididunt adipisicing eu ipsum aliquip incididunt. Ipsum laborum magna ex reprehenderit velit.', 'Luca Fabri', 'abstract1.webp', 50, 0, '2020-10-22 22:00:00', 'portrait', 'Abstract', 'cippa.pino@prints.com'),
+INSERT INTO `Picture` (`Title`, `Description`, `Author`, `Image`, `Base_price`, `Discount`, `Publish_date`, `Orientation`, `Category_name`, `Email`) VALUES
+('Abstract print n.1', 'Minim nulla est nostrud dolore mollit id laborum Lorem ullamco aliquip velit qui aliquip. Eu ipsum aute aute proident esse do. Excepteur id Lorem deserunt reprehenderit amet cupidatat. Est do ea est eiusmod sunt proident pariatur ex nostrud esse duis. Ad ipsum esse nulla adipisicing quis occaecat sunt pariatur id non adipisicing. Est magna irure aliqua consequat ut incididunt adipisicing eu ipsum aliquip incididunt. Ipsum laborum magna ex reprehenderit velit.', 'Luca Fabri', 'abstract1.webp', 50, 20, '2020-12-30 10:44:11', 'portrait', 'Abstract', 'cippa.pino@prints.com'),
 ('Abstract print n.2', 'Minim nulla est nostrud dolore mollit id laborum Lorem ullamco aliquip velit qui aliquip. Eu ipsum aute aute proident esse do. Excepteur id Lorem deserunt reprehenderit amet cupidatat. Est do ea est eiusmod sunt proident pariatur ex nostrud esse duis. Ad ipsum esse nulla adipisicing quis occaecat sunt pariatur id non adipisicing. Est magna irure aliqua consequat ut incididunt adipisicing eu ipsum aliquip incididunt. Ipsum laborum magna ex reprehenderit velit.', 'Luca Fabri', 'abstract2.webp', 80, 0, '2020-11-04 23:00:00', 'portrait', 'Abstract', 'cippa.pino@prints.com'),
 ('Abstract print n.3', 'Minim nulla est nostrud dolore mollit id laborum Lorem ullamco aliquip velit qui aliquip. Eu ipsum aute aute proident esse do. Excepteur id Lorem deserunt reprehenderit amet cupidatat. Est do ea est eiusmod sunt proident pariatur ex nostrud esse duis. Ad ipsum esse nulla adipisicing quis occaecat sunt pariatur id non adipisicing. Est magna irure aliqua consequat ut incididunt adipisicing eu ipsum aliquip incididunt. Ipsum laborum magna ex reprehenderit velit.', 'Luca Fabri', 'abstract3.webp', 90, 0, '2020-10-21 22:00:00', 'landscape', 'Abstract', 'cippa.pino@prints.com'),
-('Abstract print n.4', 'Minim nulla est nostrud dolore mollit id laborum Lorem ullamco aliquip velit qui aliquip. Eu ipsum aute aute proident esse do. Excepteur id Lorem deserunt reprehenderit amet cupidatat. Est do ea est eiusmod sunt proident pariatur ex nostrud esse duis. Ad ipsum esse nulla adipisicing quis occaecat sunt pariatur id non adipisicing. Est magna irure aliqua consequat ut incididunt adipisicing eu ipsum aliquip incididunt. Ipsum laborum magna ex reprehenderit velit.', 'Davide Rossi', 'abstract4.webp', 110, 0, '2020-07-02 22:00:00', 'landscape', 'Abstract', 'cippa.pino@prints.com'),
+('Abstract print n.4', 'Minim nulla est nostrud dolore mollit id laborum Lorem ullamco aliquip velit qui aliquip. Eu ipsum aute aute proident esse do. Excepteur id Lorem deserunt reprehenderit amet cupidatat. Est do ea est eiusmod sunt proident pariatur ex nostrud esse duis. Ad ipsum esse nulla adipisicing quis occaecat sunt pariatur id non adipisicing. Est magna irure aliqua consequat ut incididunt adipisicing eu ipsum aliquip incididunt. Ipsum laborum magna ex reprehenderit velit.', 'Davide Rossi', 'abstract4.webp', 110, 50, '2020-12-30 10:44:11', 'landscape', 'Abstract', 'cippa.pino@prints.com'),
 ('Abstract print n.5', 'Minim nulla est nostrud dolore mollit id laborum Lorem ullamco aliquip velit qui aliquip. Eu ipsum aute aute proident esse do. Excepteur id Lorem deserunt reprehenderit amet cupidatat. Est do ea est eiusmod sunt proident pariatur ex nostrud esse duis. Ad ipsum esse nulla adipisicing quis occaecat sunt pariatur id non adipisicing. Est magna irure aliqua consequat ut incididunt adipisicing eu ipsum aliquip incididunt. Ipsum laborum magna ex reprehenderit velit.', 'Davide Rossi', 'abstract5.webp', 80, 0, '2020-02-07 23:00:00', 'landscape', 'Abstract', 'cippa.pino@prints.com'),
 ('Abstract print n.6', 'Minim nulla est nostrud dolore mollit id laborum Lorem ullamco aliquip velit qui aliquip. Eu ipsum aute aute proident esse do. Excepteur id Lorem deserunt reprehenderit amet cupidatat. Est do ea est eiusmod sunt proident pariatur ex nostrud esse duis. Ad ipsum esse nulla adipisicing quis occaecat sunt pariatur id non adipisicing. Est magna irure aliqua consequat ut incididunt adipisicing eu ipsum aliquip incididunt. Ipsum laborum magna ex reprehenderit velit.', 'Luca Fabri', 'abstract6.webp', 80, 0, '2020-01-05 23:00:00', 'portrait', 'Abstract', 'cippa.pino@prints.com'),
 ('After Lunch (The Trellis)', 'The canvas was painted by Lega in 1868 at Piagentina, the place in the hills around Florence where he had gone to live in 1861 and where many of the other Macchiaioli painters used to gather, drawn by the landscape and the possibility of painting from life. It is one of the artist’s masterpieces, in which he turns an affectionate gaze on a bourgeois and feminine world, taking it as the cue for a splendid representation of the landscape carried out in accordance with the principles of the new theory of the macchia or “blot,” with results of the highest quality.\r\nThe myriad hues capturing the sunlight and the cool of the trellis impart a thoroughly natural feel to the stringent, almost Renaissance handling of perspective.', 'Silvestro Lega', 'after-lunch.jpeg', 95, 0, '2020-12-29 11:20:57', 'landscape', 'Fine arts', 'cippa.pino@prints.com'),
-('Black and white building', 'Minim nulla est nostrud dolore mollit id laborum Lorem ullamco aliquip velit qui aliquip. Eu ipsum aute aute proident esse do. Excepteur id Lorem deserunt reprehenderit amet cupidatat. Est do ea est eiusmod sunt proident pariatur ex nostrud esse duis. Ad ipsum esse nulla adipisicing quis occaecat sunt pariatur id non adipisicing. Est magna irure aliqua consequat ut incididunt adipisicing eu ipsum aliquip incididunt. Ipsum laborum magna ex reprehenderit velit.', 'Davide Rossi', 'architecture1.webp', 50, 0, '2020-10-04 22:00:00', 'landscape', 'Architecture', 'cippa.pino@prints.com'),
+('Black and white building', 'Minim nulla est nostrud dolore mollit id laborum Lorem ullamco aliquip velit qui aliquip. Eu ipsum aute aute proident esse do. Excepteur id Lorem deserunt reprehenderit amet cupidatat. Est do ea est eiusmod sunt proident pariatur ex nostrud esse duis. Ad ipsum esse nulla adipisicing quis occaecat sunt pariatur id non adipisicing. Est magna irure aliqua consequat ut incididunt adipisicing eu ipsum aliquip incididunt. Ipsum laborum magna ex reprehenderit velit.', 'Davide Rossi', 'architecture1.webp', 50, 10, '2020-12-30 10:44:11', 'landscape', 'Architecture', 'cippa.pino@prints.com'),
 ('Film print n.1', 'Excepteur enim incididunt mollit aute sint commodo ullamco labore esse. Officia amet consequat duis tempor duis do occaecat eu non aliqua exercitation officia incididunt et. Ipsum ullamco pariatur eiusmod deserunt magna consequat cillum tempor. Nostrud sunt reprehenderit duis ad. Qui eiusmod reprehenderit labore qui ullamco mollit. Sit eiusmod sunt occaecat est nostrud est cupidatat.', 'Davide Rossi', 'film1.webp', 20, 0, '2020-12-29 11:14:32', 'portrait', 'Film', 'cippa.pino@prints.com'),
-('Film print n.2', 'Excepteur enim incididunt mollit aute sint commodo ullamco labore esse. Officia amet consequat duis tempor duis do occaecat eu non aliqua exercitation officia incididunt et. Ipsum ullamco pariatur eiusmod deserunt magna consequat cillum tempor. Nostrud sunt reprehenderit duis ad. Qui eiusmod reprehenderit labore qui ullamco mollit. Sit eiusmod sunt occaecat est nostrud est cupidatat.', 'Luca Fabri', 'film2.webp', 18, 0, '2020-12-29 11:14:35', 'landscape', 'Film', 'cippa.pino@prints.com'),
+('Film print n.2', 'Excepteur enim incididunt mollit aute sint commodo ullamco labore esse. Officia amet consequat duis tempor duis do occaecat eu non aliqua exercitation officia incididunt et. Ipsum ullamco pariatur eiusmod deserunt magna consequat cillum tempor. Nostrud sunt reprehenderit duis ad. Qui eiusmod reprehenderit labore qui ullamco mollit. Sit eiusmod sunt occaecat est nostrud est cupidatat.', 'Luca Fabri', 'film2.webp', 18, 25, '2020-12-30 10:44:11', 'landscape', 'Film', 'cippa.pino@prints.com'),
 ('Film print n.3', 'Excepteur enim incididunt mollit aute sint commodo ullamco labore esse. Officia amet consequat duis tempor duis do occaecat eu non aliqua exercitation officia incididunt et. Ipsum ullamco pariatur eiusmod deserunt magna consequat cillum tempor. Nostrud sunt reprehenderit duis ad. Qui eiusmod reprehenderit labore qui ullamco mollit. Sit eiusmod sunt occaecat est nostrud est cupidatat.', 'Riccardo Battistini', 'film3.webp', 15, 0, '2020-12-29 11:14:38', 'portrait', 'Film', 'cippa.pino@prints.com'),
 ('Film print n.4', 'Excepteur enim incididunt mollit aute sint commodo ullamco labore esse. Officia amet consequat duis tempor duis do occaecat eu non aliqua exercitation officia incididunt et. Ipsum ullamco pariatur eiusmod deserunt magna consequat cillum tempor. Nostrud sunt reprehenderit duis ad. Qui eiusmod reprehenderit labore qui ullamco mollit. Sit eiusmod sunt occaecat est nostrud est cupidatat.', 'Luca Fabri', 'film4.webp', 7, 0, '2020-12-29 11:14:53', 'portrait', 'Film', 'cippa.pino@prints.com'),
 ('Film print n.5', 'Excepteur enim incididunt mollit aute sint commodo ullamco labore esse. Officia amet consequat duis tempor duis do occaecat eu non aliqua exercitation officia incididunt et. Ipsum ullamco pariatur eiusmod deserunt magna consequat cillum tempor. Nostrud sunt reprehenderit duis ad. Qui eiusmod reprehenderit labore qui ullamco mollit. Sit eiusmod sunt occaecat est nostrud est cupidatat.', 'Riccardo Battistini', 'film5.webp', 9, 0, '2020-12-29 11:14:57', 'portrait', 'Film', 'cippa.pino@prints.com'),
 ('Girl with a Pearl Earring', 'Girl with a Pearl Earring is Vermeer’s most famous painting. It is not a portrait, but a ‘tronie’ – a painting of an imaginary figure. Tronies depict a certain type or character; in this case a girl in exotic dress, wearing an oriental turban and an improbably large pearl in her ear.\r\n\r\nJohannes Vermeer was the master of light. This is shown here in the softness of the girl’s face and the glimmers of light on her moist lips. And of course, the shining pearl.', 'Johannes Vermeer', 'girl-perl-earring.jpeg', 95, 0, '2020-12-29 11:20:53', 'portrait', 'Fine arts', 'cippa.pino@prints.com'),
 ('Golconda', 'The piece depicts a scene of \"raining men\", nearly identical to each other dressed in dark overcoats and bowler hats, who seem to be either falling down like rain drops, floating up like helium balloons, or just stationed in mid-air as no movement or motion is implied. The backdrop features red-roofed buildings and a mostly blue partly cloudy sky, lending credence to the theory that the men are not raining. The men are equally spaced in a lattice, facing the viewpoint and receding back in rhombic grid layers. ', 'Renè Magritte', 'golconda-magritte.jpeg', 90, 0, '2020-12-29 11:19:35', 'landscape', 'Fine arts', 'cippa.pino@prints.com'),
 ('Impression, Sunrise', 'Impression, Sunrise (French: Impression, soleil levant) is a painting by Claude Monet first shown at what would become known as the \"Exhibition of the Impressionists\" in Paris in April, 1874. The painting is credited with inspiring the name of the Impressionist movement. ', 'Claude Monet', 'impression-sunrise.jpeg', 120, 0, '2020-12-29 11:22:21', 'landscape', 'Fine arts', 'cippa.pino@prints.com'),
-('Lady with an Ermine', 'The painting was purchased ca. 1800 in Italy, by Adam Jerzy, the son of Princess Izabela Czartoryska, and donated to the Museum in Puławy where it was exhibited in the ‘Gothic House’ from 1809–1830.\r\n\r\nIn Puławy, it was erroneously considered to be a portrait alluding to the beloved mistress of King Francis I of France, referred to as the ‘Belle Ferronière’. We now know that the subject of the portrait is Cecilia Gallerani (ca. 1473-1536), a reputed mistress of Lodovico Sforza, Duke of Milan, also known as ‘il Moro’ (the Moor).', 'Leonardo da Vinci', 'lady-with-ermine.jpeg', 165, 0, '2020-12-29 11:20:23', 'portrait', 'Fine arts', 'cippa.pino@prints.com'),
+('Lady with an Ermine', 'The painting was purchased ca. 1800 in Italy, by Adam Jerzy, the son of Princess Izabela Czartoryska, and donated to the Museum in Puławy where it was exhibited in the ‘Gothic House’ from 1809–1830.\r\n\r\nIn Puławy, it was erroneously considered to be a portrait alluding to the beloved mistress of King Francis I of France, referred to as the ‘Belle Ferronière’. We now know that the subject of the portrait is Cecilia Gallerani (ca. 1473-1536), a reputed mistress of Lodovico Sforza, Duke of Milan, also known as ‘il Moro’ (the Moor).', 'Leonardo da Vinci', 'lady-with-ermine.jpeg', 165, 40, '2020-12-30 10:44:11', 'portrait', 'Fine arts', 'cippa.pino@prints.com'),
 ('Modern spiral building', 'Minim nulla est nostrud dolore mollit id laborum Lorem ullamco aliquip velit qui aliquip. Eu ipsum aute aute proident esse do. Excepteur id Lorem deserunt reprehenderit amet cupidatat. Est do ea est eiusmod sunt proident pariatur ex nostrud esse duis. Ad ipsum esse nulla adipisicing quis occaecat sunt pariatur id non adipisicing. Est magna irure aliqua consequat ut incididunt adipisicing eu ipsum aliquip incididunt. Ipsum laborum magna ex reprehenderit velit.', 'Davide Rossi', 'architecture3.webp', 70, 0, '2020-06-02 22:00:00', 'portrait', 'Architecture', 'cippa.pino@prints.com'),
 ('Nature print n.1', 'Excepteur enim incididunt mollit aute sint commodo ullamco labore esse. Officia amet consequat duis tempor duis do occaecat eu non aliqua exercitation officia incididunt et. Ipsum ullamco pariatur eiusmod deserunt magna consequat cillum tempor. Nostrud sunt reprehenderit duis ad. Qui eiusmod reprehenderit labore qui ullamco mollit. Sit eiusmod sunt occaecat est nostrud est cupidatat.', 'Davide Rossi', 'nature1.webp', 18, 0, '2020-12-29 11:18:20', 'portrait', 'Nature', 'cippa.pino@prints.com'),
 ('Nature print n.2', 'Excepteur enim incididunt mollit aute sint commodo ullamco labore esse. Officia amet consequat duis tempor duis do occaecat eu non aliqua exercitation officia incididunt et. Ipsum ullamco pariatur eiusmod deserunt magna consequat cillum tempor. Nostrud sunt reprehenderit duis ad. Qui eiusmod reprehenderit labore qui ullamco mollit. Sit eiusmod sunt occaecat est nostrud est cupidatat.', 'Riccardo Battistini', 'nature2.webp', 23, 0, '2020-12-29 11:18:26', 'portrait', 'Nature', 'cippa.pino@prints.com'),
-('Nature print n.3', 'Excepteur enim incididunt mollit aute sint commodo ullamco labore esse. Officia amet consequat duis tempor duis do occaecat eu non aliqua exercitation officia incididunt et. Ipsum ullamco pariatur eiusmod deserunt magna consequat cillum tempor. Nostrud sunt reprehenderit duis ad. Qui eiusmod reprehenderit labore qui ullamco mollit. Sit eiusmod sunt occaecat est nostrud est cupidatat.', 'Luca Fabri', 'nature3.webp', 18, 0, '2020-12-29 11:18:31', 'portrait', 'Nature', 'cippa.pino@prints.com'),
+('Nature print n.3', 'Excepteur enim incididunt mollit aute sint commodo ullamco labore esse. Officia amet consequat duis tempor duis do occaecat eu non aliqua exercitation officia incididunt et. Ipsum ullamco pariatur eiusmod deserunt magna consequat cillum tempor. Nostrud sunt reprehenderit duis ad. Qui eiusmod reprehenderit labore qui ullamco mollit. Sit eiusmod sunt occaecat est nostrud est cupidatat.', 'Luca Fabri', 'nature3.webp', 18, 40, '2020-12-30 10:44:11', 'portrait', 'Nature', 'cippa.pino@prints.com'),
 ('Nature print n.4', 'Excepteur enim incididunt mollit aute sint commodo ullamco labore esse. Officia amet consequat duis tempor duis do occaecat eu non aliqua exercitation officia incididunt et. Ipsum ullamco pariatur eiusmod deserunt magna consequat cillum tempor. Nostrud sunt reprehenderit duis ad. Qui eiusmod reprehenderit labore qui ullamco mollit. Sit eiusmod sunt occaecat est nostrud est cupidatat.', 'Davide Rossi', 'nature4.webp', 21, 0, '2020-12-29 11:18:35', 'portrait', 'Nature', 'cippa.pino@prints.com'),
 ('Nature print n.5', 'Excepteur enim incididunt mollit aute sint commodo ullamco labore esse. Officia amet consequat duis tempor duis do occaecat eu non aliqua exercitation officia incididunt et. Ipsum ullamco pariatur eiusmod deserunt magna consequat cillum tempor. Nostrud sunt reprehenderit duis ad. Qui eiusmod reprehenderit labore qui ullamco mollit. Sit eiusmod sunt occaecat est nostrud est cupidatat.', 'Riccardo Battistini', 'nature5.webp', 22, 0, '2020-12-29 11:18:38', 'landscape', 'Nature', 'cippa.pino@prints.com'),
 ('Nature print n.6', 'Excepteur enim incididunt mollit aute sint commodo ullamco labore esse. Officia amet consequat duis tempor duis do occaecat eu non aliqua exercitation officia incididunt et. Ipsum ullamco pariatur eiusmod deserunt magna consequat cillum tempor. Nostrud sunt reprehenderit duis ad. Qui eiusmod reprehenderit labore qui ullamco mollit. Sit eiusmod sunt occaecat est nostrud est cupidatat.', 'Luca Fabri', 'nature6.webp', 23, 0, '2020-12-29 11:18:43', 'landscape', 'Nature', 'cippa.pino@prints.com'),
@@ -425,6 +425,10 @@ INSERT INTO `picture` (`Title`, `Description`, `Author`, `Image`, `Base_price`, 
 ('Street print n.2', 'Excepteur enim incididunt mollit aute sint commodo ullamco labore esse. Officia amet consequat duis tempor duis do occaecat eu non aliqua exercitation officia incididunt et. Ipsum ullamco pariatur eiusmod deserunt magna consequat cillum tempor. Nostrud sunt reprehenderit duis ad. Qui eiusmod reprehenderit labore qui ullamco mollit. Sit eiusmod sunt occaecat est nostrud est cupidatat.', 'Riccardo Battistini', 'street2.webp', 11, 0, '2020-12-29 11:19:57', 'portrait', 'Street', 'cippa.pino@prints.com'),
 ('Street print n.3', 'Excepteur enim incididunt mollit aute sint commodo ullamco labore esse. Officia amet consequat duis tempor duis do occaecat eu non aliqua exercitation officia incididunt et. Ipsum ullamco pariatur eiusmod deserunt magna consequat cillum tempor. Nostrud sunt reprehenderit duis ad. Qui eiusmod reprehenderit labore qui ullamco mollit. Sit eiusmod sunt occaecat est nostrud est cupidatat.', 'Davide Rossi', 'street3.webp', 21, 0, '2020-12-29 11:19:59', 'portrait', 'Street', 'cippa.pino@prints.com'),
 ('Street print n.4', 'Excepteur enim incididunt mollit aute sint commodo ullamco labore esse. Officia amet consequat duis tempor duis do occaecat eu non aliqua exercitation officia incididunt et. Ipsum ullamco pariatur eiusmod deserunt magna consequat cillum tempor. Nostrud sunt reprehenderit duis ad. Qui eiusmod reprehenderit labore qui ullamco mollit. Sit eiusmod sunt occaecat est nostrud est cupidatat.', 'Luca Fabri', 'street4.webp', 9, 0, '2020-12-29 11:20:01', 'portrait', 'Street', 'cippa.pino@prints.com'),
+('Texture and patterns n.1', 'Minim nulla est nostrud dolore mollit id laborum Lorem ullamco aliquip velit qui aliquip. Eu ipsum aute aute proident esse do. Excepteur id Lorem deserunt reprehenderit amet cupidatat. Est do ea est eiusmod sunt proident pariatur ex nostrud esse duis. Ad ipsum esse nulla adipisicing quis occaecat sunt pariatur id non adipisicing. Est magna irure aliqua consequat ut incididunt adipisicing eu ipsum aliquip incididunt. Ipsum laborum magna ex reprehenderit velit.', 'Luca Fabri', 'textureandpatterns1.webp', 50, 0, '2020-12-30 16:04:23', 'portrait', 'Texture and patterns', 'cippa.pino@prints.com'),
+('Texture and patterns n.2', 'Minim nulla est nostrud dolore mollit id laborum Lorem ullamco aliquip velit qui aliquip. Eu ipsum aute aute proident esse do. Excepteur id Lorem deserunt reprehenderit amet cupidatat. Est do ea est eiusmod sunt proident pariatur ex nostrud esse duis. Ad ipsum esse nulla adipisicing quis occaecat sunt pariatur id non adipisicing. Est magna irure aliqua consequat ut incididunt adipisicing eu ipsum aliquip incididunt. Ipsum laborum magna ex reprehenderit velit.', 'Luca Fabri', 'textureandpatterns2.webp', 20, 0, '2020-12-30 16:04:23', 'portrait', 'Texture and patterns', 'cippa.pino@prints.com'),
+('Texture and patterns n.3', 'Minim nulla est nostrud dolore mollit id laborum Lorem ullamco aliquip velit qui aliquip. Eu ipsum aute aute proident esse do. Excepteur id Lorem deserunt reprehenderit amet cupidatat. Est do ea est eiusmod sunt proident pariatur ex nostrud esse duis. Ad ipsum esse nulla adipisicing quis occaecat sunt pariatur id non adipisicing. Est magna irure aliqua consequat ut incididunt adipisicing eu ipsum aliquip incididunt. Ipsum laborum magna ex reprehenderit velit.', 'Luca Fabri', 'textureandpatterns3.webp', 60, 0, '2020-12-30 16:04:23', 'landscape', 'Texture and patterns', 'cippa.pino@prints.com'),
+('Texture and patterns n.4', 'Minim nulla est nostrud dolore mollit id laborum Lorem ullamco aliquip velit qui aliquip. Eu ipsum aute aute proident esse do. Excepteur id Lorem deserunt reprehenderit amet cupidatat. Est do ea est eiusmod sunt proident pariatur ex nostrud esse duis. Ad ipsum esse nulla adipisicing quis occaecat sunt pariatur id non adipisicing. Est magna irure aliqua consequat ut incididunt adipisicing eu ipsum aliquip incididunt. Ipsum laborum magna ex reprehenderit velit.', 'Luca Fabri', 'textureandpatterns4.webp', 30, 0, '2020-12-30 16:04:23', 'landscape', 'Texture and patterns', 'cippa.pino@prints.com'),
 ('The Cardsharps', 'The Cardsharps (painted around 1594) is a painting by the Italian Baroque artist Michelangelo Merisi da Caravaggio. The painting shows an expensively-dressed but unworldly boy playing cards with another boy. The second boy, a cardsharp, has extra cards tucked in his belt behind his back, out of sight of the mark but not the viewer, and a sinister older man is peering over the dupe\'s shoulder and signaling to his young accomplice. The second boy has a dagger handy at his side.', 'Caravaggio', 'the-cardsharps.jpeg', 126, 0, '2020-12-29 11:20:42', 'landscape', 'Fine arts', 'cippa.pino@prints.com'),
 ('The Persistence of Memory', 'The Persistence of Memory (Spanish: La persistencia de la memoria) is a 1931 painting by artist Salvador Dalí and one of the most recognizable works of Surrealism. First shown at the Julien Levy Gallery in 1932, since 1934 the painting has been in the collection of the Museum of Modern Art (MoMA) in New York City, which received it from an anonymous donor.', 'Salvador Dalì', 'persistence-memory.jpeg', 110, 0, '2020-12-29 11:23:31', 'landscape', 'Fine arts', 'cippa.pino@prints.com'),
 ('Wheatfield with Crows', 'Wheatfield with Crows is a July 1890 painting by Vincent van Gogh. It has been cited by several critics as one of his greatest works. It is commonly stated that this was van Gogh\'s final painting. However, art historians are uncertain as to which painting was van Gogh\'s last, as no clear historical records exist.', 'Van Gogh', 'wheatfield-crows.jpeg', 100, 0, '2020-12-29 11:21:14', 'landscape', 'Fine arts', 'cippa.pino@prints.com'),
@@ -433,10 +437,10 @@ INSERT INTO `picture` (`Title`, `Description`, `Author`, `Image`, `Base_price`, 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `prints_order`
+-- Struttura della tabella `Prints_order`
 --
 
-CREATE TABLE `prints_order` (
+CREATE TABLE `Prints_order` (
   `Order_id` int(11) NOT NULL,
   `Ship_city` char(140) DEFAULT NULL,
   `Ship_postal_code` int(11) DEFAULT NULL,
@@ -447,20 +451,13 @@ CREATE TABLE `prints_order` (
   `Card_number` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dump dei dati per la tabella `prints_order`
---
-
-INSERT INTO `prints_order` (`Order_id`, `Ship_city`, `Ship_postal_code`, `Ship_address`, `Order_date`, `Shipped_date`, `Email`, `Card_number`) VALUES
-(1, 'Senigallia', 60007, 'Via Biroccio 8', '2021-01-01', NULL, 'gino.lippa@prints.com', 1234567890123456);
-
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `print_technique`
+-- Struttura della tabella `Print_technique`
 --
 
-CREATE TABLE `print_technique` (
+CREATE TABLE `Print_technique` (
   `Technique_id` int(5) NOT NULL,
   `Image` char(50) NOT NULL,
   `Description` char(140) NOT NULL,
@@ -468,10 +465,10 @@ CREATE TABLE `print_technique` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `print_technique`
+-- Dump dei dati per la tabella `Print_technique`
 --
 
-INSERT INTO `print_technique` (`Technique_id`, `Image`, `Description`, `Price_per_cm2`) VALUES
+INSERT INTO `Print_technique` (`Technique_id`, `Image`, `Description`, `Price_per_cm2`) VALUES
 (1, 'canvas.webp', 'Print on Artist\'s Canvas', 12),
 (2, 'handmade.webp', 'Hand painted oil painting on Canvas', 12),
 (3, 'varnished.webp', 'Print on Varnished Canvas', 2),
@@ -485,20 +482,20 @@ INSERT INTO `print_technique` (`Technique_id`, `Image`, `Description`, `Price_pe
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `shipper`
+-- Struttura della tabella `Shipper`
 --
 
-CREATE TABLE `shipper` (
+CREATE TABLE `Shipper` (
   `Company_name` char(140) NOT NULL,
   `Phone` char(15) NOT NULL,
   `Price` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `shipper`
+-- Dump dei dati per la tabella `Shipper`
 --
 
-INSERT INTO `shipper` (`Company_name`, `Phone`, `Price`) VALUES
+INSERT INTO `Shipper` (`Company_name`, `Phone`, `Price`) VALUES
 ('Bartolini', '0712345678', 5),
 ('DHL Express', '0719427618', 0),
 ('SDA Carrier Express', '0714212345', 7.5),
@@ -507,31 +504,26 @@ INSERT INTO `shipper` (`Company_name`, `Phone`, `Price`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `tracking_notification`
+-- Struttura della tabella `Tracking_notification`
 --
 
-CREATE TABLE `tracking_notification` (
+CREATE TABLE `Tracking_notification` (
   `Tracking_notification_id` int(11) NOT NULL,
-  `Description` char(30) NOT NULL,
+  `Description` char(140) NOT NULL,
   `Data` date NOT NULL,
-  `Order_id` int(11) NOT NULL,
-  `Status` varchar(4) DEFAULT 'new'
+  `City` char(140) NOT NULL,
+  `Postal_code` int(11) NOT NULL,
+  `Address` char(140) NOT NULL,
+  `Order_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dump dei dati per la tabella `tracking_notification`
---
-
-INSERT INTO `tracking_notification` (`Tracking_notification_id`, `Description`, `Data`, `Order_id`, `Status`) VALUES
-(1, 'Shipped', '2021-01-14', 1, 'new');
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `user`
+-- Struttura della tabella `User`
 --
 
-CREATE TABLE `user` (
+CREATE TABLE `User` (
   `Email` char(140) NOT NULL,
   `Birth_date` date NOT NULL,
   `Password` char(140) NOT NULL,
@@ -546,10 +538,10 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `user`
+-- Dump dei dati per la tabella `User`
 --
 
-INSERT INTO `user` (`Email`, `Birth_date`, `Password`, `Name`, `Surname`, `Phone`, `City`, `Postal_code`, `Province`, `Address`, `Role`) VALUES
+INSERT INTO `User` (`Email`, `Birth_date`, `Password`, `Name`, `Surname`, `Phone`, `City`, `Postal_code`, `Province`, `Address`, `Role`) VALUES
 ('cippa.pino@prints.com', '1990-01-20', 'pass2020', 'Cippa', 'Pino', '0714512309', 'Cesena', 47521, 'FC', 'Via Giuseppe Ungaretti', 'seller'),
 ('gino.lippa@prints.com', '1996-10-17', 'pass2020', 'Gino', 'Lippa', '0714529816', 'Senigallia', 60019, 'AN', 'Viale dei pini 11', 'customer');
 
@@ -558,31 +550,31 @@ INSERT INTO `user` (`Email`, `Birth_date`, `Password`, `Name`, `Surname`, `Phone
 --
 
 --
--- Indici per le tabelle `art_print`
+-- Indici per le tabelle `Art_print`
 --
-ALTER TABLE `art_print`
+ALTER TABLE `Art_print`
   ADD PRIMARY KEY (`Picture_title`,`Technique_id`),
   ADD UNIQUE KEY `ID_Art_print_IND` (`Picture_title`,`Technique_id`),
   ADD KEY `REF_Art_p_Print_IND` (`Technique_id`);
 
 --
--- Indici per le tabelle `category`
+-- Indici per le tabelle `Category`
 --
-ALTER TABLE `category`
+ALTER TABLE `Category`
   ADD PRIMARY KEY (`Name`),
   ADD UNIQUE KEY `ID_Category_IND` (`Name`);
 
 --
--- Indici per le tabelle `credit_card`
+-- Indici per le tabelle `Credit_Card`
 --
-ALTER TABLE `credit_card`
+ALTER TABLE `Credit_Card`
   ADD PRIMARY KEY (`Number`),
   ADD UNIQUE KEY `ID_Credit_Card_IND` (`Number`);
 
 --
--- Indici per le tabelle `final_product`
+-- Indici per le tabelle `Final_product`
 --
-ALTER TABLE `final_product`
+ALTER TABLE `Final_product`
   ADD PRIMARY KEY (`Picture_title`,`Technique_id`,`Frame_id`,`Passpartout_id`),
   ADD UNIQUE KEY `ID_Final_product_IND` (`Picture_title`,`Technique_id`,`Frame_id`,`Passpartout_id`),
   ADD KEY `EQU_Final_Print_IND` (`Order_id`),
@@ -591,86 +583,86 @@ ALTER TABLE `final_product`
   ADD KEY `REF_Final_Shipp_IND` (`Company_name`);
 
 --
--- Indici per le tabelle `frame`
+-- Indici per le tabelle `Frame`
 --
-ALTER TABLE `frame`
+ALTER TABLE `Frame`
   ADD PRIMARY KEY (`Frame_id`),
   ADD UNIQUE KEY `ID_Frame_IND` (`Frame_id`);
 
 --
--- Indici per le tabelle `make_frame_available`
+-- Indici per le tabelle `Make_frame_available`
 --
-ALTER TABLE `make_frame_available`
+ALTER TABLE `Make_frame_available`
   ADD PRIMARY KEY (`Frame_id`,`Email`),
   ADD UNIQUE KEY `ID_Make_frame_available_IND` (`Frame_id`,`Email`),
   ADD KEY `REF_Make__User_1_IND` (`Email`);
 
 --
--- Indici per le tabelle `make_passpartout_available`
+-- Indici per le tabelle `Make_passpartout_available`
 --
-ALTER TABLE `make_passpartout_available`
+ALTER TABLE `Make_passpartout_available`
   ADD PRIMARY KEY (`Passpartout_id`,`Email`),
   ADD UNIQUE KEY `ID_Make_passpartout_available_IND` (`Passpartout_id`,`Email`),
   ADD KEY `REF_Make__User_IND` (`Email`);
 
 --
--- Indici per le tabelle `passpartout`
+-- Indici per le tabelle `Passpartout`
 --
-ALTER TABLE `passpartout`
+ALTER TABLE `Passpartout`
   ADD PRIMARY KEY (`Passpartout_id`),
   ADD UNIQUE KEY `ID_Passpartout_IND` (`Passpartout_id`);
 
 --
--- Indici per le tabelle `payment_info`
+-- Indici per le tabelle `Payment_Info`
 --
-ALTER TABLE `payment_info`
+ALTER TABLE `Payment_Info`
   ADD PRIMARY KEY (`Email`,`Card_number`),
   ADD UNIQUE KEY `ID_Payment_Info_IND` (`Email`,`Card_number`),
   ADD KEY `REF_Payme_Credi_IND` (`Card_number`);
 
 --
--- Indici per le tabelle `picture`
+-- Indici per le tabelle `Picture`
 --
-ALTER TABLE `picture`
+ALTER TABLE `Picture`
   ADD PRIMARY KEY (`Title`),
   ADD UNIQUE KEY `ID_Picture_IND` (`Title`),
   ADD KEY `REF_Pictu_Categ_IND` (`Category_name`),
   ADD KEY `REF_Pictu_User_IND` (`Email`);
 
 --
--- Indici per le tabelle `prints_order`
+-- Indici per le tabelle `Prints_order`
 --
-ALTER TABLE `prints_order`
+ALTER TABLE `Prints_order`
   ADD PRIMARY KEY (`Order_id`),
   ADD UNIQUE KEY `ID_Prints_order_IND` (`Order_id`),
   ADD KEY `REF_Print_Payme_IND` (`Email`,`Card_number`);
 
 --
--- Indici per le tabelle `print_technique`
+-- Indici per le tabelle `Print_technique`
 --
-ALTER TABLE `print_technique`
+ALTER TABLE `Print_technique`
   ADD PRIMARY KEY (`Technique_id`),
   ADD UNIQUE KEY `ID_Print_technique_IND` (`Technique_id`);
 
 --
--- Indici per le tabelle `shipper`
+-- Indici per le tabelle `Shipper`
 --
-ALTER TABLE `shipper`
+ALTER TABLE `Shipper`
   ADD PRIMARY KEY (`Company_name`),
   ADD UNIQUE KEY `ID_Shipper_IND` (`Company_name`);
 
 --
--- Indici per le tabelle `tracking_notification`
+-- Indici per le tabelle `Tracking_notification`
 --
-ALTER TABLE `tracking_notification`
+ALTER TABLE `Tracking_notification`
   ADD PRIMARY KEY (`Tracking_notification_id`),
   ADD UNIQUE KEY `ID_Tracking_notification_IND` (`Tracking_notification_id`),
   ADD KEY `REF_Track_Print_IND` (`Order_id`);
 
 --
--- Indici per le tabelle `user`
+-- Indici per le tabelle `User`
 --
-ALTER TABLE `user`
+ALTER TABLE `User`
   ADD PRIMARY KEY (`Email`),
   ADD UNIQUE KEY `ID_User_IND` (`Email`);
 
@@ -679,61 +671,61 @@ ALTER TABLE `user`
 --
 
 --
--- Limiti per la tabella `art_print`
+-- Limiti per la tabella `Art_print`
 --
-ALTER TABLE `art_print`
-  ADD CONSTRAINT `REF_Art_p_Pictu` FOREIGN KEY (`Picture_title`) REFERENCES `picture` (`Title`),
-  ADD CONSTRAINT `REF_Art_p_Print_FK` FOREIGN KEY (`Technique_id`) REFERENCES `print_technique` (`Technique_id`);
+ALTER TABLE `Art_print`
+  ADD CONSTRAINT `REF_Art_p_Pictu` FOREIGN KEY (`Picture_title`) REFERENCES `Picture` (`Title`),
+  ADD CONSTRAINT `REF_Art_p_Print_FK` FOREIGN KEY (`Technique_id`) REFERENCES `Print_technique` (`Technique_id`);
 
 --
--- Limiti per la tabella `final_product`
+-- Limiti per la tabella `Final_product`
 --
-ALTER TABLE `final_product`
-  ADD CONSTRAINT `EQU_Final_Print_FK` FOREIGN KEY (`Order_id`) REFERENCES `prints_order` (`Order_id`),
-  ADD CONSTRAINT `REF_Final_Art_p` FOREIGN KEY (`Picture_title`,`Technique_id`) REFERENCES `art_print` (`Picture_title`, `Technique_id`),
-  ADD CONSTRAINT `REF_Final_Frame_FK` FOREIGN KEY (`Frame_id`) REFERENCES `frame` (`Frame_id`),
-  ADD CONSTRAINT `REF_Final_Passp_FK` FOREIGN KEY (`Passpartout_id`) REFERENCES `passpartout` (`Passpartout_id`),
-  ADD CONSTRAINT `REF_Final_Shipp_FK` FOREIGN KEY (`Company_name`) REFERENCES `shipper` (`Company_name`);
+ALTER TABLE `Final_product`
+  ADD CONSTRAINT `EQU_Final_Print_FK` FOREIGN KEY (`Order_id`) REFERENCES `Prints_order` (`Order_id`),
+  ADD CONSTRAINT `REF_Final_Art_p` FOREIGN KEY (`Picture_title`,`Technique_id`) REFERENCES `Art_print` (`Picture_title`, `Technique_id`),
+  ADD CONSTRAINT `REF_Final_Frame_FK` FOREIGN KEY (`Frame_id`) REFERENCES `Frame` (`Frame_id`),
+  ADD CONSTRAINT `REF_Final_Passp_FK` FOREIGN KEY (`Passpartout_id`) REFERENCES `Passpartout` (`Passpartout_id`),
+  ADD CONSTRAINT `REF_Final_Shipp_FK` FOREIGN KEY (`Company_name`) REFERENCES `Shipper` (`Company_name`);
 
 --
--- Limiti per la tabella `make_frame_available`
+-- Limiti per la tabella `Make_frame_available`
 --
-ALTER TABLE `make_frame_available`
-  ADD CONSTRAINT `REF_Make__Frame` FOREIGN KEY (`Frame_id`) REFERENCES `frame` (`Frame_id`),
-  ADD CONSTRAINT `REF_Make__User_1_FK` FOREIGN KEY (`Email`) REFERENCES `user` (`Email`);
+ALTER TABLE `Make_frame_available`
+  ADD CONSTRAINT `REF_Make__Frame` FOREIGN KEY (`Frame_id`) REFERENCES `Frame` (`Frame_id`),
+  ADD CONSTRAINT `REF_Make__User_1_FK` FOREIGN KEY (`Email`) REFERENCES `User` (`Email`);
 
 --
--- Limiti per la tabella `make_passpartout_available`
+-- Limiti per la tabella `Make_passpartout_available`
 --
-ALTER TABLE `make_passpartout_available`
-  ADD CONSTRAINT `REF_Make__Passp` FOREIGN KEY (`Passpartout_id`) REFERENCES `passpartout` (`Passpartout_id`),
-  ADD CONSTRAINT `REF_Make__User_FK` FOREIGN KEY (`Email`) REFERENCES `user` (`Email`);
+ALTER TABLE `Make_passpartout_available`
+  ADD CONSTRAINT `REF_Make__Passp` FOREIGN KEY (`Passpartout_id`) REFERENCES `Passpartout` (`Passpartout_id`),
+  ADD CONSTRAINT `REF_Make__User_FK` FOREIGN KEY (`Email`) REFERENCES `User` (`Email`);
 
 --
--- Limiti per la tabella `payment_info`
+-- Limiti per la tabella `Payment_Info`
 --
-ALTER TABLE `payment_info`
-  ADD CONSTRAINT `REF_Payme_Credi_FK` FOREIGN KEY (`Card_number`) REFERENCES `credit_card` (`Number`),
-  ADD CONSTRAINT `REF_Payme_User` FOREIGN KEY (`Email`) REFERENCES `user` (`Email`);
+ALTER TABLE `Payment_Info`
+  ADD CONSTRAINT `REF_Payme_Credi_FK` FOREIGN KEY (`Card_number`) REFERENCES `Credit_Card` (`Number`),
+  ADD CONSTRAINT `REF_Payme_User` FOREIGN KEY (`Email`) REFERENCES `User` (`Email`);
 
 --
--- Limiti per la tabella `picture`
+-- Limiti per la tabella `Picture`
 --
-ALTER TABLE `picture`
-  ADD CONSTRAINT `REF_Pictu_Categ_FK` FOREIGN KEY (`Category_name`) REFERENCES `category` (`Name`),
-  ADD CONSTRAINT `REF_Pictu_User_FK` FOREIGN KEY (`Email`) REFERENCES `user` (`Email`);
+ALTER TABLE `Picture`
+  ADD CONSTRAINT `REF_Pictu_Categ_FK` FOREIGN KEY (`Category_name`) REFERENCES `Category` (`Name`),
+  ADD CONSTRAINT `REF_Pictu_User_FK` FOREIGN KEY (`Email`) REFERENCES `User` (`Email`);
 
 --
--- Limiti per la tabella `prints_order`
+-- Limiti per la tabella `Prints_order`
 --
-ALTER TABLE `prints_order`
-  ADD CONSTRAINT `REF_Print_Payme_FK` FOREIGN KEY (`Email`,`Card_number`) REFERENCES `payment_info` (`Email`, `Card_number`);
+ALTER TABLE `Prints_order`
+  ADD CONSTRAINT `REF_Print_Payme_FK` FOREIGN KEY (`Email`,`Card_number`) REFERENCES `Payment_Info` (`Email`, `Card_number`);
 
 --
--- Limiti per la tabella `tracking_notification`
+-- Limiti per la tabella `Tracking_notification`
 --
-ALTER TABLE `tracking_notification`
-  ADD CONSTRAINT `REF_Track_Print_FK` FOREIGN KEY (`Order_id`) REFERENCES `prints_order` (`Order_id`);
+ALTER TABLE `Tracking_notification`
+  ADD CONSTRAINT `REF_Track_Print_FK` FOREIGN KEY (`Order_id`) REFERENCES `Prints_order` (`Order_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
