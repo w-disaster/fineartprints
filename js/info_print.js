@@ -1,4 +1,5 @@
 const aside = document.querySelector("aside");
+const replaceArea = document.querySelector("aside > .replace-area");
 let info = "";
 
 $(document).ready(function(){
@@ -18,7 +19,7 @@ $(document).ready(function(){
                         <li class="p-2"> <h5>Publish date</h5>` + data["Publish_date"] + `</li>
                     </ul>
                 </section>`;
-            aside.innerHTML += info;
+            replaceArea.innerHTML= info;
         });
 
         //$(this).fadeTo("fast", 0.5);
@@ -26,8 +27,7 @@ $(document).ready(function(){
     }, function(){
         $(this).removeClass('transition');
         //$(this).fadeTo(0, 1);
-        $(".img-info").hide();
-        aside.innerHTML = aside.innerHTML.replace(info, "");
+        replaceArea.innerHTML = "";
     });
 
     /*

@@ -2,17 +2,17 @@
     <div class="row subtle-pattern">
 
       <div class="col-12 col-md-3 mb-4">
-        <aside>
+        <aside class="h-100">
           <section class="bg-white border mt-4 px-5 py-3 w-100">
-            <form action="<?php echo $templateParams["url"]; ?>" method="POST">
+            <form action="api-shop.php" method="POST">
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="select" id="all" value="all" checked>
+                <input class="form-check-input" type="radio" name="select" id="all" value="all" <?php if($templateParams["select"] == "all"): echo "checked"; endif; ?>>
                 <label class="form-check-label ml-3" for="selectAll">
                   Tutti
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="select" id="sale" value="sale">
+                <input class="form-check-input" type="radio" name="select" id="sale" value="sale" <?php if($templateParams["select"] == "sale"): echo "checked"; endif; ?>>
                 <label class="form-check-label ml-3" for="selectSale">
                   In sconto: %
                 </label>
@@ -21,10 +21,10 @@
               <div class="form-group mt-3">
                 <label for="orderby_label"><h2>Order by</h2></label>
                 <select id="input" name="order" class="form-control">
-                  <option value="none" id="none" selected>None</option>
-                  <option value="publish_date" id="publish_date">Publish Date (lastest)</option>
-                  <option value="cost_rising" id="cost_rising">Cost: rising</option>
-                  <option value="cost_decreasing" id="cost_decreasing">Cost: decreasing</option>
+                  <option value="none" id="none" <?php if($templateParams["order"] == "none"): echo "selected"; endif; ?>>None</option>
+                  <option value="publish_date" id="publish_date" <?php if($templateParams["order"] == "publish_date"): echo "selected"; endif; ?>>Publish Date (lastest)</option>
+                  <option value="cost_rising" id="cost_rising" <?php if($templateParams["order"] == "cost_rising"): echo "selected"; endif; ?>>Cost: rising</option>
+                  <option value="cost_decreasing" id="cost_decreasing" <?php if($templateParams["order"] == "cost_decreasing"): echo "selected"; endif; ?>>Cost: decreasing</option>
 
                 </select>
               </div>
@@ -59,6 +59,7 @@
 
             </form>
           </section>
+          <div class="replace-area sticky-top"></div>
         </aside>
       </div>
       <?php if(empty($templateParams["pictures"])): ?>
@@ -92,7 +93,7 @@
                 <?php endif; ?>
               </div>
               
-            <?php if($i == 3 || count($templateParams["pictures"]) < 4): $i = -1; ?> </div> <?php endif; ?>
+            <?php if($i == 3): $i = -1; ?> </div> <?php endif; ?>
             <?php $i++ ?>
             <?php endforeach; ?>
           </main>
