@@ -70,6 +70,13 @@
                                     <label for="province" class="p-0 mb-0">Province:</label>
                                     <input type="text" class="form-control" id="province" name="province" required />
                                 </div>
+                                <div class="col-12 col-md-5 p-0 offset-md-2">
+                                    <label for="ship_option" class="p-0 mb-0">Role:</label>
+                                    <select id="ship_option" name="ship_option" class="form-control">
+                                        <option value="customer">Customer</option>
+                                        <option value="seller">Seller</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="form-group col-6 col-md-4 offset-3 offset-md-4 mt-3">
                                 <button type="submit" class="btn btn-primary col-md-12 border">Submit</button>
