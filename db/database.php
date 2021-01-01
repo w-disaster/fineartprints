@@ -98,8 +98,7 @@ class DatabaseHelper{
     }
 
     public function addCustomer($email, $birth_date, $password, $name, $surname, $phone, $city, 
-    $postal_code, $province, $address){
-        $role = "customer";
+    $postal_code, $province, $address, $role){
         $stmt = $this->db->prepare("INSERT INTO user (Email, Birth_date, Password, Name, Surname, Phone, City, Postal_Code,
          Province, Address, Role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
         $stmt->bind_param("sssssisisss", $email, $birth_date, $password, $name, $surname, $phone, $city, 
@@ -190,14 +189,44 @@ class DatabaseHelper{
 
     public function getOrderProducts(){
         $email = "gino.lippa@prints.com"; /*$_SESSION["email"];*/
-        $stmt = $this->db->prepare("SELECT Image, Picture_title,final_product.Order_id FROM prints_order, user,
-        final_product, picture WHERE prints_order.Order_id = final_product.Order_id 
-        AND user.Email = prints_order.Email AND Title = Picture_title AND user.Email = ?");
+        $stmt = $this->db->prepare("SELECT picture.Image, Picture_title, print_technique.Description,
+         passpartout.Specifications, frame.Description AS Framedesc, final_product.Order_id
+          FROM prints_order, user, print_technique, passpartout, frame, final_product, picture
+           WHERE prints_order.Order_id = final_product.Order_id AND
+            final_product.Technique_id = print_technique.Technique_id AND
+             final_product.Frame_id = frame.Frame_id AND
+              final_product.Passpartout_id = passpartout.Passpartout_id AND
+               user.Email = prints_order.Email AND
+                Title = Picture_title AND user.Email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getNotifications() {
+        $status = "new";
+        $email = "gino.lippa@prints.com"; /*$_SESSION["email"];*/
+        $stmt = $this->db->prepare("SELECT tracking_notification.Order_id, Data,
+        Description FROM user, tracking_notification, prints_order WHERE
+         prints_order.Order_id = tracking_notification.Order_id AND user.Email = prints_order.Email AND user.Email = ?
+         AND Status = ? ORDER BY Data DESC");
+        $stmt->bind_param("ss", $email, $status);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function clearNotifications() {
+        $status = "seen";
+        $email = "gino.lippa@prints.com"; /*$_SESSION["email"];*/
+        $stmt = $this->db->prepare("UPDATE tracking_notification, user, prints_order SET Status = ?
+         WHERE prints_order.Order_id = tracking_notification.Order_id
+        AND user.Email = prints_order.Email AND user.Email = ?");
+        $stmt->bind_param("ss", $status, $email);
+        $stmt->execute();
     }
 }
 ?>
