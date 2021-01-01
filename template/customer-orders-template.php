@@ -13,7 +13,7 @@
             </div>
             <div class="col-10 col-md-10 offset-1 px-0 bg-white border mb-4">
                 <h2 class="my-3 text-center pl-1">My orders</h2>
-                <nav class="navbar navbar-dark bg-dark border shadow-sm col-10 offset-1 p-0">
+                <nav class="navbar navbar-dark bg-dark border shadow-sm col-10 offset-1 p-0 p-1">
                     <div class="container text-white p-0">
                         <p class="ml-1 my-0" style="font-size:22px;">Notifications
                         <span id = "badge" class="badge badge-primary badge-pill"><?php echo $i ?></span></p>
@@ -65,9 +65,12 @@
                         <button id="btn" type="submit" class="btn btn-primary col-6 offset-2 col-md-8 border">Apply</button>
                     </div>
                 </form>
+                <?php if (count($templateParams["orders"]) == 0): ?>
+                    <h2 class="text-center mt-5">No result found</h2>
+                <?php else: ?>
                 <?php foreach($templateParams["orders"] as $order): ?>
                 <ul class="nav col-12 col-md-12 p-0">
-                    <li class="nav item mb-3">
+                    <li class="nav item mb-3 col-12">
                         <div class="row p-0 col-12 col-md-12 ml-1 d-flex align-items-center">
                             <div class="col-10 offset-1 col-md-10 offset-md-1 bg-primary text-white p-0">
                                 <ul class="nav text-left">
@@ -112,7 +115,7 @@
                         </div>
                     </li>
                 </ul>
-                <?php endforeach;?>
+                <?php endforeach;endif;?>
             </div>
         </main>
     </div>
