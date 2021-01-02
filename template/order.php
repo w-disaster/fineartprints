@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="css/order_style.css" >
 
 <div class="flex-grow-1 subtle-pattern">
-  <div class="container-fluid bg-white flex-flow-row-wrap subtle-pattern">
+  <div class="container bg-white lead flex-flow-row-wrap subtle-pattern">
     <div class="row my-4">
       <div class="col-12 col-md-7">
         <div class="container-fluid p-0 flex-flow-row-wrap">

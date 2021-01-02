@@ -20,7 +20,7 @@ class DatabaseHelper{
     }
 
     public function getAllPictures(){
-        $stmt = $this->db->prepare("SELECT Title, Image, Author, Base_price, Discount FROM Picture ORDER BY RAND() LIMIT 12");
+        $stmt = $this->db->prepare("SELECT Title, Image, Author, Base_price, Discount FROM picture ORDER BY RAND() LIMIT 12");
 
         $stmt->execute();
         $result = $stmt->get_result();
@@ -29,7 +29,7 @@ class DatabaseHelper{
     }
 
     public function getPictureFromTitle($title){
-        $stmt = $this->db->prepare("SELECT * FROM Picture WHERE Title=?");
+        $stmt = $this->db->prepare("SELECT * FROM picture WHERE Title=?");
         $stmt->bind_param("s", $title);
         $stmt->execute();
         $result = $stmt->get_result();

@@ -6,8 +6,6 @@ $(document).ready(function(){
         $(this).addClass('transition');
         let title = $(this).parent().parent().children('h6').text();
 
-        title = title.replaceAll(" ", "%");
-
         $.getJSON("api-print.php?title=" + title, function(data){
             info = `<section class="img-info bg-white border my-4 px-5 py-3">
                     <h2>` + data["Title"] + `</h2>
@@ -20,12 +18,9 @@ $(document).ready(function(){
                 </section>`;
             replaceArea.innerHTML= info;
         });
-
-        //$(this).fadeTo("fast", 0.5);
         
     }, function(){
         $(this).removeClass('transition');
-        //$(this).fadeTo(0, 1);
         replaceArea.innerHTML = "";
     });
 });
