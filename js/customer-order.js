@@ -61,12 +61,16 @@ function getProducts(data) {
         let product = "";
         product = `
         <li class="row mb-3">
-            <div class="col-10 offset-1 offset-md-0 col-md-6 p-0 text-center border bg-white py-1 d-flex align-items-center">
-                <img class="mx-auto d-block" src="${data[i]["Image"]}" style="max-height:200px;max-width: 200px;" alt=""/>
+            <div class="row col-12 col-md-6 p-0 bg-white border">
+                <div class="col-12 text-center py-1 d-flex align-items-center">
+                    <img class="mx-auto d-block" src="${data[i]["Image"]}" style="max-height:175px;max-width: 200px;" alt=""/>
+                </div>
+                <div class="text-center col-12">
+                    <a href="#">${data[i]["Picture_title"]}</a>
+                </div>
             </div>
-            <div class="col-10 offset-1 col-md-6 offset-md-0 p-0">
-                <ul class="list-group m-0">
-                    <li class="list-group-item"><a class="col-12 col-md-12 p-0" href="#">${data[i]["Picture_title"]}</a></li>
+            <div class="row col-12 col-md-6 p-0">
+                <ul class="list-group col-12 m-0 p-0">
                     <li class="list-group-item col-12 col-md-12"><p class="text-left m-0">Technique:
                     ${data[i]["Description"]}</p></li>
                     <li class="list-group-item col-12 col-md-12"><p class="text-left m-0">Passpartout:

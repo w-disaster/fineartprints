@@ -260,8 +260,8 @@ class DatabaseHelper{
     public function clearNotifications() {
         $status = "seen";
         $email = "gino.lippa@prints.com"; /*$_SESSION["email"];*/
-        $stmt = $this->db->prepare("UPDATE tracking_notification, user, prints_order SET Status = ?
-         WHERE prints_order.Order_id = tracking_notification.Order_id
+        $stmt = $this->db->prepare("UPDATE tracking_notification, user, prints_order SET 
+        tracking_notification.Status = ? WHERE prints_order.Order_id = tracking_notification.Order_id
         AND user.Email = prints_order.Email AND user.Email = ?");
         $stmt->bind_param("ss", $status, $email);
         $stmt->execute();
