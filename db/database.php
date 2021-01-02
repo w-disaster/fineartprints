@@ -10,6 +10,15 @@ class DatabaseHelper{
         }        
     }
 
+    public function checkLogin($username, $password){
+        $stmt = $this->db->prepare("SELECT email as username, role FROM User WHERE email = ? AND password = ?");
+        $stmt->bind_param('ss',$username, $password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getAllPictures(){
         $stmt = $this->db->prepare("SELECT Title, Image, Author, Base_price, Discount FROM Picture ORDER BY RAND() LIMIT 12");
 
@@ -19,9 +28,9 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getPictureFromTitle($i){
+    public function getPictureFromTitle($title){
         $stmt = $this->db->prepare("SELECT * FROM Picture WHERE Title=?");
-        $stmt->bind_param("s", $i);
+        $stmt->bind_param("s", $title);
         $stmt->execute();
         $result = $stmt->get_result();
 

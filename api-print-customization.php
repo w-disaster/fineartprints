@@ -33,7 +33,8 @@ if ($request_id == 1) {
     unset($data);
 }
 
-if(!is_null($data))
+if (!is_null($data)) {
     send_data($data);
+}
 
 ?>

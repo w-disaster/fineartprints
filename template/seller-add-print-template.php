@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <aside class="bg-white sidebar container shadow-sm my-4 p-4 list-group-flush">
+      <aside class="bg-white sidebar container shadow-sm my-4 p-4 list-group list-group-flush">
         <h3 class="py-4 pl-3">Seller's Area</h3>
         <a href="seller-overview.php" class="list-group-item list-group-item-action bg-white">Overview</a>
         <a href="seller-profile.php" class="list-group-item list-group-item-action bg-white">Profile</a>
