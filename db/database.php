@@ -29,7 +29,7 @@ class DatabaseHelper{
     }
 
     public function getTechniquesFromPictureTitle($i){
-        $stmt = $this->db->prepare("SELECT Description FROM Print_technique, Art_print WHERE Print_technique.Technique_id = Art_print.Technique_id AND Art_print.Picture_title=?");
+        $stmt = $this->db->prepare("SELECT Print_technique.Technique_id, Image, Description FROM Print_technique, Art_print WHERE Print_technique.Technique_id = Art_print.Technique_id AND Art_print.Picture_title=?");
         $stmt->bind_param("s", $i);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -50,6 +50,34 @@ class DatabaseHelper{
         $stmt = $this->db->prepare("SELECT Passpartout.Passpartout_id, Image, Specifications, Price_per_cm2 FROM Make_passpartout_available, Passpartout WHERE 
         Make_passpartout_available.Email = ? AND Make_passpartout_available.Passpartout_id = Passpartout.Passpartout_id");
         $stmt->bind_param("s", $seller);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getPriceFromTechnique($technique_id){
+        $stmt = $this->db->prepare("SELECT Price_per_cm2 FROM Print_technique WHERE Technique_id = ?");
+        $stmt->bind_param("i", $technique_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getPriceFromFrame($frame_id) {
+        $stmt = $this->db->prepare("SELECT Price FROM Frame WHERE Frame_id = ?");
+        $stmt->bind_param("i", $frame_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getPriceFromPasspartout($passpartout_id) {
+        $stmt = $this->db->prepare("SELECT Price_per_cm2 FROM Passpartout WHERE 
+        Passpartout_id = ?");
+        $stmt->bind_param("i", $passpartout_id);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -206,6 +234,16 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getValueFromTitle($title) {
+        $stmt = $this->db->prepare("SELECT Base_price, Discount FROM Picture WHERE Title=?");
+        $stmt->bind_param("s", $title);
+    
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getNotifications() {
         $status = "new";
         $email = "gino.lippa@prints.com"; /*$_SESSION["email"];*/
@@ -214,6 +252,7 @@ class DatabaseHelper{
          prints_order.Order_id = tracking_notification.Order_id AND user.Email = prints_order.Email AND user.Email = ?
          AND Status = ? ORDER BY Data DESC");
         $stmt->bind_param("ss", $email, $status);
+
         $stmt->execute();
         $result = $stmt->get_result();
 

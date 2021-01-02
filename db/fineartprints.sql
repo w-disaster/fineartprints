@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Gen 01, 2021 alle 23:06
--- Versione del server: 10.4.14-MariaDB
--- Versione PHP: 7.4.11
+-- Generation Time: Jan 02, 2021 at 12:18 PM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.4.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `Art_print`
+-- Table structure for table `Art_print`
 --
 
 CREATE TABLE `Art_print` (
@@ -33,7 +33,7 @@ CREATE TABLE `Art_print` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `Art_print`
+-- Dumping data for table `Art_print`
 --
 
 INSERT INTO `Art_print` (`Technique_id`, `Picture_title`) VALUES
@@ -210,7 +210,7 @@ INSERT INTO `Art_print` (`Technique_id`, `Picture_title`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `Category`
+-- Table structure for table `Category`
 --
 
 CREATE TABLE `Category` (
@@ -220,7 +220,7 @@ CREATE TABLE `Category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `Category`
+-- Dumping data for table `Category`
 --
 
 INSERT INTO `Category` (`Name`, `Image`, `Orientation`) VALUES
@@ -236,7 +236,7 @@ INSERT INTO `Category` (`Name`, `Image`, `Orientation`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `Credit_Card`
+-- Table structure for table `Credit_Card`
 --
 
 CREATE TABLE `Credit_Card` (
@@ -246,7 +246,7 @@ CREATE TABLE `Credit_Card` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `Credit_Card`
+-- Dumping data for table `Credit_Card`
 --
 
 INSERT INTO `Credit_Card` (`Expire_date`, `Owner`, `Number`) VALUES
@@ -258,7 +258,7 @@ INSERT INTO `Credit_Card` (`Expire_date`, `Owner`, `Number`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `Final_product`
+-- Table structure for table `Final_product`
 --
 
 CREATE TABLE `Final_product` (
@@ -269,14 +269,13 @@ CREATE TABLE `Final_product` (
   `Art_print_width` int(11) NOT NULL,
   `Art_print_height` int(11) NOT NULL,
   `Passpartout_width` int(11) NOT NULL,
-  `Order_id` int(11) NOT NULL,
-  `Company_name` char(1) NOT NULL
+  `Order_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `Frame`
+-- Table structure for table `Frame`
 --
 
 CREATE TABLE `Frame` (
@@ -287,7 +286,7 @@ CREATE TABLE `Frame` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `Frame`
+-- Dumping data for table `Frame`
 --
 
 INSERT INTO `Frame` (`Frame_id`, `Image`, `Description`, `Price`) VALUES
@@ -304,7 +303,7 @@ INSERT INTO `Frame` (`Frame_id`, `Image`, `Description`, `Price`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `Make_frame_available`
+-- Table structure for table `Make_frame_available`
 --
 
 CREATE TABLE `Make_frame_available` (
@@ -312,10 +311,25 @@ CREATE TABLE `Make_frame_available` (
   `Frame_id` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `Make_frame_available`
+--
+
+INSERT INTO `Make_frame_available` (`Email`, `Frame_id`) VALUES
+('cippa.pino@prints.com', 7820),
+('cippa.pino@prints.com', 7821),
+('cippa.pino@prints.com', 7822),
+('cippa.pino@prints.com', 7823),
+('cippa.pino@prints.com', 7824),
+('cippa.pino@prints.com', 7825),
+('cippa.pino@prints.com', 7826),
+('cippa.pino@prints.com', 7827),
+('cippa.pino@prints.com', 7828);
+
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `Make_passpartout_available`
+-- Table structure for table `Make_passpartout_available`
 --
 
 CREATE TABLE `Make_passpartout_available` (
@@ -323,10 +337,22 @@ CREATE TABLE `Make_passpartout_available` (
   `Passpartout_id` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `Make_passpartout_available`
+--
+
+INSERT INTO `Make_passpartout_available` (`Email`, `Passpartout_id`) VALUES
+('cippa.pino@prints.com', 8001),
+('cippa.pino@prints.com', 8002),
+('cippa.pino@prints.com', 8003),
+('cippa.pino@prints.com', 8004),
+('cippa.pino@prints.com', 8005),
+('cippa.pino@prints.com', 8006);
+
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `Passpartout`
+-- Table structure for table `Passpartout`
 --
 
 CREATE TABLE `Passpartout` (
@@ -337,7 +363,7 @@ CREATE TABLE `Passpartout` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `Passpartout`
+-- Dumping data for table `Passpartout`
 --
 
 INSERT INTO `Passpartout` (`Passpartout_id`, `Image`, `Specifications`, `Price_per_cm2`) VALUES
@@ -351,7 +377,7 @@ INSERT INTO `Passpartout` (`Passpartout_id`, `Image`, `Specifications`, `Price_p
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `Payment_Info`
+-- Table structure for table `Payment_Info`
 --
 
 CREATE TABLE `Payment_Info` (
@@ -360,7 +386,7 @@ CREATE TABLE `Payment_Info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `Payment_Info`
+-- Dumping data for table `Payment_Info`
 --
 
 INSERT INTO `Payment_Info` (`Card_number`, `Email`) VALUES
@@ -369,7 +395,7 @@ INSERT INTO `Payment_Info` (`Card_number`, `Email`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `Picture`
+-- Table structure for table `Picture`
 --
 
 CREATE TABLE `Picture` (
@@ -386,7 +412,7 @@ CREATE TABLE `Picture` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `Picture`
+-- Dumping data for table `Picture`
 --
 
 INSERT INTO `Picture` (`Title`, `Description`, `Author`, `Image`, `Base_price`, `Discount`, `Publish_date`, `Orientation`, `Category_name`, `Email`) VALUES
@@ -437,7 +463,7 @@ INSERT INTO `Picture` (`Title`, `Description`, `Author`, `Image`, `Base_price`, 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `Prints_order`
+-- Table structure for table `Prints_order`
 --
 
 CREATE TABLE `Prints_order` (
@@ -448,13 +474,14 @@ CREATE TABLE `Prints_order` (
   `Order_date` date NOT NULL,
   `Shipped_date` date DEFAULT NULL,
   `Email` char(140) NOT NULL,
-  `Card_number` bigint(20) NOT NULL
+  `Card_number` bigint(20) NOT NULL,
+  `Shipper_name` char(140) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `Print_technique`
+-- Table structure for table `Print_technique`
 --
 
 CREATE TABLE `Print_technique` (
@@ -465,7 +492,7 @@ CREATE TABLE `Print_technique` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `Print_technique`
+-- Dumping data for table `Print_technique`
 --
 
 INSERT INTO `Print_technique` (`Technique_id`, `Image`, `Description`, `Price_per_cm2`) VALUES
@@ -482,7 +509,7 @@ INSERT INTO `Print_technique` (`Technique_id`, `Image`, `Description`, `Price_pe
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `Shipper`
+-- Table structure for table `Shipper`
 --
 
 CREATE TABLE `Shipper` (
@@ -492,7 +519,7 @@ CREATE TABLE `Shipper` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `Shipper`
+-- Dumping data for table `Shipper`
 --
 
 INSERT INTO `Shipper` (`Company_name`, `Phone`, `Price`) VALUES
@@ -504,7 +531,7 @@ INSERT INTO `Shipper` (`Company_name`, `Phone`, `Price`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `Tracking_notification`
+-- Table structure for table `Tracking_notification`
 --
 
 CREATE TABLE `Tracking_notification` (
@@ -520,7 +547,7 @@ CREATE TABLE `Tracking_notification` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `User`
+-- Table structure for table `User`
 --
 
 CREATE TABLE `User` (
@@ -538,7 +565,7 @@ CREATE TABLE `User` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `User`
+-- Dumping data for table `User`
 --
 
 INSERT INTO `User` (`Email`, `Birth_date`, `Password`, `Name`, `Surname`, `Phone`, `City`, `Postal_code`, `Province`, `Address`, `Role`) VALUES
@@ -546,11 +573,11 @@ INSERT INTO `User` (`Email`, `Birth_date`, `Password`, `Name`, `Surname`, `Phone
 ('gino.lippa@prints.com', '1996-10-17', 'pass2020', 'Gino', 'Lippa', '0714529816', 'Senigallia', 60019, 'AN', 'Viale dei pini 11', 'customer');
 
 --
--- Indici per le tabelle scaricate
+-- Indexes for dumped tables
 --
 
 --
--- Indici per le tabelle `Art_print`
+-- Indexes for table `Art_print`
 --
 ALTER TABLE `Art_print`
   ADD PRIMARY KEY (`Picture_title`,`Technique_id`),
@@ -558,39 +585,38 @@ ALTER TABLE `Art_print`
   ADD KEY `REF_Art_p_Print_IND` (`Technique_id`);
 
 --
--- Indici per le tabelle `Category`
+-- Indexes for table `Category`
 --
 ALTER TABLE `Category`
   ADD PRIMARY KEY (`Name`),
   ADD UNIQUE KEY `ID_Category_IND` (`Name`);
 
 --
--- Indici per le tabelle `Credit_Card`
+-- Indexes for table `Credit_Card`
 --
 ALTER TABLE `Credit_Card`
   ADD PRIMARY KEY (`Number`),
   ADD UNIQUE KEY `ID_Credit_Card_IND` (`Number`);
 
 --
--- Indici per le tabelle `Final_product`
+-- Indexes for table `Final_product`
 --
 ALTER TABLE `Final_product`
   ADD PRIMARY KEY (`Picture_title`,`Technique_id`,`Frame_id`,`Passpartout_id`),
   ADD UNIQUE KEY `ID_Final_product_IND` (`Picture_title`,`Technique_id`,`Frame_id`,`Passpartout_id`),
   ADD KEY `EQU_Final_Print_IND` (`Order_id`),
   ADD KEY `REF_Final_Passp_IND` (`Passpartout_id`),
-  ADD KEY `REF_Final_Frame_IND` (`Frame_id`),
-  ADD KEY `REF_Final_Shipp_IND` (`Company_name`);
+  ADD KEY `REF_Final_Frame_IND` (`Frame_id`);
 
 --
--- Indici per le tabelle `Frame`
+-- Indexes for table `Frame`
 --
 ALTER TABLE `Frame`
   ADD PRIMARY KEY (`Frame_id`),
   ADD UNIQUE KEY `ID_Frame_IND` (`Frame_id`);
 
 --
--- Indici per le tabelle `Make_frame_available`
+-- Indexes for table `Make_frame_available`
 --
 ALTER TABLE `Make_frame_available`
   ADD PRIMARY KEY (`Frame_id`,`Email`),
@@ -598,7 +624,7 @@ ALTER TABLE `Make_frame_available`
   ADD KEY `REF_Make__User_1_IND` (`Email`);
 
 --
--- Indici per le tabelle `Make_passpartout_available`
+-- Indexes for table `Make_passpartout_available`
 --
 ALTER TABLE `Make_passpartout_available`
   ADD PRIMARY KEY (`Passpartout_id`,`Email`),
@@ -606,14 +632,14 @@ ALTER TABLE `Make_passpartout_available`
   ADD KEY `REF_Make__User_IND` (`Email`);
 
 --
--- Indici per le tabelle `Passpartout`
+-- Indexes for table `Passpartout`
 --
 ALTER TABLE `Passpartout`
   ADD PRIMARY KEY (`Passpartout_id`),
   ADD UNIQUE KEY `ID_Passpartout_IND` (`Passpartout_id`);
 
 --
--- Indici per le tabelle `Payment_Info`
+-- Indexes for table `Payment_Info`
 --
 ALTER TABLE `Payment_Info`
   ADD PRIMARY KEY (`Email`,`Card_number`),
@@ -621,7 +647,7 @@ ALTER TABLE `Payment_Info`
   ADD KEY `REF_Payme_Credi_IND` (`Card_number`);
 
 --
--- Indici per le tabelle `Picture`
+-- Indexes for table `Picture`
 --
 ALTER TABLE `Picture`
   ADD PRIMARY KEY (`Title`),
@@ -630,29 +656,30 @@ ALTER TABLE `Picture`
   ADD KEY `REF_Pictu_User_IND` (`Email`);
 
 --
--- Indici per le tabelle `Prints_order`
+-- Indexes for table `Prints_order`
 --
 ALTER TABLE `Prints_order`
   ADD PRIMARY KEY (`Order_id`),
   ADD UNIQUE KEY `ID_Prints_order_IND` (`Order_id`),
-  ADD KEY `REF_Print_Payme_IND` (`Email`,`Card_number`);
+  ADD KEY `REF_Print_Payme_IND` (`Email`,`Card_number`),
+  ADD KEY `REF_Shipper_FK` (`Shipper_name`);
 
 --
--- Indici per le tabelle `Print_technique`
+-- Indexes for table `Print_technique`
 --
 ALTER TABLE `Print_technique`
   ADD PRIMARY KEY (`Technique_id`),
   ADD UNIQUE KEY `ID_Print_technique_IND` (`Technique_id`);
 
 --
--- Indici per le tabelle `Shipper`
+-- Indexes for table `Shipper`
 --
 ALTER TABLE `Shipper`
   ADD PRIMARY KEY (`Company_name`),
   ADD UNIQUE KEY `ID_Shipper_IND` (`Company_name`);
 
 --
--- Indici per le tabelle `Tracking_notification`
+-- Indexes for table `Tracking_notification`
 --
 ALTER TABLE `Tracking_notification`
   ADD PRIMARY KEY (`Tracking_notification_id`),
@@ -660,69 +687,69 @@ ALTER TABLE `Tracking_notification`
   ADD KEY `REF_Track_Print_IND` (`Order_id`);
 
 --
--- Indici per le tabelle `User`
+-- Indexes for table `User`
 --
 ALTER TABLE `User`
   ADD PRIMARY KEY (`Email`),
   ADD UNIQUE KEY `ID_User_IND` (`Email`);
 
 --
--- Limiti per le tabelle scaricate
+-- Constraints for dumped tables
 --
 
 --
--- Limiti per la tabella `Art_print`
+-- Constraints for table `Art_print`
 --
 ALTER TABLE `Art_print`
   ADD CONSTRAINT `REF_Art_p_Pictu` FOREIGN KEY (`Picture_title`) REFERENCES `Picture` (`Title`),
   ADD CONSTRAINT `REF_Art_p_Print_FK` FOREIGN KEY (`Technique_id`) REFERENCES `Print_technique` (`Technique_id`);
 
 --
--- Limiti per la tabella `Final_product`
+-- Constraints for table `Final_product`
 --
 ALTER TABLE `Final_product`
   ADD CONSTRAINT `EQU_Final_Print_FK` FOREIGN KEY (`Order_id`) REFERENCES `Prints_order` (`Order_id`),
   ADD CONSTRAINT `REF_Final_Art_p` FOREIGN KEY (`Picture_title`,`Technique_id`) REFERENCES `Art_print` (`Picture_title`, `Technique_id`),
   ADD CONSTRAINT `REF_Final_Frame_FK` FOREIGN KEY (`Frame_id`) REFERENCES `Frame` (`Frame_id`),
-  ADD CONSTRAINT `REF_Final_Passp_FK` FOREIGN KEY (`Passpartout_id`) REFERENCES `Passpartout` (`Passpartout_id`),
-  ADD CONSTRAINT `REF_Final_Shipp_FK` FOREIGN KEY (`Company_name`) REFERENCES `Shipper` (`Company_name`);
+  ADD CONSTRAINT `REF_Final_Passp_FK` FOREIGN KEY (`Passpartout_id`) REFERENCES `Passpartout` (`Passpartout_id`);
 
 --
--- Limiti per la tabella `Make_frame_available`
+-- Constraints for table `Make_frame_available`
 --
 ALTER TABLE `Make_frame_available`
   ADD CONSTRAINT `REF_Make__Frame` FOREIGN KEY (`Frame_id`) REFERENCES `Frame` (`Frame_id`),
   ADD CONSTRAINT `REF_Make__User_1_FK` FOREIGN KEY (`Email`) REFERENCES `User` (`Email`);
 
 --
--- Limiti per la tabella `Make_passpartout_available`
+-- Constraints for table `Make_passpartout_available`
 --
 ALTER TABLE `Make_passpartout_available`
   ADD CONSTRAINT `REF_Make__Passp` FOREIGN KEY (`Passpartout_id`) REFERENCES `Passpartout` (`Passpartout_id`),
   ADD CONSTRAINT `REF_Make__User_FK` FOREIGN KEY (`Email`) REFERENCES `User` (`Email`);
 
 --
--- Limiti per la tabella `Payment_Info`
+-- Constraints for table `Payment_Info`
 --
 ALTER TABLE `Payment_Info`
   ADD CONSTRAINT `REF_Payme_Credi_FK` FOREIGN KEY (`Card_number`) REFERENCES `Credit_Card` (`Number`),
   ADD CONSTRAINT `REF_Payme_User` FOREIGN KEY (`Email`) REFERENCES `User` (`Email`);
 
 --
--- Limiti per la tabella `Picture`
+-- Constraints for table `Picture`
 --
 ALTER TABLE `Picture`
   ADD CONSTRAINT `REF_Pictu_Categ_FK` FOREIGN KEY (`Category_name`) REFERENCES `Category` (`Name`),
   ADD CONSTRAINT `REF_Pictu_User_FK` FOREIGN KEY (`Email`) REFERENCES `User` (`Email`);
 
 --
--- Limiti per la tabella `Prints_order`
+-- Constraints for table `Prints_order`
 --
 ALTER TABLE `Prints_order`
-  ADD CONSTRAINT `REF_Print_Payme_FK` FOREIGN KEY (`Email`,`Card_number`) REFERENCES `Payment_Info` (`Email`, `Card_number`);
+  ADD CONSTRAINT `REF_Print_Payme_FK` FOREIGN KEY (`Email`,`Card_number`) REFERENCES `Payment_Info` (`Email`, `Card_number`),
+  ADD CONSTRAINT `REF_Shipper_FK` FOREIGN KEY (`Shipper_name`) REFERENCES `Shipper` (`Company_name`);
 
 --
--- Limiti per la tabella `Tracking_notification`
+-- Constraints for table `Tracking_notification`
 --
 ALTER TABLE `Tracking_notification`
   ADD CONSTRAINT `REF_Track_Print_FK` FOREIGN KEY (`Order_id`) REFERENCES `Prints_order` (`Order_id`);

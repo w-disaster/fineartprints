@@ -20,7 +20,7 @@
 <body>
   <div class="d-flex flex-column h-100">
     <nav class="navbar navbar-dark navbar-expand-lg bg-dark shadow-sm">
-      <div class="container"><a class="navbar-brand logo" href="#">Fine Art Prints</a><button data-toggle="collapse"
+      <div class="container"><a class="navbar-brand logo" href="index.php">Fine Art Prints</a><button data-toggle="collapse"
           class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle
             navigation</span><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navcol-1">
@@ -31,7 +31,7 @@
             <li class="nav-item"><a class="nav-link navbar-brand" href="sign-in.php"><img
                   src="<?php echo UPLOAD_DIR.'/icons/person-circle.svg'?>" alt="your profile" width="32" height="32"></a>
             </li>
-            <li class="nav-item"><a class="nav-link navbar-brand" href="api-about-us.php"><img src="<?php echo UPLOAD_DIR.'/icons/bag.svg'?>"
+            <li class="nav-item"><a class="nav-link navbar-brand" href="shopping-cart.php"><img src="<?php echo UPLOAD_DIR.'/icons/bag.svg'?>"
                   alt="cart" width="32" height="32"></a></li>
           </ul>
         </div>
