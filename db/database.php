@@ -101,16 +101,6 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getSlideShowPictures($n=6){
-        $stmt = $this->db->prepare("SELECT Image FROM picture WHERE Orientation='landscape'
-         ORDER BY RAND() LIMIT ?");
-        $stmt->bind_param("i",$n);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
     public function getLatestPictures($n=4){
         $stmt = $this->db->prepare("SELECT Image, Title FROM picture ORDER BY Publish_Date DESC LIMIT ?");
         $stmt->bind_param("i",$n);
