@@ -194,7 +194,7 @@ class DatabaseHelper{
         $stmt->execute();
     }
 
-    public function getMyOrders($ship, $date){
+    public function getMyOrders(){
         $email = "gino.lippa@prints.com"; /*$_SESSION["email"];*/
         $stmt = $this->db->prepare("SELECT Status, Order_id, Order_date, Shipped_date FROM prints_order, user
         WHERE user.Email = prints_order.Email AND prints_order.Email = ? ORDER BY Order_date DESC");
