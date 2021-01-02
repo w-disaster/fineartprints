@@ -126,7 +126,7 @@ class DatabaseHelper{
     }
 
     public function addUser($email, $birth_date, $password, $name, $surname, $phone, $city, 
-    $postal_code, $province, $address, $role){
+    $postal_code, $province, $address,$role){
         $stmt = $this->db->prepare("INSERT INTO user (Email, Birth_date, Password, Name, Surname, Phone, City, Postal_Code,
          Province, Address, Role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
         $stmt->bind_param("sssssisisss", $email, $birth_date, $password, $name, $surname, $phone, $city, 
@@ -135,8 +135,8 @@ class DatabaseHelper{
     }
 
     public function getCustomer(){
-        $role = "customer";
-        $email = "gino.lippa@prints.com"; /*$_SESSION["email"];*/
+        $email = $_SESSION["username"];
+        $role = $_SESSION["role"];
         $stmt = $this->db->prepare("SELECT Email, Birth_date, Name, Surname, Password, Phone, City, Postal_code,
          Province, Address FROM user WHERE Email = ? AND Role = ?;");
         $stmt->bind_param("ss", $email, $role);
@@ -148,8 +148,8 @@ class DatabaseHelper{
 
     public function updateCustomer($email, $birth_date, $password, $name, $surname, $phone, $city, 
     $postal_code, $province, $address){
-        $role = "customer";
-        $email = "gino.lippa@prints.com"; /*$_SESSION["email"];*/
+        $email = $_SESSION["username"];
+        $role = $_SESSION["role"];
         $stmt = $this->db->prepare("UPDATE user SET Email = ?, Birth_date = ?, Password = ?, Name = ?, Surname = ?, Phone = ?, City = ?, Postal_Code = ?,
          Province = ?, Address = ?, Role = ? WHERE Email = ?");
         $stmt->bind_param("sssssisissss", $email, $birth_date, $password, $name, $surname, $phone, $city, 
@@ -158,8 +158,6 @@ class DatabaseHelper{
     }
 
     public function getCreditCard($owner, $expire_date, $card){
-        echo $expire_date;
-        $email = "gino.lippa@prints.com"; /*$_SESSION["email"];*/
         $stmt = $this->db->prepare("SELECT Number FROM credit_card
          WHERE Owner = ? AND Expire_date = ? AND Number = ?;");
         $stmt->bind_param("ssi", $owner, $expire_date, $card);
@@ -170,7 +168,7 @@ class DatabaseHelper{
     }
 
     public function getPaymentInfo(){
-        $email = "gino.lippa@prints.com"; /*$_SESSION["email"];*/
+        $email = $_SESSION["username"];
         $stmt = $this->db->prepare("SELECT Owner, Card_number, Expire_date 
         FROM payment_info, credit_card WHERE payment_info.Card_number = credit_card.Number AND Email = ?;");
         $stmt->bind_param("s", $email);
@@ -187,14 +185,14 @@ class DatabaseHelper{
     }
 
     public function addPaymentInfo($number){
-        $email = "gino.lippa@prints.com"; /*$_SESSION["email"];*/
+        $email = $_SESSION["username"];
         $stmt = $this->db->prepare("INSERT INTO payment_info (Card_number, Email) VALUES (?, ?);");
         $stmt->bind_param("is", $number, $email);
         $stmt->execute();
     }
 
     public function getMyOrders(){
-        $email = "gino.lippa@prints.com"; /*$_SESSION["email"];*/
+        $email = $_SESSION["username"];
         $stmt = $this->db->prepare("SELECT Status, Order_id, Order_date, Shipped_date FROM prints_order, user
         WHERE user.Email = prints_order.Email AND prints_order.Email = ? ORDER BY Order_date DESC");
         $stmt->bind_param("s", $email);
@@ -205,7 +203,7 @@ class DatabaseHelper{
     }
 
     public function getOrderProducts(){
-        $email = "gino.lippa@prints.com"; /*$_SESSION["email"];*/
+        $email = $_SESSION["username"];
         $stmt = $this->db->prepare("SELECT picture.Image, Picture_title, print_technique.Description,
          passpartout.Specifications, frame.Description AS Framedesc, final_product.Order_id
           FROM prints_order, user, print_technique, passpartout, frame, final_product, picture
@@ -234,7 +232,7 @@ class DatabaseHelper{
 
     public function getNotifications() {
         $status = "new";
-        $email = "gino.lippa@prints.com"; /*$_SESSION["email"];*/
+        $email = $_SESSION["username"];
         $stmt = $this->db->prepare("SELECT tracking_notification.Order_id, Data,
         Description FROM user, tracking_notification, prints_order WHERE
          prints_order.Order_id = tracking_notification.Order_id AND user.Email = prints_order.Email AND user.Email = ?
@@ -249,7 +247,7 @@ class DatabaseHelper{
 
     public function clearNotifications() {
         $status = "seen";
-        $email = "gino.lippa@prints.com"; /*$_SESSION["email"];*/
+        $email = $_SESSION["username"];
         $stmt = $this->db->prepare("UPDATE tracking_notification, user, prints_order SET 
         tracking_notification.Status = ? WHERE prints_order.Order_id = tracking_notification.Order_id
         AND user.Email = prints_order.Email AND user.Email = ?");
