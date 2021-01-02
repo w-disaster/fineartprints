@@ -126,7 +126,7 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function addCustomer($email, $birth_date, $password, $name, $surname, $phone, $city, 
+    public function addUser($email, $birth_date, $password, $name, $surname, $phone, $city, 
     $postal_code, $province, $address, $role){
         $stmt = $this->db->prepare("INSERT INTO user (Email, Birth_date, Password, Name, Surname, Phone, City, Postal_Code,
          Province, Address, Role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
@@ -196,20 +196,9 @@ class DatabaseHelper{
 
     public function getMyOrders($ship, $date){
         $email = "gino.lippa@prints.com"; /*$_SESSION["email"];*/
-        if ($ship == "All") {
-            $stmt = $this->db->prepare("SELECT Order_id, Order_date, Shipped_date FROM prints_order, user
-            WHERE user.Email = prints_order.Email AND prints_order.Email = ?
-            AND Order_date >= now()-interval ? month ORDER BY Order_date DESC");
-        } else if ($ship == "Shipped") {
-            $stmt = $this->db->prepare("SELECT Order_id, Order_date, Shipped_date FROM prints_order, user
-            WHERE user.Email = prints_order.Email AND prints_order.Email = ?
-            AND Order_date >= now()-interval ? month AND Shipped_date <= now() ORDER BY Order_date DESC");
-        } else {
-            $stmt = $this->db->prepare("SELECT Order_id, Order_date, Shipped_date FROM prints_order, user
-            WHERE user.Email = prints_order.Email AND prints_order.Email = ?
-            AND Order_date >= now()-interval ? month AND Shipped_date > now() ORDER BY Order_date DESC");
-        }
-        $stmt->bind_param("si", $email, $date);
+        $stmt = $this->db->prepare("SELECT Status, Order_id, Order_date, Shipped_date FROM prints_order, user
+        WHERE user.Email = prints_order.Email AND prints_order.Email = ? ORDER BY Order_date DESC");
+        $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -250,7 +239,7 @@ class DatabaseHelper{
         $stmt = $this->db->prepare("SELECT tracking_notification.Order_id, Data,
         Description FROM user, tracking_notification, prints_order WHERE
          prints_order.Order_id = tracking_notification.Order_id AND user.Email = prints_order.Email AND user.Email = ?
-         AND Status = ? ORDER BY Data DESC");
+         AND tracking_notification.Status = ? ORDER BY Data DESC");
         $stmt->bind_param("ss", $email, $status);
 
         $stmt->execute();

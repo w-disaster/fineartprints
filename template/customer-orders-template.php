@@ -15,11 +15,11 @@
                 <h2 class="my-3 text-center pl-1">My orders</h2>
                 <nav class="navbar navbar-dark bg-dark border shadow-sm col-10 offset-1 p-0 p-1">
                     <div class="container text-white p-0">
-                        <p class="ml-1 my-0" style="font-size:22px;">Notifications
+                        <p class="ml-1 my-0 text-center" style="font-size:22px;">Notifications
                         <span id = "badge" class="badge badge-primary badge-pill"><?php echo $i ?></span></p>
                         <form class="form-group col-6 p-0 m-0" method="POST">
                             <input class ="d-none" id ="notifnumber" name="notif" value ="<?php echo $i ?>"></input>
-                            <button id="clear" type="submit" class="btn btn-primary col-6 offset-8 col-md-4 border">Clear all</button>
+                            <button id="clear" type="submit" class="btn btn-primary col-8 offset-0 offset-md-8 col-md-4 border">Clear all</button>
                         </form>
                         <button id="data-toggle" data-toggle="collapse" class="navbar-toggler m-1" data-target="#navcol-2">
                             <span class="sr-only">Toggle navigation</span>
@@ -43,79 +43,27 @@
                         </div>
                     </div>
                 </nav>
-                <form class="row offset-1" method="POST">
-                    <div class="form-group mt-3 col-5 col-md-4 p-0">
+                <div class="row offset-1 col-10 offset-1">
+                    <div class="form-group mt-3 col-5 p-0">
                         <label for="ship_option">Ship options</label>
                         <select id="ship_option" name="ship_option" class="form-control col-10">
-                            <option <?php if ($ship == 'All') { ?>selected="true" <?php }; ?>value="All">All</option>
-                            <option <?php if ($ship == 'Shipped') { ?>selected="true" <?php }; ?>value="Shipped">Shipped</option>
-                            <option <?php if ($ship == 'Transit') { ?>selected="true" <?php }; ?>value="Transit">In transit</option>
+                            <option selected value="All">All</option>
+                            <option value="Shipped">Shipped</option>
+                            <option value="In production">In production</option>
                         </select>
                     </div>
-                    <div class="form-group mt-3 col-6 ml-1 col-md-4 ml-1 p-0">
+                    <div class="form-group mt-3 col-6 offset-1 p-0">
                         <label for="date_option">Order date options</label>
                         <select id="date_option" name="date_option" class="form-control col-10">
-                            <option <?php if ($date == '1000') { ?>selected="true" <?php }; ?>value="1000">All</option>
-                            <option <?php if ($date == '1') { ?>selected="true" <?php }; ?>value="1">Last month</option>
-                            <option <?php if ($date == '3') { ?>selected="true" <?php }; ?>value="3">Last 3 months</option>
-                            <option <?php if ($date == '12') { ?>selected="true" <?php }; ?>value="12">Last year</option>
+                            <option selected value="All">All</option>
+                            <option value="30">Last month</option>
+                            <option value="90">Last 3 months</option>
+                            <option value="365">Last year</option>
                         </select>
                     </div>
-                    <div class="form-group col-8 offset-2 col-md-3 offset-md-0 mt-5">
-                        <button id="btn" type="submit" class="btn btn-primary col-6 offset-2 col-md-8 border">Apply</button>
-                    </div>
-                </form>
-                <?php if (count($templateParams["orders"]) == 0): ?>
-                    <h2 class="text-center mt-5">No result found</h2>
-                <?php else: ?>
-                <?php foreach($templateParams["orders"] as $order): ?>
-                <ul class="nav col-12 col-md-12 p-0">
-                    <li class="nav item mb-3 col-12">
-                        <div class="row p-0 col-12 col-md-12 ml-1 d-flex align-items-center">
-                            <div class="col-10 offset-1 col-md-10 offset-md-1 bg-primary text-white p-0">
-                                <ul class="nav text-left">
-                                    <li style="font-size:14px;" class="nav-item col-6 col-lg-2 m-0 py-2">Id: 
-                                    <?php echo $order["Order_id"]?>
-                                    </li>
-                                    <li style="font-size:14px;" class="nav-item col-6 col-lg-4 m-0 py-2">Order date: 
-                                    <?php echo $order["Order_date"]?>
-                                    </li>
-                                    <li style="font-size:14px;" class="nav-item col-6 col-lg-4 m-0 py-2">Shipping date: 
-                                    <?php echo $order["Shipped_date"]?>
-                                    </li>
-                                    <li style="font-size:14px;" class="nav-item col-6 col-lg-2 m-0 py-2">Total: /</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="row col-md-12 p-0 ml-1">
-                            <div class="col-10 offset-1 offset-md-1 col-md-10 bg-light border-top border-right border-left">
-                                <ul class="pl-4">
-                                    <?php foreach($templateParams["products"] as $product): ?>
-                                    <?php if($product["Order_id"] == $order["Order_id"]):?>
-                                    <li class="row border-bottom">
-                                        <div class="col-10 offset-1 offset-md-0 col-md-4 p-0 my-3 text-center">
-                                            <img class="img-fluid" src="<?php echo UPLOAD_DIR.$product["Image"] ?>" style="max-height:200px" alt=""/>
-                                        </div>
-                                        <div class="col-12 col-md-8 my-3">
-                                            <ul class="nav">
-                                                <li class="nav-item"><a class="col-12 col-md-12" href="#"><?php echo $product["Picture_title"] ?></a></li>
-                                                <li class="nav-item col-12 col-md-12"><p class="text-left m-0">Technique:
-                                                <?php echo $product["Description"] ?></p></li>
-                                                <li class="nav-item col-12 col-md-12"><p class="text-left m-0">Passpartout:
-                                                <?php echo $product["Specifications"] ?></p></li>
-                                                <li class="nav-item col-12 col-md-12"><p class="text-left m-0">Frame:
-                                                <?php echo $product["Framedesc"] ?></p></li>
-                                                <li class="nav-item col-12 col-md-12 text-left"><p class="text-left">Price:</p></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <?php endif;endforeach;?>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
+                </div>
+                <ul id ="order" class="nav col-12 col-md-12 p-0">
                 </ul>
-                <?php endforeach;endif;?>
             </div>
         </main>
     </div>

@@ -41,7 +41,8 @@ if (!empty($_POST["name"]) && !empty($_POST["surname"]) && !empty($_POST["new-pa
     }
 }
 
-$templateParams["pay_info"] = $dbh->getPaymentInfo();
+    $templateParams["pay_info"] = $dbh->getPaymentInfo();
+
 
 if (isset($_POST["remove_number"])) {
     $dbh->deletePaymentInfo($_POST["remove_number"]);
@@ -57,7 +58,6 @@ if (isset($_POST["add_number"]) && isset($_POST["expire_date"]) && !empty($_POST
         $templateParams["pay_info"] = $dbh->getPaymentInfo();
     } else {
         $iscardvalid = "is-invalid";
-        echo "ciao";
     }
 }
 
