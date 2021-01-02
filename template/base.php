@@ -20,18 +20,18 @@
 <body>
   <div class="d-flex flex-column h-100">
     <nav class="navbar navbar-dark navbar-expand-lg bg-dark shadow-sm">
-      <div class="container"><a class="navbar-brand logo" href="#">Fine Art Prints</a><button data-toggle="collapse"
+      <div class="container"><a class="navbar-brand logo" href="index.php">Fine Art Prints</a><button data-toggle="collapse"
           class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle
             navigation</span><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navcol-1">
           <ul class="nav navbar-nav ml-auto">
-            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="features.html">Products</a></li>
-            <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
-            <li class="nav-item"><a class="nav-link navbar-brand" href="about-us.html"><img
+            <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="api-shop.php">Products</a></li>
+            <li class="nav-item"><a class="nav-link" href="about-us.php">About Us</a></li>
+            <li class="nav-item"><a class="nav-link navbar-brand" href="sign-in.php"><img
                   src="<?php echo UPLOAD_DIR.'/icons/person-circle.svg'?>" alt="your profile" width="32" height="32"></a>
             </li>
-            <li class="nav-item"><a class="nav-link navbar-brand" href="about-us.html"><img src="<?php echo UPLOAD_DIR.'/icons/bag.svg'?>"
+            <li class="nav-item"><a class="nav-link navbar-brand" href="shopping-cart.php"><img src="<?php echo UPLOAD_DIR.'/icons/bag.svg'?>"
                   alt="cart" width="32" height="32"></a></li>
           </ul>
         </div>
@@ -41,11 +41,11 @@
   <div class="flex-grow-1 subtle-pattern">
     <div class="container-fluid bg-white flex-flow-row-wrap subtle-pattern">
 
-      <?php 
-        if(isset($templateParams["nome"])){
-          require($templateParams["nome"]);
-      }
-      ?>
+    <?php 
+      if(isset($templateParams["name"])){
+        require($templateParams["name"]);
+    }
+    ?>
     </div>
   </div>
 

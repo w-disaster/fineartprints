@@ -5,6 +5,10 @@ summary {
   padding: 30px;
 }
 
+input#inputWidth, input#inputHeight {
+  width: 30%;
+}
+
 p.summary {
   font-size: .9em
 }

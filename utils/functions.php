@@ -6,4 +6,9 @@ function var_dump_plus($expression) {
     echo '</pre>';
 }
 
+function send_data($data) {
+    header('Content-Type: application/json');
+    echo json_encode($data);
+}
+
 ?>
