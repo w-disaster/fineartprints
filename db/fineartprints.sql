@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 02, 2021 at 10:31 AM
+-- Generation Time: Jan 02, 2021 at 12:18 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.13
 
@@ -269,8 +269,7 @@ CREATE TABLE `Final_product` (
   `Art_print_width` int(11) NOT NULL,
   `Art_print_height` int(11) NOT NULL,
   `Passpartout_width` int(11) NOT NULL,
-  `Order_id` int(11) NOT NULL,
-  `Company_name` char(1) NOT NULL
+  `Order_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -607,8 +606,7 @@ ALTER TABLE `Final_product`
   ADD UNIQUE KEY `ID_Final_product_IND` (`Picture_title`,`Technique_id`,`Frame_id`,`Passpartout_id`),
   ADD KEY `EQU_Final_Print_IND` (`Order_id`),
   ADD KEY `REF_Final_Passp_IND` (`Passpartout_id`),
-  ADD KEY `REF_Final_Frame_IND` (`Frame_id`),
-  ADD KEY `REF_Final_Shipp_IND` (`Company_name`);
+  ADD KEY `REF_Final_Frame_IND` (`Frame_id`);
 
 --
 -- Indexes for table `Frame`
@@ -713,8 +711,7 @@ ALTER TABLE `Final_product`
   ADD CONSTRAINT `EQU_Final_Print_FK` FOREIGN KEY (`Order_id`) REFERENCES `Prints_order` (`Order_id`),
   ADD CONSTRAINT `REF_Final_Art_p` FOREIGN KEY (`Picture_title`,`Technique_id`) REFERENCES `Art_print` (`Picture_title`, `Technique_id`),
   ADD CONSTRAINT `REF_Final_Frame_FK` FOREIGN KEY (`Frame_id`) REFERENCES `Frame` (`Frame_id`),
-  ADD CONSTRAINT `REF_Final_Passp_FK` FOREIGN KEY (`Passpartout_id`) REFERENCES `Passpartout` (`Passpartout_id`),
-  ADD CONSTRAINT `REF_Final_Shipp_FK` FOREIGN KEY (`Company_name`) REFERENCES `Shipper` (`Company_name`);
+  ADD CONSTRAINT `REF_Final_Passp_FK` FOREIGN KEY (`Passpartout_id`) REFERENCES `Passpartout` (`Passpartout_id`);
 
 --
 -- Constraints for table `Make_frame_available`
