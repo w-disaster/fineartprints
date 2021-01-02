@@ -28,48 +28,6 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    function getPicturesFromAuthors($authors){
-        $query = "SELECT * FROM Picture WHERE Author IN (".implode(", ", array_fill(0, count($authors), "?")).")";
-        var_dump($query);
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param(implode("", array_fill(0, count($authors), "s")), ...$authors);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
-    function getPicturesFromCategories($categories){
-        $query = "SELECT * FROM Picture WHERE Category_name IN (".implode(", ", array_fill(0, count($categories), "?")).")";
-        var_dump($query);
-
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param(implode("", array_fill(0, count($categories), "s")), ...$categories);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
-    public function getPicturesFromFilters($authors, $categories){
-
-
-
-        $pictures_by_authors = array();
-        if(count($authors) > 0){
-            $pictures_by_authors = $this->getPicturesFromAuthors($authors);
-        }
-        
-        $pictures_by_categories = array();
-        if(count($categories) > 0){
-            $pictures_by_categories = $this->getPicturesFromCategories($categories);
-        }
-
-        $pictures = array_unique(array_merge($pictures_by_authors, $pictures_by_categories), SORT_REGULAR);
-        
-        return $pictures;
-    }
-
     public function getTechniquesFromPictureTitle($i){
         $stmt = $this->db->prepare("SELECT Description FROM Print_technique, Art_print WHERE Print_technique.Technique_id = Art_print.Technique_id AND Art_print.Picture_title=?");
         $stmt->bind_param("s", $i);

@@ -25,13 +25,13 @@
             navigation</span><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navcol-1">
           <ul class="nav navbar-nav ml-auto">
-            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="features.html">Products</a></li>
-            <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
-            <li class="nav-item"><a class="nav-link navbar-brand" href="about-us.html"><img
+            <li class="nav-item"><a class="nav-link" href="home.php">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="api-shop.php">Shop</a></li>
+            <li class="nav-item"><a class="nav-link" href="api-categories.php">Categories</a></li>
+            <li class="nav-item"><a class="nav-link navbar-brand" href="sign-in.php"><img
                   src="<?php echo UPLOAD_DIR.'/icons/person-circle.svg'?>" alt="your profile" width="32" height="32"></a>
             </li>
-            <li class="nav-item"><a class="nav-link navbar-brand" href="about-us.html"><img src="<?php echo UPLOAD_DIR.'/icons/bag.svg'?>"
+            <li class="nav-item"><a class="nav-link navbar-brand" href="api-about-us.php"><img src="<?php echo UPLOAD_DIR.'/icons/bag.svg'?>"
                   alt="cart" width="32" height="32"></a></li>
           </ul>
         </div>
