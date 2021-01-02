@@ -1,8 +1,8 @@
 <?php
 require_once 'bootstrap.php';
 
-$templateParams["titolo"] = "Home";
-$templateParams["nome"] = "home-template.php";
+$templateParams["title"] = "Home";
+$templateParams["name"] = "home-template.php";
 
 $templateParams["latestpictures"] = $dbh->getLatestPictures();
 

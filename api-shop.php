@@ -1,15 +1,65 @@
 <?php
-require_once 'bootstrap.php';
+require_once 'bootstrap.php'; 
+require_once 'utils/shop-filters.php';
 
-$authors = $_GET['authors'];
+$templateParams["css"] = "shop_style.css";
+$templateParams["filtered_categories"] = [];
+$templateParams["filtered_authors"] = [];
+$templateParams["select"] = "all";
+$templateParams["order"] = "none";
 
-for($i = 1; $i <= count($authors); $i++){
-    $prints[$i] = $dbh->getPicturesFromAuthor($authors[$i]);
+$filters = new ShopFilters();
+$templateParams["pictures"] = $dbh->query("SELECT * FROM Picture");
+
+if(isset($_GET["category"]) || isset($_POST["categories"]) || isset($_POST["authors"])){
+
+    /* Filtered authors */
+    if(isset($_POST["authors"])){
+        $templateParams["filtered_authors"] = $_POST["authors"];
+        $filters->setFilteredAuthors($templateParams["filtered_authors"]);
+        $templateParams["pictures"] = $filters->filter_pictures_by_authors($templateParams["pictures"]);
+    }
+
+    /* Filtered categories */
+    if(isset($_POST["categories"])){
+        $templateParams["filtered_categories"] = $_POST["categories"];
+        $filters->setFilteredCategories($templateParams["filtered_categories"]);
+        $templateParams["pictures"] = $filters->filter_pictures_by_categories($templateParams["pictures"]);
+
+    } else if(isset($_GET["category"])){
+        $templateParams["filtered_categories"] = array($_GET["category"]);
+        $filters->setFilteredCategories($templateParams["filtered_categories"]);
+        $templateParams["pictures"] = $filters->filter_pictures_by_categories($templateParams["pictures"], $templateParams["filtered_categories"]);
+    }
 }
 
+if(isset($_POST["order"]) || isset($_POST["select"])){
 
-var_dump($prints);
+    /* Select (all / sales) */
+    if(isset($_POST["select"])){
+        $templateParams["select"] = $_POST["select"];
+        if($templateParams["select"] == "sale"){
+            $templateParams["pictures"] = $filters->filter_pictures_in_sale($templateParams["pictures"]);
+        }
+    }
 
-header('Content-Type: application/json');
-echo json_encode($prints);
+    /* Order*/
+    if(isset($_POST["order"])){
+        $templateParams["order"] = $_POST["order"];
+        $filters->setOrderFilter($templateParams["order"]);
+        $templateParams["pictures"] = $filters->filter_order($templateParams["pictures"]);
+    }  
+}
+
+/* All authors */
+$templateParams["authors"] = $dbh->query("SELECT DISTINCT Author FROM Picture");
+
+/* All categories */
+$templateParams["all_categories"] = $dbh->query("SELECT Name FROM Category");
+
+//Base Template
+$templateParams["title"] = "Shop";
+$templateParams["name"] = "shop.php";
+
+require 'template/base.php';
 ?>

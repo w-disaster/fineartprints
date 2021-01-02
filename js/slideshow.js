@@ -1,35 +1,28 @@
-function getPic(pics,i) {
-    let slideshowpic = `<img id="img" class="img-fluid" src="${pics[i]["Image"]}" alt=""/>`;
-    console.log(slideshowpic);
-    return slideshowpic;
+function getPics(datapics) {
+    let pics = "";
+    for(let i=0; i < datapics.length; i++){
+        let pic = "";
+        if (i == 0) {
+            pic = `
+        <div class="carousel-item active">
+            <img class="d-block w-100" src="${datapics[i]["Image"]}" alt="">
+        </div>
+        `;
+        } else {
+            pic = `
+        <div class="carousel-item">
+            <img class="d-block w-100" src="${datapics[i]["Image"]}" alt="">
+        </div>
+        `;
+        }
+        pics += pic;
+    }
+    return pics;
 }
 
 $(document).ready(function() {
-    let i = 0;
     $.getJSON("api-slideshow.php", function(data){
-        const pic = getPic(data,0);
-        $("#div-img").append(pic);
-    });
-
-    $("#right").click(function(){
-        $("img").remove();
-        $.getJSON("api-slideshow.php", function(data){
-            if(i == data.length -1) {
-                i = 0;
-            }
-            const pic = getPic(data,++i);
-            $("#div-img").append(pic);
-        });
-    });
-
-    $("#left").click(function(){
-        $("img").remove();
-        $.getJSON("api-slideshow.php", function(data){
-            if(i == 0) {
-                i = data.length -1;
-            }
-            const pic = getPic(data,--i);
-            $("#div-img").append(pic);
-        });
+        const pics = getPics(data);
+            $("#carousel").append(pics); 
     });
 });

@@ -11,4 +11,8 @@ function send_data($data) {
     echo json_encode($data);
 }
 
+function discounted_price($val, $discount){
+    return $val - ($val * $discount)/100;
+}
+
 ?>

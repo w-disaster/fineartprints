@@ -1,4 +1,5 @@
 <?php
+
 class DatabaseHelper{
     private $db;
 
@@ -25,6 +26,48 @@ class DatabaseHelper{
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function getPicturesFromAuthors($authors){
+        $query = "SELECT * FROM Picture WHERE Author IN (".implode(", ", array_fill(0, count($authors), "?")).")";
+        var_dump($query);
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param(implode("", array_fill(0, count($authors), "s")), ...$authors);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function getPicturesFromCategories($categories){
+        $query = "SELECT * FROM Picture WHERE Category_name IN (".implode(", ", array_fill(0, count($categories), "?")).")";
+        var_dump($query);
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param(implode("", array_fill(0, count($categories), "s")), ...$categories);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getPicturesFromFilters($authors, $categories){
+
+
+
+        $pictures_by_authors = array();
+        if(count($authors) > 0){
+            $pictures_by_authors = $this->getPicturesFromAuthors($authors);
+        }
+        
+        $pictures_by_categories = array();
+        if(count($categories) > 0){
+            $pictures_by_categories = $this->getPicturesFromCategories($categories);
+        }
+
+        $pictures = array_unique(array_merge($pictures_by_authors, $pictures_by_categories), SORT_REGULAR);
+        
+        return $pictures;
     }
 
     public function getTechniquesFromPictureTitle($i){
@@ -126,11 +169,10 @@ class DatabaseHelper{
     }
 
     public function addCustomer($email, $birth_date, $password, $name, $surname, $phone, $city, 
-    $postal_code, $province, $address){
-        $role = "customer";
+    $postal_code, $province, $address, $role){
         $stmt = $this->db->prepare("INSERT INTO user (Email, Birth_date, Password, Name, Surname, Phone, City, Postal_Code,
          Province, Address, Role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
-        $stmt->bind_param("sssssisiss", $email, $birth_date, $password, $name, $surname, $phone, $city, 
+        $stmt->bind_param("sssssisisss", $email, $birth_date, $password, $name, $surname, $phone, $city, 
         $postal_code, $province, $address, $role);
         $stmt->execute();
     }
@@ -138,7 +180,7 @@ class DatabaseHelper{
     public function getCustomer(){
         $role = "customer";
         $email = "gino.lippa@prints.com"; /*$_SESSION["email"];*/
-        $stmt = $this->db->prepare("SELECT Email, Birth_date, Name, Surname, Phone, City, Postal_code,
+        $stmt = $this->db->prepare("SELECT Email, Birth_date, Name, Surname, Password, Phone, City, Postal_code,
          Province, Address FROM user WHERE Email = ? AND Role = ?;");
         $stmt->bind_param("ss", $email, $role);
         $stmt->execute();
@@ -158,9 +200,22 @@ class DatabaseHelper{
         $stmt->execute();
     }
 
+    public function getCreditCard($owner, $expire_date, $card){
+        echo $expire_date;
+        $email = "gino.lippa@prints.com"; /*$_SESSION["email"];*/
+        $stmt = $this->db->prepare("SELECT Number FROM credit_card
+         WHERE Owner = ? AND Expire_date = ? AND Number = ?;");
+        $stmt->bind_param("ssi", $owner, $expire_date, $card);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getPaymentInfo(){
         $email = "gino.lippa@prints.com"; /*$_SESSION["email"];*/
-        $stmt = $this->db->prepare("SELECT Owner, Card_number, Expire_date FROM payment_info, credit_card WHERE payment_info.Card_number = credit_card.Number AND Email = ?;");
+        $stmt = $this->db->prepare("SELECT Owner, Card_number, Expire_date 
+        FROM payment_info, credit_card WHERE payment_info.Card_number = credit_card.Number AND Email = ?;");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -205,9 +260,15 @@ class DatabaseHelper{
 
     public function getOrderProducts(){
         $email = "gino.lippa@prints.com"; /*$_SESSION["email"];*/
-        $stmt = $this->db->prepare("SELECT Image, Picture_title,final_product.Order_id FROM prints_order, user,
-        final_product, picture WHERE prints_order.Order_id = final_product.Order_id 
-        AND user.Email = prints_order.Email AND Title = Picture_title AND user.Email = ?");
+        $stmt = $this->db->prepare("SELECT picture.Image, Picture_title, print_technique.Description,
+         passpartout.Specifications, frame.Description AS Framedesc, final_product.Order_id
+          FROM prints_order, user, print_technique, passpartout, frame, final_product, picture
+           WHERE prints_order.Order_id = final_product.Order_id AND
+            final_product.Technique_id = print_technique.Technique_id AND
+             final_product.Frame_id = frame.Frame_id AND
+              final_product.Passpartout_id = passpartout.Passpartout_id AND
+               user.Email = prints_order.Email AND
+                Title = Picture_title AND user.Email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -218,10 +279,36 @@ class DatabaseHelper{
     public function getValueFromTitle($title) {
         $stmt = $this->db->prepare("SELECT Base_price, Discount FROM Picture WHERE Title=?");
         $stmt->bind_param("s", $title);
+    
         $stmt->execute();
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getNotifications() {
+        $status = "new";
+        $email = "gino.lippa@prints.com"; /*$_SESSION["email"];*/
+        $stmt = $this->db->prepare("SELECT tracking_notification.Order_id, Data,
+        Description FROM user, tracking_notification, prints_order WHERE
+         prints_order.Order_id = tracking_notification.Order_id AND user.Email = prints_order.Email AND user.Email = ?
+         AND Status = ? ORDER BY Data DESC");
+        $stmt->bind_param("ss", $email, $status);
+
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function clearNotifications() {
+        $status = "seen";
+        $email = "gino.lippa@prints.com"; /*$_SESSION["email"];*/
+        $stmt = $this->db->prepare("UPDATE tracking_notification, user, prints_order SET Status = ?
+         WHERE prints_order.Order_id = tracking_notification.Order_id
+        AND user.Email = prints_order.Email AND user.Email = ?");
+        $stmt->bind_param("ss", $status, $email);
+        $stmt->execute();
     }
 }
 ?>
