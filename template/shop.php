@@ -104,4 +104,4 @@
     </div>
   </div>
 
-<script src="js/info_print.js" type="text/javascript"></script>
+<script src="js/shop.js" type="text/javascript"></script>

@@ -45,7 +45,7 @@
                             <div class="form-group row text-center">
                                 <label for="email" class="col-5">Email</label>
                                 <input type="email" class="form-control col-6" id="email"
-                                value="<?php echo $info["Email"] ?>" name="email" required/>
+                                value="<?php echo $info["Email"] ?>" name="email" disabled/>
                             </div>
                             <div class="form-group row text-center">
                                 <label for="phone"  class="col-5">Phone</label>
@@ -101,7 +101,7 @@
                                 <?php foreach($templateParams["pay_info"] as $cards): ?>
                                 <tr>
                                     <th id="<?php echo $cards["Owner"]?>"><?php echo $cards["Owner"]?></th>
-                                    <td headers="digits <?php echo $cards["Owner"]?>"><?php echo $cards["Card_number"]?></td>
+                                    <td headers="digits <?php echo $cards["Owner"]?>"><?php echo substr($cards["Card_number"],12,4)?></td>
                                     <td headers="expdate <?php echo $cards["Owner"]?>"><?php echo $cards["Expire_date"]?></td>
                                     <td headers="action <?php echo $cards["Owner"]?>">
                                         <form method="POST" id="remove-form" class="m-0">

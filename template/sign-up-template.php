@@ -39,7 +39,7 @@
                                         <div class="col-12 col-md-5 p-0">
                                             <label for="email" class="p-0 mb-0">Email:</label>
                                             <input type="email" class="form-control <?php echo $isemailvalid?>" id="email" name="email" required />
-                                            <div class="invalid-feedback">Please provide a valid email.</div>
+                                            <div class="invalid-feedback">Please provide a valid or not used email.</div>
                                         </div>
                                         <div class="col-12 col-md-5 offset-md-2 p-0">
                                             <label for="phone" class="p-0 mb-0">Phone:</label>

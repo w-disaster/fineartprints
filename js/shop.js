@@ -1,4 +1,3 @@
-const aside = document.querySelector("aside");
 const replaceArea = document.querySelector("aside > .replace-area");
 let info = "";
 
@@ -29,11 +28,4 @@ $(document).ready(function(){
         //$(this).fadeTo(0, 1);
         replaceArea.innerHTML = "";
     });
-
-    /*
-    $(".col-12, .col-3").hover(function(){
-        aside.innerHTML = aside.innerHTML.replace(info, "");
-    });*/
-
-    
 });
