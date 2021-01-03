@@ -19,15 +19,6 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getAllPictures(){
-        $stmt = $this->db->prepare("SELECT Title, Image, Author, Base_price, Discount FROM picture ORDER BY RAND() LIMIT 12");
-
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
     public function getPictureFromTitle($title){
         $stmt = $this->db->prepare("SELECT * FROM picture WHERE Title=?");
         $stmt->bind_param("s", $title);
@@ -36,6 +27,16 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getCustomerCreditCardByEmail($email){
+        $stmt = $this->db->prepare("SELECT Card_number FROM payment_info WHERE Email=?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
 
     public function getTechniquesFromPictureTitle($i){
         $stmt = $this->db->prepare("SELECT Print_technique.Technique_id, Image, Description FROM Print_technique, Art_print WHERE Print_technique.Technique_id = Art_print.Technique_id AND Art_print.Picture_title=?");
@@ -134,6 +135,21 @@ class DatabaseHelper{
         $stmt->execute();
     }
 
+    public function getUserByEmail($email){
+        $stmt = $this->db->prepare("SELECT * FROM user WHERE Email=?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function addPaymentInfo($email, $number){
+        $stmt = $this->db->prepare("INSERT INTO payment_info (Card_number, Email) VALUES (?, ?)");
+        $stmt->bind_param("ss", $number, $email);
+        $stmt->execute();
+    }
+
     public function getCustomer(){
         $email = $_SESSION["username"];
         $role = $_SESSION["role"];
@@ -157,10 +173,9 @@ class DatabaseHelper{
         $stmt->execute();
     }
 
-    public function getCreditCard($owner, $expire_date, $card){
-        $stmt = $this->db->prepare("SELECT Number FROM credit_card
-         WHERE Owner = ? AND Expire_date = ? AND Number = ?;");
-        $stmt->bind_param("ssi", $owner, $expire_date, $card);
+    public function getCreditCard($owner, $expire_date, $number){
+        $stmt = $this->db->prepare("SELECT Number FROM credit_card WHERE Owner = ? AND Expire_date = ? AND Number = ?");
+        $stmt->bind_param("sss", $owner, $expire_date, $number);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -184,12 +199,13 @@ class DatabaseHelper{
         $stmt->execute();
     }
 
+    /*
     public function addPaymentInfo($number){
         $email = $_SESSION["username"];
         $stmt = $this->db->prepare("INSERT INTO payment_info (Card_number, Email) VALUES (?, ?);");
         $stmt->bind_param("is", $number, $email);
         $stmt->execute();
-    }
+    }*/
 
     public function getMyOrders(){
         $email = $_SESSION["username"];

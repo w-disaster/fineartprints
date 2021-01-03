@@ -9,7 +9,6 @@
     integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   <link rel="shortcut icon" type="image/jpg" href="upload/icons/file-richtext.svg" />
   <link rel="stylesheet" href="css/theme.css">
-  <link rel="stylesheet" href="css/<?php echo $templateParams["css"]; ?>">
 
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
