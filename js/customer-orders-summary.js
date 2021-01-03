@@ -68,7 +68,7 @@ function getProducts(dataorders,dataproducts) {
                         <div class="col-12 text-center py-1 d-flex align-items-center">
                             <a class="mx-auto d-block" href="product-page.php?title=${dataproducts[i]["Picture_title"].replace(" ","%20")}">
                             <img class="mx-auto d-block" src="${dataproducts[i]["Image"]}"
-                             style="max-height:175px;max-width: 200px;" alt=""/></a>
+                             style="max-height:175px;max-width: 200px;" alt="${dataproducts[i]["Picture_title"]}"/></a>
                         </div>
                         <div class="text-center col-12">
                             <a href="product-page.php?title=${dataproducts[i]["Picture_title"].replace(" ","%20")}">
