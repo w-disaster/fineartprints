@@ -1,7 +1,7 @@
 <?php
 require_once 'bootstrap.php';
-$orders = $dbh->getMyOrders($_SESSION["email"]);
-$products = $dbh->getOrderProducts($_SESSION["email"]);
+$orders = $dbh->getMyOrders($_SESSION["Email"]);
+$products = $dbh->getOrderProducts($_SESSION["Email"]);
 for($i = 0; $i < count($products); $i++) {
     $products[$i]["Image"] = UPLOAD_DIR.$products[$i]["Image"];
 }

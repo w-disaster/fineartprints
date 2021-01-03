@@ -95,7 +95,7 @@ function getProducts(dataorders,dataproducts) {
     }
 }
 $(document).ready(function() {
-    $.getJSON("api-customer-orders.php", function(data){
+    $.getJSON("api-customer-orders-summary.php", function(data){
         const total = new Array();
         for(let i = 0;i < data[0].length; i++) {
             let price = 0;
@@ -112,7 +112,7 @@ $(document).ready(function() {
     });
     $("#ship_option").on('change', function() {
         $("#order").empty();
-        $.getJSON("api-customer-orders.php", function(data){
+        $.getJSON("api-customer-orders-summary.php", function(data){
             const total = new Array();
             for(let i = 0;i < data[0].length; i++) {
                 let price = 0;
@@ -131,7 +131,7 @@ $(document).ready(function() {
 
     $("#date_option").on('change', function() {
         $("#order").empty();
-        $.getJSON("api-customer-orders.php", function(data){
+        $.getJSON("api-customer-orders-summary.php", function(data){
             const total = new Array();
             for(let i = 0;i < data[0].length; i++) {
                 let price = 0;

@@ -55,7 +55,7 @@
 
             <div class="row mt-2 mx-0">
                 <div class="col-3 col-md-1 offset-1 offset-md-1 p-0">
-                    <p class="text-center text-monospace m-0 bg-white" style="font-size:20px;">Sales
+                    <p class="text-center text-monospace m-0 bg-light" style="font-size:20px;">Sales
                     </p>
                 </div>
             </div>
@@ -80,7 +80,7 @@
 
             <div class="row m-0">
                 <div class="col-3 col-md-1 offset-1 offset-md-1 p-0">
-                    <p class="text-center text-monospace m-0 bg-white" style="font-size:20px;">Latest
+                    <p class="text-center text-monospace m-0 bg-light" style="font-size:20px;">Latest
                     </p>
                 </div>
             </div>
