@@ -29,7 +29,6 @@ $(document).ready(function() {
             technique.children().remove();
             technique.append(data);
             technique.find("img").attr("width", "50%");
-            console.log(technique.text().trim());
         } else if (choice.is("button#frame-choice")) {
             frame.children().remove();
             frame.append(data);

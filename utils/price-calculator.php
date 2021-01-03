@@ -4,8 +4,8 @@ class PriceCalculator {
 
     private $base_price = 0.0;
     private $discounted_price = 0.0;
-    private $height = 0.0;
-    private $width = 0.0;
+    private $height = default_height;
+    private $width = default_width;
     private $technique_price = 0.0;
     private $frame_price = 0.0;
     private $passpartout_price = 0.0;

@@ -16,17 +16,21 @@ if ($request_id == 1) {
         "price" => $base_price,
         "discounted-price" => $discounted_price,
         "price-divider" => price_divider,
+        "default-height" => default_height,
+        "default-width" => default_width,
+        "max-height" => max_height,
+        "max-width" => max_width
     );
 
 } else if ($request_id == 2) {
     $technique_id = $_GET["technique_id"];
-    $data = $dbh->getPriceFromTechnique(intval($technique_id));
+    $data = $dbh->getPriceFromTechnique($technique_id);
 } else if ($request_id == 3) {
     $frame_id = $_GET["frame_id"];
-    $data = $dbh->getPriceFromFrame(intval($frame_id));
+    $data = $dbh->getPriceFromFrame($frame_id);
 } else if ($request_id == 4) {
     $passpartout_id = $_GET["passpartout_id"];
-    $data = $dbh->getPriceFromPasspartout(intval($passpartout_id));    
+    $data = $dbh->getPriceFromPasspartout($passpartout_id);    
 } else {
     unset($data);
 }

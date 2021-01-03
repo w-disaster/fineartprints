@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="css/product.css">
 <link rel="stylesheet" href="css/theme.css">
-<?var_dump(($_SESSION["final-products"][$_SESSION["products-count"]]));?>
+<?php var_dump(($_SESSION["final-products"][$_SESSION["products-count"]]));?>
 <div class="flex-grow-1 subtle-pattern">
     <div class="container-fluid bg-white flex-flow-row-wrap subtle-pattern">
         <div class="container px-4">
@@ -17,53 +17,49 @@
                     <div class="row">
                         <div class="col-md-8 pl-4 py-5">
                             <div class="row px-3">
-                                <a href="<? echo UPLOAD_DIR.$print["Image"]; ?>"><img alt="<? echo $title; ?>" class="img-fluid d-block" src="<? echo UPLOAD_DIR.$print["Image"]; ?>"></a>
+                                <a href="<?php echo UPLOAD_DIR.$print["Image"]; ?>"><img alt="<?php echo $title; ?>" class="img-fluid d-block" src="<?php echo UPLOAD_DIR.$print["Image"]; ?>"></a>
                             </div>
                             <div class="row mt-4 pl-4 pr-5">
                                 <p class="text-uppercase h6">Description</p>
                                 <p class="summary">
-                                    <? echo $print["Description"]; ?>
+                                    <?php echo $print["Description"]; ?>
                                 </p>
                             </div>
                         </div>
                         <div class="col-md-4 pl-2 py-3 mx-0">
                             <div class="row mx-3 mt-3">
                                 <h2>
-                                    <? echo $print["Title"]; ?>
+                                    <?php echo $print["Title"]; ?>
                                 </h2>
                             </div>
                             <div class="row mx-3 mt-3 mx-0">
-                                <? if($print["Discount"] <= 0): ?>
+                                <?php if($print["Discount"] <= 0): ?>
                                 <p id="price" class=" h3 mb-4 mr-2">
-                                    <? echo $templateParams["price"]; ?> €</p>
-                                <? else: ?>
+                                    <?php echo $templateParams["price"]; ?> €</p>
+                                <?php else: ?>
                                 <p id="price" class="text-muted h3 mb-4 mr-2"><del>
-                                        <? echo $templateParams["price"]; ?></del></p>
+                                        <?php echo $templateParams["price"]; ?></del></p>
                                 <p id="price-discounted" class="h3 mb-4 mr-3">
-                                    <? echo $templateParams["price_discounted"]; ?> €</p>
-                                <? endif; ?>
-                                <? if($templateParams["logged"]): ?>
+                                    <?php echo $templateParams["price_discounted"]; ?> €</p>
+                                <?php endif; ?>
+                                <?php if($templateParams["logged"]): ?>
                                     <button class="btn btn-block btn-primary ml-2 mb-3" type="button">Add to cart</button>
-                                <? else: ?>
+                                <?php else: ?>
                                     <a class="text-white" href="login.php"><button class="btn btn-block btn-primary ml-2 mb-3" type="button">Login to add to Cart</button></a>
-                                <? endif; ?>
+                                <?php endif; ?>
                                 <p>The print technique is <strong>required</strong>, while the frame and the passpartout are <strong>optional.</strong></p>
-                                <p>Prices are computed taking into account the width and height of the print, the technique employed and the available customizations in addition to the base price, computed for the default dimensions of <? echo default_width ?> cm &times; <? echo default_height ?> cm.</p>
+                                <p>Prices are computed taking into account the width and height of the print, the technique employed and the available customizations in addition to the base price, computed for the default dimensions of <?php echo default_width ?> cm &times; <?php echo default_height ?> cm.</p>
                             </div>
                             <div class="row">
-                                <div class="container d-flex flex-column mt-2 p-4 border bg-light mx-3 align-items-center">
-                                    <p class="h6 text-uppercase">Print size</p>
-                                    <div class="row">
-                                        <label class="mr-1" for="inputWidth">width</label> &times; <label class="ml-1 mr-2" for="inputHeight">height</label>
-                                        <p>in cm</p>
+                                <div class="container mt-2 p-4 border bg-light mx-3">
+                                    <p class="h6 text-uppercase text-center">Print size</p>
+                                    <div class="row d-flex justify-content-center">
+                                        <label class="mr-1" for="inputWidth">width</label> &times; <label class="ml-1 mr-2" for="inputHeight">height in cm</label>
                                     </div>
-                                    <div class="row">
-                                        <form class=" d-flex align-items-center justify-content-center">
-                                            <input type="number" step="0.01" min="<? echo default_width ?>" id="inputWidth" class="mr-2" value="<? echo $templateParams["width"]; ?>" required>
-                                            &times;
-                                            <input type="number" step="0.01" min="<? echo default_height ?>" id="inputHeight" class="ml-2" value="<? echo $templateParams["height"]; ?>" required>
-                                            <button class="btn btn-primary ml-2 mb-3" type="submit">Update dimensions</button>
-                                        </form>
+                                    <div class="row d-flex justify-content-center align-items-center">
+                                        <input type="number" step="0.01" min="<?php echo default_width ?>" max="<?php echo max_width?>" id="inputWidth" class="mr-2" value="<?php echo $templateParams["width"]; ?>" required>
+                                        &times;
+                                        <input type="number" step="0.01" min="<?php echo default_height ?>" max="<?php echo max_height?>" id="inputHeight" class="ml-2" value="<?php echo $templateParams["height"]; ?>" required>
                                     </div>
                                 </div>
                             </div>
@@ -73,32 +69,32 @@
                                         <div class="accordion d-flex flex-column flex-grow-1 py-2 px-4">
                                             <p class="h6 text-uppercase">Print Technique</p>
                                             <button id="technique-choice" class="text-left">
-                                            <? if(empty($templateParams["technique_id"])): ?>
+                                            <?php if(empty($templateParams["technique_id"])): ?>
                                                 <span>none</span>
-                                            <? else: ?>
+                                            <?php else: ?>
                                                 <span class="media justify-content-center">
-                                                    <img class="mr-3" src="<? echo UPLOAD_DIR.$chosenTechnique["Image"] ?>" width="50%" alt="
-                                                    <? echo $chosenTechnique["Technique_id"] ?>">
+                                                    <img class="mr-3" src="<?php echo UPLOAD_DIR.$chosenTechnique["Image"] ?>" width="50%" alt="
+                                                    <?php echo $chosenTechnique["Technique_id"] ?>">
                                                     <span class="media-body">
-                                                        <span class="h5 d-block"><? echo $chosenTechnique["Technique_id"] ?></span>
-                                                        <span class="h6 d-block"><? echo $chosenTechnique["Description"] ?></span>
+                                                        <span class="h5 d-block"><?php echo $chosenTechnique["Technique_id"] ?></span>
+                                                        <span class="h6 d-block"><?php echo $chosenTechnique["Description"] ?></span>
                                                     </span>
                                                 </span>
-                                            <? endif; ?>
+                                            <?php endif; ?>
                                             </button>
                                             <div>
-                                                <? foreach ($techniques as $technique) : ?>
+                                                <?php foreach ($techniques as $technique) : ?>
                                                 <button class="w-100 mt-1">
                                                     <span class="media justify-content-center">
-                                                        <img class="mr-3" src="<? echo UPLOAD_DIR.$technique["Image"] ?>" width="50%" alt="
-                                                        <? echo $technique["Technique_id"] ?>">
+                                                        <img class="mr-3" src="<?php echo UPLOAD_DIR.$technique["Image"] ?>" width="50%" alt="
+                                                        <?php echo $technique["Technique_id"] ?>">
                                                         <span class="media-body">
-                                                            <span class="h5 d-block"><? echo $technique["Technique_id"] ?></span>
-                                                            <span class="h6 d-block"><? echo $technique["Description"] ?></span>
+                                                            <span class="h5 d-block"><?php echo $technique["Technique_id"] ?></span>
+                                                            <span class="h6 d-block"><?php echo $technique["Description"] ?></span>
                                                         </span>
                                                     </span>
                                                 </button>
-                                                <? endforeach; ?>
+                                                <?php endforeach; ?>
                                                 <button class="text-left w-100">none</button>
                                             </div>
                                         </div>
@@ -107,32 +103,32 @@
                                         <div class="accordion d-flex flex-column flex-grow-1 py-2 px-4">
                                             <p class="h6 text-uppercase">Frame</p>
                                             <button id="frame-choice" class="text-left">
-                                            <? if(empty($templateParams["frame_id"])): ?>
+                                            <?php if(empty($templateParams["frame_id"])): ?>
                                                 <span>none</span>
-                                            <? else: ?>
+                                            <?php else: ?>
                                                 <span class="media justify-content-center">
-                                                    <img class="mr-3" src="<? echo UPLOAD_DIR.$chosenFrame["Image"] ?>" width="50%" alt="
-                                                    <? echo $chosenFrame["Frame_id"] ?>">
+                                                    <img class="mr-3" src="<?php echo UPLOAD_DIR.$chosenFrame["Image"] ?>" width="50%" alt="
+                                                    <?php echo $chosenFrame["Frame_id"] ?>">
                                                     <span class="media-body">
-                                                        <span class="h5 d-block"><? echo $chosenFrame["Frame_id"] ?></span>
-                                                        <span class="h6 d-block"><? echo $chosenFrame["Description"] ?></span>
+                                                        <span class="h5 d-block"><?php echo $chosenFrame["Frame_id"] ?></span>
+                                                        <span class="h6 d-block"><?php echo $chosenFrame["Description"] ?></span>
                                                     </span>
                                                 </span>
-                                            <? endif; ?>
+                                            <?php endif; ?>
                                             </button>
                                             <div>
-                                                <? foreach ($frames as $frame): ?>
+                                                <?php foreach ($frames as $frame): ?>
                                                 <button class="w-100 mt-1">
                                                     <span class="media">
-                                                        <img class="mr-3" src="<? echo UPLOAD_DIR.$frame["Image"] ?>" alt="
-                                                        <? echo $frame["Frame_id"] ?>">
+                                                        <img class="mr-3" src="<?php echo UPLOAD_DIR.$frame["Image"] ?>" alt="
+                                                        <?php echo $frame["Frame_id"] ?>">
                                                         <span class="media-body">
-                                                            <span class="h5 d-block"><? echo $frame["Frame_id"] ?></span>
-                                                            <span class="h6 d-block"><? echo $frame["Description"] ?></span>
+                                                            <span class="h5 d-block"><?php echo $frame["Frame_id"] ?></span>
+                                                            <span class="h6 d-block"><?php echo $frame["Description"] ?></span>
                                                         </span>
                                                     </span>
                                                 </button>
-                                                <? endforeach; ?>
+                                                <?php endforeach; ?>
                                                 <button class="text-left w-100">none</button>
                                             </div>
                                         </div>
@@ -141,32 +137,32 @@
                                         <div class="accordion d-flex flex-column flex-grow-1 py-2 px-4">
                                             <p class="h6 text-uppercase">Passpartout</p>
                                             <button id="passpartout-choice" class="text-left">
-                                            <? if(empty($templateParams["passpartout_id"])): ?>
+                                            <?php if(empty($templateParams["passpartout_id"])): ?>
                                                 <span>none</span>
-                                            <? else: ?>
+                                            <?php else: ?>
                                                 <span class="media justify-content-center">
-                                                    <img class="mr-3" src="<? echo UPLOAD_DIR.$chosenPasspartout["Image"] ?>" width="50%" alt="
-                                                    <? echo $chosenPasspartout["Passpartout_id"] ?>">
+                                                    <img class="mr-3" src="<?php echo UPLOAD_DIR.$chosenPasspartout["Image"] ?>" width="50%" alt="
+                                                    <?php echo $chosenPasspartout["Passpartout_id"] ?>">
                                                     <span class="media-body">
-                                                        <span class="h5 d-block"><? echo $chosenPasspartout["Passpartout_id"] ?></span>
-                                                        <span class="h6 d-block"><? echo $chosenPasspartout["Description"] ?></span>
+                                                        <span class="h5 d-block"><?php echo $chosenPasspartout["Passpartout_id"] ?></span>
+                                                        <span class="h6 d-block"><?php echo $chosenPasspartout["Description"] ?></span>
                                                     </span>
                                                 </span>
-                                            <? endif; ?>
+                                            <?php endif; ?>
                                             </button>
                                             <div>
-                                                <? foreach ($passpartouts as $passpartout): ?>
+                                                <?php foreach ($passpartouts as $passpartout): ?>
                                                 <button class="w-100 mt-1">
                                                     <span class="media justify-content-center">
-                                                        <img class="mr-3" src="<? echo UPLOAD_DIR.$passpartout["Image"] ?>" alt="
-                                                        <? echo $passpartout["Passpartout_id"] ?>">
+                                                        <img class="mr-3" src="<?php echo UPLOAD_DIR.$passpartout["Image"] ?>" alt="
+                                                        <?php echo $passpartout["Passpartout_id"] ?>">
                                                         <span class="media-body">
-                                                            <span class="h5 d-block"><? echo $passpartout["Passpartout_id"] ?></span>
-                                                            <span class="h6 d-block"><? echo $passpartout["Specifications"] ?></span>
+                                                            <span class="h5 d-block"><?php echo $passpartout["Passpartout_id"] ?></span>
+                                                            <span class="h6 d-block"><?php echo $passpartout["Specifications"] ?></span>
                                                         </span>
                                                     </span>
                                                 </button>
-                                                <? endforeach; ?>
+                                                <?php endforeach; ?>
                                                 <button class="text-left w-100">none</button>
                                             </div>
                                         </div>
@@ -183,7 +179,7 @@
 
 <script src="js/print-customization.js"></script>
 <script src="js/accordion.js"></script>
-<? if($templateParams["logged"]): ?>
+<!--<?php if($templateParams["logged"]): ?>
 <script src="js/print-post-request.js"></script>
-<? endif; ?>
+<?php endif; ?>-->
 <script src="js/print-update-price.js"></script>

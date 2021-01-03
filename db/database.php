@@ -38,7 +38,7 @@ class DatabaseHelper{
     }
 
     public function getTechniquesFromPictureTitle($title){
-        $stmt = $this->db->prepare("SELECT print_technique.Technique_id, Image, Description, Price_per_cm2 as Price FROM print_technique, art_print WHERE print_technique.Technique_id = art_print.Technique_id AND art_print.Picture_title=?");
+        $stmt = $this->db->prepare("SELECT print_technique.Technique_id, Image, Description, Price_per_cm2 FROM print_technique, art_print WHERE print_technique.Technique_id = art_print.Technique_id AND art_print.Picture_title=?");
         $stmt->bind_param("s", $title);
         $stmt->execute();
         $result = $stmt->get_result();
