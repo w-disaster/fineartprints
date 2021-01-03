@@ -31,8 +31,7 @@
                   src="<?php echo UPLOAD_DIR.'/icons/person-circle.svg'?>" alt="your profile" width="32" height="32"></a>
             </li>
             <li class="nav-item"><a class="nav-link navbar-brand" href="shopping-cart.php"><img src="<?php echo UPLOAD_DIR.'/icons/bag.svg'?>"
-                  alt="cart" width="32" height="32"><span id="cart-item-count" class="badge badge-light badge-pill text-dark"><?
-                  echo count($_SESSION["cart-items"] ?? [])?></span></a></li>
+                  alt="cart" width="32" height="32"><span id="cart-item-count" class="badge badge-light badge-pill text-dark"><? echo $_SESSION["products-count"] ?? 0?></span></a></li>
           </ul>
         </div>
       </div>

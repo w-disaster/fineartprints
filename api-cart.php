@@ -3,9 +3,9 @@ require_once 'bootstrap.php';
 require_once 'utils/functions.php';
 
 if (isset($_POST["title"])) {
-    $products_number = $_SESSION["products-number"] ?? 0;
-    $products_number++;
-    $_SESSION["final-products"][$products_number] = array(
+    $_SESSION["products-count"] = $_SESSION["products-count"] ?? 0;
+    $_SESSION["products-count"]++;
+    $_SESSION["final-products"][$_SESSION["products-count"]] = array(
         "title" => $_POST["title"],
         "width" => $_POST["width"],
         "height" => $_POST["height"],
@@ -13,6 +13,7 @@ if (isset($_POST["title"])) {
         "frame_id" => $_POST["frame_id"],
         "passpartout_id" => $_POST["passpartout_id"]
     );
+
 }
 
 ?>

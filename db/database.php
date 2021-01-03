@@ -29,7 +29,7 @@ class DatabaseHelper{
     }
 
     public function getPictureFromTitle($title){
-        $stmt = $this->db->prepare("SELECT * FROM picture WHERE Title=?");
+        $stmt = $this->db->prepare("SELECT * FROM Picture WHERE Title=?");
         $stmt->bind_param("s", $title);
         $stmt->execute();
         $result = $stmt->get_result();

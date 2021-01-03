@@ -2,9 +2,9 @@ $(document).ready(function() {
 
     const inputWidth = $("input#inputWidth");
     const inputHeight = $("input#inputHeight");
-    const techniqueChoice = $("button#technique-choice ~ div");
-    const frameChoice = $("button#frame-choice ~ div");
-    const passpartoutChoice = $("button#passpartout-choice ~ div");
+    const techniqueChoice = $("button#technique-choice > span");
+    const frameChoice = $("button#frame-choice > span");
+    const passpartoutChoice = $("button#passpartout-choice > span");
     const cartBadge = $("span#cart-item-count");
 
     let title, height, width, techniqueId, frameId, passpartoutId, currentItemCount;
@@ -17,9 +17,34 @@ $(document).ready(function() {
         title = $("div.row > div.col-md-4").find("h2").first().text();
         width = parseFloat(inputWidth.val());
         height = parseFloat(inputHeight.val());
-        techniqueId = techniqueChoice.find("span.media-body > span.h5").text();
-        frameId = frameChoice.find("span.media-body > span.h5").text();
-        passpartoutId = passpartoutChoice.find("span.media-body > span.h5").text();
+
+        techniqueId = techniqueChoice.find("span.media-body > span.h5").first();
+        frameId = frameChoice.find("span.media-body > span.h5").first();
+        passpartoutId = passpartoutChoice.find("span.media-body > span.h5").first();
+
+        console.log(techniqueChoice);
+        console.log(techniqueChoice.find("span.media-body"));
+        if (techniqueId.length <= 0) {
+            techniqueId = "none";
+        } else {
+            techniqueId = techniqueId.text();
+        }
+
+        if (frameId.length <= 0) {
+            frameId = "none";
+        } else {
+            frameId = frameId.text();
+        }
+
+        if (passpartoutId.length <= 0) {
+            passpartoutId = "none";
+        } else {
+            passpartoutId = passpartoutId.text();
+        }
+
+        console.log(techniqueId);
+        console.log(frameId);
+        console.log(passpartoutId);
 
         $.ajax({
             type: "POST",
