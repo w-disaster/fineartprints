@@ -10,9 +10,9 @@ class DatabaseHelper{
         }        
     }
 
-    public function checkLogin($username, $password){
-        $stmt = $this->db->prepare("SELECT email, role FROM User WHERE email = ? AND password = ?");
-        $stmt->bind_param('ss',$username, $password);
+    public function checkLogin($email, $password){
+        $stmt = $this->db->prepare("SELECT Email, Role FROM User WHERE email = ? AND password = ?");
+        $stmt->bind_param('ss',$email, $password);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -37,9 +37,9 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getTechniquesFromPictureTitle($i){
-        $stmt = $this->db->prepare("SELECT Print_technique.Technique_id, Image, Description FROM Print_technique, Art_print WHERE Print_technique.Technique_id = Art_print.Technique_id AND Art_print.Picture_title=?");
-        $stmt->bind_param("s", $i);
+    public function getTechniquesFromPictureTitle($title){
+        $stmt = $this->db->prepare("SELECT Print_technique.Technique_id, Image, Description, Price_per_cm2 as Price FROM Print_technique, Art_print WHERE Print_technique.Technique_id = Art_print.Technique_id AND Art_print.Picture_title=?");
+        $stmt->bind_param("s", $title);
         $stmt->execute();
         $result = $stmt->get_result();
 

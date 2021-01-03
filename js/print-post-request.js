@@ -14,7 +14,7 @@ $(document).ready(function() {
     });
 
     function update_session() {
-        title = $("div.row > div.col-md-4").find("h2").first().text();
+        title = $("div.row > div.col-md-4").find("h2").first().text().trim();
         width = parseFloat(inputWidth.val());
         height = parseFloat(inputHeight.val());
 
@@ -24,6 +24,7 @@ $(document).ready(function() {
 
         console.log(techniqueChoice);
         console.log(techniqueChoice.find("span.media-body"));
+
         if (techniqueId.length <= 0) {
             techniqueId = "none";
         } else {

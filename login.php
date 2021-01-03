@@ -4,6 +4,7 @@ require_once "utils/functions.php";
 
 if(isset($_POST["email"]) && isset($_POST["password"])){
     $login_result = $dbh->checkLogin($_POST["email"], $_POST["password"]);
+
     if(empty($login_result)){
         $templateParams["loginError"] = true;
     }

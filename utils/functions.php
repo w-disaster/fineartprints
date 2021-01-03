@@ -6,12 +6,12 @@ abstract class UserType {
 }
 
 function isUserLoggedIn($role){
-    return !empty($_SESSION) && $_SESSION["role"] == $role;
+    return !empty($_SESSION["Role"]) && $_SESSION["Role"] == $role;
 }
 
 function registerLoggedUser($user){
-    $_SESSION["username"] = $user["username"];
-    $_SESSION["role"] = $user["role"];
+    $_SESSION["Email"] = $user["Email"];
+    $_SESSION["Role"] = $user["Role"];
 }
 
 function var_dump_plus($expression) {

@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    let title = $("div.row > div.col-md-4").find("h2").first().text();
+    let title = $("div.row > div.col-md-4").find("h2").first().text().trim();
     title = title.replace(" ","%20");
 
     let request_id, priceDivider, basePrice, basePriceDiscounted, framePrice, passpartoutPrice, techniquePrice, height, width;
@@ -9,17 +9,12 @@ $(document).ready(function(){
     const priceDiscounted = $("p#price-discounted");
     const inputWidth = $("input#inputWidth");
     const inputHeight = $("input#inputHeight");
-    const techniqueChoice = $("button#technique-choice ~ div");
-    const frameChoice = $("button#frame-choice ~ div");
-    const passpartoutChoice = $("button#passpartout-choice ~ div");
+    const techniqueChoice = $("button#technique-choice ~ span");
+    const frameChoice = $("button#frame-choice ~ span");
+    const passpartoutChoice = $("button#passpartout-choice ~ span");
 
-    basePrice = 0.0;
-    basePriceDiscounted = 0.0;
     width = parseFloat(inputWidth.val());
     height = parseFloat(inputHeight.val());
-    techniquePrice = 0.0;
-    framePrice = 0.0;
-    passpartoutPrice = 0.0;
 
     request_id = 1;
 
@@ -83,12 +78,11 @@ $(document).ready(function(){
 
     function updatePrice() {
 
-        let delta = ((basePrice * additiveConstant) + techniquePrice + passpartoutPrice).toPrecision(6);
+        let delta = ((basePrice * priceDivider) + techniquePrice + passpartoutPrice).toPrecision(6);
         let updatedPrice = basePrice + framePrice + delta * (height + width);
-        
-        console.log(priceDiscounted);
+
         if(priceDiscounted.length > 0) {
-            let deltaDiscounted = (basePriceDiscounted * additiveConstant) + techniquePrice + passpartoutPrice;
+            let deltaDiscounted = (basePriceDiscounted * priceDivider) + techniquePrice + passpartoutPrice;
             let updatedDiscountedPrice = basePriceDiscounted + framePrice + deltaDiscounted * (height + width);   
             
             fullPrice.html('<p id="price" class="text-muted h3 mb-4 mr-2"><del>' + updatedPrice.toFixed(2) + " €</del></p>");

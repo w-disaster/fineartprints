@@ -10,8 +10,8 @@ $dbh = new DatabaseHelper("localhost", "root", "", "fineartprints", 3306);
 const price_divider = 0.001;
 $price_calculator = new PriceCalculator(price_divider);
 
-const default_height = 10.00;
-const default_width = 10.00;
+const default_height = 30.00;
+const default_width = 30.00;
 const max_width = 500.00;
 const max_height = 500.00;
 ?>

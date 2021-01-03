@@ -48,7 +48,7 @@
                                     <a class="text-white" href="login.php"><button class="btn btn-block btn-primary ml-2 mb-3" type="button">Login to add to Cart</button></a>
                                 <? endif; ?>
                                 <p>The print technique is <strong>required</strong>, while the frame and the passpartout are <strong>optional.</strong></p>
-                                <p>Prices are computed taking into account the width and height of the print, the technique employed and the available customizations in addition to the base price, computed for the default dimensions of 10 cm &times; 10 cm.</p>
+                                <p>Prices are computed taking into account the width and height of the print, the technique employed and the available customizations in addition to the base price, computed for the default dimensions of <? echo default_width ?> cm &times; <? echo default_height ?> cm.</p>
                             </div>
                             <div class="row">
                                 <div class="container d-flex flex-column mt-2 p-4 border bg-light mx-3 align-items-center">
@@ -57,10 +57,13 @@
                                         <label class="mr-1" for="inputWidth">width</label> &times; <label class="ml-1 mr-2" for="inputHeight">height</label>
                                         <p>in cm</p>
                                     </div>
-                                    <div class="row  align-items-center justify-content-center">
-                                        <input type="number" step="0.01" min="10.00" id="inputWidth" class="mr-2" value="<? echo $templateParams["width"]; ?>" required>
-                                        &times;
-                                        <input type="number" step="0.01" min="10.00" id="inputHeight" class="ml-2" value="<? echo $templateParams["height"]; ?>" required>
+                                    <div class="row">
+                                        <form class=" d-flex align-items-center justify-content-center">
+                                            <input type="number" step="0.01" min="<? echo default_width ?>" id="inputWidth" class="mr-2" value="<? echo $templateParams["width"]; ?>" required>
+                                            &times;
+                                            <input type="number" step="0.01" min="<? echo default_height ?>" id="inputHeight" class="ml-2" value="<? echo $templateParams["height"]; ?>" required>
+                                            <button class="btn btn-primary ml-2 mb-3" type="submit">Update dimensions</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -183,4 +186,4 @@
 <? if($templateParams["logged"]): ?>
 <script src="js/print-post-request.js"></script>
 <? endif; ?>
-<!--<script src="js/print-update-price.js"></script>-->
+<script src="js/print-update-price.js"></script>
