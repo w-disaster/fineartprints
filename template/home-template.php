@@ -7,25 +7,25 @@
                     d-flex align-items-center" data-ride="carousel">
                         <div id="carousel" class="carousel-inner">
                             <div class="carousel-item active">
-                                <img class="w-100 mx-auto" src="./upload/slideshow/NatureBlue.webp" alt="">
+                                <img class="w-100 mx-auto" src="./upload/slideshow/NatureBlue.webp" alt="Nature image">
                             </div>
                             <div class="carousel-item">
-                                <img class="w-100" src="./upload/slideshow/NatureGreen.webp" alt="">
+                                <img class="w-100" src="./upload/slideshow/NatureGreen.webp" alt="Nature image">
                             </div>
                             <div class="carousel-item">
-                                <img class="w-100" src="./upload/slideshow/Street2.webp" alt="">
+                                <img class="w-100" src="./upload/slideshow/Street2.webp" alt="Street image">
                             </div>
                             <div class="carousel-item">
-                                <img class="w-100" src="./upload/slideshow/Space2.webp" alt="">
+                                <img class="w-100" src="./upload/slideshow/Space2.webp" alt="Space image">
                             </div>
                             <div class="carousel-item">
-                                <img class="w-100" src="./upload/slideshow/Arc1.jpg" alt="">
+                                <img class="w-100" src="./upload/slideshow/Arc1.jpg" alt="Architecture image">
                             </div>
                             <div class="carousel-item">
-                                <img class="w-100" src="./upload/slideshow/Space3.webp" alt="">
+                                <img class="w-100" src="./upload/slideshow/Space3.webp" alt="Space image">
                             </div>
                             <div class="carousel-item">
-                                <img class="w-100" src="./upload/slideshow/Street3.webp" alt="">
+                                <img class="w-100" src="./upload/slideshow/Street3.webp" alt="Street image">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -65,20 +65,22 @@
                     <ul class="nav text-center col-md-9 bg-light p-0">
                     <?php foreach($templateParams["salespictures"] as $salepicture): ?>
                         <li class="col-6 col-md-3 nav-item mt-2 p-2">
-                            <a href="product-page.php?title=<?php echo $salepicture["Title"];?>">
+                            <a href="product-page.php?title=<?php echo str_replace(" ","%20",$salepicture["Title"]);?>">
                             <img class="img-fluid p-0" src="<?php echo UPLOAD_DIR.$salepicture["Image"];?>"
-                             alt="" style="max-height:120px;"/></a>
+                             alt="<?php echo $salepicture["Title"]?>" style="max-height:120px;"/></a>
                             <p class="mt-3 bm-0">
-                                <a href="product-page.php?title=<?php echo $salepicture["Title"];?>">
+                                <a href="product-page.php?title=<?php echo str_replace(" ","%20",$salepicture["Title"]);?>">
                                 <?php echo $salepicture["Title"];?></a>
                             </p>
                         </li>
                         <?php endforeach; ?>
                     </ul>
                 <div class="aside col-12 col-md-3 nav-item bg-light d-flex align-items-center p-0">
-                    <div class="col-4 col-md-6 offset-4 offset-md-3 p-0 mb-5">
-                        <a class="col-12 col-md-12 btn btn-primary py-3 mt-5 border" href="#">More</a>
-                    </div>
+                    <form action="api-shop.php" method="POST" class="col-4 col-md-6 offset-4 offset-md-3 p-0 mb-5">
+                        <label for="select" class="d-none">select</label>
+                        <input id="select" class="d-none" name="select" value="sale"/>
+                        <button type="submit" class="col-12 col-md-12 btn btn-primary py-3 mt-5 border" >More</button>
+                    </form>
                 </div>
             </div>
 
@@ -93,17 +95,20 @@
                 <ul class="nav text-center col-md-9 bg-light p-0">
                     <?php foreach($templateParams["latestpictures"] as $latestpicture): ?>
                     <li class="col-6 col-md-3 nav-item mt-2 p-2">
-                        <a href="product-page.php?title=<?php echo $latestpicture["Title"];?>">
+                        <a href="product-page.php?title=<?php echo str_replace(" ","%20",$latestpicture["Title"]);?>">
                         <img class="img-fluid p-0" src="<?php echo UPLOAD_DIR.$latestpicture["Image"];?>"
-                         alt="" style="max-height:120px;"/></a>
-                        <p class="mt-3 bm-0"><a href="product-page.php?title=<?php echo $latestpicture["Title"];?>"><?php echo $latestpicture["Title"];?></a></p>
+                        alt="<?php echo $latestpicture["Title"]?>" style="max-height:120px;"/></a>
+                        <p class="mt-3 bm-0">
+                        <a href="product-page.php?title=<?php echo str_replace(" ","%20",$latestpicture["Title"]);?>"><?php echo $latestpicture["Title"];?></a></p>
                     </li>
                     <?php endforeach;?>
                 </ul>
                 <div class="aside col-md-3 nav-item bg-light d-flex align-items-center p-0">
-                    <div class="col-4 col-md-6 offset-4 offset-md-3 p-0 mb-5">
-                        <a class="col-12 col-md-12 btn btn-primary py-3 mt-5 border" href="#">More</a>
-                    </div>
+                <form action="api-shop.php" method="POST" class="col-4 col-md-6 offset-4 offset-md-3 p-0 mb-5">
+                        <label for="order" class="d-none">order</label>
+                        <input id="order" class="d-none" name="order" value="publish_date"/>
+                        <button type="submit" class="col-12 col-md-12 btn btn-primary py-3 mt-5 border" >More</button>
+                    </form>
                 </div>
             </div>
         </main>
