@@ -1,7 +1,7 @@
 <div class="flex-grow-1 subtle-pattern">
     <div class="container-fluid flex-flow-row-wrap">
         <main class="h-100 container-fluid pb-5 px-4">
-            <div class="container col-10 offset-1 shadow-sm bg-white border pb-1 mt-4 pt-1 px-0 mb-5">
+            <div class="container col-10 offset-1 shadow-sm bg-light border pb-1 mt-4 pt-1 px-0 mb-5">
                 <div class="row m-0 h-50">
                     <div id="carouselExampleControls" class="carousel slide col-12 col-md-7 p-0 px-1
                     d-flex align-items-center" data-ride="carousel">
@@ -46,7 +46,7 @@
                                 all over
                                 the world</p>
                             <div class="col-12 col-md-12 py-3 text-center">
-                                <button class="btn-primary border px-4 py-2" style="font-size:20px" href="#">Explore</button>
+                                <a class="btn-primary border px-4 py-2" style="font-size:20px" href="#">Explore</a>
                             </div>  
                         </div>
                     </div>
@@ -63,7 +63,7 @@
             <div class="row m-0 mb-5">
                 <div class="col-1 col-md-1 p-0">
                 </div>
-                    <ul class="nav text-center col-10 col-md-8 bg-white p-0">
+                    <ul class="nav text-center col-10 col-md-8 bg-light p-0">
                     <?php foreach($templateParams["salespictures"] as $salepicture): ?>
                         <li class="col-6 col-md-3 nav-item mt-2 p-2">
                             <img class="img-fluid p-0" src="<?php echo UPLOAD_DIR.$salepicture["Image"];?>" alt="" style="max-height:120px;"/>
@@ -71,7 +71,7 @@
                         </li>
                         <?php endforeach; ?>
                     </ul>
-                <div class="aside col-10 col-md-2 offset-1 offset-md-0 nav-item bg-white d-flex align-items-center p-0">
+                <div class="aside col-10 col-md-2 offset-1 offset-md-0 nav-item bg-light d-flex align-items-center p-0">
                     <div class="col-4 col-md-6 offset-4 offset-md-3 p-0 mb-5">
                         <a class="col-12 col-md-12 btn btn-primary py-3 m-0 border" href="#">More</a>
                     </div>
@@ -88,7 +88,7 @@
             <div class="row m-0">
                 <div class="col-1 col-md-1 p-0">
                 </div>
-                <ul class="nav text-center col-10 col-md-8 bg-white p-0">
+                <ul class="nav text-center col-10 col-md-8 bg-light p-0">
                     <?php foreach($templateParams["latestpictures"] as $latestpicture): ?>
                     <li class="col-6 col-md-3 nav-item mt-2 p-2">
                         <img class="img-fluid p-0" src="<?php echo UPLOAD_DIR.$latestpicture["Image"];?>" alt="" style="max-height:120px;"/>
@@ -97,7 +97,7 @@
                     <?php endforeach;?>
                 </ul>
                 <div
-                    class="aside col-10 col-md-2 offset-1 offset-md-0 nav-item bg-white d-flex align-items-center p-0">
+                    class="aside col-10 col-md-2 offset-1 offset-md-0 nav-item bg-light d-flex align-items-center p-0">
                     <div class="col-4 col-md-6 offset-4 offset-md-3 p-0 mb-5">
                         <a class="col-12 col-md-12 btn btn-primary py-3 m-0 border" href="#">More</a>
                     </div>

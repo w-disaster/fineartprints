@@ -7,7 +7,7 @@
         $msgerr = "";
         $msgerrcolor = "text-danger";
         $oldpw = "";
-        $templateParams["personal_info"] = $dbh->getUser($_SESSION["username"]);
+        $templateParams["personal_info"] = $dbh->getUser($_SESSION["email"]);
         foreach ($templateParams["personal_info"] as $info) {
             $oldpw = $info["Password"];  
         }
@@ -35,18 +35,18 @@
             } else {
                 $dbh->updateCustomer($_POST["email"], $_POST["birth-date"], $_POST["new-password"], $_POST["name"], $_POST["surname"], 
                 $_POST["phone"], $_POST["city"], $_POST["postal-code"], $_POST["province"], $_POST["address"]);
-                $templateParams["personal_info"] = $dbh->getCustomer();
+                $templateParams["personal_info"] = $dbh->getUser($_SESSION["email"]);
                 $msgerrcolor = "text-success";
                 $msgerr = "Update succesful!";
             }
         }
 
-            $templateParams["pay_info"] = $dbh->getPaymentInfo();
+            $templateParams["pay_info"] = $dbh->getPaymentInfo($_SESSION["email"]);
 
 
         if (isset($_POST["remove_number"])) {
-            $dbh->deletePaymentInfo($_POST["remove_number"]);
-            $templateParams["pay_info"] = $dbh->getPaymentInfo();
+            $dbh->deletePaymentInfo($_POST["remove_number"], $_SESSION["email"]);
+            $templateParams["pay_info"] = $dbh->getPaymentInfo($_SESSION["email"]);
         }
 
         $iscardvalid = "";
@@ -54,8 +54,8 @@
         if (isset($_POST["add_number"]) && isset($_POST["expire_date"]) && !empty($_POST["owner"])) {
             $date = new DateTime($_POST["expire_date"]);
             if (count($dbh->getCreditCard($_POST["owner"],$date->format('m/y'), $_POST["add_number"])) != 0) {
-                $dbh->addPaymentInfo($_POST["add_number"]);
-                $templateParams["pay_info"] = $dbh->getPaymentInfo();
+                $dbh->addPaymentInfo( $_SESSION["email"], $_POST["add_number"]);
+                $templateParams["pay_info"] = $dbh->getPaymentInfo($_SESSION["email"]);
             } else {
                 $iscardvalid = "is-invalid";
             }

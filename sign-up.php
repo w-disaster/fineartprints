@@ -28,7 +28,8 @@ isset($_POST["postal-code"]) && isset($_POST["province"])) {
         $isphonevalid = "is-invalid";
     } else {
         $dbh->addUser($_POST["email"], $_POST["birth-date"], $_POST["password"], $_POST["name"], $_POST["surname"], 
-        $_POST["phone"], $_POST["city"], $_POST["postal-code"], $_POST["province"], $_POST["address"], $_POST["ship_option"]);
+        $_POST["phone"], $_POST["city"], $_POST["postal-code"], $_POST["province"], $_POST["address"],
+         $_POST["ship_option"], "customer");
     }
 }
 
