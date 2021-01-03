@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Gen 03, 2021 alle 01:21
+-- Creato il: Gen 03, 2021 alle 16:46
 -- Versione del server: 10.4.14-MariaDB
 -- Versione PHP: 7.4.10
 
@@ -281,7 +281,7 @@ INSERT INTO `final_product` (`Picture_title`, `Technique_id`, `Frame_id`, `Passp
 ('Abstract print n.1', 1, 7823, 8004, 100, 100, 20, 2, 33),
 ('Black and white building', 5, 7823, 8004, 100, 100, 20, 1, 33),
 ('Nature print n.2', 5, 7822, 8004, 100, 100, 20, 2, 40),
-('Nature print n.2', 9, 7823, 8003, 100, 100, 0, 1, 40);
+('Nature print n.2', 9, 7823, 8003, 100, 100, 0, 1, 60);
 
 -- --------------------------------------------------------
 
@@ -393,15 +393,16 @@ INSERT INTO `passpartout` (`Passpartout_id`, `Image`, `Specifications`, `Price_p
 
 CREATE TABLE `payment_info` (
   `Card_number` bigint(20) NOT NULL,
-  `Email` char(140) NOT NULL
+  `Email` char(140) NOT NULL,
+  `Status` varchar(10) NOT NULL DEFAULT 'in use'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `payment_info`
 --
 
-INSERT INTO `payment_info` (`Card_number`, `Email`) VALUES
-(1234567890123456, 'davidereusrossi@gmail.com');
+INSERT INTO `payment_info` (`Card_number`, `Email`, `Status`) VALUES
+(1234567890123456, 'davidereusrossi@gmail.com', 'removed');
 
 -- --------------------------------------------------------
 
