@@ -11,20 +11,27 @@
         <a href="seller-add-print.php" class="list-group-item list-group-item-action bg-white">Add new print</a>
         <a href="#" class="list-group-item list-group-item-action bg-white"> View orders</a>
       </aside>
-      <aside class="bg-white sidebar container shadow-sm my-4 p-4 list-group-flush">
+      <aside class="bg-white sidebar container shadow-sm my-4 p-4 list-group list-group-flush">
         <h3 class="py-4 pl-3">Orders' list</h3>
-        <a href="#" class="list-group-item list-group-item-action bg-white">Order A</a>
-        <a href="#" class="list-group-item list-group-item-action bg-white">Order A</a>
-        <a href="#" class="list-group-item list-group-item-action bg-white">Order A</a>
-        <a href="#" class="list-group-item list-group-item-action bg-white">Order A</a>
-        <a href="#" class="list-group-item list-group-item-action bg-white">Order A</a>
-        <a href="#" class="list-group-item list-group-item-action bg-white">Order A</a>
-        <a href="#" class="list-group-item list-group-item-action bg-white">Order A</a>
-        <a href="#" class="list-group-item list-group-item-action bg-white">Order A</a>
-        <a href="#" class="list-group-item list-group-item-action bg-white">Order A</a>
-        <a href="#" class="list-group-item list-group-item-action bg-white">Order A</a>
-        <a href="#" class="list-group-item list-group-item-action bg-white">Order A</a>
-        <a href="#" class="list-group-item list-group-item-action bg-white">Order A</a>
+        <label for="search-bar">Search by order id</label>
+        <div class="input-group mb-2 w-75">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><img src="upload/icons/search.svg" alt="search order by id" width="16" height="16"></span>
+            <input id="search-bar" type="search" class="form-control">
+          </div>
+        </div>
+        <a href="#" class="list-group-item list-group-item-action bg-white">Order #4321</a>
+        <a href="#" class="list-group-item list-group-item-action bg-white">Order #3291</a>
+        <a href="#" class="list-group-item list-group-item-action bg-white">Order #3291</a>
+        <a href="#" class="list-group-item list-group-item-action bg-white">Order #3291</a>
+        <a href="#" class="list-group-item list-group-item-action bg-white">Order #3291</a>
+        <a href="#" class="list-group-item list-group-item-action bg-white">Order #3291</a>
+        <a href="#" class="list-group-item list-group-item-action bg-white">Order #3291</a>
+        <a href="#" class="list-group-item list-group-item-action bg-white">Order #3291</a>
+        <a href="#" class="list-group-item list-group-item-action bg-white">Order #3291</a>
+        <a href="#" class="list-group-item list-group-item-action bg-white">Order #3291</a>
+        <a href="#" class="list-group-item list-group-item-action bg-white">Order #3291</a>
+        <a href="#" class="list-group-item list-group-item-action bg-white">Order #3291</a>
       </aside>
     </div>
 
@@ -148,4 +155,5 @@
   </div>
 </div>
 
+<script src="js/search-bar.js"></script>
 <script src="js/print-edit.js"></script>

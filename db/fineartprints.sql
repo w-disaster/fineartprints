@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Gen 02, 2021 alle 22:08
+-- Creato il: Gen 03, 2021 alle 01:21
 -- Versione del server: 10.4.14-MariaDB
 -- Versione PHP: 7.4.10
 
@@ -269,8 +269,19 @@ CREATE TABLE `final_product` (
   `Art_print_width` int(11) NOT NULL,
   `Art_print_height` int(11) NOT NULL,
   `Passpartout_width` int(11) NOT NULL,
-  `Order_id` int(11) NOT NULL
+  `Order_id` int(11) NOT NULL,
+  `Price` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `final_product`
+--
+
+INSERT INTO `final_product` (`Picture_title`, `Technique_id`, `Frame_id`, `Passpartout_id`, `Art_print_width`, `Art_print_height`, `Passpartout_width`, `Order_id`, `Price`) VALUES
+('Abstract print n.1', 1, 7823, 8004, 100, 100, 20, 2, 33),
+('Black and white building', 5, 7823, 8004, 100, 100, 20, 1, 33),
+('Nature print n.2', 5, 7822, 8004, 100, 100, 20, 2, 40),
+('Nature print n.2', 9, 7823, 8003, 100, 100, 0, 1, 40);
 
 -- --------------------------------------------------------
 
@@ -390,7 +401,7 @@ CREATE TABLE `payment_info` (
 --
 
 INSERT INTO `payment_info` (`Card_number`, `Email`) VALUES
-(1234567890123456, 'gino.lippa@prints.com');
+(1234567890123456, 'davidereusrossi@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -475,8 +486,17 @@ CREATE TABLE `prints_order` (
   `Shipped_date` date DEFAULT NULL,
   `Email` char(140) NOT NULL,
   `Card_number` bigint(20) NOT NULL,
-  `Shipper_name` char(140) NOT NULL
+  `Shipper_name` char(140) NOT NULL,
+  `Status` varchar(20) NOT NULL DEFAULT 'In production'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `prints_order`
+--
+
+INSERT INTO `prints_order` (`Order_id`, `Ship_city`, `Ship_postal_code`, `Ship_address`, `Order_date`, `Shipped_date`, `Email`, `Card_number`, `Shipper_name`, `Status`) VALUES
+(1, 'Senigallia', 60007, 'Via dei biri 16', '2019-08-05', '2019-08-07', 'davidereusrossi@gmail.com', 1234567890123456, 'DHL Express', 'Arrived'),
+(2, 'Ancona', 60035, 'Via Pascoli 7', '2020-12-31', '2021-01-01', 'davidereusrossi@gmail.com', 1234567890123456, 'SDA Carrier Express', 'Shipped');
 
 -- --------------------------------------------------------
 
@@ -536,13 +556,18 @@ INSERT INTO `shipper` (`Company_name`, `Phone`, `Price`) VALUES
 
 CREATE TABLE `tracking_notification` (
   `Tracking_notification_id` int(11) NOT NULL,
-  `Description` char(140) NOT NULL,
   `Data` date NOT NULL,
-  `City` char(140) NOT NULL,
-  `Postal_code` int(11) NOT NULL,
-  `Address` char(140) NOT NULL,
-  `Order_id` int(11) NOT NULL
+  `Order_id` int(11) NOT NULL,
+  `Status` varchar(4) DEFAULT 'new'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `tracking_notification`
+--
+
+INSERT INTO `tracking_notification` (`Tracking_notification_id`, `Data`, `Order_id`, `Status`) VALUES
+(1, '2021-01-01', 2, 'new'),
+(2, '2020-08-10', 1, 'new');
 
 -- --------------------------------------------------------
 
@@ -570,6 +595,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`Email`, `Birth_date`, `Password`, `Name`, `Surname`, `Phone`, `City`, `Postal_code`, `Province`, `Address`, `Role`) VALUES
 ('cippa.pino@prints.com', '1990-01-20', 'pass2020', 'Cippa', 'Pino', '0714512309', 'Cesena', 47521, 'FC', 'Via Giuseppe Ungaretti', 'seller'),
+('davidereusrossi@gmail.com', '1999-08-18', 'Davide99', 'Giovanni', 'Biroccio', '3927416191', 'Trecastelli', 60012, 'AN', 'Via marconi 9', 'customer'),
+('giankirossi08@gmail.com', '2021-01-13', 'Biroccio98', 'Giancarlo Rossi', 'Biro', '3333674455', 'Ancona', 60012, 'AN', 'Via Marconi 9 Monterado', 'customer'),
 ('gino.lippa@prints.com', '1996-10-17', 'pass2020', 'Gino', 'Lippa', '0714529816', 'Senigallia', 60019, 'AN', 'Viale dei pini 11', 'customer');
 
 --

@@ -13,11 +13,11 @@
       </aside>
       <aside class="bg-white sidebar container shadow-sm my-4 p-4 list-group list-group-flush">
         <h3 class="py-4 pl-3">Prints' list</h3>
-        <label for="password">Search by print title</label>
+        <label for="search-bar">Search by print title</label>
         <div class="input-group mb-2 w-75">
           <div class="input-group-prepend">
-            <span class="input-group-text"><img src="upload/icons/search.svg" alt="edit this print" width="16" height="16"></span>
-            <input id="title-search" type="search" class="form-control">
+            <span class="input-group-text"><img src="upload/icons/search.svg" alt="search by print title" width="16" height="16"></span>
+            <input id="search-bar" type="search" class="form-control">
           </div>
         </div>
         <a href="#" class="list-group-item list-group-item-action bg-white">Print A</a>

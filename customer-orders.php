@@ -1,7 +1,6 @@
 <?php
-    require_once 'utils/functions.php';
+    require_once 'bootstrap.php';
     if(isUserLoggedIn(UserType::Customer)) {
-        require_once 'bootstrap.php';
 
         $templateParams["title"] = "Customer orders";
         $templateParams["name"] = "customer-orders-template.php";

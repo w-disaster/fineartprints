@@ -11,7 +11,7 @@ class DatabaseHelper{
     }
 
     public function checkLogin($username, $password){
-        $stmt = $this->db->prepare("SELECT email as username, role FROM User WHERE email = ? AND password = ?");
+        $stmt = $this->db->prepare("SELECT email, role FROM User WHERE email = ? AND password = ?");
         $stmt->bind_param('ss',$username, $password);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -36,7 +36,6 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-
 
     public function getTechniquesFromPictureTitle($i){
         $stmt = $this->db->prepare("SELECT Print_technique.Technique_id, Image, Description FROM Print_technique, Art_print WHERE Print_technique.Technique_id = Art_print.Technique_id AND Art_print.Picture_title=?");
@@ -135,27 +134,16 @@ class DatabaseHelper{
         $stmt->execute();
     }
 
-    public function getUserByEmail($email){
-        $stmt = $this->db->prepare("SELECT * FROM user WHERE Email=?");
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
     public function addPaymentInfo($email, $number){
         $stmt = $this->db->prepare("INSERT INTO payment_info (Card_number, Email) VALUES (?, ?)");
         $stmt->bind_param("ss", $number, $email);
         $stmt->execute();
     }
 
-    public function getCustomer(){
-        $email = $_SESSION["username"];
-        $role = $_SESSION["role"];
+    public function getUser($email){
         $stmt = $this->db->prepare("SELECT Email, Birth_date, Name, Surname, Password, Phone, City, Postal_code,
-         Province, Address FROM user WHERE Email = ? AND Role = ?;");
-        $stmt->bind_param("ss", $email, $role);
+         Province, Address FROM user WHERE Email = ?;");
+        $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -209,7 +197,7 @@ class DatabaseHelper{
 
     public function getMyOrders(){
         $email = $_SESSION["username"];
-        $stmt = $this->db->prepare("SELECT Status, Order_id, Order_date, Shipped_date FROM prints_order, user
+        $stmt = $this->db->prepare("SELECT Status, Order_id, Order_date, Status FROM prints_order, user
         WHERE user.Email = prints_order.Email AND prints_order.Email = ? ORDER BY Order_date DESC");
         $stmt->bind_param("s", $email);
         $stmt->execute();
@@ -221,7 +209,7 @@ class DatabaseHelper{
     public function getOrderProducts(){
         $email = $_SESSION["username"];
         $stmt = $this->db->prepare("SELECT picture.Image, Picture_title, print_technique.Description,
-         passpartout.Specifications, frame.Description AS Framedesc, final_product.Order_id
+         passpartout.Specifications, frame.Description  AS Framedesc, final_product.Price, final_product.Order_id
           FROM prints_order, user, print_technique, passpartout, frame, final_product, picture
            WHERE prints_order.Order_id = final_product.Order_id AND
             final_product.Technique_id = print_technique.Technique_id AND
@@ -250,8 +238,9 @@ class DatabaseHelper{
         $status = "new";
         $email = $_SESSION["username"];
         $stmt = $this->db->prepare("SELECT tracking_notification.Order_id, Data,
-        Description FROM user, tracking_notification, prints_order WHERE
-         prints_order.Order_id = tracking_notification.Order_id AND user.Email = prints_order.Email AND user.Email = ?
+        prints_order.Status AS Order_status FROM user, tracking_notification, prints_order WHERE
+         prints_order.Order_id = tracking_notification.Order_id AND
+          user.Email = prints_order.Email AND user.Email = ?
          AND tracking_notification.Status = ? ORDER BY Data DESC");
         $stmt->bind_param("ss", $email, $status);
 

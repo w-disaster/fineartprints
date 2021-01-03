@@ -2,8 +2,8 @@
 require_once "bootstrap.php";
 require_once "utils/functions.php";
 
-if(isset($_POST["username"]) && isset($_POST["password"])){
-    $login_result = $dbh->checkLogin($_POST["username"], $_POST["password"]);
+if(isset($_POST["email"]) && isset($_POST["password"])){
+    $login_result = $dbh->checkLogin($_POST["email"], $_POST["password"]);
     if(empty($login_result)){
         $templateParams["loginError"] = true;
     }
