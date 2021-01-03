@@ -11,7 +11,7 @@ class DatabaseHelper{
     }
 
     public function checkLogin($email, $password){
-        $stmt = $this->db->prepare("SELECT Email, Role FROM User WHERE email = ? AND password = ?");
+        $stmt = $this->db->prepare("SELECT Email, Role FROM user WHERE email = ? AND password = ?");
         $stmt->bind_param('ss',$email, $password);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -38,7 +38,7 @@ class DatabaseHelper{
     }
 
     public function getTechniquesFromPictureTitle($title){
-        $stmt = $this->db->prepare("SELECT Print_technique.Technique_id, Image, Description, Price_per_cm2 as Price FROM Print_technique, Art_print WHERE Print_technique.Technique_id = Art_print.Technique_id AND Art_print.Picture_title=?");
+        $stmt = $this->db->prepare("SELECT print_technique.Technique_id, Image, Description, Price_per_cm2 as Price FROM print_technique, art_print WHERE print_technique.Technique_id = art_print.Technique_id AND art_print.Picture_title=?");
         $stmt->bind_param("s", $title);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -47,7 +47,7 @@ class DatabaseHelper{
     }
 
     public function getFramesFromSeller($seller) {
-        $stmt = $this->db->prepare("SELECT Frame.Frame_id, Image, Description, Price FROM Make_frame_available, Frame WHERE Make_frame_available.Email = ? AND Make_frame_available.Frame_id = Frame.Frame_id");
+        $stmt = $this->db->prepare("SELECT frame.Frame_id, Image, Description, Price FROM make_frame_available, frame WHERE make_frame_available.Email = ? AND make_frame_available.Frame_id = frame.Frame_id");
         $stmt->bind_param("s", $seller);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -56,8 +56,8 @@ class DatabaseHelper{
     }
 
     public function getPasspartoutsFromSeller($seller) {
-        $stmt = $this->db->prepare("SELECT Passpartout.Passpartout_id, Image, Specifications, Price_per_cm2 FROM Make_passpartout_available, Passpartout WHERE 
-        Make_passpartout_available.Email = ? AND Make_passpartout_available.Passpartout_id = Passpartout.Passpartout_id");
+        $stmt = $this->db->prepare("SELECT passpartout.Passpartout_id, Image, Specifications, Price_per_cm2 FROM make_passpartout_available, passpartout WHERE 
+        make_passpartout_available.Email = ? AND make_passpartout_available.Passpartout_id = passpartout.Passpartout_id");
         $stmt->bind_param("s", $seller);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -66,7 +66,7 @@ class DatabaseHelper{
     }
 
     public function getPriceFromTechnique($technique_id){
-        $stmt = $this->db->prepare("SELECT Price_per_cm2 FROM Print_technique WHERE Technique_id = ?");
+        $stmt = $this->db->prepare("SELECT Price_per_cm2 FROM print_technique WHERE Technique_id = ?");
         $stmt->bind_param("i", $technique_id);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -75,7 +75,7 @@ class DatabaseHelper{
     }
 
     public function getPriceFromFrame($frame_id) {
-        $stmt = $this->db->prepare("SELECT Price FROM Frame WHERE Frame_id = ?");
+        $stmt = $this->db->prepare("SELECT Price FROM frame WHERE Frame_id = ?");
         $stmt->bind_param("i", $frame_id);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -84,7 +84,7 @@ class DatabaseHelper{
     }
 
     public function getPriceFromPasspartout($passpartout_id) {
-        $stmt = $this->db->prepare("SELECT Price_per_cm2 FROM Passpartout WHERE 
+        $stmt = $this->db->prepare("SELECT Price_per_cm2 FROM passpartout WHERE 
         Passpartout_id = ?");
         $stmt->bind_param("i", $passpartout_id);
         $stmt->execute();
@@ -212,7 +212,7 @@ class DatabaseHelper{
     }
 
     public function getValueFromTitle($title) {
-        $stmt = $this->db->prepare("SELECT Base_price, Discount FROM Picture WHERE Title=?");
+        $stmt = $this->db->prepare("SELECT Base_price, Discount FROM picture WHERE Title=?");
         $stmt->bind_param("s", $title);
     
         $stmt->execute();
