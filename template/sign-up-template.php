@@ -80,8 +80,8 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group col-6 col-md-4 offset-3 offset-md-4 mt-3">
-                                        <button type="submit" class="btn btn-primary col-md-12 border">Submit</button>
+                                    <div class="form-group col-6 col-md-4 offset-3 offset-md-4 mt-5">
+                                        <button type="submit" class="btn btn-primary col-md-12 border p-2">Submit</button>
                                     </div>
                                 </form>
                             </div>
