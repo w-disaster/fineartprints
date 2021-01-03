@@ -168,19 +168,34 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getPaymentInfo($email){
+    public function getPaymentInfos($email){
+        $status = "in use";
         $stmt = $this->db->prepare("SELECT Owner, Card_number, Expire_date 
-        FROM payment_info, credit_card WHERE payment_info.Card_number = credit_card.Number AND Email = ?;");
-        $stmt->bind_param("s", $email);
+        FROM payment_info, credit_card WHERE payment_info.Card_number = credit_card.Number
+         AND Email = ? AND Status = ?;");
+        $stmt->bind_param("ss", $email, $status);
         $stmt->execute();
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function deletePaymentInfo($card, $email){
-        $stmt = $this->db->prepare("DELETE FROM payment_info, user WHERE user.Email = payment_info.Email AND Card_number = ? AND Email = ?;");
-        $stmt->bind_param("is", $card, $email);
+    public function isPaymentInfoInUse($email, $card){
+        $status = "in use";
+        $stmt = $this->db->prepare("SELECT Owner, Card_number, Expire_date 
+        FROM payment_info, credit_card WHERE payment_info.Card_number = credit_card.Number
+         AND Email = ? AND Status = ?;");
+        $stmt->bind_param("ss", $email, $status);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function updatePaymentInfo($email, $card, $status){
+        $stmt = $this->db->prepare("UPDATE payment_info SET 
+        Status = ? WHERE Card_number = ? AND Email = ?;");
+        $stmt->bind_param("sis",$status, $card, $email);
         $stmt->execute();
     }
 
