@@ -203,7 +203,7 @@ class DatabaseHelper{
     public function getOrderProducts(){
         $email = $_SESSION["username"];
         $stmt = $this->db->prepare("SELECT picture.Image, Picture_title, print_technique.Description,
-         passpartout.Specifications, frame.Description AS Framedesc, final_product.Order_id
+         passpartout.Specifications, frame.Description  AS Framedesc, final_product.Price, final_product.Order_id
           FROM prints_order, user, print_technique, passpartout, frame, final_product, picture
            WHERE prints_order.Order_id = final_product.Order_id AND
             final_product.Technique_id = print_technique.Technique_id AND

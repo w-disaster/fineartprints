@@ -10,7 +10,7 @@ function isDateValid(date, optionval) {
     return false;
 }
 
-function getOrders(data) {
+function getOrders(data, total) {
     let orders = "";
     for(let i=0; i < data.length; i++){
         let order = "";
@@ -30,7 +30,8 @@ function getOrders(data) {
                             <li style="font-size:14px;" class="text-left nav-item col-6 offset-0 col-lg-3 offset-lg-1 py-2">Status: 
                             ${data[i]["Status"]}
                             </li>
-                            <li style="font-size:14px;" class="text-right nav-item col-6 col-lg-2 m-0 py-2">Total: /</li>
+                            <li style="font-size:14px;" class="text-right nav-item col-6 col-lg-2 m-0 py-2">
+                            Total: ${total[i]}€</li>
                         </ul>
                     </div>
                 </div>
@@ -79,7 +80,9 @@ function getProducts(dataorders,dataproducts) {
                             ${dataproducts[i]["Specifications"]}</p></li>
                             <li class="list-group-item col-12 col-md-12"><p class="text-left m-0">Frame:
                             ${dataproducts[i]["Framedesc"]}</p></li>
-                            <li class="list-group-item col-12 col-md-12 text-left"><p class="text-left">Price:</p></li>
+                            <li class="list-group-item col-12 col-md-12 text-left">
+                            <p class="text-left">Price: ${dataproducts[i]["Price"]}</p>
+                            </li>
                         </ul>
                     </div>
                 </li>
@@ -93,14 +96,34 @@ function getProducts(dataorders,dataproducts) {
 }
 $(document).ready(function() {
     $.getJSON("api-customer-orders.php", function(data){
-        const orders = getOrders(data[0]);
+        const total = new Array();
+        for(let i = 0;i < data[0].length; i++) {
+            let price = 0;
+            for(let j = 0;j < data[1].length; j++) {
+                if (data[0][i]["Order_id"] == data[1][j]["Order_id"]) {
+                    price += data[1][j]["Price"];
+                }
+            }
+            total[i] = price;
+        }
+        const orders = getOrders(data[0],total);
         $("#order").append(orders); 
         getProducts(data[0],data[1]);
     });
     $("#ship_option").on('change', function() {
         $("#order").empty();
         $.getJSON("api-customer-orders.php", function(data){
-            const orders = getOrders(data[0]);
+            const total = new Array();
+            for(let i = 0;i < data[0].length; i++) {
+                let price = 0;
+                for(let j = 0;j < data[1].length; j++) {
+                    if (data[0][i]["Order_id"] == data[1][j]["Order_id"]) {
+                        price += data[1][j]["Price"];
+                    }
+                }
+                total[i] = price;
+            }
+            const orders = getOrders(data[0],total);
             $("#order").append(orders); 
             getProducts(data[0],data[1]);
         });
@@ -109,7 +132,17 @@ $(document).ready(function() {
     $("#date_option").on('change', function() {
         $("#order").empty();
         $.getJSON("api-customer-orders.php", function(data){
-            const orders = getOrders(data[0]);
+            const total = new Array();
+            for(let i = 0;i < data[0].length; i++) {
+                let price = 0;
+                for(let j = 0;j < data[1].length; j++) {
+                    if (data[0][i]["Order_id"] == data[1][j]["Order_id"]) {
+                        price += data[1][j]["Price"];
+                    }
+                }
+                total[i] = price;
+            }
+            const orders = getOrders(data[0],total);
             $("#order").append(orders); 
             getProducts(data[0],data[1]);
         });
