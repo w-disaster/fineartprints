@@ -1,14 +1,13 @@
 <?php
-    require_once 'utils/functions.php';
+      require_once 'bootstrap.php';
     if(isUserLoggedIn(UserType::Customer)) {
-        require_once 'bootstrap.php';
         $templateParams["title"] = "Customer area";
         $templateParams["name"] = "customer-area-template.php";
 
         $msgerr = "";
         $msgerrcolor = "text-danger";
         $oldpw = "";
-        $templateParams["personal_info"] = $dbh->getCustomer();
+        $templateParams["personal_info"] = $dbh->getUser($_SESSION["username"]);
         foreach ($templateParams["personal_info"] as $info) {
             $oldpw = $info["Password"];  
         }

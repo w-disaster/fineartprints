@@ -37,13 +37,13 @@
                                 <li class="row nav-item border-top mx-0" style="font-size:14px;">
                                     <p class = "col-4 mt-3 mb-0">Date</p>
                                     <p class = "col-3 mt-3 mb-0">Order id</p>
-                                    <p class = "col-5 mt-3 mb-0">Description</p>
+                                    <p class = "col-5 mt-3 mb-0">Order status</p>
                                 </li>
                                 <?php foreach($templateParams["notifications"] as $notification):?>
                                 <li class="nav-item row border-top mx-0" style="font-size:14px;">
                                     <p class = "col-4 mt-3 mb-0"><?php echo $notification["Data"] ?></p>
                                     <p class = "col-3 mt-3 mb-0"><?php echo $notification["Order_id"] ?></p>
-                                    <p class = "col-5 mt-3 mb-0"><?php echo $notification["Description"] ?></p>
+                                    <p class = "col-5 mt-3 mb-0"><?php echo $notification["Order_status"] ?></p>
                                 </li>
                                 <?php endforeach;?>
                             </ul>
@@ -55,8 +55,8 @@
                         <label for="ship_option">Order status</label>
                         <select id="ship_option" name="ship_option" class="form-control col-10">
                             <option selected value="All">All</option>
-                            <option value="Shipped">In production</option>
-                            <option value="In production">Shipped</option>
+                            <option value="In production">In production</option>
+                            <option value="Shipped">Shipped</option>
                             <option value="Incoming">Incoming</option>
                             <option value="Arrived">Arrived</option>
                         </select>

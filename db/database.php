@@ -134,12 +134,10 @@ class DatabaseHelper{
         $stmt->execute();
     }
 
-    public function getCustomer(){
-        $email = $_SESSION["username"];
-        $role = $_SESSION["role"];
+    public function getUser($email){
         $stmt = $this->db->prepare("SELECT Email, Birth_date, Name, Surname, Password, Phone, City, Postal_code,
-         Province, Address FROM user WHERE Email = ? AND Role = ?;");
-        $stmt->bind_param("ss", $email, $role);
+         Province, Address FROM user WHERE Email = ?;");
+        $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -193,7 +191,7 @@ class DatabaseHelper{
 
     public function getMyOrders(){
         $email = $_SESSION["username"];
-        $stmt = $this->db->prepare("SELECT Status, Order_id, Order_date, Shipped_date FROM prints_order, user
+        $stmt = $this->db->prepare("SELECT Status, Order_id, Order_date, Status FROM prints_order, user
         WHERE user.Email = prints_order.Email AND prints_order.Email = ? ORDER BY Order_date DESC");
         $stmt->bind_param("s", $email);
         $stmt->execute();
@@ -234,8 +232,9 @@ class DatabaseHelper{
         $status = "new";
         $email = $_SESSION["username"];
         $stmt = $this->db->prepare("SELECT tracking_notification.Order_id, Data,
-        Description FROM user, tracking_notification, prints_order WHERE
-         prints_order.Order_id = tracking_notification.Order_id AND user.Email = prints_order.Email AND user.Email = ?
+        prints_order.Status AS Order_status FROM user, tracking_notification, prints_order WHERE
+         prints_order.Order_id = tracking_notification.Order_id AND
+          user.Email = prints_order.Email AND user.Email = ?
          AND tracking_notification.Status = ? ORDER BY Data DESC");
         $stmt->bind_param("ss", $email, $status);
 

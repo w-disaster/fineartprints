@@ -21,22 +21,22 @@ function getOrders(data) {
                 <div class="row p-0 col-12 col-md-12 ml-1 d-flex align-items-center">
                     <div class="col-10 offset-1 col-md-10 offset-md-1 bg-dark text-white p-0">
                         <ul class="nav text-left">
-                            <li style="font-size:14px;" class="nav-item col-6 col-lg-2 m-0 py-2">Id: 
+                            <li style="font-size:14px;" class="text-left nav-item col-4 col-lg-1 m-0 py-2">Id: 
                             ${data[i]["Order_id"]}
                             </li>
-                            <li style="font-size:14px;" class="nav-item col-6 col-lg-4 m-0 py-2">Order date: 
+                            <li style="font-size:14px;" class="text-right nav-item col-8 col-lg-4 m-0 py-2">Order date: 
                             ${data[i]["Order_date"]}
                             </li>
-                            <li style="font-size:14px;" class="nav-item col-6 col-lg-4 m-0 py-2">Shipping date: 
-                            ${data[i]["Shipped_date"]}
+                            <li style="font-size:14px;" class="text-left nav-item col-6 offset-0 col-lg-3 offset-lg-1 py-2">Status: 
+                            ${data[i]["Status"]}
                             </li>
-                            <li style="font-size:14px;" class="nav-item col-6 col-lg-2 m-0 py-2">Total: /</li>
+                            <li style="font-size:14px;" class="text-right nav-item col-6 col-lg-2 m-0 py-2">Total: /</li>
                         </ul>
                     </div>
                 </div>
                 <div class="row col-md-12 p-0 ml-1">
                     <div class="col-10 offset-1 offset-md-1 col-md-10 bg-light border-top border-right border-left">
-                        <ul id="product" class="pl-4 my-2">
+                        <ul id="product${i}" class="pl-4 my-2">
                         </ul>
                     </div>
                 </div>
@@ -55,63 +55,63 @@ function getOrders(data) {
     return orders;
 }
 
-function getProducts(data) {
-    let products = "";
-    for(let i=0; i < data.length; i++){
-        let product = "";
-        product = `
-        <li class="row mb-3">
-            <div class="row col-12 col-md-6 p-0 bg-white border">
-                <div class="col-12 text-center py-1 d-flex align-items-center">
-                    <img class="mx-auto d-block" src="${data[i]["Image"]}" style="max-height:175px;max-width: 200px;" alt=""/>
-                </div>
-                <div class="text-center col-12">
-                    <a href="#">${data[i]["Picture_title"]}</a>
-                </div>
-            </div>
-            <div class="row col-12 col-md-6 p-0">
-                <ul class="list-group col-12 m-0 p-0">
-                    <li class="list-group-item col-12 col-md-12"><p class="text-left m-0">Technique:
-                    ${data[i]["Description"]}</p></li>
-                    <li class="list-group-item col-12 col-md-12"><p class="text-left m-0">Passpartout:
-                    ${data[i]["Specifications"]}</p></li>
-                    <li class="list-group-item col-12 col-md-12"><p class="text-left m-0">Frame:
-                    ${data[i]["Framedesc"]}</p></li>
-                    <li class="list-group-item col-12 col-md-12 text-left"><p class="text-left">Price:</p></li>
-                </ul>
-            </div>
-        </li>
-        `;
-        products += product;
+function getProducts(dataorders,dataproducts) {
+    for(let j = 0;j < dataorders.length; j++) {
+        let products = "";
+        for(let i=0; i < dataproducts.length; i++){
+            let product = "";
+            if (dataproducts[i]["Order_id"] == dataorders[j]["Order_id"]) {
+                product = `
+                <li class="row mb-3">
+                    <div class="row col-12 col-md-6 p-0 bg-white border">
+                        <div class="col-12 text-center py-1 d-flex align-items-center">
+                            <img class="mx-auto d-block" src="${dataproducts[i]["Image"]}" style="max-height:175px;max-width: 200px;" alt=""/>
+                        </div>
+                        <div class="text-center col-12">
+                            <a href="#">${dataproducts[i]["Picture_title"]}</a>
+                        </div>
+                    </div>
+                    <div class="row col-12 col-md-6 p-0">
+                        <ul class="list-group col-12 m-0 p-0">
+                            <li class="list-group-item col-12 col-md-12"><p class="text-left m-0">Technique:
+                            ${dataproducts[i]["Description"]}</p></li>
+                            <li class="list-group-item col-12 col-md-12"><p class="text-left m-0">Passpartout:
+                            ${dataproducts[i]["Specifications"]}</p></li>
+                            <li class="list-group-item col-12 col-md-12"><p class="text-left m-0">Frame:
+                            ${dataproducts[i]["Framedesc"]}</p></li>
+                            <li class="list-group-item col-12 col-md-12 text-left"><p class="text-left">Price:</p></li>
+                        </ul>
+                    </div>
+                </li>
+                `;
+                products += product;
+            }
+           
+        }
+        $(`#product${j}`).append(products);
     }
-    return products;
 }
 $(document).ready(function() {
     $.getJSON("api-customer-orders.php", function(data){
         const orders = getOrders(data[0]);
         $("#order").append(orders); 
-        const products = getProducts(data[1]);
-        $("#product").append(products);
+        getProducts(data[0],data[1]);
     });
     $("#ship_option").on('change', function() {
         $("#order").empty();
-        $("#product").empty();
         $.getJSON("api-customer-orders.php", function(data){
             const orders = getOrders(data[0]);
             $("#order").append(orders); 
-            const products = getProducts(data[1]);
-            $("#product").append(products);
+            getProducts(data[0],data[1]);
         });
     });
 
     $("#date_option").on('change', function() {
         $("#order").empty();
-        $("#product").empty();
         $.getJSON("api-customer-orders.php", function(data){
             const orders = getOrders(data[0]);
             $("#order").append(orders); 
-            const products = getProducts(data[1]);
-            $("#product").append(products);
+            getProducts(data[0],data[1]);
         });
     });
 
