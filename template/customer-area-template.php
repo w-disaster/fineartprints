@@ -13,7 +13,7 @@
             </div>
             <div class="row mx-0 mb-4">
                 <div class="col-10 col-md-5 offset-1 offset-md-1 px-0 bg-white border mb-4">
-                    <form action="" method="POST" id="personal-form" class="m-0">
+                    <form method="POST" id="personal-form" class="m-0">
                         <h2 class="text-center py-3">Personal information</h2>
                         <fieldset id="personal_fieldset" class="px-0" disabled>
                             <?php foreach($templateParams["personal_info"] as $info): ?>
@@ -125,7 +125,7 @@
                                 <div class="form-group text-center">
                                     <div class="row mt-3">
                                         <label for="owner" class="col-10 offset-1">Owner</label>
-                                        <input name="owner" name="owner" type="text" class="form-control <?php echo $iscardvalid?> col-10 offset-1" id="owner" required/>
+                                        <input name="owner" type="text" class="form-control <?php echo $iscardvalid?> col-10 offset-1" id="owner" required/>
                                     </div>
                                     <div class="row">
                                         <label for="add_number" class="col-10 offset-1">Number</label>
@@ -148,4 +148,4 @@
         </main>
     </div>
 </div>
-<script src="js/customer-form.js" type="text/javascript"></script>
+<script src="js/customer-form.js"></script>

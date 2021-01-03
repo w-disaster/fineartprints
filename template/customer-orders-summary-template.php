@@ -22,12 +22,12 @@
                         <div class=" row col-6 p-0 m-0">
                             <div class="col-6 offset-1 col-md-8 mt-1 p-0 text-right">
                                 <form class="p-0 m-0" method="POST">
-                                <input class ="d-none" id ="notifnumber" name="notif" value ="<?php echo $i ?>"></input>
+                                <input class ="d-none" id ="notifnumber" name="notif" value ="<?php echo $i ?>"/>
                                 <button id="clear" type="submit" class="btn btn-primary border col-12 col-md-5">Clear</button>
                                 </form>
                             </div>
                             <div class="col-5 col-md-3 p-0 text-right">
-                                <button id="data-toggle" data-toggle="collapse" class="navbar-toggler m-1" data-target="#navcol-2">
+                                <button id="data-toggle" data-toggle="collapse" class="navbar-toggler m-1" data-target="#navcol-2"></button>
                                 <span class="sr-only">Toggle navigation</span>
                                 <span class="navbar-toggler-icon"></span>
                             </div>
@@ -78,4 +78,4 @@
     </div>
 </div>
 
-<script src="js/customer-orders-summary.js" type="text/javascript"></script>
+<script src="js/customer-orders-summary.js"></script>
