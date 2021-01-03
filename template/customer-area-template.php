@@ -81,8 +81,8 @@
                         </fieldset>
                         <div class="form-group col-12">
                             <p id="msgerr" class="<?php echo $msgerrcolor?>"><?php echo $msgerr ?></p>
-                            <button id="edit" type="button" class="btn btn-primary col-4 col-md-4 p-2">Edit</button>
-                            <button id="cancel" type="submit" class="btn btn-primary col-4 col-md-4 p-2 d-none">Cancel</button>
+                            <button id="edit" type="button" class="btn btn-primary col-4 col-md-4 offset-4 p-2">Edit</button>
+                            <button id="cancel" type="submit" class="btn btn-primary col-4 col-md-4 offset-2 p-2 d-none">Cancel</button>
                             <button id="save" type="submit" class="btn btn-primary col-4 col-md-4 p-2 d-none">Save</button>
                         </div>
                     </form>      
@@ -92,7 +92,9 @@
                     <div class="row p-3">
                         <div class="col-12 col-md-12">
                             <?php if (count($templateParams["pay_info"]) == 0):?>
+                                <div class="col-10 offset-1 text-center">
                                 <p style="font-size:20px;">No credit card added. Compile the form below</p>
+                                </div>
                             <?php else:?>   
                             <table class="table table-bordered text-center table-responsive">
                                 <tr>
@@ -119,7 +121,7 @@
                     <div class="row px-3">
                         <form method="POST" class="col-10 offset-1 px-3 border">
                             <fieldset class="px-0 mb-2">
-                                <legend class="m-0">Add credit card</legend>
+                                <legend class="m-0 text-center">Add credit card</legend>
                                 <div class="form-group text-center">
                                     <div class="row mt-3">
                                         <label for="owner" class="col-10 offset-1">Owner</label>

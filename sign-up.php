@@ -8,7 +8,6 @@ $ispasswordvalid = "";
 $isconfpwvalid = "";
 $isemailvalid = "";
 $isphonevalid = "";
-//check se l'email esiste
 if (isset($_POST["name"]) && isset($_POST["surname"]) && isset($_POST["password"]) &&
 isset($_POST["confirm-password"]) && isset($_POST["email"]) && isset($_POST["phone"]) &&
 isset($_POST["birth-date"]) && isset($_POST["city"]) && isset($_POST["address"]) &&
@@ -23,7 +22,7 @@ isset($_POST["postal-code"]) && isset($_POST["province"])) {
         $isconfpwvalid = "is-invalid";
     } else if (!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $_POST["email"])) {
         $isemailvalid = "is-invalid";
-    }else if ($dbh->getCustomer()["Email"] == $_POST["email"]) {
+    }else if (count($dbh->getUser($_POST["email"])) == 1) {
         $isemailvalid = "is-invalid";
     } else if (!is_numeric($_POST["phone"]) || strlen($_POST["phone"]) < 9 || strlen($_POST["phone"]) > 10) {
         $isphonevalid = "is-invalid";

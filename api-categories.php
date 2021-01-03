@@ -5,7 +5,7 @@ require_once 'bootstrap.php';
 $templateParams["title"] = "Categories";
 $templateParams["name"] = "categories.php";
 
-$query = "SELECT * From Category";
+$query = "SELECT * From category";
 $templateParams["categories"] = $dbh->query($query);
 
 require 'template/base.php';

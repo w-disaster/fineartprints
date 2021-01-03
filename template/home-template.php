@@ -3,8 +3,30 @@
         <main class="h-100 container-fluid pb-5 px-4">
             <div class="container col-10 offset-1 shadow-sm bg-white border pb-1 mt-4 pt-1 px-0 mb-5">
                 <div class="row m-0 h-50">
-                    <div id="carouselExampleControls" class="carousel slide col-12 col-lg-7 p-0 px-1" data-ride="carousel">
+                    <div id="carouselExampleControls" class="carousel slide col-12 col-md-7 p-0 px-1
+                    d-flex align-items-center" data-ride="carousel">
                         <div id="carousel" class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="w-100 mx-auto" src="./upload/slideshow/NatureBlue.webp" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="w-100" src="./upload/slideshow/NatureGreen.webp" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="w-100" src="./upload/slideshow/Street2.webp" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="w-100" src="./upload/slideshow/Space2.webp" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="w-100" src="./upload/slideshow/Arc1.jpg" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="w-100" src="./upload/slideshow/Space3.webp" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="w-100" src="./upload/slideshow/Street3.webp" alt="">
+                            </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -19,7 +41,7 @@
                     <div class=" col-10 offset-1 col-md-5 offset-md-0 align-self-center">
                         <div class="aside py-0">
                             <p class="col-12 text-center"
-                                style="font-size: 20px;">Discover thousands of art prints of all types and
+                                style="font-size: 18px;">Discover thousands of art prints of all types and
                                 genres, from
                                 all over
                                 the world</p>
@@ -84,4 +106,3 @@
         </main>
     </div>
 </div>
-<script src="js/slideshow.js" type="text/javascript"></script>

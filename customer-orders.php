@@ -1,16 +1,20 @@
 <?php
-require_once 'bootstrap.php';
+    require_once 'bootstrap.php';
+    if(isUserLoggedIn(UserType::Customer)) {
 
-$templateParams["title"] = "Customer orders";
-$templateParams["name"] = "customer-orders-template.php";
+        $templateParams["title"] = "Customer orders";
+        $templateParams["name"] = "customer-orders-template.php";
 
-$templateParams["notifications"] = $dbh->getNotifications();
-$i = 0;
-foreach($templateParams["notifications"] as $nots): $i++; endforeach;
-if(isset($_POST["notif"]) && !is_null($_POST["notif"])) {
-    $dbh->clearNotifications();
-    $i = 0;
-    $templateParams["notifications"] = $dbh->getNotifications();
-}
-require 'template/base.php';
+        $templateParams["notifications"] = $dbh->getNotifications();
+        $i = 0;
+        foreach($templateParams["notifications"] as $nots): $i++; endforeach;
+        if(isset($_POST["notif"]) && !is_null($_POST["notif"])) {
+            $dbh->clearNotifications();
+            $i = 0;
+            $templateParams["notifications"] = $dbh->getNotifications();
+        }
+        require 'template/base.php';
+    } else {
+        header('Location: login.php');
+    }
 ?>

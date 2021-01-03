@@ -9,7 +9,7 @@ $templateParams["select"] = "all";
 $templateParams["order"] = "none";
 
 $filters = new ShopFilters();
-$templateParams["pictures"] = $dbh->query("SELECT * FROM Picture");
+$templateParams["pictures"] = $dbh->query("SELECT * FROM picture");
 
 if(isset($_GET["category"]) || isset($_POST["categories"]) || isset($_POST["authors"])){
 
@@ -52,10 +52,10 @@ if(isset($_POST["order"]) || isset($_POST["select"])){
 }
 
 /* All authors */
-$templateParams["authors"] = $dbh->query("SELECT DISTINCT Author FROM Picture");
+$templateParams["authors"] = $dbh->query("SELECT DISTINCT Author FROM picture");
 
 /* All categories */
-$templateParams["all_categories"] = $dbh->query("SELECT Name FROM Category");
+$templateParams["all_categories"] = $dbh->query("SELECT Name FROM category");
 
 //Base Template
 $templateParams["title"] = "Shop";
