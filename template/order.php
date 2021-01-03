@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="css/order_style.css" >
 
 <div class="flex-grow-1 subtle-pattern">
-  <div class="container bg-white lead flex-flow-row-wrap subtle-pattern">
+  <div class="container bg-white flex-flow-row-wrap subtle-pattern">
     <div class="row my-4">
       <div class="col-12 col-md-7">
         <div class="container-fluid p-0 flex-flow-row-wrap">
@@ -14,7 +14,7 @@
                   <div class="col-6 col-md-9">
                     <input type="text" readonly class="form-control-plaintext" value="Print">
                   </div>
-                  <label for="technique" class="col-6 col-md-3 col-form-label">Print technique</label>
+                  <label for="category" class="col-6 col-md-3 col-form-label">Print category</label>
                   <div class="col-6 col-md-9">
                     <input type="text" readonly class="form-control-plaintext" value="Technique">
                   </div>
@@ -68,38 +68,44 @@
           <div class="row border m-0 px-4 py-4 gray-background w-100">
             <div class="col-12">
               <h3>Payment method</h3>
-              <div class="form-check mt-4">
-                <input class="form-check-input" type="radio" name="paymentRadio" id="defaultCard" value="option1"
-                  checked>
-                <label class="form-form-label" for="exampleRadios1">
-                  Carta già memorizzata
-                </label>
-              </div>
+              <?php if(count($templateParams["customer_credit_cards"])>0): ?>
+                <div class="form-check my-4">
+                  <input class="form-check-input" type="radio" name="paymentRadio" id="defaultCardRadio" value="option1"
+                    checked />
+                  
+                    <select id="input" name="defaultCards" class="form-control">
+                      <?php foreach($templateParams["customer_credit_cards"] as $credit_card): ?>
+                        <option value="<?php echo $credit_card["Card_number"];?>" id="<?php echo $credit_card["Card_number"];?>">
+                        <?php echo $credit_card["Card_number"];?></option>
+                      <?php endforeach; ?>
+                    </select>
+                </div>
+              <?php endif; ?>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="paymentRadio" id="altCard" value="option2">
-                <label class="form-form-label" for="exampleRadios1">
-                  Carta alternativa
+                <input class="form-check-input" type="radio" name="paymentRadio" id="altCardRadio" value="option2">
+                <label class="form-form-label" for="altPaymentRadioLabel" id="altPaymentRadioLabel">
+                  Alternative card
                 </label>
               </div>
             </div>
             <div class="col-12 payment-form d-none">
-              <form>
+              <form class="alternative-card-form">
                 <div class="d-flex flex-column border col-12 px-4 py-2 mt-4 mb-2">
                   <legend>Add credit card</legend>
                   <div class="form-group row w-100 mt-3">
-                    <label for="name" class="col-5">Name:</label>
-                    <input type="text" class="form-control col-7" id="name" />
+                    <label for="credit_card_owner" class="col-5">Owner:</label>
+                    <input type="text" class="form-control col-7" id="credit_card_owner"/>
                   </div>
                   <div class="form-group row w-100">
-                    <label for="postal_code" class="col-5">Number</label>
-                    <input type="number" class="form-control col-7" id="postal_code" />
+                    <label for="credit_card_number" class="col-5">Number</label>
+                    <input type="number" class="form-control col-7" id="credit_card_number" />
                   </div>
                   <div class="form-group row w-100">
-                    <label for="expire_date" class="col-5">Expire date</label>
-                    <input type="date" class="form-control col-7" id="expire_date" />
+                    <label for="credit_card_expire_date" class="col-5">Expire date</label>
+                    <input type="date" class="form-control col-7" id="credit_card_expire_date" />
                   </div>
                   <div class="form-group row w-100 ml-0 pr-3">
-                    <button type="submit" class="btn btn-dark col-12">Add</button>
+                    <input type="button" class="btn btn-add-credit-card btn-dark col-12" value="Add and select"/>
                   </div>
                 </div>
               </form>
@@ -109,23 +115,20 @@
           <div class="row border m-0 px-4 py-4 gray-background w-100">
             <div class="col-12">
               <h3>Shipping</h3>
-              <div class="dropdown mt-4">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Carrier service
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">DHL Express</a>
-                  <a class="dropdown-item" href="#">SDA Express Courier</a>
-                  <a class="dropdown-item" href="#">Bartolini</a>
-                  <a class="dropdown-item" href="#">SDA</a>
-                </div>
-              </div>
+
+              <select id="input" name="defaultCards" class="form-control mt-4">
+                <?php foreach($templateParams["shippers"] as $shipper): ?>
+                  <option value="<?php echo $shipper["Company_name"];?>" id="<?php echo $shipper["Company_name"];?>">
+                  <?php echo $shipper["Company_name"]." - ".$shipper["Price"]."€";?></option>
+                <?php endforeach; ?>
+              </select>
+
               <div class="form-check mt-4">
                 <input class="form-check-input" type="radio" name="shippingRadio" id="defaultShippingAddress"
                   value="option1" checked>
                 <label class="form-form-label" for="exampleRadios1">
-                  Default address
+                  <?php echo $templateParams["customer"][0]["City"]." ".$templateParams["customer"][0]["Postal_code"].
+                  ", ".$templateParams["customer"][0]["Province"].", ".$templateParams["customer"][0]["Address"]; ?>
                 </label>
               </div>
               <div class="form-check">
