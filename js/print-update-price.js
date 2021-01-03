@@ -1,11 +1,9 @@
 $(document).ready(function(){
 
-    let title = $(this).attr('title');
-    const substring = title.replace(/.*-/, '');
-    title = title.replace(" -" + substring, "");
+    let title = $("div.row > div.col-md-4").find("h2").first().text();
     title = title.replace(" ","%20");
 
-    let request_id, additiveConstant, subtractiveConstant, basePrice, basePriceDiscounted, framePrice, passpartoutPrice, techniquePrice, height, width;
+    let request_id, priceDivider, basePrice, basePriceDiscounted, framePrice, passpartoutPrice, techniquePrice, height, width;
     
     const fullPrice = $("p#price");
     const priceDiscounted = $("p#price-discounted");
@@ -31,8 +29,7 @@ $(document).ready(function(){
         if(data["discounted-price"] != 0) {
             basePriceDiscounted = basePrice - data["discounted-price"];
         }
-        additiveConstant = data["additive-constant"];
-        subtractiveConstant = data["subtractive-constant"];
+        priceDivider = data["price-divider"];
     });
 
     $("div.accordion > div > button").click(function() {
@@ -100,7 +97,7 @@ $(document).ready(function(){
             fullPrice.text(updatedPrice.toFixed(2) + " €");
         }
         
-        console.log("additiveConstant: " + additiveConstant);
+        console.log("priceDivider: " + priceDivider);
         console.log("height: " + height);
         console.log("width: " + width);
         console.log("techniquePrice: " + techniquePrice);

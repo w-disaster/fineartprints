@@ -5,7 +5,6 @@ require_once 'utils/functions.php';
 $request_id = $_GET["request_id"] ?? 0;
 
 if ($request_id == 1) {
-    // ask for multiplicative increment and decrement constants and base size/base price
     $title = $_GET["title"];
     $title = str_replace("%20", " ", $title);
 
@@ -16,8 +15,7 @@ if ($request_id == 1) {
     $data = array(
         "price" => $base_price,
         "discounted-price" => $discounted_price,
-        "additive-constant" => $additive_constant,
-        "subtractive-constant" => $subtractive_constant
+        "price-divider" => price_divider,
     );
 
 } else if ($request_id == 2) {
@@ -34,7 +32,7 @@ if ($request_id == 1) {
 }
 
 if (!is_null($data)) {
-    send_data($data);
+    send_json_data($data);
 }
 
 ?>

@@ -11,7 +11,7 @@ class DatabaseHelper{
     }
 
     public function checkLogin($username, $password){
-        $stmt = $this->db->prepare("SELECT email as username, role FROM User WHERE email = ? AND password = ?");
+        $stmt = $this->db->prepare("SELECT email, role FROM User WHERE email = ? AND password = ?");
         $stmt->bind_param('ss',$username, $password);
         $stmt->execute();
         $result = $stmt->get_result();

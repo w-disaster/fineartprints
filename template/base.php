@@ -9,7 +9,6 @@
     integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   <link rel="shortcut icon" type="image/jpg" href="upload/icons/file-richtext.svg" />
   <link rel="stylesheet" href="css/theme.css">
-  <link rel="stylesheet" href="css/<?php echo $templateParams["css"]; ?>">
 
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
@@ -32,7 +31,8 @@
                   src="<?php echo UPLOAD_DIR.'/icons/person-circle.svg'?>" alt="your profile" width="32" height="32"></a>
             </li>
             <li class="nav-item"><a class="nav-link navbar-brand" href="shopping-cart.php"><img src="<?php echo UPLOAD_DIR.'/icons/bag.svg'?>"
-                  alt="cart" width="32" height="32"></a></li>
+                  alt="cart" width="32" height="32"><span id="cart-item-count" class="badge badge-light badge-pill text-dark"><?
+                  echo count($_SESSION["cart-items"] ?? [])?></span></a></li>
           </ul>
         </div>
       </div>

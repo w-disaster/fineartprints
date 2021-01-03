@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Pression on link or on remove button triggers session elimination for item selected.
- */
-
 require_once 'bootstrap.php';
 require_once 'utils/functions.php';
 
@@ -24,8 +20,20 @@ if (isset($_GET["title"])) {
         $frames = $dbh->getFramesFromSeller($print["Email"]);
         $passpartouts = $dbh->getPasspartoutsFromSeller($print["Email"]);
 
-        $templateParams["height"] = $_GET["height"] ?? $default_height;
-        $templateParams["width"] = $_GET["width"] ?? $default_width;
+        $templateParams["height"] = $_GET["height"] ?? default_height;
+        $templateParams["width"] = $_GET["width"] ?? default_width;
+
+        if ($templateParams["height"] > max_height) {
+            $templateParams["height"] = max_height;
+        } else if($templateParams["height"] < default_height) {
+            $templateParams["height"] = default_height;
+        }
+
+        if ($templateParams["width"] > max_width) {
+            $templateParams["width"] = max_width;
+        } else if($templateParams["width"] < default_width) {
+            $templateParams["width"] = default_width;
+        }
 
         $price_calculator->setBasePrice(floatval($print["Base_price"]));
         $price_calculator->setHeight(floatval($templateParams["height"]));
@@ -74,9 +82,12 @@ if (isset($_GET["title"])) {
     $error = true;
 }
 
+// thanks to https://stackoverflow.com/questions/11137625/php-display-a-404-error-without-redirecting-to-another-page
 if ($error) {
     $templateParams["title"] = "Page not found";
     $templateParams["name"] = "template-404.php";
+    header('HTTP/1.0 404 Not Found');
+    $_GET['e'] = 404;
 }
 
 require 'template/base.php';

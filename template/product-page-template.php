@@ -6,7 +6,7 @@
         <div class="container px-4">
             <div class="row">
                 <div class="container bg-white rounded shadow-sm">
-                    <h1 class="text-center text-info mt-3 display-4">Customize your print</h1>
+                    <h1 class="text-center text-info mt-3">Customize your print</h1>
                     <p class="text-center lead">Choose the printing technique, the frame
                         and finally add a passpartout.
                     </p>
@@ -26,7 +26,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col-md-4 pl-2 py-5 mx-0">
+                        <div class="col-md-4 pl-2 py-3 mx-0">
                             <div class="row mx-3 mt-3">
                                 <h2>
                                     <? echo $print["Title"]; ?>
@@ -180,4 +180,7 @@
 
 <script src="js/print-customization.js"></script>
 <script src="js/accordion.js"></script>
+<? if($templateParams["logged"]): ?>
+<script src="js/print-post-request.js"></script>
+<? endif; ?>
 <!--<script src="js/print-update-price.js"></script>-->
