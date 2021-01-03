@@ -1,7 +1,7 @@
 <div class="flex-grow-1 subtle-pattern">
     <div class="container-fluid flex-flow-row-wrap">
-        <main class="h-100 container-fluid pb-5 px-4">
-            <div class="container col-10 offset-1 shadow-sm bg-light border pb-1 mt-4 pt-1 px-0 mb-5">
+        <main class="h-100 container-fluid pb-5 px-0">
+            <div class="container col-12 shadow-sm bg-light border pb-1 mt-4 pt-1 px-0 mb-5 mx-0">
                 <div class="row m-0 h-50">
                     <div id="carouselExampleControls" class="carousel slide col-12 col-md-7 p-0 px-1
                     d-flex align-items-center" data-ride="carousel">
@@ -38,15 +38,16 @@
                         </a>
                     </div>                 
             
-                    <div class=" col-10 offset-1 col-md-5 offset-md-0 align-self-center">
+                    <div class="col-md-5 align-self-center my-3">
                         <div class="aside py-0">
                             <p class="col-12 text-center"
-                                style="font-size: 18px;">Discover thousands of art prints of all types and
+                                style="font-size: 22px;">Discover thousands of art prints of all types and
                                 genres, from
                                 all over
                                 the world</p>
                             <div class="col-12 col-md-12 py-3 text-center">
-                                <a class="btn-primary border px-4 py-2" style="font-size:20px" href="#">Explore</a>
+                                <a class="btn-primary border px-4 py-2" style="font-size:20px" 
+                                href="api-categories.php">Explore</a>
                             </div>  
                         </div>
                     </div>
@@ -54,52 +55,54 @@
             </div>
 
             <div class="row mt-2 mx-0">
-                <div class="col-3 col-md-1 offset-1 offset-md-1 p-0">
+                <div class="col-3 col-md-1 p-0">
                     <p class="text-center text-monospace m-0 bg-light" style="font-size:20px;">Sales
                     </p>
                 </div>
             </div>
 
             <div class="row m-0 mb-5">
-                <div class="col-1 col-md-1 p-0">
-                </div>
-                    <ul class="nav text-center col-10 col-md-8 bg-light p-0">
+                    <ul class="nav text-center col-md-9 bg-light p-0">
                     <?php foreach($templateParams["salespictures"] as $salepicture): ?>
                         <li class="col-6 col-md-3 nav-item mt-2 p-2">
-                            <img class="img-fluid p-0" src="<?php echo UPLOAD_DIR.$salepicture["Image"];?>" alt="" style="max-height:120px;"/>
-                            <p class="mt-3 bm-0"><?php echo $salepicture["Title"];?></p>
+                            <a href="product-page.php?title=<?php echo $salepicture["Title"];?>">
+                            <img class="img-fluid p-0" src="<?php echo UPLOAD_DIR.$salepicture["Image"];?>"
+                             alt="" style="max-height:120px;"/></a>
+                            <p class="mt-3 bm-0">
+                                <a href="product-page.php?title=<?php echo $salepicture["Title"];?>">
+                                <?php echo $salepicture["Title"];?></a>
+                            </p>
                         </li>
                         <?php endforeach; ?>
                     </ul>
-                <div class="aside col-10 col-md-2 offset-1 offset-md-0 nav-item bg-light d-flex align-items-center p-0">
+                <div class="aside col-12 col-md-3 nav-item bg-light d-flex align-items-center p-0">
                     <div class="col-4 col-md-6 offset-4 offset-md-3 p-0 mb-5">
-                        <a class="col-12 col-md-12 btn btn-primary py-3 m-0 border" href="#">More</a>
+                        <a class="col-12 col-md-12 btn btn-primary py-3 mt-5 border" href="#">More</a>
                     </div>
                 </div>
             </div>
 
             <div class="row m-0">
-                <div class="col-3 col-md-1 offset-1 offset-md-1 p-0">
+                <div class="col-3 col-md-1 p-0">
                     <p class="text-center text-monospace m-0 bg-light" style="font-size:20px;">Latest
                     </p>
                 </div>
             </div>
             
             <div class="row m-0">
-                <div class="col-1 col-md-1 p-0">
-                </div>
-                <ul class="nav text-center col-10 col-md-8 bg-light p-0">
+                <ul class="nav text-center col-md-9 bg-light p-0">
                     <?php foreach($templateParams["latestpictures"] as $latestpicture): ?>
                     <li class="col-6 col-md-3 nav-item mt-2 p-2">
-                        <img class="img-fluid p-0" src="<?php echo UPLOAD_DIR.$latestpicture["Image"];?>" alt="" style="max-height:120px;"/>
-                        <p class="mt-3 bm-0"><?php echo $latestpicture["Title"];?></p>
+                        <a href="product-page.php?title=<?php echo $latestpicture["Title"];?>">
+                        <img class="img-fluid p-0" src="<?php echo UPLOAD_DIR.$latestpicture["Image"];?>"
+                         alt="" style="max-height:120px;"/></a>
+                        <p class="mt-3 bm-0"><a href="product-page.php?title=<?php echo $latestpicture["Title"];?>"><?php echo $latestpicture["Title"];?></a></p>
                     </li>
                     <?php endforeach;?>
                 </ul>
-                <div
-                    class="aside col-10 col-md-2 offset-1 offset-md-0 nav-item bg-light d-flex align-items-center p-0">
+                <div class="aside col-md-3 nav-item bg-light d-flex align-items-center p-0">
                     <div class="col-4 col-md-6 offset-4 offset-md-3 p-0 mb-5">
-                        <a class="col-12 col-md-12 btn btn-primary py-3 m-0 border" href="#">More</a>
+                        <a class="col-12 col-md-12 btn btn-primary py-3 mt-5 border" href="#">More</a>
                     </div>
                 </div>
             </div>

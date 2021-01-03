@@ -39,7 +39,7 @@
                   <?php echo $category["Name"]; ?>
                   </label>
                 </div>
-              <? endforeach; ?>
+              <?php endforeach; ?>
               </p>
 
               <p class="mt-3">

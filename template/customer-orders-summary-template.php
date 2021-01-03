@@ -2,7 +2,7 @@
     <div class="container-fluid flex-flow-row-wrap">
         <main class="h-100 container-fluid px-0">   
             <div class="row mx-0 mt-3">
-                <ul class="nav nav-pills col-10 col-md-5 offset-1 offset-md-1">
+                <ul class="nav nav-pills col-12 col-md-6">
                     <li class="nav-item col-5 col-md-5 text-center p-0">
                         <a class="nav-link" href="customer-area.php">Profile</a>
                     </li>
@@ -11,7 +11,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-10 col-md-10 offset-1 px-0 bg-white border mb-4">
+            <div class="col-12 px-0 bg-white border mb-4">
                 <h2 class="my-3 text-center pl-1">My orders</h2>
                 <nav class="navbar navbar-dark bg-dark border shadow-sm col-10 offset-1 p-0">
                     <div class="container text-white p-0">
@@ -27,9 +27,9 @@
                                 </form>
                             </div>
                             <div class="col-5 col-md-3 p-0 text-right">
-                                <button id="data-toggle" data-toggle="collapse" class="navbar-toggler m-1" data-target="#navcol-2"></button>
+                                <button id="data-toggle" data-toggle="collapse" class="navbar-toggler m-1" data-target="#navcol-2">
                                 <span class="sr-only">Toggle navigation</span>
-                                <span class="navbar-toggler-icon"></span>
+                                <span class="navbar-toggler-icon"></span></button>
                             </div>
                         </div>
                         <div class="collapse navbar-collapse" id="navcol-2">
@@ -51,7 +51,7 @@
                     </div>
                 </nav>
                 <div class="row offset-1 col-10 offset-1">
-                    <div class="form-group mt-3 col-5 col-md-4 p-0">
+                    <div class="form-group mt-3 col-6 col-md-4 p-0">
                         <label for="ship_option">Order status</label>
                         <select id="ship_option" name="ship_option" class="form-control col-10">
                             <option selected value="All">All</option>
@@ -61,7 +61,7 @@
                             <option value="Arrived">Arrived</option>
                         </select>
                     </div>
-                    <div class="form-group mt-3 col-6 col-md-4 offset-1 p-0">
+                    <div class="form-group mt-3 col-6 col-md-4 p-0">
                         <label for="date_option">Order date options</label>
                         <select id="date_option" name="date_option" class="form-control col-12 col-md-10">
                             <option selected value="All">All</option>
