@@ -5,7 +5,9 @@ $(document).ready(function() {
 
     $("div.card").find("div > button").click(function() {
         id = $(this).parent().prev().find("div.card-body > p").first().text().trim();
-        //removeItemFromSession();
+        id = parseInt(id.replace("Print id: ", ""), 10);
+        $(this).closest("div.card").remove();
+        removeItemFromSession();
     });
 
     function removeItemFromSession() {
@@ -16,8 +18,7 @@ $(document).ready(function() {
                 "id" : id,
                 "action" : 0
             },
-            success:function() {
-                $(this).closest("div.card").remove();
+            success:function() {              
                 removeItemFromCart();
             }
         })
