@@ -7,7 +7,7 @@
                         <div class="row">
                             <div class="col-10 col-md-8 offset-1 offset-md-2 px-0 bg-white mb-4">
                                 <form action="login.php" method="POST" class="m-0">
-                                    <h2 class="ml-3">Sign-up</h2>
+                                    <h2 class="text-center">Sign-up</h2>
                                     <div class="form-group row mx-3">
                                         <div class="col-12 col-md-5 p-0">
                                             <label for="name" class="p-0 mb-0">Name:</label>
@@ -80,8 +80,8 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group col-6 col-md-4 offset-3 offset-md-4 mt-3">
-                                        <button type="submit" class="btn btn-primary col-md-12 border">Submit</button>
+                                    <div class="form-group col-6 col-md-4 offset-3 offset-md-4 mt-5">
+                                        <button type="submit" class="btn btn-primary col-md-12 border p-2">Submit</button>
                                     </div>
                                 </form>
                             </div>

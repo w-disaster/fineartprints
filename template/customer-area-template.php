@@ -2,18 +2,18 @@
     <div class="container-fluid flex-flow-row-wrap">        
         <main class="h-100 container-fluid px-0">
             <div class="row mx-0 mt-3">
-                <ul class="nav nav-pills col-10 col-md-5 offset-1 offset-md-1">
+                <ul class="nav nav-pills col-12 col-md-6">
                     <li class="nav-item col-5 col-md-5 text-center p-0">
                         <a class="nav-link active" href="#">Profile</a>
                     </li>
                     <li class="nav-item col-5 col-md-5 text-center p-0">
-                        <a class="nav-link" href="customer-orders.php">My orders</a>
+                        <a class="nav-link" href="customer-orders-summary.php">My orders</a>
                     </li>
                 </ul>
             </div>
             <div class="row mx-0 mb-4">
-                <div class="col-10 col-md-5 offset-1 offset-md-1 px-0 bg-white border mb-4">
-                    <form action="" method="POST" id="personal-form" class="m-0">
+                <div class="col-12 col-md-6 px-0 bg-white border mb-4">
+                    <form method="POST" id="personal-form" class="m-0">
                         <h2 class="text-center py-3">Personal information</h2>
                         <fieldset id="personal_fieldset" class="px-0" disabled>
                             <?php foreach($templateParams["personal_info"] as $info): ?>
@@ -87,7 +87,7 @@
                         </div>
                     </form>      
                 </div>
-                <div class="aside col-10 col-md-5 offset-1 offset-md-0 px-0 mb-4 bg-white border">
+                <div class="aside col-12 col-md-6 px-0 mb-4 bg-white border">
                     <h2 class="text-center py-3 col-md-12">Payment information</h2>
                     <div class="row p-3">
                         <div class="col-12 col-md-12">
@@ -119,13 +119,13 @@
                         </div>
                     </div>
                     <div class="row px-3">
-                        <form method="POST" class="col-10 offset-1 px-3 border">
+                        <form method="POST" class="col-10 offset-1 px-3 border mb-3">
                             <fieldset class="px-0 mb-2">
                                 <legend class="m-0 text-center">Add credit card</legend>
                                 <div class="form-group text-center">
                                     <div class="row mt-3">
                                         <label for="owner" class="col-10 offset-1">Owner</label>
-                                        <input name="owner" name="owner" type="text" class="form-control <?php echo $iscardvalid?> col-10 offset-1" id="owner" required/>
+                                        <input name="owner" type="text" class="form-control <?php echo $iscardvalid?> col-10 offset-1" id="owner" required/>
                                     </div>
                                     <div class="row">
                                         <label for="add_number" class="col-10 offset-1">Number</label>
@@ -148,4 +148,4 @@
         </main>
     </div>
 </div>
-<script src="js/customer-form.js" type="text/javascript"></script>
+<script src="js/customer-form.js"></script>

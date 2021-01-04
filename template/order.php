@@ -198,8 +198,8 @@
               <td>
                 <h4>Total</h4>
               </td>
-              <td>
-                <h4>157,00 €</h4>
+              <td id="total-order-cost">
+                <h4>157.00</h4>
               </td>
             </tr>
           </table>

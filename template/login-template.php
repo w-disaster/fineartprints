@@ -9,9 +9,9 @@
                 <div class="container bg-white rounded shadow-sm p-5 my-4 col-md-4 offset-md-4">
                     <form class="needs-validation" action="#" method="POST" novalidate>
                         <div class="form-row">
-                            <label for="username">Username</label>
+                            <label for="email">Username</label>
                             <div class="input-group">
-                                <input id="username" name="username" type="email" class="form-control <? echo ($templateParams["loginError"]) ? "is-invalid" : ""; ?>" required>
+                                <input id="email" name="email" type="email" class="form-control <?php echo ($templateParams["loginError"]) ? "is-invalid" : ""; ?>" required>
                                 <div class="invalid-feedback">
                                     Please provide a valid username.
                                 </div>
@@ -20,7 +20,7 @@
                         <div class="form-row mt-2">
                             <label for="password">Password</label>
                             <div class="input-group">
-                                <input id="password" name="password" type="password" class="form-control <? echo ($templateParams["loginError"]) ? "is-invalid" : ""; ?>" required>
+                                <input id="password" name="password" type="password" class="form-control <?php echo ($templateParams["loginError"]) ? "is-invalid" : ""; ?>" required>
                                 <div class="input-group-append">
                                     <span id="toggle-hidden-pass" class="input-group-text"><img src="upload/icons/eye.svg" alt="toggle password hidden" width="16" height="16"></span>
                                 </div>

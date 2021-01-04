@@ -3,8 +3,11 @@ function updateShippingCosts(value){
         return $(this).val() == value;
     });
     const optionHTML = option.html().split("- ")[1];
-    console.log(optionHTML);
-    $("#shipping-cost-summary").html(optionHTML.substring(0, optionHTML.length -1));
+    const shippingCost = optionHTML.substring(0, optionHTML.length -1);
+
+    $("#shipping-cost-summary").html(shippingCost);
+
+    $("#total-order-cost > h4").html(parseFloat($("#total-order-cost > h4").html()) + parseFloat(shippingCost));
 }
 
 

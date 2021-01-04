@@ -1,5 +1,5 @@
 <?php
-      require_once 'bootstrap.php';
+        require_once 'bootstrap.php';
     if(isUserLoggedIn(UserType::Customer)) {
         $templateParams["title"] = "Customer area";
         $templateParams["name"] = "customer-area-template.php";
@@ -7,7 +7,7 @@
         $msgerr = "";
         $msgerrcolor = "text-danger";
         $oldpw = "";
-        $templateParams["personal_info"] = $dbh->getUser($_SESSION["username"]);
+        $templateParams["personal_info"] = $dbh->getUser($_SESSION["Email"]);
         foreach ($templateParams["personal_info"] as $info) {
             $oldpw = $info["Password"];  
         }
@@ -35,27 +35,32 @@
             } else {
                 $dbh->updateCustomer($_POST["email"], $_POST["birth-date"], $_POST["new-password"], $_POST["name"], $_POST["surname"], 
                 $_POST["phone"], $_POST["city"], $_POST["postal-code"], $_POST["province"], $_POST["address"]);
-                $templateParams["personal_info"] = $dbh->getCustomer();
+                $templateParams["personal_info"] = $dbh->getUser($_SESSION["Email"]);
                 $msgerrcolor = "text-success";
                 $msgerr = "Update succesful!";
             }
         }
 
-            $templateParams["pay_info"] = $dbh->getPaymentInfo();
+            $templateParams["pay_info"] = $dbh->getPaymentInfos($_SESSION["Email"]);
 
 
         if (isset($_POST["remove_number"])) {
-            $dbh->deletePaymentInfo($_POST["remove_number"]);
-            $templateParams["pay_info"] = $dbh->getPaymentInfo();
+            $dbh->updatePaymentInfo($_SESSION["Email"], $_POST["remove_number"], "removed");
+            $templateParams["pay_info"] = $dbh->getPaymentInfos($_SESSION["Email"]);
         }
 
         $iscardvalid = "";
 
-        if (isset($_POST["add_number"]) && isset($_POST["expire_date"]) && !empty($_POST["owner"])) {
+        //add new payment info
+        if (isset($_POST["add_number"]) && isset($_POST["expire_date"]) && isset($_POST["owner"])) {
             $date = new DateTime($_POST["expire_date"]);
             if (count($dbh->getCreditCard($_POST["owner"],$date->format('m/y'), $_POST["add_number"])) != 0) {
-                $dbh->addPaymentInfo($_POST["add_number"]);
-                $templateParams["pay_info"] = $dbh->getPaymentInfo();
+                if (count($dbh->isPaymentInfoInUse($_SESSION["Email"], $_POST["add_number"])) == 0) {
+                    $dbh->updatePaymentInfo($_SESSION["Email"], $_POST["add_number"], "in use");
+                } else {
+                    $dbh->addPaymentInfo( $_SESSION["Email"], $_POST["add_number"]);
+                }
+                $templateParams["pay_info"] = $dbh->getCustomerCreditCards($_SESSION["Email"]);
             } else {
                 $iscardvalid = "is-invalid";
             }
