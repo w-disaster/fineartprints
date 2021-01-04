@@ -3,7 +3,7 @@
         <main class="h-100 container-fluid px-0">   
             <div class="row mx-0 mt-3">
                 <ul class="nav nav-pills col-12 col-md-6">
-                    <li class="nav-item col-5 col-md-5 text-center p-0">
+                    <li class="nav-item col-5 col-md-5 text-center bg-white p-0">
                         <a class="nav-link" href="customer-area.php">Profile</a>
                     </li>
                     <li class="nav-item col-5 col-md-5 text-center p-0">
