@@ -151,7 +151,8 @@ class DatabaseHelper{
     }
 
     public function updateCustomer($email, $birth_date, $password, $name, $surname, $phone, $city, 
-    $postal_code, $province, $address, $role){
+    $postal_code, $province, $address){
+        $role = "customer";
         $stmt = $this->db->prepare("UPDATE user SET Email = ?, Birth_date = ?, Password = ?, Name = ?, Surname = ?, Phone = ?, City = ?, Postal_Code = ?,
          Province = ?, Address = ?, Role = ? WHERE Email = ?");
         $stmt->bind_param("sssssisissss", $email, $birth_date, $password, $name, $surname, $phone, $city, 

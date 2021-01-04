@@ -22,6 +22,7 @@
                         <div class=" row col-6 p-0 m-0">
                             <div class="col-6 offset-1 col-md-8 mt-1 p-0 text-right">
                                 <form class="p-0 m-0" method="POST">
+                                <label for="notifnumber" class="d-none">number</label>
                                 <input class ="d-none" id ="notifnumber" name="notif" value ="<?php echo $i ?>"/>
                                 <button id="clear" type="submit" class="btn btn-primary border col-12 col-md-5">Clear</button>
                                 </form>
