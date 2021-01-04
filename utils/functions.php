@@ -5,6 +5,11 @@ abstract class UserType {
     const Customer = "customer";
 }
 
+abstract class CartAction {
+    const Add_item = 1;
+    const Remove_item = 0;
+}
+
 function isUserLoggedIn($role){
     return !empty($_SESSION["role"]) && $_SESSION["role"] == $role;
 }
@@ -12,6 +17,22 @@ function isUserLoggedIn($role){
 function registerLoggedUser($user){
     $_SESSION["email"] = $user["Email"];
     $_SESSION["role"] = $user["Role"];
+}
+
+function validate_height($height) {
+    if ($height > max_height) {
+        return max_height;
+    } else if($height < default_height) {
+        return default_height;
+    }
+}
+
+function validate_width($width) {
+    if ($width > max_width) {
+        return max_width;
+    } else if($width < default_width) {
+        return default_width;
+    }
 }
 
 function var_dump_plus($expression) {
@@ -23,6 +44,10 @@ function var_dump_plus($expression) {
 function send_json_data($data) {
     header('Content-Type: application/json');
     echo json_encode($data);
+}
+
+function compute_print_id($title, $height, $width, $technique_id, $frame_id, $passpartout_id) {
+    // TODO
 }
 
 function discounted_price($val, $discount){

@@ -155,7 +155,8 @@ $(document).ready(function(){
                 "technique_id" : techniqueId,
                 "frame_id" : frameId,
                 "passpartout_id" : passpartoutId,
-                "price" : price
+                "price" : price,
+                "action" : 1
             },
             success:function() {
                 addItemToCart();

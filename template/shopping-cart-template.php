@@ -10,6 +10,7 @@
             <div class="row">
                 <div class="container rounded bg-white shadow-sm my-4 py-5 px-5">
                     <div class="bg-light rounded-pill px-4 pt-3 pb-4 text-uppercase font-weight-bold text-info"> Products list</div>
+                    <?php if(!empty($templateParams["final_products"])): ?>
                     <?php foreach ($templateParams["final_products"] as $final_product): ?>
                     <div class="card mt-3">
                         <div class="row no-gutters">
@@ -21,13 +22,15 @@
                                     <div class="card-body">
                                         <h5 class="card-title"><?php echo $final_product["title"] ?></h5>
                                         <p class="card-text p-0 m-0 text-muted font-weight-normal font-italic">
+                                            Print id: <?php echo $final_product["print_id"] ?></p>
+                                        <p class="card-text p-0 m-0 text-muted font-weight-normal font-italic">
                                             Dimensions: <?php echo $final_product["height"] ?> cm &times; <?php echo $final_product["width"] ?> cm</p>
                                         <p class="card-text p-0 m-0 text-muted font-weight-normal font-italic"> 
-                                            Printing technique: <?php echo $final_product["technique_id"] ?></p>
+                                            Printing technique: <?php echo $final_product["technique"] ?></p>
                                         <p class="card-text p-0 m-0 text-muted font-weight-normal font-italic">
-                                            Frame: <?php echo $final_product["frame_id"] ?></p>
+                                            Frame: <?php echo $final_product["frame"] ?></p>
                                         <p class="card-text p-0 m-0 text-muted font-weight-normal font-italic">
-                                            Passpartout: <?php echo $final_product["passpartout_id"] ?></p>
+                                            Passpartout: <?php echo $final_product["passpartout"] ?></p>
                                         <p class="card-text h5 pt-2 font-weight-bold">
                                             Price: <?php echo $final_product["price"] ?> &euro;
                                         </p>
@@ -41,6 +44,9 @@
                         </div>
                     </div>
                     <?php endforeach; ?>
+                    <?php else: ?>
+                        <p class="mt-3 lead ml-2">The cart is empty, <a href="api-shop.php">let's explore the shop</a>.</p>
+                    <?php endif; ?>
                     <a href="api-checkout.php" class="btn btn-primary rounded-pill py-2 btn-block mt-5">Proceed to checkout</a>
                 </div>
             </div>

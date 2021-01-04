@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 04, 2021 at 10:36 AM
+-- Generation Time: Jan 04, 2021 at 11:52 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.13
 
@@ -377,12 +377,12 @@ CREATE TABLE `passpartout` (
 --
 
 INSERT INTO `passpartout` (`Passpartout_id`, `Image`, `Specifications`, `Price_per_cm2`) VALUES
-(8001, 'pass01.webp', 'Bianco', 11),
-(8002, 'pass02.webp', 'Bianco Naturale', 12.24),
-(8003, 'pass03.webp', 'Nero', 12.24),
-(8004, 'pass04.webp', 'Newport Blue', 15.23),
-(8005, 'pass05.webp', 'Williams Green', 14.23),
-(8006, 'pass06.webp', 'Chinese Red', 12.24);
+(8001, 'pass01.webp', 'White', 1.1),
+(8002, 'pass02.webp', 'Natural White', 1.24),
+(8003, 'pass03.webp', 'Black', 1.24),
+(8004, 'pass04.webp', 'Newport Blue', 1.52),
+(8005, 'pass05.webp', 'Williams Green', 1.43),
+(8006, 'pass06.webp', 'Chinese Red', 1.27);
 
 -- --------------------------------------------------------
 
@@ -516,15 +516,15 @@ CREATE TABLE `print_technique` (
 --
 
 INSERT INTO `print_technique` (`Technique_id`, `Image`, `Description`, `Price_per_cm2`) VALUES
-(1, 'canvas.webp', 'Print on Artist\'s Canvas', 12),
-(2, 'handmade.webp', 'Hand painted oil painting on Canvas', 12),
-(3, 'varnished.webp', 'Print on Varnished Canvas', 2),
-(4, 'craft.webp', 'Print on Craft Paper', 6),
-(5, 'satin.webp', 'Print on Satin Photographic Paper', 3),
-(6, 'watercolor.webp', 'Print on Watercolor', 4),
-(7, 'wood.webp', 'Print on natural wood', 9),
-(8, 'plexiglas.webp', 'Print on Plexiglas', 5),
-(9, 'glass.webp', 'Print on Glass', 5);
+(1, 'canvas.webp', 'Print on Artist\'s Canvas', 1.6),
+(2, 'handmade.webp', 'Hand painted oil painting on Canvas', 1.6),
+(3, 'varnished.webp', 'Print on Varnished Canvas', 1.6),
+(4, 'craft.webp', 'Print on Craft Paper', 1.3),
+(5, 'satin.webp', 'Print on Satin Photographic Paper', 1.1),
+(6, 'watercolor.webp', 'Print on Watercolor', 1.3),
+(7, 'wood.webp', 'Print on natural wood', 1.2),
+(8, 'plexiglas.webp', 'Print on Plexiglas', 1.1),
+(9, 'glass.webp', 'Print on Glass', 1.4);
 
 -- --------------------------------------------------------
 
