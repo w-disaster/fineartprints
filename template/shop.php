@@ -83,7 +83,7 @@
             <?php if($i == 0): ?> <div class="row border m-0 px-3 pt-4 pb-2"> <?php endif; ?>
               
               <div class="col-6 col-md-3 d-flex flex-column align-self-center pt-3"> 
-                <a href="api-product.php?title=<?php echo $picture["Title"] ?>">
+                <a href="product-page.php?title=<?php echo $picture["Title"] ?>">
                   <img class="img-fluid mb-3" src="<?php echo UPLOAD_DIR.$picture["Image"];?>" alt="<?php echo $picture["Title"];?>" />
                 </a>
                 <h6 class="mt-3"><?php echo $picture["Title"];?></h6>

@@ -2,8 +2,6 @@
 require_once 'bootstrap.php';
 require_once 'utils/functions.php';
 
-$isInsertionValid = true;
-
 if (isset($_POST["title"]) && isset($_POST["action"])) {
 
     if ($_POST["action"] == CartAction::Add_item) {
@@ -26,11 +24,9 @@ if (isset($_POST["title"]) && isset($_POST["action"])) {
                 $templateParams["technique_id"] = $technique["Technique_id"];
                 $price_calculator->setTechniquePrice($technique["Price_per_cm2"]);
                 $technique_id = $technique["Technique_id"];
-            } else {
-                $isInsertionValid = false;
             }
         } else {
-            $isInsertionValid = false;
+            throw new Exception('Invalid Input', 200);
         }
 
         $price_calculator->setFramePrice(0.0);
@@ -61,34 +57,38 @@ if (isset($_POST["title"]) && isset($_POST["action"])) {
         } else {
             $price = $price_calculator->computePrice();
         }
-
-        $print_id = compute_print_id($title, $height, $width, $technique_id, $frame_id, $passpartout_id);
-
-        if ($isInsertionValid) {
-            $_SESSION["products_count"] = $_SESSION["products_count"] ?? 0;
-            $_SESSION["final_products"][$_SESSION["products_count"]] = array(
-                "print_id" => $print_id,
-                "title" => $title,
-                "height" => $height,
-                "width" => $width,
-                "technique_id" => $technique_id,
-                "frame_id" => $frame_id,
-                "passpartout_id" => $passpartout_id,
-                "price" => $price
-            );
         
-            $_SESSION["products_count"]++;
-        }
+        $_SESSION["products_count"] = $_SESSION["products_count"] ?? 0;
+        $print_id = $_SESSION["products_count"];
+
+        $_SESSION["final_products"][$_SESSION["products_count"]] = array(
+            "print_id" => $print_id,
+            "title" => $title,
+            "height" => $height,
+            "width" => $width,
+            "technique_id" => $technique_id,
+            "frame_id" => $frame_id,
+            "passpartout_id" => $passpartout_id,
+            "price" => $price
+        );
+    
+        $_SESSION["products_count"]++;
 
     } else if($_POST["action"] == CartAction::Remove_item) {
 
         $final_products = $_SESSION["final_products"] ?? [];
         foreach ($final_products as &$final_product) {
-            $index = array_search($_POST["title"], $final_product);
+            $result = array_search($_POST["title"], $final_product);
+            if ($result) {
+                $index = $result;
+            }
         }
+
         unset($final_product);
         unset($final_product[$index]);
-        $_SESSION["products_count"]--;
+        if($_SESSION["products_count"] > 0) {
+            $_SESSION["products_count"]--;
+        }
     }
 }
 

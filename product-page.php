@@ -16,6 +16,9 @@ if (isset($_GET["title"])) {
         $templateParams["name"] = "product-page-template.php";
 
         $print = $print[0];
+        $techniques = $dbh->getTechniquesFromPictureTitle($title);
+        $frames = $dbh->getFramesFromSeller($print["Email"]);
+        $passpartouts = $dbh->getPasspartoutsFromSeller($print["Email"]);
 
         $templateParams["height"] = $_GET["height"] ?? default_height;
         $templateParams["width"] = $_GET["width"] ?? default_width;
@@ -59,12 +62,6 @@ if (isset($_GET["title"])) {
             $templateParams["price_discounted"] = $price_calculator->computeDiscountedPrice();
         }
         $templateParams["price"] = $price_calculator->computePrice();
-
-        if (isUserLoggedIn(UserType::Customer)) {
-            $templateParams["logged"] = true;
-        } else {
-            $templateParams["logged"] = false;
-        }
 
     } else {
         $error = true;

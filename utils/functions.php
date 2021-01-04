@@ -24,6 +24,8 @@ function validate_height($height) {
         return max_height;
     } else if($height < default_height) {
         return default_height;
+    } else {
+        return $height;
     }
 }
 
@@ -32,6 +34,8 @@ function validate_width($width) {
         return max_width;
     } else if($width < default_width) {
         return default_width;
+    } else {
+        return $width;
     }
 }
 
@@ -44,10 +48,6 @@ function var_dump_plus($expression) {
 function send_json_data($data) {
     header('Content-Type: application/json');
     echo json_encode($data);
-}
-
-function compute_print_id($title, $height, $width, $technique_id, $frame_id, $passpartout_id) {
-    // TODO
 }
 
 function discounted_price($val, $discount){

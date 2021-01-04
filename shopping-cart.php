@@ -41,8 +41,13 @@ foreach ($final_products as &$final_product) {
 
 unset($final_product);
 
+if (isUserLoggedIn(UserType::Customer)) {
+    $templateParams["logged"] = true;
+} else {
+    $templateParams["logged"] = false;
+}
+
 $templateParams["final_products"] = $final_products;
-var_dump_plus($templateParams["final_products"]);
 
 require 'template/base.php';
 ?>
