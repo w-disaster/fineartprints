@@ -6,7 +6,7 @@
                     <div class="container shadow-sm bg-white border pb-1 mt-4 pt-5">
                         <div class="row">
                             <div class="col-10 col-md-8 offset-1 offset-md-2 px-0 bg-white mb-4">
-                                <form action="login.php" method="POST" class="m-0">
+                                <form method="POST" class="m-0">
                                     <h2 class="text-center">Sign-up</h2>
                                     <div class="form-group row mx-3">
                                         <div class="col-12 col-md-5 p-0">
@@ -25,8 +25,9 @@
                                             <label for="password" class="p-0 mb-0">Password:</label>
                                             <input type="password" class="form-control <?php echo $ispasswordvalid ?>"
                                             id="password" name="password" required/>
-                                            <div class="invalid-feedback">Password must be at least 8 digits
-                                                and contains uppercase,lowercase and numbers.</div>
+                                            <div class="invalid-feedback">New password must be different from the old one
+                                                and have minimum eight characters, at least one uppercase letter,
+                                                one lowercase letter, one number and one special character.</div>
                                             </div>
                                         <div class="col-12 col-md-5 offset-md-2 p-0">
                                             <label for="confirm-password" class="p-0 mb-0">Confirm password:</label>

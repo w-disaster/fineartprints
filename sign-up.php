@@ -16,7 +16,7 @@ isset($_POST["postal-code"]) && isset($_POST["province"])) {
         $isnamevalid = "is-invalid";
     } else if (!preg_match("/^([a-zA-Z' ]+)$/", $_POST["surname"])) {
         $issurnamevalid = "is-invalid";
-    } else if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/", $_POST["password"])) {
+    } else if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $_POST["password"])) {
         $ispasswordvalid = "is-invalid";
     } else if ($_POST["password"] != $_POST["confirm-password"]) {
         $isconfpwvalid = "is-invalid";
@@ -29,7 +29,8 @@ isset($_POST["postal-code"]) && isset($_POST["province"])) {
     } else {
         $dbh->addUser($_POST["email"], $_POST["birth-date"], $_POST["password"], $_POST["name"], $_POST["surname"], 
         $_POST["phone"], $_POST["city"], $_POST["postal-code"], $_POST["province"], $_POST["address"],
-         $_POST["ship_option"], "customer");
+        $_POST["ship_option"], "customer");
+        header('Location: login.php');
     }
 }
 

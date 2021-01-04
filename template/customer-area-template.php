@@ -6,7 +6,7 @@
                     <li class="nav-item col-5 col-md-5 text-center p-0">
                         <a class="nav-link active" href="#">Profile</a>
                     </li>
-                    <li class="nav-item col-5 col-md-5 text-center p-0">
+                    <li class="nav-item col-5 col-md-5 text-center bg-white p-0">
                         <a class="nav-link" href="customer-orders-summary.php">My orders</a>
                     </li>
                 </ul>
@@ -20,7 +20,7 @@
                             <div class="form-group row text-center">
                                 <label for="name" class="col-5">Name</label>
                                 <input type="text" class="form-control col-6" id="name"
-                                value="<?php echo $info["Name"] ?>" name="name" required/>
+                                value="<?php echo $info["Name"] ?>" name="namef" required/>
                             </div>
                             <div class="form-group row text-center">
                                 <label for="surname" class="col-5">Surname</label>
@@ -45,7 +45,7 @@
                             <div class="form-group row text-center">
                                 <label for="email" class="col-5">Email</label>
                                 <input type="email" class="form-control col-6" id="email"
-                                value="<?php echo $info["Email"] ?>" name="email" disabled/>
+                                value="<?php echo $info["Email"] ?>" name="emailf" disabled/>
                             </div>
                             <div class="form-group row text-center">
                                 <label for="phone"  class="col-5">Phone</label>
@@ -80,7 +80,7 @@
                             <?php endforeach;?>
                         </fieldset>
                         <div class="form-group col-12">
-                            <p id="msgerr" class="<?php echo $msgerrcolor?>"><?php echo $msgerr ?></p>
+                            <p id="msgerr" class="text-center <?php echo $msgerrcolor?>"><?php echo $msgerr ?></p>
                             <button id="edit" type="button" class="btn btn-primary col-4 col-md-4 offset-4 p-2">Edit</button>
                             <button id="cancel" type="submit" class="btn btn-primary col-4 col-md-4 offset-2 p-2 d-none">Cancel</button>
                             <button id="save" type="submit" class="btn btn-primary col-4 col-md-4 p-2 d-none">Save</button>
