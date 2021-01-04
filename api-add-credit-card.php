@@ -5,12 +5,17 @@ require_once 'utils/functions.php';
 $result = false;
 
 if(isUserLoggedIn(UserType::Customer)){
-    //$info = substr($_GET["expire_date"], 3, 2)."/".substr($_GET["expire_date"], 6, 2);
-    $info = "10/50";
+    
+    $date = new DateTime($_GET["expire_date"]);
+    $credit_card_date = $date->format("m/y");
    
-    if(count($dbh->getCreditCard($_GET["owner"], $info, $_GET["number"])) > 0){
-        $dbh->addPaymentInfo($_SESSION["email"], $_GET["number"]);
-        $result = true;
+    if(count($dbh->getCreditCard($_GET["owner"], $credit_card_date, $_GET["number"])) > 0){
+        
+        if(count($dbh->getPaymentInfo($_SESSION["email"], $_GET["number"])) == 0){
+
+            $dbh->addPaymentInfo($credit_card_date, $_GET["number"]);
+            $result = true;
+        }
     }
 }
 

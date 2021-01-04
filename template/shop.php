@@ -1,4 +1,7 @@
-  <div class="container-fluid bg-white subtle-pattern">
+ 
+<link rel="stylesheet" href="css/shop_style.css">
+
+ <div class="container-fluid bg-white subtle-pattern">
     <div class="row subtle-pattern">
 
       <div class="col-12 col-md-3 mb-4">

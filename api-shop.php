@@ -2,7 +2,6 @@
 require_once 'bootstrap.php'; 
 require_once 'utils/shop-filters.php';
 
-$templateParams["css"] = "shop_style.css";
 $templateParams["filtered_categories"] = [];
 $templateParams["filtered_authors"] = [];
 $templateParams["select"] = "all";

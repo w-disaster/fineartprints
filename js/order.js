@@ -1,7 +1,16 @@
-
+function updateShippingCosts(value){
+    const option = $("option").filter(function() {
+        return $(this).val() == value;
+    });
+    const optionHTML = option.html().split("- ")[1];
+    console.log(optionHTML);
+    $("#shipping-cost-summary").html(optionHTML.substring(0, optionHTML.length -1));
+}
 
 
 $(document).ready(function(){
+
+    updateShippingCosts($('#shipper-input').val());
 
     $("#altCardRadio").click(function(){
         $(".payment-form").removeClass("d-none")
@@ -21,21 +30,29 @@ $(document).ready(function(){
 
     // Credit card
     $(".btn-add-credit-card").click(function(){
-        const owner = $("#credit_card_owner").val();
-        const number = $("#credit_card_number").val();
-        const expire_date = $("#credit_card_expire_date").val();
-        console.log(owner + " " + number + " " + expire_date);
 
-        $.getJSON("api-add-credit-card.php?owner=" + owner + "&number=" + number + "&expire_date=" + expire_date, function(result){
-            console.log(result);
-            if(result == true){
-                console.log("ci siamo");
-                $("#altPaymentRadioLabel").innerHTML = number;
-                $("#altCardRadio").val(number);
+        const owner = $("#creditCardOwner");
+        const number = $("#creditCardNumber");
+        const expire_date = $("#creditCardExpireDate");
+        const numberInputField = $("#altCardNumber");
+        
+        numberInputField.removeClass("d-none");
 
-           }
+        $.getJSON("api-add-credit-card.php?owner=" + owner.val() + "&number=" + number.val() + "&expire_date=" + expire_date.val(), function(result){
+            if(result){
+                numberInputField.val(number);
+            } else{
+                numberInputField.val("Card not valid");
+            }
         });
+
+        owner.val("");
+        number.val("");
+        expire_date.val("");
     });
 
 
+    $('#shipper-input').change(function() {
+        updateShippingCosts($(this).val());
+    });
 });

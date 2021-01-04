@@ -140,6 +140,15 @@ class DatabaseHelper{
         $stmt->execute();
     }
 
+    public function getPaymentInfo($email, $number){
+        $stmt = $this->db->prepare("SELECT Card_number FROM payment_info WHERE Card_number = ? AND Email = ?");
+        $stmt->bind_param("ss", $number, $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getUser($email){
         $stmt = $this->db->prepare("SELECT Email, Birth_date, Name, Surname, Password, Phone, City, Postal_code,
          Province, Address FROM user WHERE Email = ?;");
@@ -170,7 +179,7 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getPaymentInfo(){
+    /*public function getPaymentInfo(){
         $email = $_SESSION["username"];
         $stmt = $this->db->prepare("SELECT Owner, Card_number, Expire_date 
         FROM payment_info, credit_card WHERE payment_info.Card_number = credit_card.Number AND Email = ?;");
@@ -179,7 +188,7 @@ class DatabaseHelper{
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
-    }
+    }*/
 
     public function deletePaymentInfo($card){
         $stmt = $this->db->prepare("DELETE FROM payment_info WHERE Card_number = ?;");

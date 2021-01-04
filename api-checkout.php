@@ -24,7 +24,7 @@ $templateParams["customer_credit_cards"] = $dbh->getCustomerCreditCardByEmail($e
 
 // selezioniamo i corrieri presenti
 $templateParams["shippers"] = $dbh->query("SELECT * FROM shipper");
-$templateParams["customer"] = $dbh->getUserByEmail($email);
+$templateParams["customer"] = $dbh->getUser($email);
 
 
 $templateParams["title"] = "Order";
