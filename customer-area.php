@@ -41,12 +41,12 @@
             }
         }
 
-            $templateParams["pay_info"] = $dbh->getPaymentInfos($_SESSION["email"]);
+            $templateParams["pay_info"] = $dbh->getCustomerCreditCards($_SESSION["email"]);
 
 
         if (isset($_POST["remove_number"])) {
             $dbh->updatePaymentInfo($_SESSION["email"], $_POST["remove_number"], "removed");
-            $templateParams["pay_info"] = $dbh->getPaymentInfos($_SESSION["email"]);
+            $templateParams["pay_info"] = $dbh->getCustomerCreditCards($_SESSION["email"]);
         }
 
         $iscardvalid = "";
