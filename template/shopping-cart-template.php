@@ -21,18 +21,12 @@
                                 <a href="product-page.php?title=<?php echo $final_product["title"] ?>&height=<?php echo $final_product["height"] ?>&width=<?php echo $final_product["width"] ?>&technique_id=<?php echo $final_product["technique_id"]?>&frame_id=<?php echo $final_product["frame_id"] ?>&passpartout_id=<?php echo $final_product["passpartout_id"] ?>" class="stretched-link">
                                     <div class="card-body">
                                         <h5 class="card-title"><?php echo $final_product["title"] ?></h5>
-                                        <p class="card-text p-0 m-0 text-muted font-weight-normal font-italic">
-                                            Print id: <?php echo $final_product["print_id"] ?></p>
-                                        <p class="card-text p-0 m-0 text-muted font-weight-normal font-italic">
-                                            Dimensions: <?php echo $final_product["height"] ?> cm &times; <?php echo $final_product["width"] ?> cm</p>
-                                        <p class="card-text p-0 m-0 text-muted font-weight-normal font-italic"> 
-                                            Printing technique: <?php echo $final_product["technique"] ?></p>
-                                        <p class="card-text p-0 m-0 text-muted font-weight-normal font-italic">
-                                            Frame: <?php echo $final_product["frame"] ?></p>
-                                        <p class="card-text p-0 m-0 text-muted font-weight-normal font-italic">
-                                            Passpartout: <?php echo $final_product["passpartout"] ?></p>
-                                        <p class="card-text h5 pt-2 font-weight-bold">
-                                            Price: <?php echo $final_product["price"] ?> &euro;
+                                        <p class="card-text p-0 m-0 text-muted font-weight-normal font-italic">Print id: <?php echo $final_product["print_id"] ?></p>
+                                        <p class="card-text p-0 m-0 text-muted font-weight-normal font-italic">Dimensions: <?php echo $final_product["height"] ?> cm &times; <?php echo $final_product["width"] ?> cm</p>
+                                        <p class="card-text p-0 m-0 text-muted font-weight-normal font-italic"> Printing technique: <?php echo $final_product["technique"] ?></p>
+                                        <p class="card-text p-0 m-0 text-muted font-weight-normal font-italic">Frame: <?php echo $final_product["frame"] ?></p>
+                                        <p class="card-text p-0 m-0 text-muted font-weight-normal font-italic">Passpartout: <?php echo $final_product["passpartout"] ?></p>
+                                        <p class="card-text h5 pt-2 font-weight-bold">Price: <?php echo $final_product["price"] ?> &euro;
                                         </p>
                                     </div>
                                 </a>
@@ -44,10 +38,8 @@
                         </div>
                     </div>
                     <?php endforeach; ?>
-                    <?php else: ?>
-                        <p class="mt-3 lead ml-2">The cart is empty, <a href="api-shop.php">let's explore the shop</a>.</p>
+                    <?php else: ?><p class="mt-3 lead ml-2">The cart is empty, <a href="api-shop.php">let's explore the shop</a>.</p><?php endif; ?><?php if($templateParams["logged"]): ?><a href="api-checkout.php" class="btn btn-primary rounded-pill py-2 btn-block mt-5">Proceed to checkout</a><?php else: ?><a href="login.php" class="btn btn-primary rounded-pill py-2 btn-block mt-5">Login to go to checkout</a>
                     <?php endif; ?>
-                    <a href="api-checkout.php" class="btn btn-primary rounded-pill py-2 btn-block mt-5">Proceed to checkout</a>
                 </div>
             </div>
         </div>
