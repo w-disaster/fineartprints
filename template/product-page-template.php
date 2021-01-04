@@ -179,7 +179,4 @@
 
 <script src="js/print-customization.js"></script>
 <script src="js/accordion.js"></script>
-<!--<?php if($templateParams["logged"]): ?>
-<script src="js/print-post-request.js"></script>
-<?php endif; ?>-->
 <script src="js/print-update-price.js"></script>

@@ -10,31 +10,26 @@
             <div class="row">
                 <div class="container rounded bg-white shadow-sm my-4 py-5 px-5">
                     <div class="bg-light rounded-pill px-4 pt-3 pb-4 text-uppercase font-weight-bold text-info"> Products list</div>
-
+                    <?php foreach ($templateParams["final_products"] as $final_product): ?>
                     <div class="card mt-3">
                         <div class="row no-gutters">
                             <div class="col-md-4">
-                                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fm=jpg&w=400&fit=max" class="card-img" alt="">
+                                <img src="<?php echo UPLOAD_DIR.$final_product["image"] ?>" class="card-img" alt="<?php echo $final_product["title"] ?>">
                             </div>
                             <div class="col-md-6">
-                                <a href="#" class="stretched-link">
+                                <a href="product-page.php?title=<?php echo $final_product["title"] ?>&height=<?php echo $final_product["height"] ?>&width=<?php echo $final_product["width"] ?>&technique_id=<?php echo $final_product["technique_id"]?>&frame_id=<?php echo $final_product["frame_id"] ?>&passpartout_id=<?php echo $final_product["passpartout_id"] ?>" class="stretched-link">
                                     <div class="card-body">
-                                        <h5 class="card-title">Earth from
-                                            Space - Gulf of Mexico</h5>
+                                        <h5 class="card-title"><?php echo $final_product["title"] ?></h5>
                                         <p class="card-text p-0 m-0 text-muted font-weight-normal font-italic">
-                                            Category:
-                                            Space</p>
+                                            Dimensions: <?php echo $final_product["height"] ?> cm &times; <?php echo $final_product["width"] ?> cm</p>
+                                        <p class="card-text p-0 m-0 text-muted font-weight-normal font-italic"> 
+                                            Printing technique: <?php echo $final_product["technique_id"] ?></p>
                                         <p class="card-text p-0 m-0 text-muted font-weight-normal font-italic">
-                                            Printing
-                                            technique: satin photographic paper</p>
+                                            Frame: <?php echo $final_product["frame_id"] ?></p>
                                         <p class="card-text p-0 m-0 text-muted font-weight-normal font-italic">
-                                            Frame:
-                                            CF7 - Floating Canvas Frame - Black w/Silver</p>
-                                        <p class="card-text p-0 m-0 text-muted font-weight-normal font-italic">
-                                            Passpartout:
-                                            none</p>
+                                            Passpartout: <?php echo $final_product["passpartout_id"] ?></p>
                                         <p class="card-text h5 pt-2 font-weight-bold">
-                                            Price: €29.99
+                                            Price: <?php echo $final_product["price"] ?> &euro;
                                         </p>
                                     </div>
                                 </a>
@@ -44,44 +39,9 @@
                                 mx-auto btn-danger align-end" type="button">Remove</button>
                             </div>
                         </div>
-                        </a>
                     </div>
-                    <div class="card mt-3">
-                        <div class="row no-gutters">
-                            <div class="col-md-4">
-                                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fm=jpg&w=400&fit=max" class="card-img" alt="">
-                            </div>
-                            <div class="col-md-6">
-                                <a href="#" class="stretched-link">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Earth from
-                                            Space</h5>
-                                        <p class="card-text p-0 m-0 text-muted font-weight-normal font-italic">
-                                            Dimensions:
-                                            10 cm &times; 10 cm</p>
-                                        <p class="card-text p-0 m-0 text-muted font-weight-normal font-italic">
-                                            Printing
-                                            technique: satin photographic paper</p>
-                                        <p class="card-text p-0 m-0 text-muted font-weight-normal font-italic">
-                                            Frame:
-                                            CF7 - Floating Canvas Frame - Black w/Silver</p>
-                                        <p class="card-text p-0 m-0 text-muted font-weight-normal font-italic">
-                                            Passpartout:
-                                            none</p>
-                                        <p class="card-text h5 pt-2 font-weight-bold">
-                                            Price: €29.99
-                                        </p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-2 d-flex justify-content-center align-items-center">
-                                <button class="btn my-3
-                                mx-auto btn-danger align-end" type="button">Remove</button>
-                            </div>
-                        </div>
-                        </a>
-                    </div>
-                    <a href="#" class="btn btn-primary rounded-pill py-2 btn-block mt-5">Proceed to checkout</a>
+                    <?php endforeach; ?>
+                    <a href="api-checkout.php" class="btn btn-primary rounded-pill py-2 btn-block mt-5">Proceed to checkout</a>
                 </div>
             </div>
         </div>

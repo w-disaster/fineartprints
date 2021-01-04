@@ -24,13 +24,13 @@ if ($request_id == 1) {
 
 } else if ($request_id == 2) {
     $technique_id = $_GET["technique_id"];
-    $data = $dbh->getPriceFromTechnique($technique_id);
+    $data = $dbh->getTechniqueFromId($technique_id);
 } else if ($request_id == 3) {
     $frame_id = $_GET["frame_id"];
-    $data = $dbh->getPriceFromFrame($frame_id);
+    $data = $dbh->getFrameFromId($frame_id);
 } else if ($request_id == 4) {
     $passpartout_id = $_GET["passpartout_id"];
-    $data = $dbh->getPriceFromPasspartout($passpartout_id);    
+    $data = $dbh->getPasspartoutFromId($passpartout_id);    
 } else {
     unset($data);
 }
