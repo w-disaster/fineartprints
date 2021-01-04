@@ -65,8 +65,8 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getPriceFromTechnique($technique_id){
-        $stmt = $this->db->prepare("SELECT Price_per_cm2 FROM print_technique WHERE Technique_id = ?");
+    public function getTechniqueFromId($technique_id){
+        $stmt = $this->db->prepare("SELECT * FROM print_technique WHERE Technique_id = ?");
         $stmt->bind_param("i", $technique_id);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -74,8 +74,8 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getPriceFromFrame($frame_id) {
-        $stmt = $this->db->prepare("SELECT Price FROM frame WHERE Frame_id = ?");
+    public function getFrameFromId($frame_id) {
+        $stmt = $this->db->prepare("SELECT * FROM frame WHERE Frame_id = ?");
         $stmt->bind_param("i", $frame_id);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -83,8 +83,8 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getPriceFromPasspartout($passpartout_id) {
-        $stmt = $this->db->prepare("SELECT Price_per_cm2 FROM passpartout WHERE 
+    public function getPasspartoutFromId($passpartout_id) {
+        $stmt = $this->db->prepare("SELECT * FROM passpartout WHERE 
         Passpartout_id = ?");
         $stmt->bind_param("i", $passpartout_id);
         $stmt->execute();

@@ -3,7 +3,7 @@ $(document).ready(function(){
     let title = $("div.row > div.col-md-4").find("h2").first().text().trim();
     title = title.replace(" ","%20");
 
-    let requestId, priceDivider, basePrice, basePriceDiscounted, framePrice, passpartoutPrice, techniquePrice, height, width, techniqueId, frameId, passpartoutId, currentItemCount, defaultHeight, defaultWidth, maxHeight, maxWidth;
+    let requestId, priceDivider, basePrice, basePriceDiscounted, framePrice, passpartoutPrice, techniquePrice, height, width, techniqueId, frameId, passpartoutId, currentItemCount, defaultHeight, defaultWidth, maxHeight, maxWidth, price;
 
     const fullPrice = $("p#price");
     const priceDiscounted = $("p#price-discounted");
@@ -18,6 +18,7 @@ $(document).ready(function(){
     height = parseFloat(inputHeight.val());
 
     basePrice = 0.0;
+    price = 0.0;
     basePriceDiscounted = 0.0;
     techniquePrice = 0.0;
     framePrice = 0.0;
@@ -30,6 +31,7 @@ $(document).ready(function(){
 
     $.getJSON("api-print-customization.php?title=" + title + "&request_id=" + requestId, function(data){
         basePrice = data["price"];
+        price = basePrice;
 
         if(data["discounted-price"] != 0) {
             basePriceDiscounted = basePrice - data["discounted-price"];
@@ -120,8 +122,10 @@ $(document).ready(function(){
             
             fullPrice.html('<p id="price" class="text-muted h3 mb-4 mr-2"><del>' + updatedPrice.toFixed(2) + " €</del></p>");
             priceDiscounted.text(updatedDiscountedPrice.toFixed(2) + " €");
+            price = updatedDiscountedPrice.toFixed(2);
         } else {
             fullPrice.text(updatedPrice.toFixed(2) + " €");
+            price = updatedPrice.toFixed(2);
         }
         
         /*console.log("priceDivider: " + priceDivider);
@@ -150,7 +154,8 @@ $(document).ready(function(){
                 "height" : height,
                 "technique_id" : techniqueId,
                 "frame_id" : frameId,
-                "passpartout_id" : passpartoutId
+                "passpartout_id" : passpartoutId,
+                "price" : price
             },
             success:function() {
                 addItemToCart();
