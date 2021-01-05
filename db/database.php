@@ -178,7 +178,7 @@ class DatabaseHelper{
     }
 
     public function getUser($email){
-        $stmt = $this->db->prepare("SELECT Email, Birth_date, Name, Surname, Password, Phone, City, Postal_code,
+        $stmt = $this->db->prepare("SELECT Email, Birth_date, Name, Surname, Password, Salt, Phone, City, Postal_code,
          Province, Address FROM user WHERE Email = ?;");
         $stmt->bind_param("s", $email);
         $stmt->execute();
@@ -187,12 +187,12 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function updateCustomer($email, $birth_date, $password, $name, $surname, $phone, $city, 
+    public function updateCustomer($email, $birth_date, $password, $salt, $name, $surname, $phone, $city, 
     $postal_code, $province, $address){
         $role = "customer";
-        $stmt = $this->db->prepare("UPDATE user SET Email = ?, Birth_date = ?, Password = ?, Name = ?, Surname = ?, Phone = ?, City = ?, Postal_Code = ?,
+        $stmt = $this->db->prepare("UPDATE user SET Birth_date = ?, Password = ?, Salt = ?, Name = ?, Surname = ?, Phone = ?, City = ?, Postal_Code = ?,
          Province = ?, Address = ?, Role = ? WHERE Email = ?");
-        $stmt->bind_param("sssssisissss", $email, $birth_date, $password, $name, $surname, $phone, $city, 
+        $stmt->bind_param("sssssisissss", $birth_date, $password, $salt, $name, $surname, $phone, $city, 
         $postal_code, $province, $address,$role, $email);
         $stmt->execute();
     }
