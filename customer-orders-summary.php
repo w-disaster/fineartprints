@@ -2,7 +2,7 @@
     require_once './bootstrap.php';
     if(isUserLoggedIn(UserType::Customer)) {
 
-        $templateParams["title"] = "Customer orders";
+        $templateParams["title"] = "My orders";
         $templateParams["name"] = "template/customer-orders-summary-template.php";
 
         $templateParams["notifications"] = $dbh->getNotifications($_SESSION["email"]);

@@ -182,15 +182,6 @@ class DatabaseHelper{
         $stmt->execute();
     }
 
-    public function getPaymentInfo($email, $number){
-        $stmt = $this->db->prepare("SELECT Card_number FROM payment_info WHERE Email = ? AND Card_number = ?");
-        $stmt->bind_param("ss", $email, $number);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
     public function getUser($email){
         $stmt = $this->db->prepare("SELECT Email, Birth_date, Name, Surname, Password, Salt, Phone, City, Postal_code,
          Province, Address FROM user WHERE Email = ?;");
@@ -231,12 +222,10 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function isPaymentInfoInUse($email, $card){
-        $status = "in use";
-        $stmt = $this->db->prepare("SELECT Owner, Card_number, Expire_date 
-        FROM payment_info, credit_card WHERE payment_info.Card_number = credit_card.Number
-         AND Email = ? AND Status = ?;");
-        $stmt->bind_param("ss", $email, $status);
+    public function isPaymentInfoRemoved($email, $card){
+        $status = "removed";
+        $stmt = $this->db->prepare("SELECT * FROM payment_info WHERE Email = ? AND Card_number = ? AND Status = ?;");
+        $stmt->bind_param("sis", $email, $card, $status);
         $stmt->execute();
         $result = $stmt->get_result();
 

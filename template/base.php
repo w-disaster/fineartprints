@@ -19,12 +19,12 @@
 <body>
   <div class="d-flex flex-column h-100">
     <nav class="navbar navbar-dark navbar-expand-md bg-dark shadow-sm">
-      <div class="container"><a class="navbar-brand logo" href="home.php">Fine Art Prints</a><button data-toggle="collapse"
+      <div class="container"><a class="navbar-brand logo" href="index.php">Fine Art Prints</a><button data-toggle="collapse"
           class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle
             navigation</span><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navcol-1">
           <ul class="nav navbar-nav ml-auto">
-            <li class="nav-item"><a class="nav-link" href="home.php">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="shop.php">Shop</a></li>
             <li class="nav-item"><a class="nav-link" href="categories.php">Categories</a></li>
             <li class="nav-item"><a class="nav-link navbar-brand" href="login.php"><img
