@@ -3,7 +3,7 @@
     if(isUserLoggedIn(UserType::Customer)) {
 
         $templateParams["title"] = "Customer orders";
-        $templateParams["name"] = "template/customer/customer-orders-summary-template.php";
+        $templateParams["name"] = "template/customer-orders-summary-template.php";
 
         $templateParams["notifications"] = $dbh->getNotifications($_SESSION["email"]);
         $i = 0;
