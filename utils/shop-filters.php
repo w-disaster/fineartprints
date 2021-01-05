@@ -63,7 +63,7 @@ class ShopFilters{
                 });                
                 break;
             default: 
-                new BadMessageException('unexpected value provided as order name');
+                throw new BadMethodCallException('unexpected value provided as order name');
                 break;
         }
         return $pictures;

@@ -62,6 +62,22 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getCategories(){
+        $stmt = $this->db->prepare("SELECT * FROM category");
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getTechniques() {
+        $stmt = $this->db->prepare("SELECT * FROM print_technique");
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getTechniquesFromPictureTitle($title){
         $stmt = $this->db->prepare("SELECT print_technique.Technique_id, Image, Description, Price_per_cm2 FROM print_technique, art_print WHERE print_technique.Technique_id = art_print.Technique_id AND art_print.Picture_title=?");
         $stmt->bind_param("s", $title);
