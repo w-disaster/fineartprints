@@ -33,7 +33,7 @@
             <li class="nav-item"><a class="nav-link navbar-brand" href="shopping-cart.php"><img src="<?php echo UPLOAD_DIR.'/icons/bag.svg'?>"
                   alt="cart" width="32" height="32"><span id="cart-item-count" class="badge badge-light badge-pill text-dark"><?php echo $_SESSION["products_count"] ?? 0?></span></a></li>
             <?php if(isset($_SESSION["email"])): ?>
-              <li class="nav-item"><a class="nav-link navbar-brand" href="#"><img
+              <li class="nav-item"><a class="nav-link navbar-brand" href="logout.php"><img
                   src="<?php echo UPLOAD_DIR.'/icons/box-arrow-right.svg'?>" alt="your profile" width="32" height="32"></a>
               </li>            
             <?php endif; ?>
