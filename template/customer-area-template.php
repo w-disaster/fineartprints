@@ -105,18 +105,22 @@
                             <?php else:?>   
                             <table class="table table-bordered text-center">
                                 <tr>
-                                    <th id="owner">Owner</th><th id="last_digits">Last 4 digits</th><th id="expire date">Expire Date</th><th id="action">Action</th>
+                                    <th id="owner_">Owner</th>
+                                    <th id="last_digits">Last 4 digits</th>
+                                    <th id="expire_date">Expire Date</th>
+                                    <th id="action">Action</th>
                                 </tr> 
                                 <?php foreach($templateParams["pay_info"] as $cards): ?>
                                 <tr>
-                                    <th id="<?php echo $cards["Owner"]?>"><?php echo $cards["Owner"]?></th>
-                                    <td headers="digits <?php echo $cards["Owner"]?>"><?php echo substr($cards["Card_number"],12,4)?></td>
-                                    <td headers="expdate <?php echo $cards["Owner"]?>"><?php echo $cards["Expire_date"]?></td>
-                                    <td headers="action <?php echo $cards["Owner"]?>">
+                                    <td headers="owner_" id="<?php echo $cards["Owner"]?>"><?php echo $cards["Owner"]?></td>
+                                    <td headers="last_digits"><?php echo substr($cards["Card_number"],12,4)?></td>
+                                    <td headers="expire_date"><?php echo $cards["Expire_date"]?></td>
+                                    <td headers="action">
                                         <form method="POST" id="remove-form" class="m-0">
-                                            <input type="text" class="d-none" name="remove_number" value="<?php echo $cards["Card_number"]?>"/>
-                                            <input type="submit" class="btn btn-primary border col-md-12" href="#"
-                                                value="Remove"/>           
+                                            <input type="text" class="d-none" name="remove_number"
+                                             value="<?php echo $cards["Card_number"]?>"/>
+                                            <input type="submit" class="btn btn-primary border col-md-12"
+                                             value="Remove"/>           
                                         </form>
                                     </td>
                                 </tr>
