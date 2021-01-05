@@ -12,6 +12,10 @@ body {
   background-position: -1px -1px, -1px -1px;
 }
 
+ul li a {
+  color:#004FA3 !important;
+}
+
 a:hover {
   color: #e64f13 !important;
   text-decoration: none;
