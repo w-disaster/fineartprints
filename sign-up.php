@@ -15,18 +15,25 @@ isset($_POST["birth-date"]) && isset($_POST["city"]) && isset($_POST["address"])
 isset($_POST["postal-code"]) && isset($_POST["province"])) {
     if (!preg_match("/^([a-zA-Z' ]+)$/", $_POST["name"])) {
         $isnamevalid = "is-invalid";
+
     } else if (!preg_match("/^([a-zA-Z' ]+)$/", $_POST["surname"])) {
         $issurnamevalid = "is-invalid";
+
     } else if (false/*!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $_POST["password"])*/) {
         $ispasswordvalid = "is-invalid";
+
     } else if ($_POST["password"] != $_POST["confirm-password"]) {
         $isconfpwvalid = "is-invalid";
+
     } else if (!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $_POST["email"])) {
         $isemailvalid = "is-invalid";
+
     }else if (count($dbh->getUser($_POST["email"])) == 1) {
         $isemailvalid = "is-invalid";
+
     } else if (!is_numeric($_POST["phone"]) || strlen($_POST["phone"]) < 9 || strlen($_POST["phone"]) > 10) {
         $isphonevalid = "is-invalid";
+        
     } else {
 
         /* Valid fields: we generate the salt for user password */
