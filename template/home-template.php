@@ -69,7 +69,7 @@
                             <img class="img-fluid p-0" src="<?php echo UPLOAD_DIR.$salepicture["Image"];?>"
                              alt="<?php echo $salepicture["Title"]?>" style="max-height:120px;"/></a>
                             <p class="mt-3 bm-0">
-                                <a href="product-page.php?title=<?php echo str_replace(" ","%20",$salepicture["Title"]);?>">
+                                <a style="color: #004c9e;" href="product-page.php?title=<?php echo str_replace(" ","%20",$salepicture["Title"]);?>">
                                 <?php echo $salepicture["Title"];?></a>
                             </p>
                         </li>
@@ -99,7 +99,7 @@
                         <img class="img-fluid p-0" src="<?php echo UPLOAD_DIR.$latestpicture["Image"];?>"
                         alt="<?php echo $latestpicture["Title"]?>" style="max-height:120px;"/></a>
                         <p class="mt-3 bm-0">
-                        <a href="product-page.php?title=<?php echo str_replace(" ","%20",$latestpicture["Title"]);?>"><?php echo $latestpicture["Title"];?></a></p>
+                        <a style="color: #004c9e;" href="product-page.php?title=<?php echo str_replace(" ","%20",$latestpicture["Title"]);?>"><?php echo $latestpicture["Title"];?></a></p>
                     </li>
                     <?php endforeach;?>
                 </ul>

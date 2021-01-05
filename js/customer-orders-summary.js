@@ -71,7 +71,7 @@ function getProducts(dataorders,dataproducts) {
                              style="max-height:175px;max-width: 200px;" alt="${dataproducts[i]["Picture_title"]}"/></a>
                         </div>
                         <div class="text-center col-12">
-                            <a href="product-page.php?title=${dataproducts[i]["Picture_title"].replace(" ","%20")}">
+                        <a style="color: #004c9e;" href="product-page.php?title=${dataproducts[i]["Picture_title"].replace(" ","%20")}">
                             ${dataproducts[i]["Picture_title"]}</a>
                         </div>
                     </div>

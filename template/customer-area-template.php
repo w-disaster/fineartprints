@@ -4,10 +4,10 @@
             <div class="row mx-0 mt-3">
                 <ul class="nav nav-pills col-12 col-md-6">
                     <li class="nav-item col-5 col-md-5 text-center p-0">
-                        <a class="nav-link active" href="#">Profile</a>
+                        <a class="nav-link active bg-dark text-white" href="#">Profile</a>
                     </li>
                     <li class="nav-item col-5 col-md-5 text-center bg-white p-0">
-                        <a class="nav-link" href="customer-orders-summary.php">My orders</a>
+                        <a class="nav-link text-dark" href="customer-orders-summary.php">My orders</a>
                     </li>
                 </ul>
             </div>
@@ -90,13 +90,13 @@
                 <div class="aside col-12 col-md-6 px-0 mb-4 bg-white border">
                     <h2 class="text-center py-3 col-md-12">Payment information</h2>
                     <div class="row p-3">
-                        <div class="col-12 col-md-12">
+                        <div class="col-12 col-md-12 table-responsive px-2">
                             <?php if (count($templateParams["pay_info"]) == 0):?>
                                 <div class="col-10 offset-1 text-center">
                                 <p style="font-size:20px;">No credit card added. Compile the form below</p>
                                 </div>
                             <?php else:?>   
-                            <table class="table table-bordered text-center table-responsive">
+                            <table class="table table-bordered text-center">
                                 <tr>
                                     <th id="owner">Owner</th><th id="last_digits">Last 4 digits</th><th id="expire date">Expire Date</th><th id="action">Action</th>
                                 </tr> 
@@ -118,8 +118,8 @@
                             <?php endif;?>
                         </div>
                     </div>
-                    <div class="row px-3">
-                        <form method="POST" class="col-10 offset-1 px-3 border mb-3">
+                    <div class="row px-4">
+                        <form method="POST" class="col-12 border mb-3">
                             <fieldset class="px-0 mb-2">
                                 <legend class="m-0 text-center">Add credit card</legend>
                                 <div class="form-group text-center">

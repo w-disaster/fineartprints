@@ -4,10 +4,10 @@
             <div class="row mx-0 mt-3">
                 <ul class="nav nav-pills col-12 col-md-6">
                     <li class="nav-item col-5 col-md-5 text-center bg-white p-0">
-                        <a class="nav-link" href="customer-area.php">Profile</a>
+                        <a class="nav-link text-dark" href="customer-area.php">Profile</a>
                     </li>
                     <li class="nav-item col-5 col-md-5 text-center p-0">
-                        <a class="nav-link active" href="#">My orders</a>
+                        <a class="nav-link active bg-dark text-white" href="#">My orders</a>
                     </li>
                 </ul>
             </div>
@@ -17,7 +17,7 @@
                     <div class="container text-white p-0">
                         <div class="col-6 p-0">
                             <p class="ml-1 my-0 text-left" style="font-size:20px;">Notifications
-                            <span id = "badge" class="badge badge-primary badge-pill"><?php echo $i ?></span></p>
+                            <span id = "badge" class="badge badge-light text-dark badge-pill"><?php echo $i ?></span></p>
                         </div>
                         <div class=" row col-6 p-0 m-0">
                             <div class="col-6 offset-1 col-md-8 mt-1 p-0 text-right">
