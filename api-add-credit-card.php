@@ -10,12 +10,12 @@ if(isUserLoggedIn(UserType::Customer)){
    
     if(count($dbh->getCreditCard($_GET["owner"], $date->format("m/y"), $_GET["number"])) > 0){
 
-        if (count($dbh->isPaymentInfoRemoved($_SESSION["email"], $cardnumber)) != 0) {
-            $dbh->updatePaymentInfo($_SESSION["email"], $cardnumber, "in use");
+        if (count($dbh->isPaymentInfoRemoved($_SESSION["email"], $_GET["number"])) != 0) {
+            $dbh->updatePaymentInfo($_SESSION["email"], $_GET["number"], "in use");
         } else {
-            $dbh->addPaymentInfo( $_SESSION["email"], $cardnumber);
+            $dbh->addPaymentInfo( $_SESSION["email"], $_GET["number"]);
         }
-        $result = true;
+        $result = $_GET["number"];
     }
 }
 

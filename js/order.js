@@ -1,6 +1,3 @@
-const number = $("#creditCardNumber");
-
-
 function updateShippingCosts(value){
     const option = $("option").filter(function() {
         return $(this).val() == value;
@@ -42,6 +39,7 @@ $(document).ready(function(){
         const owner = $("#creditCardOwner");
         const expire_date = $("#creditCardExpireDate");
         const numberInputField = $("#altCardNumber");
+        const number = $("#creditCardNumber");
         
         numberInputField.removeClass("d-none");
 

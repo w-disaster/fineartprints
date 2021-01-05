@@ -3,7 +3,7 @@ require_once 'bootstrap.php';
 require_once 'utils/functions.php';
 
 
-if(isUserLoggedIn("customer")){
+if(isUserLoggedIn("customer") && count($_SESSION["final_products"]) > 0){
 
     if(isset($_SESSION["final_products"])){
         $finalProducts = $_SESSION["final_products"];
@@ -18,15 +18,21 @@ if(isUserLoggedIn("customer")){
 
             //SESSION technique
             $technique_id = $finalProducts[$i]["technique_id"];
-            $templateParams["final_products"][$i]["technique"] = $technique_id == 0 ? "none" :
+            $templateParams["final_products"][$i]["technique"] = 
                 $dbh->getTechniqueFromId(intVal($technique_id, 10))[0]["Description"];
             //SESSION frame
             $frame_id = $finalProducts[$i]["frame_id"];
-            $templateParams["final_products"][$i]["frame"] = $frame_id == 0 ? "none" : 
+            if($frame_id == 0){
+                $frame_id = 7819;
+            }
+            $templateParams["final_products"][$i]["frame"] =
                 $dbh->getFrameFromId(intVal($frame_id, 10))[0]["Description"];
             //SESSION passpartout
             $passpartout_id = $finalProducts[$i]["passpartout_id"];
-            $templateParams["final_products"][$i]["passpartout"] = $passpartout_id == 0 ? "none" : 
+            if($passpartout_id == 0){
+                $passpartout_id = 8000;
+            }
+            $templateParams["final_products"][$i]["passpartout"] = 
                 $dbh->getPasspartoutFromId(intVal($passpartout_id, 10))[0]["Specifications"];
 
             $templateParams["final_products"][$i]["price"] = $finalProducts[$i]["price"];
@@ -48,7 +54,7 @@ if(isUserLoggedIn("customer")){
 
     require 'template/base.php';
 } else{
-    require 'login.php';
+    require 'home.php';
 }
 
 ?>
