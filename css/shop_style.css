@@ -1,4 +1,4 @@
-img {
+.print-image {
     border-radius: 5px !important;
     object-fit:cover;
     -webkit-transition: all .3s ease-in-out;

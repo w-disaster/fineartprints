@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    $("img").hover(function(){
+    $(".category-image").hover(function(){
 
         $(this).addClass('transition');
         //$(this).parent().parent().children(".middle").fadeTo(0, 1);

@@ -1,16 +1,10 @@
 <?php
 require_once "bootstrap.php";
-require_once "utils/functions.php";
 
 if(isset($_POST["email"]) && isset($_POST["password"])){
-    $login_result = $dbh->checkLogin($_POST["email"], $_POST["password"]);
-
-    if(empty($login_result)){
+    
+    if(!$dbh->checkLogin($_POST["email"], $_POST["password"])){
         $templateParams["loginError"] = true;
-    }
-    else{
-        $templateParams["loginError"] = false;
-        registerLoggedUser($login_result[0]);
     }
 }
 
