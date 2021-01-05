@@ -4,10 +4,9 @@ require_once 'bootstrap.php';
 if(isUserLoggedIn(UserType::Seller)) {
     $templateParams["title"] = "Seller Area - Your prints - Fine Art Prints";
     $templateParams["name"] = "seller-prints-template.php";
-
-    $email = htmlspecialchars($_SESSION["Email"]);
-
+    $email = htmlspecialchars($_SESSION["email"]);
     $templateParams["prints"] = $dbh->getPicturesFromSeller($email);
+
     
 
 } else {

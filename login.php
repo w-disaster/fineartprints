@@ -2,8 +2,10 @@
 require_once "bootstrap.php";
 
 if(isset($_POST["email"]) && isset($_POST["password"])){
-    
-    if(!$dbh->checkLogin($_POST["email"], $_POST["password"])){
+    $email = htmlspecialchars($_POST["email"]);
+    $password = htmlspecialchars($_POST["password"]);
+
+    if (!$dbh->checkLogin($email, $password)){
         $templateParams["loginError"] = true;
     }
 }

@@ -21,7 +21,7 @@
                 <input id="search-bar" type="search" class="form-control">
               </div>
             </div>
-            <?php foreach ($templateParams["print"] as $print) : ?>
+            <?php foreach ($templateParams["prints"] as $print) : ?>
               <a href="#" class="list-group-item list-group-item-action bg-white"><?php echo $print["Title"] ?></a>
             <?php endforeach; ?>
           </aside>
@@ -35,11 +35,12 @@
             </div>
             <div class="row">
               <div class="container mt-4 p-4 px-5 bg-white rounded shadow-sm">
+                <?php if(!$templateParams["printSelected"]): ?>
                 <h3 class="">No print selected</h3>
+                <?php else: ?>
                 <form class="d-none">
                   <h2 class="d-inline">Print details</h2>
                   <button id="edit-print" class="btn float-right"><img src="upload/icons/pencil-square.svg" alt="edit this print" aria-label="edit-print" width="32" height="32"></button>
-
                   <h3 class="section-title">Print image</h3>
                   <div class="row py-3 mx-1">
                     <img id="print-image" class="justify-content-center" alt="wheatfield with crows by vincent van gogh" width="75%" src="upload/wheatfield-crows.jpeg">
@@ -141,6 +142,7 @@
                   <button id="save-settings" class="btn btn-primary d-none mt-2" type="submit" disabled>Save settings</button>
                   <button id="abort-changes" class="btn btn-danger d-none mt-2" type="reset" disabled>Delete changes</button>
                 </form>
+                <?php endif; ?>
               </div>
             </div>
           </div>
