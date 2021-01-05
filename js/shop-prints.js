@@ -2,7 +2,7 @@ const replaceArea = document.querySelector("aside > .replace-area");
 let info = "";
 
 $(document).ready(function(){
-    $("img").hover(function(){
+    $(".print-image").hover(function(){
         $(this).addClass('transition');
         let title = $(this).parent().parent().children('h6').text();
 

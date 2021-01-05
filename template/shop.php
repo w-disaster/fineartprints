@@ -10,13 +10,13 @@
             <form action="api-shop.php" method="POST">
               <div class="form-check">
                 <input class="form-check-input" type="radio" name="select" id="all" value="all" <?php if($templateParams["select"] == "all"): echo "checked"; endif; ?>>
-                <label class="form-check-label ml-3" for="selectAll">
+                <label class="form-check-label ml-3" for="all">
                   Tutti
                 </label>
               </div>
               <div class="form-check">
                 <input class="form-check-input" type="radio" name="select" id="sale" value="sale" <?php if($templateParams["select"] == "sale"): echo "checked"; endif; ?>>
-                <label class="form-check-label ml-3" for="selectSale">
+                <label class="form-check-label ml-3" for="sale">
                   In sconto: %
                 </label>
               </div>
@@ -83,8 +83,8 @@
             <?php if($i == 0): ?> <div class="row border m-0 px-3 pt-4 pb-2"> <?php endif; ?>
               
               <div class="col-6 col-md-3 d-flex flex-column align-self-center pt-3"> 
-                <a href="product-page.php?title=<?php echo $picture["Title"] ?>">
-                  <img class="img-fluid mb-3" src="<?php echo UPLOAD_DIR.$picture["Image"];?>" alt="<?php echo $picture["Title"];?>" />
+                <a href="product-page.php?title=<?php echo str_replace(" ", "%20", $picture["Title"]); ?>">
+                  <img class="img-fluid print-image mb-3" src="<?php echo UPLOAD_DIR.$picture["Image"];?>" alt="<?php echo $picture["Title"];?>" />
                 </a>
                 <h6 class="mt-3"><?php echo $picture["Title"];?></h6>
 

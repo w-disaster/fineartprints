@@ -7,11 +7,12 @@ $error = false;
 
 if (isset($_GET["title"])) {
     
-    $print = $dbh->getPictureFromTitle($_GET["title"]);
+    $title = str_replace("%20", " ", $_GET["title"]);
+    $print = $dbh->getPictureFromTitle($title);
 
     if (!empty($print)) {
 
-        $title = $_GET["title"];
+        
         $templateParams["title"] = $title;
         $templateParams["name"] = "product-page-template.php";
 

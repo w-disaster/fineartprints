@@ -2,12 +2,14 @@ function updateShippingCosts(value){
     const option = $("option").filter(function() {
         return $(this).val() == value;
     });
+    
     const optionHTML = option.html().split("- ")[1];
     const shippingCost = optionHTML.substring(0, optionHTML.length -1);
 
-    $("#shipping-cost-summary").html(shippingCost);
+    $("#shipping-cost-summary").html(shippingCost + " €");
+    const articles_total_cost = $("#articles-total-cost > h5").html().split("€")[0];
 
-    $("#total-order-cost > h4").html(parseFloat($("#total-order-cost > h4").html()) + parseFloat(shippingCost));
+    $("#total-order-cost").html("<h4>" + parseFloat(articles_total_cost) + parseFloat(shippingCost) + " €</h4>");
 }
 
 

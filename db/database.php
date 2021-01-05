@@ -11,12 +11,30 @@ class DatabaseHelper{
     }
 
     public function checkLogin($email, $password){
-        $stmt = $this->db->prepare("SELECT Email, Role FROM user WHERE email = ? AND password = ?");
-        $stmt->bind_param('ss',$email, $password);
+        /* I check if there is a user with specified email */
+        $stmt = $this->db->prepare("SELECT Email, Role, Password, Salt FROM user WHERE Email = ?");
+        $stmt->bind_param('s', $email);
         $stmt->execute();
-        $result = $stmt->get_result();
 
-        return $result->fetch_all(MYSQLI_ASSOC);
+        /* query result fetching */
+        $stmt->store_result();
+        $stmt->bind_result($email, $role, $db_password, $salt);
+        $stmt->fetch();
+
+        /* I check if the password is correct */
+        $password = hash('sha512', $password.$salt);
+        if($stmt->num_rows == 1) {
+            if($db_password == $password) { // Verifica che la password memorizzata nel database corrisponda alla password fornita dall'utente.
+               // Password corretta!            
+                $user_browser = $_SERVER['HTTP_USER_AGENT']; // Recupero il parametro 'user-agent' relativo all'utente corrente.
+
+                /* XSS prevention */
+                $_SESSION['email'] = htmlspecialchars($email);
+                $_SESSION['role'] = htmlspecialchars($role);
+                return true;    
+            }
+        }
+        return false;
     }
 
     public function getPictureFromTitle($title){
@@ -125,11 +143,11 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function addUser($email, $birth_date, $password, $name, $surname, $phone, $city, 
+    public function addUser($email, $birth_date, $password, $salt, $name, $surname, $phone, $city, 
     $postal_code, $province, $address, $role){
-        $stmt = $this->db->prepare("INSERT INTO user (Email, Birth_date, Password, Name, Surname, Phone, City, Postal_Code,
-         Province, Address, Role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
-        $stmt->bind_param("sssssisisss", $email, $birth_date, $password, $name, $surname, $phone, $city, 
+        $stmt = $this->db->prepare("INSERT INTO user (Email, Birth_date, Password, Salt, Name, Surname, Phone, City, Postal_Code,
+         Province, Address, Role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+        $stmt->bind_param("ssssssisisss", $email, $birth_date, $password, $salt, $name, $surname, $phone, $city, 
         $postal_code, $province, $address, $role);
         $stmt->execute();
     }
@@ -163,9 +181,9 @@ class DatabaseHelper{
     public function updateCustomer($email, $birth_date, $password, $name, $surname, $phone, $city, 
     $postal_code, $province, $address){
         $role = "customer";
-        $stmt = $this->db->prepare("UPDATE user SET Birth_date = ?, Password = ?, Name = ?, Surname = ?, Phone = ?, City = ?, Postal_Code = ?,
+        $stmt = $this->db->prepare("UPDATE user SET Email = ?, Birth_date = ?, Password = ?, Name = ?, Surname = ?, Phone = ?, City = ?, Postal_Code = ?,
          Province = ?, Address = ?, Role = ? WHERE Email = ?");
-        $stmt->bind_param("ssssisissss", $birth_date, $password, $name, $surname, $phone, $city, 
+        $stmt->bind_param("sssssisissss", $email, $birth_date, $password, $name, $surname, $phone, $city, 
         $postal_code, $province, $address,$role, $email);
         $stmt->execute();
     }
