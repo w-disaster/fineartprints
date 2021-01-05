@@ -2,7 +2,7 @@
 require_once 'bootstrap.php';
 require_once 'utils/functions.php';
 
-if (isset($_POST["title"]) && isset($_POST["action"])) {
+if (isset($_POST["action"])) {
 
     if ($_POST["action"] == CartAction::Add_item) {
 
@@ -19,8 +19,9 @@ if (isset($_POST["title"]) && isset($_POST["action"])) {
         $price_calculator->setTechniquePrice(0.0);
         $technique_id = "none";
         if (isset($_POST["technique_id"])) {
-            $technique = $dbh->getTechniqueFromId($_POST["technique_id"])[0];
+            $technique = $dbh->getTechniqueFromId($_POST["technique_id"]);
             if (!empty($technique)) {
+                $technique = $technique[0];
                 $templateParams["technique_id"] = $technique["Technique_id"];
                 $price_calculator->setTechniquePrice($technique["Price_per_cm2"]);
                 $technique_id = $technique["Technique_id"];
@@ -32,8 +33,9 @@ if (isset($_POST["title"]) && isset($_POST["action"])) {
         $price_calculator->setFramePrice(0.0);
         $frame_id = "none";
         if (isset($_POST["frame_id"])) {
-            $frame = $dbh->getFrameFromId($_POST["frame_id"])[0];
+            $frame = $dbh->getFrameFromId($_POST["frame_id"]);
             if (!empty($frame)) {
+                $frame = $frame[0];
                 $templateParams["frame_id"] = $frame["Frame_id"];
                 $price_calculator->setFramePrice($frame["Price"]);
                 $frame_id = $frame["Frame_id"];
@@ -43,8 +45,9 @@ if (isset($_POST["title"]) && isset($_POST["action"])) {
         $price_calculator->setPasspartoutPrice(0.0);
         $passpartout_id = "none";
         if (isset($_POST["passpartout_id"])) {
-            $chosenPasspartout = $dbh->getPasspartoutFromId($_POST["passpartout_id"])[0];
+            $chosenPasspartout = $dbh->getPasspartoutFromId($_POST["passpartout_id"]);
             if (!empty($chosenPasspartout)) {
+                $passpartout = $passpartout[0];
                 $templateParams["passpartout_id"] = $chosenPasspartout["Passpartout_id"];
                 $price_calculator->setPasspartoutPrice($chosenPasspartout["Price_per_cm2"]);
                 $passpartout_id = $passpartout["Passpartout_id"];
@@ -76,16 +79,15 @@ if (isset($_POST["title"]) && isset($_POST["action"])) {
 
     } else if($_POST["action"] == CartAction::Remove_item) {
 
-        $final_products = $_SESSION["final_products"] ?? [];
-        foreach ($final_products as &$final_product) {
-            $result = array_search($_POST["title"], $final_product);
-            if ($result) {
-                $index = $result;
+        for($i = 0; $i < $_SESSION["products_count"]; $i++) {
+            if(!empty($_SESSION["final_products"][strval($i)]) && $_SESSION["final_products"][strval($i)]["print_id"] == $_POST["print_id"]) {
+                var_dump($_SESSION["final_products"][strval($i)]);
+                $index = strval($i);
             }
         }
-
-        unset($final_product);
-        unset($final_product[$index]);
+        if(isset($index)) {
+            unset($_SESSION["final_products"][$index]);
+        }
         if($_SESSION["products_count"] > 0) {
             $_SESSION["products_count"]--;
         }

@@ -45,13 +45,13 @@
 
     <div class="row m-0">
         <footer class="col-12 col-md-12 px-0 bg-dark py-3">
-          <ul class="nav text-center">
-            <li class="col-3 col-md-3 offset-1 offset-md-1 nav-item mt-2 px-5"><a
-                class="nav-link text-center text-white bg-dark" href="api-about-us.php">About us</a></li>
-            <li class="col-2 col-md-2 nav-item mt-2"><img src="<?php echo UPLOAD_DIR?>icons/facebook.svg" alt="facebook profile" /></li>
-            <li class="col-2 col-md-2 nav-item mt-2"><img src="<?php echo UPLOAD_DIR?>icons/twitter.svg" alt="twitter profile" /></li>
-            <li class="col-2 col-md-2 nav-item mt-2"><img src="<?php echo UPLOAD_DIR?>icons/instagram.svg" alt="instragram page" /></li>
-          </ul>
+          <div class="nav d-flex justify-content-center">
+            <a
+                class="d-flex flex-fill nav-link justify-content-center text-white bg-dark" href="api-about-us.php">About us</a>
+            <img class="d-flex flex-fill" src="<?php echo UPLOAD_DIR?>icons/facebook.svg" alt="facebook profile" width="32" height="32" />
+            <img class="d-flex flex-fill" src="<?php echo UPLOAD_DIR?>icons/twitter.svg" alt="twitter profile" width="32" height="32" />
+            <img class="d-flex flex-fill" src="<?php echo UPLOAD_DIR?>icons/instagram.svg" alt="instragram page" width="32" height="32" />
+          </div>
         </footer>
     </div> 
 

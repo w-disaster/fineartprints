@@ -32,8 +32,9 @@ if (isset($_GET["title"])) {
 
         $price_calculator->setTechniquePrice(0.0);    
         if (isset($_GET["technique_id"])) {
-            $chosenTechnique = $dbh->getTechniqueFromId($_GET["technique_id"])[0];
+            $chosenTechnique = $dbh->getTechniqueFromId($_GET["technique_id"]);
             if (!empty($chosenTechnique)) {
+                $chosenTechnique = $chosenTechnique[0];
                 $templateParams["technique_id"] = $chosenTechnique["Technique_id"];
                 $price_calculator->setTechniquePrice($chosenTechnique["Price_per_cm2"]);
             }
@@ -41,8 +42,9 @@ if (isset($_GET["title"])) {
 
         $price_calculator->setFramePrice(0.0);
         if (isset($_GET["frame_id"])) {
-            $chosenFrame = $dbh->getFrameFromId($_GET["frame_id"])[0];
+            $chosenFrame = $dbh->getFrameFromId($_GET["frame_id"]);
             if (!empty($chosenFrame)) {
+                $chosenFrame = $chosenFrame[0];
                 $templateParams["frame_id"] = $chosenFrame["Frame_id"];
                 $price_calculator->setFramePrice($chosenFrame["Price"]);
             }
@@ -50,8 +52,9 @@ if (isset($_GET["title"])) {
         
         $price_calculator->setPasspartoutPrice(0.0);
         if (isset($_GET["passpartout_id"])) {
-            $chosenPasspartout = $dbh->getPasspartoutFromId($_GET["passpartout_id"])[0];
+            $chosenPasspartout = $dbh->getPasspartoutFromId($_GET["passpartout_id"]);
             if (!empty($chosenPasspartout)) {
+                $chosenPasspartout = $chosenPasspartout[0];
                 $templateParams["passpartout_id"] = $chosenPasspartout["Passpartout_id"];
                 $price_calculator->setPasspartoutPrice($chosenPasspartout["Price_per_cm2"]);
             }

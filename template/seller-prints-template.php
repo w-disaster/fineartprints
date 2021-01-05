@@ -3,16 +3,16 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <aside class="bg-white sidebar container shadow-sm my-4 p-4 list-group-flush">
-        <h3 class="py-4 pl-3">Seller's Area</h3>
+      <aside class="bg-white sidebar container shadow-sm my-4 p-4 list-group-flush" aria-labelledby="seller-area-sidebar">
+        <h3 id="seller-area-sidebar" class="py-4 pl-3">Seller's Area</h3>
         <a href="seller-overview.php" class="list-group-item list-group-item-action bg-white">Overview</a>
         <a href="seller-profile.php" class="list-group-item list-group-item-action bg-white">Profile</a>
         <a href="#" class="list-group-item list-group-item-action bg-white">Your prints</a>
         <a href="seller-add-print.php" class="list-group-item list-group-item-action bg-white">Add new print</a>
         <a href="seller-orders.php" class="list-group-item list-group-item-action bg-white">View orders</a>
       </aside>
-      <aside class="bg-white sidebar container shadow-sm my-4 p-4 list-group list-group-flush">
-        <h3 class="py-4 pl-3">Prints' list</h3>
+      <aside class="bg-white sidebar container shadow-sm my-4 p-4 list-group list-group-flush" aria-labelledby="your-prints">
+        <h3 id="your-prints" class="py-4 pl-3">Prints' list</h3>
         <label for="search-bar">Search by print title</label>
         <div class="input-group mb-2 w-75">
           <div class="input-group-prepend">
@@ -20,21 +20,9 @@
             <input id="search-bar" type="search" class="form-control">
           </div>
         </div>
-        <a href="#" class="list-group-item list-group-item-action bg-white">Print A</a>
-        <a href="#" class="list-group-item list-group-item-action bg-white">Print A</a>
-        <a href="#" class="list-group-item list-group-item-action bg-white">Wheatfield with Crows</a>
-        <a href="#" class="list-group-item list-group-item-action bg-white">The Cardsharps</a>
-        <a href="#" class="list-group-item list-group-item-action bg-white">Print A</a>
-        <a href="#" class="list-group-item list-group-item-action bg-white">Print A</a>
-        <a href="#" class="list-group-item list-group-item-action bg-white">Print A</a>
-        <a href="#" class="list-group-item list-group-item-action bg-white">Print A</a>
-        <a href="#" class="list-group-item list-group-item-action bg-white">Print A</a>
-        <a href="#" class="list-group-item list-group-item-action bg-white">Print A</a>
-        <a href="#" class="list-group-item list-group-item-action bg-white">Print A</a>
-        <a href="#" class="list-group-item list-group-item-action bg-white">Print A</a>
-        <a href="#" class="list-group-item list-group-item-action bg-white">Print A</a>
-        <a href="#" class="list-group-item list-group-item-action bg-white">Print A</a>
-        <a href="#" class="list-group-item list-group-item-action bg-white">Print A</a>
+        <?php foreach($templateParams["print"] as $print): ?>
+          <a href="#" class="list-group-item list-group-item-action bg-white">Print A</a>
+        <?php endforeach; ?>
       </aside>
     </div>
 
@@ -48,12 +36,11 @@
         </div>
         <div class="row">
           <div class="container mt-4 p-4 px-5 bg-white rounded shadow-sm">
-            <!-- check if GET is null to hide h3 or form -->
-            <h3 class="d-none">No print selected</h3>
-            <form class="">
+            <h3 class="">No print selected</h3>
+            <form class="d-none">
 
               <h2 class="d-inline">Print details</h2>
-              <button id="edit-print" class="btn float-right"><img src="upload/icons/pencil-square.svg" alt="edit this print" width="32" height="32"></button>
+              <button id="edit-print" class="btn float-right"><img src="upload/icons/pencil-square.svg" alt="edit this print" aria-label="edit-print" width="32" height="32"></button>
 
               <h3 class="section-title">Print image</h3>
               <div class="row py-3 mx-1">
@@ -62,7 +49,7 @@
                   <label for="image-chooser">Image displayed for the product</label>
                   <input id="image-chooser" type="file" class="form-control-file" accept=".jpg, .webp, .jpeg,	image/webp, image/jpg image/jpeg" disabled>
                   <div class="invalid-feedback">
-                    Please provide an image (.jpg or .webp).
+                    Please provide an image (.jpeg or .webp).
                   </div>
                 </div>
               </div>

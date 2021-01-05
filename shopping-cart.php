@@ -1,16 +1,14 @@
 <?php
 require_once 'bootstrap.php';
 
-/**
- * Pression on link or on remove button triggers session elimination for item selected.
- */
-
 $templateParams["title"] = "Shopping cart";
 $templateParams["name"] = "shopping-cart-template.php";
 
 $final_products = $_SESSION["final_products"] ?? [];
+$templateParams["total_price"] = 0.0;
 
 foreach ($final_products as &$final_product) {
+
     $title = $final_product["title"];
     $print = $dbh->getPictureFromTitle($title)[0];
 
@@ -37,6 +35,7 @@ foreach ($final_products as &$final_product) {
     }
 
     $final_product["image"] = $print["Image"];
+    $templateParams["total_price"] += $final_product["price"];
 }
 
 unset($final_product);
