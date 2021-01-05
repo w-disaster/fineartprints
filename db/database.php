@@ -24,11 +24,9 @@ class DatabaseHelper{
         /* I check if the password is correct */
         $password = hash('sha512', $password.$salt);
         if($stmt->num_rows == 1) {
-            if ($db_password == $password) { // Verifica che la password memorizzata nel database corrisponda alla password fornita dall'utente.
-               // Password corretta!            
-                $user_browser = $_SERVER['HTTP_USER_AGENT']; // Recupero il parametro 'user-agent' relativo all'utente corrente.
-
-                /* XSS prevention */
+            /* We check if the password match the one on the database */
+            if ($db_password == $password) {
+                /* Correct password, XSS prevention: */
                 $_SESSION['email'] = htmlspecialchars($email);
                 $_SESSION['role'] = htmlspecialchars($role);
                 return true;    
