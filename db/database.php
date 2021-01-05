@@ -45,8 +45,9 @@ class DatabaseHelper{
     }
 
     public function getCustomerCreditCardByEmail($email){
-        $stmt = $this->db->prepare("SELECT Card_number FROM payment_info WHERE Email=?");
-        $stmt->bind_param("s", $email);
+        $status = "in use";
+        $stmt = $this->db->prepare("SELECT Card_number FROM payment_info WHERE Email=? AND Status = ?");
+        $stmt->bind_param("ss", $email, $status);
         $stmt->execute();
         $result = $stmt->get_result();
 
