@@ -10,12 +10,8 @@ $(document).ready(function() {
             txtValue = a.textContent || a.innerText;
     
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                //sidebarElems[i].show();
                 sidebarElems[i].style.display = "";
             } else {
-                //sidebarElems[i].hide();
-                console.log($("aside.sidebar > a"));
-                console.log(sidebarElems[i]);
                 sidebarElems[i].style.display = "none";
             }
         }

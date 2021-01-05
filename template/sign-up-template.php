@@ -11,13 +11,11 @@
                                     <div class="form-group row mx-3">
                                         <div class="col-12 col-md-5 p-0">
                                             <label for="name" class="p-0 mb-0">Name:</label>
-                                            <input type="text" class="form-control <?php echo $isnamevalid ?>" id="name" name="name" required/>
-                                            <div class="invalid-feedback">Please enter a valid name.</div>
+                                            <input type="text" class="form-control" id="name" name="name" required/>
                                         </div>
                                         <div class="col-12 col-md-5 offset-md-2 p-0">
                                             <label for="surname" class="p-0 mb-0">Surname:</label>
-                                            <input type="text" class="form-control <?php echo $issurnamevalid ?>" id="surname" name="surname" required/>
-                                            <div class="invalid-feedback">Please enter a valid surname.</div>
+                                            <input type="text" class="form-control" id="surname" name="surname" required/>
                                         </div>
                                     </div>
                                     <div class="form-group row mx-3">
