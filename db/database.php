@@ -264,7 +264,7 @@ class DatabaseHelper{
     }
 
     public function getMyOrders($email){
-        $stmt = $this->db->prepare("SELECT Status, Order_id, Order_date, Status FROM prints_order, user
+        $stmt = $this->db->prepare("SELECT Order_id, Order_date, Status FROM prints_order, user
         WHERE user.Email = prints_order.Email AND prints_order.Email = ? ORDER BY Order_date DESC");
         $stmt->bind_param("s", $email);
         $stmt->execute();

@@ -79,4 +79,4 @@
     </div>
 </div>
 
-<script src="js/customer/customer-orders-summary.js"></script>
+<script src="js/customer-orders-summary.js"></script>

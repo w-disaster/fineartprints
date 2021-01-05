@@ -159,4 +159,4 @@
         </main>
     </div>
 </div>
-<script src="js/customer/customer-form.js"></script>
+<script src="js/customer-form.js"></script>
