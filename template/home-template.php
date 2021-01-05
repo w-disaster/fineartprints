@@ -47,7 +47,7 @@
                                 the world</p>
                             <div class="col-12 col-md-12 py-3 text-center">
                                 <a class="btn-primary border px-4 py-2" style="font-size:20px" 
-                                href="api-categories.php">Explore</a>
+                                href="categories.php">Explore</a>
                             </div>  
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                         <?php endforeach; ?>
                     </ul>
                 <div class="aside col-12 col-md-3 nav-item bg-light d-flex align-items-center p-0">
-                    <form action="api-shop.php" method="POST" class="col-4 col-md-6 offset-4 offset-md-3 p-0 mb-5">
+                    <form action="shop.php" method="POST" class="col-4 col-md-6 offset-4 offset-md-3 p-0 mb-5">
                         <label for="select" class="d-none">select</label>
                         <input id="select" class="d-none" name="select" value="sale"/>
                         <button type="submit" class="col-12 col-md-12 btn btn-primary py-3 mt-5 border" >More</button>
@@ -104,7 +104,7 @@
                     <?php endforeach;?>
                 </ul>
                 <div class="aside col-md-3 nav-item bg-light d-flex align-items-center p-0">
-                <form action="api-shop.php" method="POST" class="col-4 col-md-6 offset-4 offset-md-3 p-0 mb-5">
+                <form action="shop.php" method="POST" class="col-4 col-md-6 offset-4 offset-md-3 p-0 mb-5">
                         <label for="order" class="d-none">order</label>
                         <input id="order" class="d-none" name="order" value="publish_date"/>
                         <button type="submit" class="col-12 col-md-12 btn btn-primary py-3 mt-5 border" >More</button>

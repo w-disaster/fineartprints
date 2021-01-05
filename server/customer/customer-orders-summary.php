@@ -1,9 +1,9 @@
 <?php
-    require_once 'bootstrap.php';
+    require_once './bootstrap.php';
     if(isUserLoggedIn(UserType::Customer)) {
 
         $templateParams["title"] = "Customer orders";
-        $templateParams["name"] = "customer-orders-summary-template.php";
+        $templateParams["name"] = "template/customer/customer-orders-summary-template.php";
 
         $templateParams["notifications"] = $dbh->getNotifications($_SESSION["email"]);
         $i = 0;
@@ -13,7 +13,7 @@
             $i = 0;
             $templateParams["notifications"] = $dbh->getNotifications($_SESSION["email"]);
         }
-        require 'template/base.php';
+        require './template/base.php';
     } else {
         header('Location: login.php');
     }

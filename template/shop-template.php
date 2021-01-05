@@ -7,7 +7,7 @@
       <div class="col-12 col-md-3 mb-4">
         <aside class="h-100">
           <section class="bg-white border mt-4 px-5 py-3 w-100">
-            <form action="api-shop.php" method="POST">
+            <form action="shop.php" method="POST">
               <div class="form-check">
                 <input class="form-check-input" type="radio" name="select" id="all" value="all" <?php if($templateParams["select"] == "all"): echo "checked"; endif; ?>>
                 <label class="form-check-label ml-3" for="all">

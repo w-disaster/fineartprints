@@ -58,7 +58,7 @@ $templateParams["all_categories"] = $dbh->query("SELECT Name FROM category");
 
 //Base Template
 $templateParams["title"] = "Shop";
-$templateParams["name"] = "shop.php";
+$templateParams["name"] = "shop-template.php";
 
 require 'template/base.php';
 ?>

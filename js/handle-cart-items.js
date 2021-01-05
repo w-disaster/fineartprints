@@ -39,7 +39,7 @@ $(document).ready(function() {
     }
 
     function showTextForEmptyCart() {
-        text = `<p class="mt-3 lead ml-2">The cart is empty, <a href="api-shop.php">let's explore the shop</a>.</p>`;
+        text = `<p class="mt-3 lead ml-2">The cart is empty, <a href="shop.php">let's explore the shop</a>.</p>`;
         $("div.rounded-pill:first").after(text);
     }
 

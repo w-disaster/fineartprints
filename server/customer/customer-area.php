@@ -2,7 +2,7 @@
     require_once 'bootstrap.php';
     if(isUserLoggedIn(UserType::Customer)) {
         $templateParams["title"] = "Customer area";
-        $templateParams["name"] = "customer-area-template.php";
+        $templateParams["name"] = "template/customer/customer-area-template.php";
 
         $msgerr = "";
         $msgerrcolor = "text-danger";

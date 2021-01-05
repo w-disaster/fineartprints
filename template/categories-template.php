@@ -11,11 +11,11 @@
             <?php if($i == 0): ?> <div class="row border  bg-white mx-0 mb-4 px-5 py-3"> <?php endif; ?>
             
             <div class="col-6 col-md-3 d-flex align-items-center py-5">
-            <a href="api-shop.php?category=<?php echo $category["Name"]; ?>">
+            <a href="shop.php?category=<?php echo $category["Name"]; ?>">
                 <img class="img-fluid category-image" src="<?php echo UPLOAD_DIR.$category["Image"]; ?>" 
                     alt="<?php echo $category["Name"].", orientation: ".$category["Orientation"]; ?>" />
             </a>
-            <a href="api-shop.php?category=<?php echo $category["Name"]; ?>" 
+            <a href="shop.php?category=<?php echo $category["Name"]; ?>" 
                 class="middle text-white bg-dark"><h3><?php echo $category["Name"]; ?></h3></a>
             </div>
 
@@ -26,5 +26,3 @@
         <?php endforeach; ?>
     </div>
 </div>
-
-

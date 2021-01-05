@@ -7,7 +7,7 @@
                         <a class="nav-link active bg-dark text-white" href="#">Profile</a>
                     </li>
                     <li class="nav-item col-5 col-md-5 text-center bg-white p-0">
-                        <a class="nav-link text-dark" href="customer-orders-summary.php">My orders</a>
+                        <a class="nav-link text-dark" href="server/customer/customer-orders-summary.php">My orders</a>
                     </li>
                 </ul>
             </div>
