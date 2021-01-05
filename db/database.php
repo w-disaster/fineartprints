@@ -24,7 +24,7 @@ class DatabaseHelper{
         /* I check if the password is correct */
         $password = hash('sha512', $password.$salt);
         if($stmt->num_rows == 1) {
-            if($db_password == $password) { // Verifica che la password memorizzata nel database corrisponda alla password fornita dall'utente.
+            if ($db_password == $password) { // Verifica che la password memorizzata nel database corrisponda alla password fornita dall'utente.
                // Password corretta!            
                 $user_browser = $_SERVER['HTTP_USER_AGENT']; // Recupero il parametro 'user-agent' relativo all'utente corrente.
 
@@ -48,6 +48,15 @@ class DatabaseHelper{
 
     public function getCustomerCreditCardByEmail($email){
         $stmt = $this->db->prepare("SELECT Card_number FROM payment_info WHERE Email=?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getPicturesFromSeller($email) {
+        $stmt = $this->db->prepare("SELECT * FROM picture WHERE Email=?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();

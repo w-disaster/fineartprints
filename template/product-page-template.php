@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="css/product.css">
-<link rel="stylesheet" href="css/theme.css">
+
 <div class="flex-grow-1 subtle-pattern">
     <div class="container-fluid bg-white flex-flow-row-wrap subtle-pattern">
         <div class="container px-4">
