@@ -234,6 +234,29 @@ class DatabaseHelper{
         $stmt->execute();
     }
 
+    public function addFinalProduct($pictureTitle, $technique_id, $frame_id, $passpartout_id, $width, $height, $order_id, $price){
+        $stmt = $this->db->prepare("INSERT INTO final_product (Picture_title, Technique_id, Frame_id, Passpartout_id, 
+            Art_print_width, Art_print_height, Order_id, Price) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
+        $stmt->bind_param("siiiiiii", $pictureTitle, $technique_id, $frame_id, $passpartout_id, $width, $height, $order_id, $price);
+        $stmt->execute();
+    }
+
+    public function addOrder($city, $postalCode, $address, $orderDate, $email, $cardNumber, $shipperName){
+
+        $order_id = 0;
+        $order_id_query = $this->query("SELECT MAX(Order_id) AS Order_id FROM prints_order");
+        if(count($order_id_query) > 0){
+            $order_id = $order_id_query[0]["Order_id"] + 1;
+        }
+
+        $stmt = $this->db->prepare("INSERT INTO prints_order (Order_id, Ship_city, Ship_postal_code, Ship_address,
+        Order_date, Email, Card_number, Shipper_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
+        $stmt->bind_param("isisssss", $order_id, $city, $postalCode, $address, $orderDate, $email, $cardNumber, $shipperName);
+
+        $stmt->execute();
+        return $order_id;
+    }
+
     public function getMyOrders($email){
         $stmt = $this->db->prepare("SELECT Status, Order_id, Order_date, Status FROM prints_order, user
         WHERE user.Email = prints_order.Email AND prints_order.Email = ? ORDER BY Order_date DESC");

@@ -60,7 +60,7 @@
                             checked>
                         
                           <label for="defaultCardNumbersSelect" hidden>Select a registered card</label>
-                          <select id="defaultCardNumbersSelect" name="defaultCardNumbers" class="form-control">
+                          <select id="defaultCardNumbersSelect" name="defaultCardNumber" class="form-control">
                             <?php foreach($templateParams["customer_credit_cards"] as $credit_card): ?>
                               <option value="<?php echo $credit_card["Card_number"];?>" id="<?php echo $credit_card["Card_number"];?>">
                               <?php echo $credit_card["Card_number"];?></option>
@@ -109,9 +109,9 @@
               <div class="row border m-0 px-4 py-4 gray-background w-100">
                 <div class="col-12">
                   <h3>Shipping</h3>
-                  <fieldset><legend class="m-0">Carriers</legend>
+                  <fieldset><legend class="m-0">Carriers & destination address</legend>
                     <label for="shipper-input" hidden>Carriers</label>
-                    <select id="shipper-input" name="shipper_carrier" class="form-control my-3">
+                    <select id="shipper-input" name="shipperCarrier" class="form-control my-3">
                       <?php foreach($templateParams["shippers"] as $shipper): ?>
                         <option value="<?php echo $shipper["Company_name"];?>" id="<?php echo str_replace(" ", "", $shipper["Company_name"]) ;?>">
                         <?php echo $shipper["Company_name"]." - ".$shipper["Price"]."€";?></option>
@@ -121,17 +121,17 @@
                     <div class="form-check">
                       <label for="defaultShippingAddress" hidden>Address</label>
                       <input class="form-check-input" type="radio" name="shippingRadio" id="defaultShippingAddress"
-                        value="option1" checked>
+                        value="defaultShipping" checked>
 
                       <label for="defaultShippingAddressInput" hidden>Default address</label>
-                      <input type="text" class="form-control my-2" readonly id="defaultShippingAddressInput" 
+                      <input type="text" class="form-control my-2" readonly id="defaultShippingAddressInput" name="defaultShippingAddress"
                           value="<?php echo $templateParams["customer"][0]["City"]." ".$templateParams["customer"][0]["Postal_code"].
                         ", ".$templateParams["customer"][0]["Province"].", ".$templateParams["customer"][0]["Address"]; ?>">
                     </div>
                     <div class="form-check">
                       <label for="altShippingAddress" hidden>Alternative shipping address</label>
                       <input class="form-check-input" type="radio" name="shippingRadio" id="altShippingAddress"
-                        value="option2">
+                        value="altShipping">
                       <p>Alternative address</p>
                     </div>
                   </fieldset>
@@ -148,8 +148,8 @@
                       <input type="number" class="form-control col-7" name="altPostalCode" id="altPostalCode" />
                     </div>
                     <div class="form-group row w-100">
-                      <label class="col-5" for="altShipAddress">Address</label>
-                      <input type="number" class="form-control col-7" name="altShipAddress" id="altShipAddress" />
+                      <label class="col-5" for="altAddress">Address</label>
+                      <input type="number" class="form-control col-7" name="altAddress" id="altAddress" />
                     </div>
                   </div>
                 </div>

@@ -25,7 +25,7 @@
                 <label for="orderby_label"><h2>Order by</h2></label>
                 <select id="input" name="order" class="form-control">
                   <option value="none" id="none" <?php if($templateParams["order"] == "none"): echo "selected"; endif; ?>>None</option>
-                  <option value="publish_date" id="publish_date" <?php if($templateParams["order"] == "publish_date"): echo "selected"; endif; ?>>Publish Date (lastest)</option>
+                  <option value="publish_date" id="publish_date" <?php if($templateParams["order"] == "publish_date"): echo "selected"; endif; ?>>Publish Date (latest)</option>
                   <option value="cost_rising" id="cost_rising" <?php if($templateParams["order"] == "cost_rising"): echo "selected"; endif; ?>>Cost: rising</option>
                   <option value="cost_decreasing" id="cost_decreasing" <?php if($templateParams["order"] == "cost_decreasing"): echo "selected"; endif; ?>>Cost: decreasing</option>
 

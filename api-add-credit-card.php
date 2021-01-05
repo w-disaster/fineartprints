@@ -2,7 +2,7 @@
 require_once 'bootstrap.php';
 require_once 'utils/functions.php';
 
-$result = false;
+$result = "Card not valid";
 
 if(isUserLoggedIn(UserType::Customer)){
     
@@ -13,7 +13,7 @@ if(isUserLoggedIn(UserType::Customer)){
         if(count($dbh->getPaymentInfo($_SESSION["email"], $_GET["number"])) == 0){
 
             $dbh->addPaymentInfo($_SESSION["email"], $_GET["number"]);
-            $result = true;
+            $result = $_GET["number"];
         }
     }
 }
