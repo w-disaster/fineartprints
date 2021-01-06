@@ -13,7 +13,7 @@ if(isUserLoggedIn(UserType::Customer)){
         if (count($dbh->isPaymentInfoRemoved($_SESSION["email"], $_GET["number"])) != 0) {
             $dbh->updatePaymentInfo($_SESSION["email"], $_GET["number"], "in use");
         } else {
-            $dbh->addPaymentInfo( $_SESSION["email"], $_GET["number"]);
+            $dbh->addPaymentInfo(htmlspecialchars($_SESSION["email"]), htmlspecialchars($_GET["number"]));
         }
         $result = $_GET["number"];
     }

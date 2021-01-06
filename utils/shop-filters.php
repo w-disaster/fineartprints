@@ -8,8 +8,6 @@ class ShopFilters{
     private $filtered_categories;
     private $order;
 
-    public function __construct(){}
-
     public function setFilteredAuthors($authors){
         $this->filtered_authors = $authors;
     }
