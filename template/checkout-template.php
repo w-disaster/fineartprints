@@ -13,7 +13,7 @@
               <?php foreach($templateParams["final_products"] as $final_product): ?>
                 <div class="row border m-0 px-4 py-4 gray-background">
                   <div class="col-12">
-                    <h3><?php echo $final_product["title"]; ?></h3>
+                    <h2><?php echo $final_product["title"]; ?></h2>
                     <div class="form-group row mt-3">
                       <label class="col-6 col-md-4 my-1" for="title<?php echo $final_product["print_id"]; ?>" >Print title</label>
                       <div class="col-6 col-md-8 my-1">
@@ -53,7 +53,7 @@
 
               <div class="row border m-0 px-4 py-4 gray-background w-100">
                 <div class="col-12">
-                  <h3>Payment method</h3>
+                  <h2>Payment method</h2>
                   <fieldset><legend class="m-0">Credit cards</legend>
                     <?php if(count($templateParams["customer_credit_cards"])>0): ?>
                       <div class="form-check my-3">
@@ -88,7 +88,7 @@
                 <div class="col-12 payment-form d-none">
                   <div class="alternative-card-form">
                     <div class="d-flex flex-column border col-12 px-4 py-2 mt-4 mb-2">
-                      <h4>Add credit card</h4>
+                      <h3>Add credit card</h3>
                       <div class="form-group row w-100 mt-3">
                         <label class="col-5" for="creditCardOwner">Owner</label>
                         <input type="text" class="form-control col-7" id="creditCardOwner"/>
@@ -111,7 +111,7 @@
 
               <div class="row border m-0 px-4 py-4 gray-background w-100">
                 <div class="col-12">
-                  <h3>Shipping</h3>
+                  <h2>Shipping</h2>
                   <fieldset><legend class="m-0">Carriers & destination address</legend>
                     <label for="shipper-input" hidden>Carriers</label>
                     <select id="shipper-input" name="shipperCarrier" class="form-control my-3">
@@ -141,7 +141,7 @@
                 </div>
                 <div class="col-12 shipping-form d-none">
                   <div class="d-flex flex-column border col-12 px-4 py-2 mt-4 mb-2">
-                    <h4>Add shipping address</h4>
+                    <h3>Add shipping address</h3>
                     <div class="form-group row w-100 mt-3">
                       <label class="col-5" for="altCity">City</label>
                       <input type="text" class="form-control col-7" name="altCity" id="altCity" />
@@ -168,7 +168,7 @@
         </div>
         <div class="col-12 col-md-5 mb-4">
           <div class="gray-background p-4">
-            <h3>Order summary</h3>
+            <h2>Order summary</h2>
             <table class="table form-summary border mt-4 mb-0">
               <?php $articles_total_cost = 0 ?>
               <?php foreach($templateParams["final_products"] as $final_product): ?>

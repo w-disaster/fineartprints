@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Creato il: Gen 05, 2021 alle 20:38
+-- Host: 127.0.0.1
+-- Creato il: Gen 06, 2021 alle 22:27
 -- Versione del server: 10.4.14-MariaDB
--- Versione PHP: 7.4.11
+-- Versione PHP: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -315,6 +315,23 @@ CREATE TABLE `final_product` (
   `Price` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dump dei dati per la tabella `final_product`
+--
+
+INSERT INTO `final_product` (`Picture_title`, `Technique_id`, `Frame_id`, `Passpartout_id`, `Art_print_width`, `Art_print_height`, `Order_id`, `Price`) VALUES
+('Abstract print n.1', 4, 7824, 8006, 30, 30, 4, 423),
+('Abstract print n.2', 3, 7826, 8002, 30, 30, 5, 269),
+('Abstract print n.4', 4, 7819, 8000, 30, 30, 2, 418),
+('Abstract print n.5', 5, 7823, 8002, 30, 30, 7, 296),
+('Abstract print n.6', 5, 7821, 8004, 30, 30, 3, 323),
+('Girl with a Pearl Earring', 2, 7825, 8005, 30, 30, 6, 865),
+('Modern spiral building', 4, 7821, 8004, 30, 30, 1, 493),
+('Skyscraper on fog', 7, 7824, 8004, 30, 30, 1, 667),
+('Space print n.1', 9, 7821, 8001, 30, 30, 3, 373),
+('Street print n.3', 5, 7821, 8001, 70, 50, 2, 442),
+('White building', 3, 7820, 8004, 30, 30, 1, 220);
+
 -- --------------------------------------------------------
 
 --
@@ -533,8 +550,13 @@ CREATE TABLE `prints_order` (
 --
 
 INSERT INTO `prints_order` (`Order_id`, `Ship_city`, `Ship_postal_code`, `Ship_address`, `Order_date`, `Shipped_date`, `Email`, `Card_number`, `Shipper_name`, `Status`) VALUES
-(1, NULL, NULL, NULL, '2021-01-05', NULL, 'gino.lippa@prints.com', 1234567890123456, 'Bartolini', 'In production'),
-(2, NULL, NULL, NULL, '2021-01-05', NULL, 'gino.lippa@prints.com', 2345678901234567, 'Bartolini', 'In production');
+(1, NULL, NULL, NULL, '2019-10-08', '2019-10-10', 'gino.lippa@prints.com', 1234567890123456, 'Bartolini', 'Arrived'),
+(2, NULL, NULL, NULL, '2020-12-06', '2020-12-07', 'gino.lippa@prints.com', 2345678901234567, 'Bartolini', 'Arrived'),
+(3, NULL, NULL, NULL, '2021-01-06', NULL, 'gino.lippa@prints.com', 2345678901234567, 'DHL Express', 'In production'),
+(4, NULL, NULL, NULL, '2021-01-05', '2021-01-06', 'gino.lippa@prints.com', 1234567890123456, 'Bartolini', 'Shipped'),
+(5, NULL, NULL, NULL, '2020-07-09', '2020-07-11', 'gino.lippa@prints.com', 1234567890123456, 'Bartolini', 'Arrived'),
+(6, NULL, NULL, NULL, '2021-01-06', NULL, 'gino.lippa@prints.com', 1234567890123456, 'Bartolini', 'In production'),
+(7, NULL, NULL, NULL, '2021-01-06', NULL, 'gino.lippa@prints.com', 1234567890123456, 'Bartolini', 'In production');
 
 -- --------------------------------------------------------
 
@@ -600,6 +622,15 @@ CREATE TABLE `tracking_notification` (
   `Status` varchar(4) DEFAULT 'new'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dump dei dati per la tabella `tracking_notification`
+--
+
+INSERT INTO `tracking_notification` (`Tracking_notification_id`, `Data`, `Order_id`, `Status`) VALUES
+(1, '2019-10-10', 1, 'new'),
+(2, '2021-01-06', 3, 'new'),
+(3, '2019-07-13', 5, 'new');
+
 -- --------------------------------------------------------
 
 --
@@ -626,7 +657,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`Email`, `Birth_date`, `Password`, `Salt`, `Name`, `Surname`, `Phone`, `City`, `Postal_code`, `Province`, `Address`, `Role`) VALUES
-('cippa.pino@prints.com', '1990-01-20', 'bd3a3c4068f7fefddf9b3387ec20ab8c9e1dbd4a99635ffce42c91634398123790918b91d502887d1ed188890b5cb0080a15797b16fd95c959a8a922645ac7e7', 'c67768c0111914b41e133d752cfb56b90873324f8433ac6eac780d7c83e349dd2cb487674f4a87a2d62ae6f4ce31ea6b01a0aa1e81f6883cbaccb01f3a5c5cc0', 'Cippa', 'Pino', '0714512309', 'Cesena', 47521, 'FC', 'Via Giuseppe Ungaretti', 'seller'),
+('cippa.pino@prints.com', '1990-01-20', '9cadaf9f0e4a1f96bb9a496d3fddef248ecdd5b1d678abb0ab1ed1d1d816f012fa39b45d7381b5eedf73f6f61a6791c6f9c5bf90e179c5c1ece868b8eccb3198', '9ae419866fa9d3705ccd86071d4fee30bc9fd23970fc9e39bdd0a9ea9eef878aedbcfa61a2aaab1b5f2634e3796dc4b573dd28920a70c2d5d4d5a7dd381b83f3', 'Cippa', 'Pino', '0714512309', 'Cesena', 47521, 'FC', 'Via Giuseppe Ungaretti', 'seller'),
 ('gino.lippa@prints.com', '1996-10-17', '5bfbd82c6885742c68ff2b2a2a9168fb13757c184b3dfe86fe9c2c04ef8483a12680fe31dbab9aab8c8c1dc712d25038397a360a0011c493060954d323377dcc', 'f82544562507f6ac3c0d89daee50e2999f411bcdd52305ef25e56e5bb2db7c7c422584f0a8ef616c74304e6a5c0c1cc31a36f1d365bdd90f7c82edaed5fd79f2', 'Gino', 'Lippa', '714529816', 'Senigallia', 60019, 'AN', 'Viale dei pini 11', 'customer');
 
 --

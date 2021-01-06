@@ -9,14 +9,14 @@
     </div>
 
     <div class="row m-4 px-5">
-        <p class="lead">Our team aims to offer prints selected by our trusted sellers. The quality of these is certified by our team of specialists, as are the printing techniques and materials used to build the frames. </br>
-            According to our statistics, the percentage of our customers who are satisfied is 96.4%. </br>
+        <p class="lead">Our team aims to offer prints selected by our trusted sellers. The quality of these is certified by our team of specialists, as are the printing techniques and materials used to build the frames. <br>
+            According to our statistics, the percentage of our customers who are satisfied is 96.4%. <br>
             What are you waiting for? Assemble your print and make your room better!</p>
             
         <div class="col-12 p-0 m-0">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" class="bg-dark" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" class="bg-dark" data-slide-to="0"></li>
                     <li data-target="#carouselExampleIndicators" class="bg-dark" data-slide-to="1"></li>
                     <li data-target="#carouselExampleIndicators" class="bg-dark" data-slide-to="2"></li>
                 </ol>
@@ -30,6 +30,7 @@
                                 <div class="col-12 col-md-5 align-self-center my-3 px-5">
                                    <h2 class="text-center">Select your print</h2>
                                     <section class="d-block lead">
+                                    <h2 class="d-none">description</h2> 
                                         <ul>
                                             <li>Choose the print from those offered by our selected sellers</li>
                                             <li>Select the printing technique. for example:
@@ -69,7 +70,7 @@
                                 <div class="col-12 col-md-5 align-self-center my-3">
                                     <p class="d-block lead text-center">
                                     Select one of our affiliated couriers and order the product. our parcels are securely packaged to avoid damage during transport.
-                                    </section>
+                                    </p>
                                 </div>
                             </div>
                         </div>
