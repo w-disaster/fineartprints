@@ -25,6 +25,9 @@ if(isUserLoggedIn(UserType::Seller)) {
             $discount = htmlspecialchars($_POST["discount"]);
             $category = htmlspecialchars($_POST["category"]);
 
+            /**
+             * Check if a new image was uploaded. If it isn't reuse the current image.
+             */
             if(!empty($_FILES["picture"]["name"])) {
                 list($image, $msg) = uploadImage(UPLOAD_DIR, $_FILES["picture"]);
                 $image_name = basename($_FILES["picture"]["name"]);
@@ -59,8 +62,12 @@ if(isUserLoggedIn(UserType::Seller)) {
         }
         unset($technique);
 
-        $print = $dbh->getPictureFromTitle($print_id)[0]; // image shown update
-        $print_techniques = $dbh->getTechniquesFromPictureTitle($print_id); // techniques shown update
+        /**
+         * Update current image and techniques shown in the page
+         */
+        $print = $dbh->getPictureFromTitle($print_id)[0];
+        $print_techniques = $dbh->getTechniquesFromPictureTitle($print_id);
+
     } else {
         $templateParams["print_selected"] =  false;
     }

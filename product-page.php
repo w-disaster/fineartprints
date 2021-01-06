@@ -78,7 +78,7 @@ if (isset($_GET["title"])) {
 if ($error) {
     $templateParams["title"] = "Page not found";
     $templateParams["name"] = "template-404.php";
-    header('HTTP/1.0 404 Not Found');
+    header('Location: error-404.php');
     $_GET['e'] = 404;
 }
 
