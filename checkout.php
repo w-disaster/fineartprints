@@ -8,7 +8,7 @@ if(isUserLoggedIn("customer") && count($_SESSION["final_products"]) > 0){
     if(isset($_SESSION["final_products"])){
         $finalProducts = $_SESSION["final_products"];
         $templateParams["final_products"] = array();
-        var_dump($finalProducts);
+
         for($i = 0; $i < count($finalProducts); $i++){
             $templateParams["final_products"][$i]["print_id"] = $finalProducts[$i]["print_id"];
 
@@ -23,6 +23,7 @@ if(isUserLoggedIn("customer") && count($_SESSION["final_products"]) > 0){
             //SESSION frame
             $frame_id = $finalProducts[$i]["frame_id"];
             if($frame_id == 0){
+                $_SESSION["final_products"][$i]["frame_id"] = 7819;
                 $frame_id = 7819;
             }
             $templateParams["final_products"][$i]["frame"] =
@@ -30,6 +31,7 @@ if(isUserLoggedIn("customer") && count($_SESSION["final_products"]) > 0){
             //SESSION passpartout
             $passpartout_id = $finalProducts[$i]["passpartout_id"];
             if($passpartout_id == 0){
+                $_SESSION["final_products"][$i]["passpartout_id"] = 8000;
                 $passpartout_id = 8000;
             }
             $templateParams["final_products"][$i]["passpartout"] = 

@@ -1,7 +1,12 @@
-<link rel="stylesheet" href="css/order_style.css" >
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/order_style.css">
 
-<div class="flex-grow-1 parallax">
+
+<div class="flex-grow-1 subtle-pattern">
   <div class="container bg-white flex-flow-row-wrap">
+    <div class="row my-4 w-100 text-center">
+      <h1 class="col-12 display-4 text-center">Checkout</h1>
+    </div>
     <?php if(isset($templateParams["final_products"])): ?>
       <div class="row my-4">
         <div class="col-12 col-md-7">   
@@ -166,7 +171,7 @@
         <div class="col-12 col-md-5 mb-4">
           <div class="gray-background p-4">
             <h3>Order summary</h3>
-            <table class="table form-summary border my-4">
+            <table class="table form-summary border mt-4 mb-0">
               <?php $articles_total_cost = 0 ?>
               <?php foreach($templateParams["final_products"] as $final_product): ?>
                 <tr>

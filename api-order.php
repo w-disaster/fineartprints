@@ -41,9 +41,7 @@ if(isUserLoggedIn("customer")){
         $order_id = $dbh->addOrder($city, $postalCode, $address, date("Y-m-d"), $email, $cardNumber, $shipperName);
         
         $finalProducts = $_SESSION["final_products"];
-        var_dump($finalProducts);
         foreach($finalProducts as $product){
-
             $dbh->addFinalProduct($product["title"], $product["technique_id"], $product["frame_id"], $product["passpartout_id"], 
                 $product["width"], $product["height"],  $order_id, $product["price"]);
         }

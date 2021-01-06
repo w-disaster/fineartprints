@@ -11,13 +11,13 @@
               <div class="form-check">
                 <input class="form-check-input" type="radio" name="select" id="all" value="all" <?php if($templateParams["select"] == "all"): echo "checked"; endif; ?>>
                 <label class="form-check-label ml-3" for="all">
-                  Tutti
+                  All
                 </label>
               </div>
               <div class="form-check">
                 <input class="form-check-input" type="radio" name="select" id="sale" value="sale" <?php if($templateParams["select"] == "sale"): echo "checked"; endif; ?>>
                 <label class="form-check-label ml-3" for="sale">
-                  In sconto: %
+                  Sales: %
                 </label>
               </div>
 
@@ -76,7 +76,7 @@
         <div class="container-fluid border bg-white px-5 py-4">
           <main>
 
-            <h1 class="display-4 mb-3">Products</h1>
+            <h1 class="display-4 mb-3">Shop</h1>
             <?php $i = 0; ?>
             <?php foreach($templateParams["pictures"] as $picture): ?>
 
