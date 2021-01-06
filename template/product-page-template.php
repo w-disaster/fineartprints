@@ -41,7 +41,9 @@
                                 <p id="price-discounted" class="h3 mb-4 mr-3">
                                     <?php echo $templateParams["price_discounted"]; ?> €</p>
                                 <?php endif; ?>
+                                <?php if(!isUserLoggedIn(UserType::Seller)): ?>
                                 <button class="btn btn-block btn-primary ml-2 mb-3" type="button">Add to cart</button>
+                                <?php endif; ?>
                                 <p>The print technique is <strong>required</strong>, while the frame and the passpartout are <strong>optional.</strong></p>
                                 <p>Prices are computed taking into account the width and height of the print, the technique employed and the available customizations in addition to the base price, computed for the default dimensions of <?php echo default_width ?> cm &times; <?php echo default_height ?> cm.</p>
                             </div>

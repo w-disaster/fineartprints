@@ -19,11 +19,6 @@ function isUserLoggedIn($role){
     return !empty($_SESSION["role"]) && $_SESSION["role"] == $role;
 }
 
-function registerLoggedUser($user){
-    $_SESSION["email"] = $user["Email"];
-    $_SESSION["role"] = $user["Role"];
-}
-
 function validate_height($height) {
     if ($height > max_height) {
         return max_height;
@@ -53,6 +48,29 @@ function getOrientation($image_name) {
     }
 }
 
+/**
+ * Adds a new unique title if the one given already exists.
+ */
+function getValidTitle($title, $dbh) {
+    $titles = $dbh->query("SELECT Title From picture");
+    $titles_in_use = [];
+    foreach($titles as &$elem) {
+        array_push($titles_in_use, $elem["Title"]);
+    }
+    unset($elem);
+
+    if (in_array($title, $titles_in_use)) {
+        $i = 1;
+        do{
+            $i++;
+        }
+        while(in_array($title, $titles));
+        return $title." n.".$i;
+    } else {
+        return $title;
+    }
+}
+
 function uploadImage($path, $image){
     $imageName = basename($image["name"]);
     $fullPath = $path.$imageName;
@@ -61,23 +79,25 @@ function uploadImage($path, $image){
     $acceptedExtensions = array("jpg", "jpeg", "webp");
     $result = 0;
     $msg = "";
-    //Controllo se immagine è veramente un'immagine
+
+    // Check if it is actually an image
     $imageSize = getimagesize($image["tmp_name"]);
-    if($imageSize === false) {
-        $msg .= "File caricato non è un'immagine! ";
-    }
-    //Controllo dimensione dell'immagine < 500KB
-    if ($image["size"] > $maxKB * 1024) {
-        $msg .= "File caricato pesa troppo! Dimensione massima è $maxKB KB. ";
+    if ($imageSize === false) {
+        $msg .= "Please load an image! ";
     }
 
-    //Controllo estensione del file
+    // Check if image dimension is < 500 KB
+    if ($image["size"] > $maxKB * 1024) {
+        $msg .= "The image loaded is too much heavy! Maximum dimension allowed is: $maxKB KB. ";
+    }
+
+    // Check if the extension is correct
     $imageFileType = strtolower(pathinfo($fullPath, PATHINFO_EXTENSION));
     if(!in_array($imageFileType, $acceptedExtensions)){
-        $msg .= "Accettate solo le seguenti estensioni: ".implode(",", $acceptedExtensions);
+        $msg .= "Only the following extensions are accepted: ".implode(",", $acceptedExtensions);
     }
 
-    //Controllo se esiste file con stesso nome ed eventualmente lo rinomino
+    // Check if the filename already exists and avoid collisions
     if (file_exists($fullPath)) {
         $i = 1;
         do{
@@ -88,7 +108,7 @@ function uploadImage($path, $image){
         $fullPath = $path.$imageName;
     }
 
-    //Se non ci sono errori, sposto il file dalla posizione temporanea alla cartella di destinazione
+    // Move the file from the temporary directory to the upload directory
     if(strlen($msg)==0){
         if(!move_uploaded_file($image["tmp_name"], $fullPath)){
             $msg.= "Errore nel caricamento dell'immagine.";

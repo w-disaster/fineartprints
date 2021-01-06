@@ -174,7 +174,7 @@ class DatabaseHelper{
         $category_name = $parameters["category"];
         $email = $parameters["email"];
 
-        $stmt = $this->db->prepare("INSERT INTO picture (Title, Description, Author, Image, Base_price, Discount, Orientation, Category, Email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $this->db->prepare("INSERT INTO picture (Title, Description, Author, Image, Base_price, Discount, Orientation, Category_name, Email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("ssssiisss", $title, $description, $author, $image, $base_price, $discount, $orientation, $category_name, $email);
         $stmt->execute();
     }

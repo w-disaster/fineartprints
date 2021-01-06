@@ -5,6 +5,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-3">
+        <div class="sticky-top">
         <?php 
           if(isset($templateParams["sidebar"])){
             require($templateParams["sidebar"]);
@@ -23,6 +24,7 @@
               <a href="?print_id=<?php echo $list_item["Title"] ?>" class="list-group-item list-group-item-action bg-white"><?php echo $list_item["Title"] ?></a>
             <?php endforeach; ?>
           </aside>
+          </div>
         </div>
         <div class="col-md-9">
           <div class="container-fluid my-4 flex-grow-1">
@@ -90,7 +92,7 @@
                       <div class="form-group">
                         <label for="base_price">Base price</label>
                         <div class="input-group">
-                          <input id="base-price" name="base_price" type="number" class="form-control" value="<?php echo $print["Base_price"] ?>" readonly>
+                          <input id="base-price" name="base_price" type="number" step="0.01" min="0" class="form-control" value="<?php echo $print["Base_price"] ?>" readonly>
                           <div class="invalid-feedback">
                             Please provide a number greater than 0 and smaller than 999.
                           </div>
@@ -99,7 +101,7 @@
                       <div class="form-group">
                         <label for="discount">Discount</label>
                         <div class="input-group">
-                          <input id="discount" name="discount" type="number" class="form-control" value="<?php echo $print["Discount"] ?>" readonly>
+                          <input id="discount" name="discount" type="number" step="0.01" min="0" class="form-control" value="<?php echo $print["Discount"] ?>" readonly>
                           <div class="invalid-feedback">
                             Please provide a number greater than 0 and smaller than the base price.
                           </div>
@@ -119,13 +121,20 @@
                   </div>
                   <h3 class="section-title">Print techniques available</h3>
                   <div class="form-group">
-                    <?php foreach($templateParams["techniques"] as $technique): ?>
+                  <?php foreach($templateParams["techniques"] as $technique): ?>
+                    <?php if($technique["Description"] != "none"): ?>
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" name="<?php echo $technique["Description"] ?>"  value="<?php echo $technique["Description"] ?>" id="<?php echo $technique["Description"] ?>" <?php echo (in_array($technique, $print_techniques)) ? "checked" : ""?> disabled>
                       <label class="form-check-label" for="<?php echo $technique["Title"] ?>">
                         <?php echo $technique["Description"] ?>
                       </label>
                     </div>
+                    <?php else: ?>
+                      <input class="form-check-input" type="checkbox" name="<?php echo $technique["Description"] ?>"  value="<?php echo $technique["Description"] ?>" id="<?php echo $technique["Description"] ?>" checked hidden>
+                      <label class="form-check-label" for="<?php echo $technique["Title"] ?>" hidden>
+                        <?php echo $technique["Description"] ?>
+                      </label>
+                    <?php endif; ?>
                     <?php endforeach; ?>
                   </div>
                   <button id="save-settings" class="btn btn-primary d-none mt-2" type="submit" disabled>Save settings</button>

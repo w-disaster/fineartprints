@@ -7,6 +7,7 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
 
     if (!$dbh->checkLogin($email, $password)){
         $templateParams["loginError"] = true;
+        registerLoggedUser($email);
     }
 }
 
