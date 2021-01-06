@@ -1,6 +1,4 @@
-<link rel="stylesheet" href="css/theme.css">
 <link rel="stylesheet" href="css/order_style.css">
-
 
 <div class="flex-grow-1 subtle-pattern">
   <div class="container bg-white flex-flow-row-wrap">

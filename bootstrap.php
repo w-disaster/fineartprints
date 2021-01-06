@@ -18,6 +18,7 @@ const default_height = 30.00;
 const default_width = 30.00;
 const max_width = 500.00;
 const max_height = 500.00;
+const max_price = 900.00;
 
 $price_calculator = new PriceCalculator(price_divider);
 

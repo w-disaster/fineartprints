@@ -35,30 +35,34 @@
               <div class="container mt-4 p-4 px-5 bg-white rounded shadow-sm">
                 <?php if (!$templateParams["order_selected"]) : ?>
                   <h3>No order selected</h3>
-                <?php else : ?>
+                <?php else: ?>
                   <form>
                     <h2 class="d-inline">Order details</h2>
-                    <button id="edit-print" class="btn float-right"><img src="upload/icons/pencil-square.svg" alt="edit this print" width="32" height="32"></button>
-
                     <h3 class="section-title">Shipping info</h3>
                     <div class="form-row">
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="order-id">Order ID</label>
                           <div class="input-group">
-                            <input id="order-id" type="text" class="form-control" readonly>
+                            <input id="order-id" type="text" class="form-control" value="<?php echo $order["Order_id"]?>" readonly>
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="ship-city">Ship city</label>
                           <div class="input-group">
-                            <input id="author" type="text" class="form-control" readonly>
+                            <input id="ship-city" type="text" class="form-control" value="<?php echo $order["Ship_city"]?>" readonly>
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="ship-address">Ship address </label>
                           <div class="input-group">
-                            <input id="ship-address" type="text" class="form-control" readonly>
+                            <input id="ship-address" type="text" class="form-control" value="<?php echo $order["Ship_address"]?>" readonly>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="shippper-name">Shipper name </label>
+                          <div class="input-group">
+                            <input id="shippper-name" type="text" class="form-control" value="<?php echo $order["Shipper_name"]?>" readonly>
                           </div>
                         </div>
                       </div>
@@ -68,19 +72,19 @@
                         <div class="form-group">
                           <label for="ship-postal-code">Ship postal code</label>
                           <div class="input-group">
-                            <input id="ship-postal-code" type="text" class="form-control" readonly>
+                            <input id="ship-postal-code" type="text" class="form-control" value="<?php echo $order["Ship_postal_code"]?>" readonly>
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="ship-date">Shipped date</label>
                           <div class="input-group">
-                            <input id="ship-date" type="date" class="form-control" readonly>
+                            <input id="ship-date" type="date" class="form-control" value="<?php echo $order["Shipped_date"]?>" readonly>
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="order-date">Order date</label>
                           <div class="input-group">
-                            <input id="order-date" type="date" class="form-control" readonly>
+                            <input id="order-date" type="date" class="form-control" value="<?php echo $order["Order_date"]?>" readonly>
                           </div>
                         </div>
                       </div>
@@ -92,28 +96,28 @@
                         <div class="form-group">
                           <label for="customer-email">Customer email</label>
                           <div class="input-group">
-                            <input id="customer-email" type="text" class="form-control" readonly>
+                            <input id="customer-email" type="text" class="form-control" value="<?php echo $order["Email"]?>" readonly>
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="card-number">Card number</label>
                           <div class="input-group">
-                            <input id="card-number" type="number" class="form-control" readonly>
+                            <input id="card-number" type="number" class="form-control" value="<?php echo $order["Card_number"]?>" readonly>
                           </div>
                         </div>
                       </div>
                       <div class="col-md-5 offset-md-1">
                         <div class="form-group">
                           <div class="form-group">
-                            <label for="total-amount">Total amount paid</label>
+                            <label for="total-amount">Total amount paid (&euro;)</label>
                             <div class="input-group">
-                              <input id="total-amount" type="text" class="form-control" readonly>
+                              <input id="total-amount" type="text" class="form-control" value="<?php echo $order["Total_amount"]?>" readonly>
                             </div>
                           </div>
                           <div class="form-group">
                             <label for="number-prints-ordered">Number of ordered prints</label>
                             <div class="input-group">
-                              <input id="number-prints-ordered" type="number" class="form-control" readonly>
+                              <input id="number-prints-ordered" type="number" class="form-control" value="<?php echo $order["Number_prints_ordered"]?>" readonly>
                             </div>
                           </div>
                         </div>
@@ -125,6 +129,7 @@
                         <div class="form-group">
                           <label for="category-chooser">Current state</label>
                           <select class="form-control" id="category-chooser" readonly>
+                            <option><?php echo $order["Status"]?></option>
                             <option>In production</option>
                             <option>Order shipped</option>
                             <option>Order incoming</option>

@@ -13,13 +13,11 @@
         ?>
         </div>
         </div>
-
         <div class="col-md-9">
           <div class="container-fluid my-4 flex-grow-1">
             <div class="row">
               <div class="container bg-white p-4 rounded shadow text-center">
                 <h1>Your prints</h1>
-                <p>Or your pictures with or without at least one technique enabled</p>
               </div>
             </div>
             <div class="row">
@@ -28,12 +26,12 @@
                 <form action="#", method="POST" enctype="multipart/form-data">
                   <h3 class="section-title">Print image</h3>
                   <div class="row py-3 mx-1">
-                    <img id="print-image" class="justify-content-center" alt="wheatfield with crows by vincent van gogh" width="75%" src="upload/placeholder.webp">
+                    <img id="print-image" class="justify-content-center" alt="<?php echo $print["Title"] ?>" width="75%" src="<?php echo UPLOAD_DIR.$templateParams["placeholder"]; ?>">
                     <div class="form-group mt-2">
                       <label for="picture">Image displayed for the product</label>
-                      <input id="picture" name="picture" type="file" class="form-control-file" accept=".jpg, .webp, 	image/webp, image/jpg" required>
-                      <div class="invalid-feedback">
-                        Please provide an image (.jpg or .webp).
+                      <input id="picture" name="picture" type="file" class="form-control-file <?php echo (isset($templateParams["image_upload_error_msg"])) ? "is-invalid" : "" ?>" accept=".jpg, .webp, 	image/webp, image/jpg" required>
+                       <div class="invalid-feedback">
+                        <?php if(isset($templateParams["image_upload_error_msg"])) { echo $templateParams["image_upload_error_msg"]; } ?>
                       </div>
                     </div>
                   </div>
@@ -42,30 +40,17 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="title">Title</label>
-                        <div class="input-group">
                           <input id="title" name="title" type="text" class="form-control" required>
-                          <div class="invalid-feedback">
-                            Please provide a title with no more than 40 characters.
-                          </div>
-                        </div>
                       </div>
                       <div class="form-group">
                         <label for="author">Author</label>
-                        <div class="input-group">
                           <input id="author" name="author" type="text" class="form-control" required>
-                          <div class="invalid-feedback">
-                            The name of the author cannot be more than 40 characters long.
-                          </div>
-                        </div>
                       </div>
                     </div>
                     <div class="col-md-5 offset-md-1">
                       <div class="form-group">
                         <label for="description">Description</label>
                         <textarea id="description" name="description" class="form-control" rows="4" required></textarea>
-                        <div class="invalid-feedback">
-                          Please provide a description.
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -76,19 +61,19 @@
                       <div class="form-group">
                         <label for="base-price">Base price</label>
                         <div class="input-group">
-                          <input id="base-price" name="base_price" type="number" step="0.01" min="0" class="form-control" required>
+                          <input id="base-price" name="base_price" type="number" step="0.01" min="0" class="form-control <?php echo (isset($templateParams["price_error_msg"])) ? "is-invalid" : "" ?>" value="<?php echo $print["Base_price"] ?>" required>
                           <div class="invalid-feedback">
-                            Please provide a number greater than 0 and smaller than 999.
+                          <?php if(isset($templateParams["price_error_msg"])) { echo $templateParams["price_error_msg"]; } ?>
                           </div>
                         </div>
                       </div>
                       <div class="form-group">
                         <label for="discount">Discount</label>
                         <div class="input-group">
-                          <input id="discount" name="discount" type="number" step="0.01" min="0" class="form-control" required>
-                          <div class="invalid-feedback">
-                            Please provide a number greater than 0 and smaller than the base price.
-                          </div>
+                          <input id="discount" name="discount" type="number" step="0.01" min="0" class="form-control <?php echo (isset($templateParams["discount_error_msg"])) ? "is-invalid" : "" ?>" value="<?php echo $print["Discount"] ?>" required>
+                            <div class="invalid-feedback">
+                            <?php if(isset($templateParams["discount_error_msg"])) { echo $templateParams["discount_error_msg"]; } ?>
+                            </div>
                         </div>
                       </div>
                     </div>

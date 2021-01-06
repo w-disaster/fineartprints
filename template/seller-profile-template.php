@@ -11,7 +11,6 @@
           }
         ?>
         </div>
-
         <div class="col-md-9">
           <div class="container-fluid my-4 flex-grow-1">
             <div class="row">

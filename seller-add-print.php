@@ -5,6 +5,8 @@ if(isUserLoggedIn(UserType::Seller)) {
     $templateParams["title"] = "Seller Area - Add print";
     $templateParams["name"] = "seller-add-print-template.php";
     $templateParams["sidebar"] = "seller-sidebar.php";
+    $templateParams["placeholder"] = "placeholder.webp";
+
     $email = htmlspecialchars($_SESSION["email"]);
 
     $templateParams["categories"] = $dbh->query("SELECT * From category");
@@ -18,41 +20,58 @@ if(isUserLoggedIn(UserType::Seller)) {
         $title = getValidTitle($print_id, $dbh);
         $description = htmlspecialchars($_POST["description"]);
         $author = htmlspecialchars($_POST["author"]);
-        $base_price = htmlspecialchars($_POST["base_price"]);
-        $discount = htmlspecialchars($_POST["discount"]);
+
+        if(isInRange(htmlspecialchars($_POST["base_price"]), 0.0, max_price)) {
+            $base_price = htmlspecialchars($_POST["base_price"]);
+        } else {
+            $templateParams["price_error_msg"] = "Please provide a number greater than 0 and smaller than".max_price." .";
+        }
+    
+        if(isInRange(htmlspecialchars($_POST["discount"]), 0.0, 99.99)) {
+            $discount = htmlspecialchars($_POST["discount"]);
+        } else {
+            $templateParams["discount_error_msg"] = "The discount is in percentage. Please provide a number greater than 0 and smaller than 99.99";
+        }
+
         $category = htmlspecialchars($_POST["category"]);
 
-        list($image, $msg) = uploadImage(UPLOAD_DIR, $_FILES["picture"]);
-        $image_name = basename($_FILES["picture"]["name"]);
-        $fullPath = UPLOAD_DIR.$image_name;
-        $orientation = getOrientation($fullPath);
+        list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["picture"]);
 
-        $parameters = array(
-            "title" => $title,
-            "description" => $description,
-            "author" => $author,
-            "image" => $image_name,
-            "base_price" => $base_price,
-            "discount" => $discount,
-            "orientation" => $orientation,
-            "category" => $category,
-            "email" => $email
-        );
+        if ($result && !isset($templateParams["price_error_msg"]) 
+                && !isset($templateParams["discount_error_msg"])) {
 
-        var_dump_plus($parameters);
-        $dbh->addPicture($parameters);
-
-        foreach ($techniques as &$technique) {
-            $technique_description =str_replace(" ", "_", $technique["Description"]);
-            if (isset($_POST[$technique_description])) {
-                $dbh->insertSupportedTechniqueForPrint($technique["Technique_id"], $title);
-            } else if(!isset($_POST[$technique_description]) && in_array($technique, $print_techniques)) {
-                $dbh->deleteSupportedTechniqueFromPrint($technique["Technique_id"], $title);
+            $image_name = $msg;
+            $fullPath = UPLOAD_DIR.$image_name;
+            $orientation = getOrientation($fullPath);
+    
+            $parameters = array(
+                "title" => $title,
+                "description" => $description,
+                "author" => $author,
+                "image" => $image_name,
+                "base_price" => $base_price,
+                "discount" => $discount,
+                "orientation" => $orientation,
+                "category" => $category,
+                "email" => $email
+            );
+    
+            var_dump_plus($parameters);
+            $dbh->addPicture($parameters);
+    
+            foreach ($techniques as &$technique) {
+                $technique_description =str_replace(" ", "_", $technique["Description"]);
+                if (isset($_POST[$technique_description])) {
+                    $dbh->insertSupportedTechniqueForPrint($technique["Technique_id"], $title);
+                } else if(!isset($_POST[$technique_description]) && in_array($technique, $print_techniques)) {
+                    $dbh->deleteSupportedTechniqueFromPrint($technique["Technique_id"], $title);
+                }
             }
+            unset($technique);
+        } else {
+            $templateParams["image_upload_error_msg"] = $msg;
         }
-        unset($technique);
     }
-
 
 } else {
     header('Location: login.php');

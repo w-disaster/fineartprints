@@ -24,8 +24,8 @@ if (isset($_GET["title"])) {
         $templateParams["height"] = $_GET["height"] ?? default_height;
         $templateParams["width"] = $_GET["width"] ?? default_width;
 
-        $templateParams["height"] = validate_height($templateParams["height"]);
-        $templateParams["width"] = validate_width($templateParams["width"]);
+        $templateParams["height"] = validate_measure($templateParams["height"], default_height, max_height);
+        $templateParams["width"] = validate_width($templateParams["width"], default_width, max_width);
 
         $price_calculator->setBasePrice(floatval($print["Base_price"]));
         $price_calculator->setHeight(floatval($templateParams["height"]));

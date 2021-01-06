@@ -19,14 +19,23 @@ function isUserLoggedIn($role){
     return !empty($_SESSION["role"]) && $_SESSION["role"] == $role;
 }
 
-function validate_height($height) {
-    if ($height > max_height) {
-        return max_height;
-    } else if($height < default_height) {
-        return default_height;
+function registerLoggedUser($user){
+    $_SESSION["email"] = $user["Email"];
+    $_SESSION["role"] = $user["Role"];
+}
+
+function validate_measure($measure, $min, $max) {
+    if ($measure > $max) {
+        return $max;
+    } else if($measure < $min) {
+        return $min;
     } else {
-        return $height;
+        return $measure;
     }
+}
+
+function isInRange($number, $min, $max) {
+    return !($number < $min || $number > $max);
 }
 
 function validate_width($width) {
@@ -118,6 +127,7 @@ function uploadImage($path, $image){
             $msg = $imageName;
         }
     }
+
     return array($result, $msg);
 }
 

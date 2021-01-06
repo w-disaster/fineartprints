@@ -10,6 +10,45 @@ class DatabaseHelper{
         }        
     }
 
+    /**
+     * Only orders with at least one final product from a seller are displayed.
+     */
+    public function getOrdersBySeller($order_id) {
+        $stmt = $this->db->prepare("SELECT DISTINCT(prints_order.Order_id), Ship_city, Ship_postal_code, Ship_address, Order_date, Shipped_date, prints_order.Email, Card_number, prints_order.Shipper_name, Status FROM `prints_order`, `final_product`, `art_print`, `picture`, user WHERE prints_order.Order_id = final_product.Order_id AND `final_product`.`Picture_title` = `art_print`.`Picture_title` AND art_print.Picture_title = picture.Title AND picture.Email = user.Email AND user.Email=?");
+        $stmt->bind_param("i", $order_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getTotalAmountFromOrder($order_id) {
+        $stmt = $this->db->prepare("SELECT SUM(final_product.Price) as Total_amount FROM `prints_order`, `final_product` WHERE prints_order.Order_id = final_product.Order_id AND prints_order.Order_id=?");
+        $stmt->bind_param("i", $order_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getNumberPrintsOrdered($order_id) {
+        $stmt = $this->db->prepare("SELECT COUNT(*) as Number_prints_ordered FROM `prints_order`, `final_product` WHERE prints_order.Order_id = final_product.Order_id AND prints_order.Order_id=?");
+        $stmt->bind_param("i", $order_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getOrderById($order_id) {
+        $stmt = $this->db->prepare("SELECT * FROM prints_order WHERE Order_id=?");
+        $stmt->bind_param("i", $order_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function checkLogin($email, $password){
         /* I check if there is a user with specified email */
         $stmt = $this->db->prepare("SELECT Email, Role, Password, Salt FROM user WHERE Email = ?");

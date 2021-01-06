@@ -10,10 +10,10 @@ if (isset($_POST["action"])) {
         $price_calculator->setBasePrice($print["Base_price"]);
 
         $title = $print["Title"];
-        $height = validate_height(floatval($_POST["height"]));
+        $height = validate_measure(floatval($_POST["height"]), default_height, max_height);
         $price_calculator->setHeight($height);
 
-        $width = validate_width(floatval($_POST["width"]));
+        $width = validate_measure(floatval($_POST["width"]), default_width, max_width);
         $price_calculator->setWidth($width);
 
         $price_calculator->setTechniquePrice(0.0);

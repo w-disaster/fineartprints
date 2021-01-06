@@ -3,5 +3,5 @@
     <a href="seller-profile.php" class="list-group-item list-group-item-action bg-white">Profile</a>
     <a href="seller-prints.php" class="list-group-item list-group-item-action bg-white">Your prints</a>
     <a href="seller-add-print.php" class="list-group-item list-group-item-action bg-white">Add new print</a>
-    <a href="#" class="list-group-item list-group-item-action bg-white"> View orders</a>
+    <a href="seller-orders.php" class="list-group-item list-group-item-action bg-white"> View orders</a>
 </aside>

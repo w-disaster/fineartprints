@@ -46,9 +46,9 @@
                     <img id="print-image" class="justify-content-center" alt="<?php echo $print["Title"] ?>" width="75%" src="<?php echo UPLOAD_DIR.$print["Image"]; ?>">
                     <div class="form-group mt-2">
                       <label for="picture">Image displayed for the product</label>
-                      <input id="picture" name="picture" type="file" class="form-control-file" accept=".jpg, .webp, .jpeg,	image/webp, image/jpg image/jpeg" disabled>
+                      <input id="picture" name="picture" type="file" class="form-control-file <?php echo (isset($templateParams["image_upload_error_msg"])) ? "is-invalid" : "" ?>" accept=".jpg, .webp, .jpeg,	image/webp, image/jpg image/jpeg" disabled>
                       <div class="invalid-feedback">
-                        Please provide an image (.jpeg or .webp).
+                        <?php if(isset($templateParams["image_upload_error_msg"])) { echo $templateParams["image_upload_error_msg"]; } ?>
                       </div>
                     </div>
                   </div>
@@ -58,30 +58,17 @@
                     <div class="col-6">
                       <div class="form-group">
                         <label for="title">Title</label>
-                        <div class="input-group">
                           <input id="title" name="title" type="text" class="form-control" value="<?php echo $print["Title"] ?>" readonly>
-                          <div class="invalid-feedback">
-                            Please provide a title with no more than 40 characters.
-                          </div>
-                        </div>
                       </div>
                       <div class="form-group">
                         <label for="author">Author</label>
-                        <div class="input-group">
                           <input id="author" name="author" type="text" class="form-control" value="<?php echo $print["Author"] ?>" readonly>
-                          <div class="invalid-feedback">
-                            The name of the author cannot be more than 40 characters long.
-                          </div>
-                        </div>
                       </div>
                     </div>
                     <div class="col-5 offset-1">
                       <div class="form-group">
                         <label for="description">Description</label>
                         <textarea id="picture-description" name="description" class="form-control" rows="4" readonly><?php echo $print["Description"] ?></textarea>
-                      </div>
-                      <div class="invalid-feedback">
-                        Please provide a description.
                       </div>
                     </div>
                   </div>
@@ -92,18 +79,18 @@
                       <div class="form-group">
                         <label for="base_price">Base price</label>
                         <div class="input-group">
-                          <input id="base-price" name="base_price" type="number" step="0.01" min="0" class="form-control" value="<?php echo $print["Base_price"] ?>" readonly>
+                          <input id="base-price" name="base_price" type="number" step="0.01" min="0" class="form-control <?php echo (isset($templateParams["price_error_msg"])) ? "is-invalid" : "" ?>" value="<?php echo $print["Base_price"] ?>" readonly>
                           <div class="invalid-feedback">
-                            Please provide a number greater than 0 and smaller than 999.
+                          <?php if(isset($templateParams["price_error_msg"])) { echo $templateParams["price_error_msg"]; } ?>
                           </div>
                         </div>
                       </div>
                       <div class="form-group">
                         <label for="discount">Discount</label>
                         <div class="input-group">
-                          <input id="discount" name="discount" type="number" step="0.01" min="0" class="form-control" value="<?php echo $print["Discount"] ?>" readonly>
+                          <input id="discount" name="discount" type="number" step="0.01" min="0" class="form-control <?php echo (isset($templateParams["discount_error_msg"])) ? "is-invalid" : "" ?>" value="<?php echo $print["Discount"] ?>" readonly>
                           <div class="invalid-feedback">
-                            Please provide a number greater than 0 and smaller than the base price.
+                          <?php if(isset($templateParams["discount_error_msg"])) { echo $templateParams["discount_error_msg"]; } ?>
                           </div>
                         </div>
                       </div>
