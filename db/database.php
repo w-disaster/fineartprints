@@ -62,22 +62,6 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getCategories(){
-        $stmt = $this->db->prepare("SELECT * FROM category");
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
-    public function getTechniques() {
-        $stmt = $this->db->prepare("SELECT * FROM print_technique");
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
     public function getTechniquesFromPictureTitle($title){
         $stmt = $this->db->prepare("SELECT print_technique.Technique_id, Image, Description, Price_per_cm2 FROM print_technique, art_print WHERE print_technique.Technique_id = art_print.Technique_id AND art_print.Picture_title=?");
         $stmt->bind_param("s", $title);
@@ -164,6 +148,55 @@ class DatabaseHelper{
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function insertSupportedTechniqueForPrint($technique_id, $picture_title) {
+        $stmt = $this->db->prepare("INSERT INTO art_print (Technique_id, Picture_title) VALUES (?, ?)");
+        $stmt->bind_param("is", $technique_id, $picture_title);
+        $stmt->execute();
+    }
+
+    public function deleteSupportedTechniqueFromPrint($technique_id, $picture_title) {
+        $stmt = $this->db->prepare("DELETE FROM art_print WHERE Technique_id=? AND Picture_title=?");
+        $stmt->bind_param("is", $technique_id, $picture_title);
+        $stmt->execute();
+    }
+
+    public function addPicture($parameters) {
+        $title = $parameters["title"];
+        $description = $parameters["description"];
+        $author = $parameters["author"];
+        $image = $parameters["image"];
+        $base_price = $parameters["base_price"];
+        $discount = $parameters["discount"];
+        $orientation = $parameters["orientation"];
+        $category_name = $parameters["category"];
+        $email = $parameters["email"];
+
+        $stmt = $this->db->prepare("INSERT INTO picture (Title, Description, Author, Image, Base_price, Discount, Orientation, Category, Email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssiisss", $title, $description, $author, $image, $base_price, $discount, $orientation, $category_name, $email);
+        $stmt->execute();
+    }
+
+    public function updatePicture($parameters) {
+        $description = $parameters["description"];
+        $author = $parameters["author"];
+        $image = $parameters["image"];
+        $base_price = $parameters["base_price"];
+        $discount = $parameters["discount"];
+        $orientation = $parameters["orientation"];
+        $category_name = $parameters["category"];
+        $email = $parameters["email"];
+
+        $stmt = $this->db->prepare("UPDATE picture SET Description = ?, Author = ?, Image = ?, Base_price = ?, Discount = ?, Orientation = ?, Category_name = ?, Email = ? WHERE Title = ?");
+        $stmt->bind_param("sssiisss", $description, $author, $image, $base_price, $discount, $orientation, $category_name, $email);
+        $stmt->execute();
+    }
+
+    public function deletePicture($title) {
+        $stmt = $this->db->prepare("DELETE FROM picture WHERE Title=?");
+        $stmt->bind_param("s", $title);
+        $stmt->execute();
     }
 
     public function addUser($email, $birth_date, $password, $salt, $name, $surname, $phone, $city, 

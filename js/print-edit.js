@@ -1,7 +1,7 @@
 $(document).ready(function() {
     const formInputs = $("div.form-group > div.input-group > input, div.form-group > select, div.form-group > textarea");
     const techniqueCheckboxes = $("div.form-group > div.form-check > input");
-    const fileInput = $("input#image-chooser");
+    const fileInput = $("input#picture");
     const saveChangesButton = $("button#save-settings");
     const abortChangesButton = $("button#abort-changes");
 

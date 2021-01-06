@@ -39,15 +39,15 @@
                 <?php if(!$templateParams["print_selected"]): ?>
                 <h3 class="">No print selected</h3>
                 <?php else: ?>
-                <form action="#", method="POST">
+                <form action="#", method="POST" enctype="multipart/form-data">
                   <h2 class="d-inline">Print details</h2>
                   <button id="edit-print" class="btn float-right"><img src="upload/icons/pencil-square.svg" alt="edit this print" aria-label="edit-print" width="32" height="32"></button>
                   <h3 class="section-title">Print image</h3>
                   <div class="row py-3 mx-1">
-                    <img id="print-image" class="justify-content-center" alt="wheatfield with crows by vincent van gogh" width="75%" src="<?php echo UPLOAD_DIR.$print["Image"]; ?>">
+                    <img id="print-image" class="justify-content-center" alt="<?php echo $print["Title"] ?>" width="75%" src="<?php echo UPLOAD_DIR.$print["Image"]; ?>">
                     <div class="form-group mt-2">
-                      <label for="image-chooser">Image displayed for the product</label>
-                      <input id="image-chooser" type="file" class="form-control-file" accept=".jpg, .webp, .jpeg,	image/webp, image/jpg image/jpeg" disabled>
+                      <label for="picture">Image displayed for the product</label>
+                      <input id="picture" name="picture" type="file" class="form-control-file" accept=".jpg, .webp, .jpeg,	image/webp, image/jpg image/jpeg" disabled>
                       <div class="invalid-feedback">
                         Please provide an image (.jpeg or .webp).
                       </div>
@@ -60,7 +60,7 @@
                       <div class="form-group">
                         <label for="title">Title</label>
                         <div class="input-group">
-                          <input id="title" type="text" class="form-control" value="<?php echo $print["Title"] ?>" readonly>
+                          <input id="title" name="title" type="text" class="form-control" value="<?php echo $print["Title"] ?>" readonly>
                           <div class="invalid-feedback">
                             Please provide a title with no more than 40 characters.
                           </div>
@@ -69,7 +69,7 @@
                       <div class="form-group">
                         <label for="author">Author</label>
                         <div class="input-group">
-                          <input id="author" type="text" class="form-control" value="<?php echo $print["Author"] ?>" readonly>
+                          <input id="author" name="author" type="text" class="form-control" value="<?php echo $print["Author"] ?>" readonly>
                           <div class="invalid-feedback">
                             The name of the author cannot be more than 40 characters long.
                           </div>
@@ -79,7 +79,7 @@
                     <div class="col-5 offset-1">
                       <div class="form-group">
                         <label for="description">Description</label>
-                        <textarea id="picture-description" class="form-control" rows="4" readonly><?php echo $print["Description"] ?></textarea>
+                        <textarea id="picture-description" name="description" class="form-control" rows="4" readonly><?php echo $print["Description"] ?></textarea>
                       </div>
                       <div class="invalid-feedback">
                         Please provide a description.
@@ -91,9 +91,9 @@
                     <div class="col-6">
                       <h3 class="section-title">Print value</h3>
                       <div class="form-group">
-                        <label for="base-price">Base price</label>
+                        <label for="base_price">Base price</label>
                         <div class="input-group">
-                          <input id="base-price" type="number" class="form-control" value="<?php echo $print["Base_price"] ?>" readonly>
+                          <input id="base-price" name="base_price" type="number" class="form-control" value="<?php echo $print["Base_price"] ?>" readonly>
                           <div class="invalid-feedback">
                             Please provide a number greater than 0 and smaller than 999.
                           </div>
@@ -102,7 +102,7 @@
                       <div class="form-group">
                         <label for="discount">Discount</label>
                         <div class="input-group">
-                          <input id="discount" type="number" class="form-control" value="<?php echo $print["Discount"] ?>" readonly>
+                          <input id="discount" name="discount" type="number" class="form-control" value="<?php echo $print["Discount"] ?>" readonly>
                           <div class="invalid-feedback">
                             Please provide a number greater than 0 and smaller than the base price.
                           </div>
@@ -112,8 +112,8 @@
                     <div class="col-5 offset-1">
                       <h3 class="section-title">Print category</h3>
                       <div class="form-group">
-                        <label for="category-chooser">Current category</label>
-                        <select class="form-control" id="category-chooser" readonly>
+                        <label for="category">Current category</label>
+                        <select class="form-control" id="category" name="category" readonly>
                         <option><?php echo $print["Category_name"]; ?></option>
                         <?php foreach($templateParams["categories"] as $category): ?><option><?php echo $category["Name"]; ?></option>
                         <?php endforeach; ?></select>
@@ -124,7 +124,7 @@
                   <div class="form-group">
                     <?php foreach($templateParams["techniques"] as $technique): ?>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="<?php echo $technique["Title"] ?>" <?php echo (in_array($technique, $print_techniques)) ? "checked" : ""?> disabled>
+                      <input class="form-check-input" type="checkbox" name="<?php echo $technique["Title"] ?>" id="<?php echo $technique["Title"] ?>" <?php echo (in_array($technique, $print_techniques)) ? "checked" : ""?> disabled>
                       <label class="form-check-label" for="<?php echo $technique["Title"] ?>">
                         <?php echo $technique["Description"] ?>
                       </label>
