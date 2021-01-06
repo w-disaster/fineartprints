@@ -44,8 +44,8 @@ function validate_width($width) {
     }
 }
 
-function getOrientation($image) {
-    $image_properties = getimagesize($image);
+function getOrientation($image_name) {
+    $image_properties = getimagesize($image_name);
     if($image_properties[0] >= $image_properties[1]) {
         return Orientation::Landscape;
     } else {

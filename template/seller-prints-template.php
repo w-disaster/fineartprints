@@ -5,14 +5,11 @@
     <div class="container">
       <div class="row">
         <div class="col-md-3">
-          <aside class="bg-white sidebar container shadow-sm my-4 p-4 list-group-flush" aria-labelledby="seller-area-sidebar">
-            <h3 id="seller-area-sidebar" class="py-4 pl-3">Seller's Area</h3>
-            <a href="seller-overview.php" class="list-group-item list-group-item-action bg-white">Overview</a>
-            <a href="seller-profile.php" class="list-group-item list-group-item-action bg-white">Profile</a>
-            <a href="#" class="list-group-item list-group-item-action bg-white">Your prints</a>
-            <a href="seller-add-print.php" class="list-group-item list-group-item-action bg-white">Add new print</a>
-            <a href="seller-orders.php" class="list-group-item list-group-item-action bg-white">View orders</a>
-          </aside>
+        <?php 
+          if(isset($templateParams["sidebar"])){
+            require($templateParams["sidebar"]);
+          }
+        ?>
           <aside class="bg-white sidebar container shadow-sm my-4 p-4 list-group list-group-flush" aria-labelledby="your-prints">
             <h3 id="your-prints" class="py-4 pl-3">Prints' list</h3>
             <label for="search-bar">Search by print title</label>
@@ -124,7 +121,7 @@
                   <div class="form-group">
                     <?php foreach($templateParams["techniques"] as $technique): ?>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="<?php echo $technique["Title"] ?>" id="<?php echo $technique["Title"] ?>" <?php echo (in_array($technique, $print_techniques)) ? "checked" : ""?> disabled>
+                      <input class="form-check-input" type="checkbox" name="<?php echo $technique["Description"] ?>"  value="<?php echo $technique["Description"] ?>" id="<?php echo $technique["Description"] ?>" <?php echo (in_array($technique, $print_techniques)) ? "checked" : ""?> disabled>
                       <label class="form-check-label" for="<?php echo $technique["Title"] ?>">
                         <?php echo $technique["Description"] ?>
                       </label>
