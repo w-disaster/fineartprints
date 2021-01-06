@@ -21,7 +21,7 @@
               </div>
             </div>
             <?php foreach ($templateParams["prints"] as $list_item) : ?>
-              <a href="?print_id=<?php echo $list_item["Title"] ?>" class="list-group-item list-group-item-action bg-white"><?php echo $list_item["Title"] ?></a>
+              <a href="?print_id=<?php echo str_replace(" ", "%20", $list_item["Title"]) ?>" class="list-group-item list-group-item-action bg-white"><?php echo $list_item["Title"] ?></a>
             <?php endforeach; ?>
           </aside>
           </div>
@@ -38,15 +38,15 @@
                 <?php if(!$templateParams["print_selected"]): ?>
                 <h3 class="">No print selected</h3>
                 <?php else: ?>
-                <form action="#", method="POST" enctype="multipart/form-data">
+                <form action="#" method="POST" enctype="multipart/form-data">
                   <h2 class="d-inline">Print details</h2>
                   <button id="edit-print" class="btn float-right"><img src="upload/icons/pencil-square.svg" alt="edit this print" aria-label="edit-print" width="32" height="32"></button>
                   <h3 class="section-title">Print image</h3>
                   <div class="row py-3 mx-1">
-                    <img id="print-image" class="justify-content-center" alt="<?php echo $print["Title"] ?>" width="75%" src="<?php echo UPLOAD_DIR.$print["Image"]; ?>">
+                    <img id="print-image" class="justify-content-center" alt="<?php echo $print["Title"] ?>"  src="<?php echo UPLOAD_DIR.$print["Image"]; ?>">
                     <div class="form-group mt-2">
                       <label for="picture">Image displayed for the product</label>
-                      <input id="picture" name="picture" type="file" class="form-control-file <?php echo (isset($templateParams["image_upload_error_msg"])) ? "is-invalid" : "" ?>" accept=".jpg, .webp, .jpeg,	image/webp, image/jpg image/jpeg" disabled>
+                      <input id="picture" name="picture" type="file" class="form-control-file <?php echo (isset($templateParams["image_upload_error_msg"])) ? "is-invalid" : "" ?>" accept=".jpg, .webp, .jpeg" disabled>
                       <div class="invalid-feedback">
                         <?php if(isset($templateParams["image_upload_error_msg"])) { echo $templateParams["image_upload_error_msg"]; } ?>
                       </div>
@@ -67,7 +67,7 @@
                     </div>
                     <div class="col-5 offset-1">
                       <div class="form-group">
-                        <label for="description">Description</label>
+                        <label for="picture-description">Description</label>
                         <textarea id="picture-description" name="description" class="form-control" rows="4" readonly><?php echo $print["Description"] ?></textarea>
                       </div>
                     </div>
@@ -77,7 +77,7 @@
                     <div class="col-6">
                       <h3 class="section-title">Print value</h3>
                       <div class="form-group">
-                        <label for="base_price">Base price</label>
+                        <label for="base-price">Base price</label>
                         <div class="input-group">
                           <input id="base-price" name="base_price" type="number" step="0.01" min="0" class="form-control <?php echo (isset($templateParams["price_error_msg"])) ? "is-invalid" : "" ?>" value="<?php echo $print["Base_price"] ?>" readonly>
                           <div class="invalid-feedback">
@@ -99,7 +99,7 @@
                       <h3 class="section-title">Print category</h3>
                       <div class="form-group">
                         <label for="category">Current category</label>
-                        <select class="form-control" id="category" name="category" readonly>
+                        <select class="form-control" id="category" name="category">
                         <option><?php echo $print["Category_name"]; ?></option>
                         <?php foreach($templateParams["categories"] as $category): ?><option><?php echo $category["Name"]; ?></option>
                         <?php endforeach; ?></select>
@@ -111,14 +111,14 @@
                   <?php foreach($templateParams["techniques"] as $technique): ?>
                     <?php if($technique["Description"] != "none"): ?>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="<?php echo $technique["Description"] ?>"  value="<?php echo $technique["Description"] ?>" id="<?php echo $technique["Description"] ?>" <?php echo (in_array($technique, $print_techniques)) ? "checked" : ""?> disabled>
-                      <label class="form-check-label" for="<?php echo $technique["Title"] ?>">
+                      <input class="form-check-input" type="checkbox" name="<?php echo $technique["Description"] ?>"  value="<?php echo $technique["Description"] ?>" id="<?php echo str_replace(" ", "-", $technique["Description"]) ?>" <?php echo (in_array($technique, $print_techniques)) ? "checked" : ""?> disabled>
+                      <label class="form-check-label" for="<?php echo str_replace(" ", "-", $technique["Description"]) ?>">
                         <?php echo $technique["Description"] ?>
                       </label>
                     </div>
                     <?php else: ?>
-                      <input class="form-check-input" type="checkbox" name="<?php echo $technique["Description"] ?>"  value="<?php echo $technique["Description"] ?>" id="<?php echo $technique["Description"] ?>" checked hidden>
-                      <label class="form-check-label" for="<?php echo $technique["Title"] ?>" hidden>
+                      <input class="form-check-input" type="checkbox" name="<?php echo $technique["Description"] ?>"  value="<?php echo $technique["Description"] ?>" id="<?php echo str_replace(" ", "-", $technique["Description"]) ?>" checked hidden>
+                      <label class="form-check-label" for="<?php echo str_replace(" ", "-", $technique["Description"]) ?>" hidden>
                         <?php echo $technique["Description"] ?>
                       </label>
                     <?php endif; ?>

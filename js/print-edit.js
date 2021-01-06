@@ -25,7 +25,6 @@ $(document).ready(function() {
     abortChangesButton.click(function() {
         location.reload();
     });
-
 });
 
 function lockForm(formInputs, fileInput, techniqueCheckboxes) {

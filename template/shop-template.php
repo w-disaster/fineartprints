@@ -89,7 +89,7 @@
                 <h6 class="mt-3"><?php echo $picture["Title"];?></h6>
 
                 <?php if($picture["Discount"] > 0): ?>
-                  <p class="m-0"><del><?php echo $picture["Base_price"];?> €</del></p>
+                  <p class="m-0"><del><?php echo $picture["Base_price"]?> €</del></p>
                   <p class="text-danger"><?php echo $picture["Base_price"] - ($picture["Base_price"] * $picture["Discount"])/100;?> €</p>
                 <?php else: ?>
                   <p><?php echo $picture["Base_price"];?> €</p>

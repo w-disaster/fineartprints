@@ -23,10 +23,10 @@
             <div class="row">
               <div class="container mt-4 p-4 px-5 bg-white rounded shadow-sm">
                 <h2 class="d-inline">Add new print</h2>
-                <form action="#", method="POST" enctype="multipart/form-data">
+                <form action="#" method="POST" enctype="multipart/form-data">
                   <h3 class="section-title">Print image</h3>
                   <div class="row py-3 mx-1">
-                    <img id="print-image" class="justify-content-center" alt="<?php echo $print["Title"] ?>" width="75%" src="<?php echo UPLOAD_DIR.$templateParams["placeholder"]; ?>">
+                    <img id="print-image" class="justify-content-center" alt="<?php echo $print["Title"] ?>"  src="<?php echo UPLOAD_DIR.$templateParams["placeholder"]; ?>">
                     <div class="form-group mt-2">
                       <label for="picture">Image displayed for the product</label>
                       <input id="picture" name="picture" type="file" class="form-control-file <?php echo (isset($templateParams["image_upload_error_msg"])) ? "is-invalid" : "" ?>" accept=".jpg, .webp, 	image/webp, image/jpg" required>
@@ -61,7 +61,7 @@
                       <div class="form-group">
                         <label for="base-price">Base price</label>
                         <div class="input-group">
-                          <input id="base-price" name="base_price" type="number" step="0.01" min="0" class="form-control <?php echo (isset($templateParams["price_error_msg"])) ? "is-invalid" : "" ?>" value="<?php echo $print["Base_price"] ?>" required>
+                          <input id="base-price" name="base_price" type="number" step="0.01" min="0" class="form-control <?php echo (isset($templateParams["price_error_msg"])) ? "is-invalid" : "" ?>" value="0" required>
                           <div class="invalid-feedback">
                           <?php if(isset($templateParams["price_error_msg"])) { echo $templateParams["price_error_msg"]; } ?>
                           </div>
@@ -70,7 +70,7 @@
                       <div class="form-group">
                         <label for="discount">Discount</label>
                         <div class="input-group">
-                          <input id="discount" name="discount" type="number" step="0.01" min="0" class="form-control <?php echo (isset($templateParams["discount_error_msg"])) ? "is-invalid" : "" ?>" value="<?php echo $print["Discount"] ?>" required>
+                          <input id="discount" name="discount" type="number" step="0.01" min="0" class="form-control <?php echo (isset($templateParams["discount_error_msg"])) ? "is-invalid" : "" ?>" value="0" required>
                             <div class="invalid-feedback">
                             <?php if(isset($templateParams["discount_error_msg"])) { echo $templateParams["discount_error_msg"]; } ?>
                             </div>
@@ -94,14 +94,14 @@
                     <?php foreach($templateParams["techniques"] as $technique): ?>
                     <?php if($technique["Description"] != "none"): ?>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="<?php echo $technique["Description"] ?>"  value="<?php echo $technique["Description"] ?>" id="<?php echo $technique["Description"] ?>" <?php echo (in_array($technique, $print_techniques)) ? "checked" : ""?>>
-                      <label class="form-check-label" for="<?php echo $technique["Title"] ?>">
+                      <input class="form-check-input" type="checkbox" name="<?php echo $technique["Description"] ?>"  value="<?php echo str_replace(" ", "-", $technique["Description"]) ?>" id="<?php echo str_replace(" ", "-", $technique["Description"]) ?>" <?php echo (in_array($technique, $print_techniques)) ? "checked" : ""?>>
+                      <label class="form-check-label" for="<?php echo str_replace(" ", "-", $technique["Description"]) ?>">
                         <?php echo $technique["Description"] ?>
                       </label>
                     </div>
                     <?php else: ?>
-                      <input class="form-check-input" type="checkbox" name="<?php echo $technique["Description"] ?>"  value="<?php echo $technique["Description"] ?>" id="<?php echo $technique["Description"] ?>" checked hidden>
-                      <label class="form-check-label" for="<?php echo $technique["Title"] ?>" hidden>
+                      <input class="form-check-input" type="checkbox" name="<?php echo $technique["Description"] ?>"  value="<?php echo str_replace(" ", "-", $technique["Description"]) ?>" id="<?php echo str_replace(" ", "-", $technique["Description"]) ?>" checked hidden>
+                      <label class="form-check-label" for="<?php echo str_replace(" ", "-", $technique["Description"]) ?>" hidden>
                         <?php echo $technique["Description"] ?>
                       </label>
                     <?php endif; ?>

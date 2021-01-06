@@ -36,7 +36,6 @@
                 <?php if (!$templateParams["order_selected"]) : ?>
                   <h3>No order selected</h3>
                 <?php else: ?>
-                  <form>
                     <h2 class="d-inline">Order details</h2>
                     <h3 class="section-title">Shipping info</h3>
                     <div class="form-row">
@@ -127,8 +126,8 @@
                       <div class="col-md-6">
                         <h3 class="section-title">Order status</h3>
                         <div class="form-group">
-                          <label for="category-chooser">Current state</label>
-                          <select class="form-control" id="category-chooser" readonly>
+                          <label for="status">Current state</label>
+                          <select class="form-control" id="status" name="status">
                             <option><?php echo $order["Status"]?></option>
                             <option>In production</option>
                             <option>Order shipped</option>
@@ -136,13 +135,10 @@
                             <option>Order sent</option>
                           </select>
                         </div>
-                        <button id="save-settings" class="btn btn-primary mt-2" type="submit">Submit update</button>
-                        <button id="abort-changes" class="btn btn-danger mt-2" type="reset">Undo changes</button>
                       </div>
                       <div class="col-md-5 offset-md-1">
                       </div>
                     </div>
-                  </form>
                 <?php endif; ?>
               </div>
             </div>

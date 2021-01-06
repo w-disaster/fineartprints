@@ -81,7 +81,6 @@ if (isset($_POST["action"])) {
 
         for($i = 0; $i < $_SESSION["products_count"]; $i++) {
             if(!empty($_SESSION["final_products"][strval($i)]) && $_SESSION["final_products"][strval($i)]["print_id"] == $_POST["print_id"]) {
-                var_dump($_SESSION["final_products"][strval($i)]);
                 $index = strval($i);
             }
         }

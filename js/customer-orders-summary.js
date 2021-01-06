@@ -1,8 +1,8 @@
 function isDateValid(date, optionval) {
     const orderDate = new Date(date);
     const todayDate = new Date();
-    var t1 = orderDate.getTime();
-    var t2 = todayDate.getTime();
+    let t1 = orderDate.getTime();
+    let t2 = todayDate.getTime();
 
     if (parseInt(optionval) >= parseInt((t2-t1)/(24*3600*1000)) || optionval == "All") {
         return true;

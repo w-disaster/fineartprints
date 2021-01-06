@@ -14,7 +14,6 @@ if(isUserLoggedIn(UserType::Seller)) {
     $templateParams["techniques"] = $techniques;
     $print_techniques = [];
 
-    var_dump_plus($_POST);
     if(isset($_POST["author"])) {
         $print_id = htmlspecialchars($_POST["title"]);
         $title = getValidTitle($print_id, $dbh);
@@ -56,7 +55,6 @@ if(isUserLoggedIn(UserType::Seller)) {
                 "email" => $email
             );
     
-            var_dump_plus($parameters);
             $dbh->addPicture($parameters);
     
             foreach ($techniques as &$technique) {

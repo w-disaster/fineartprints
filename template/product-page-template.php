@@ -44,7 +44,6 @@
                                 <?php if(!isUserLoggedIn(UserType::Seller)): ?>
                                 <button class="btn btn-block btn-primary ml-2 mb-3" type="button">Add to cart</button>
                                 <?php endif; ?>
-                                <p>The print technique is <strong>required</strong>, while the frame and the passpartout are <strong>optional.</strong></p>
                                 <p>Prices are computed taking into account the width and height of the print, the technique employed and the available customizations in addition to the base price, computed for the default dimensions of <?php echo default_width ?> cm &times; <?php echo default_height ?> cm.</p>
                             </div>
                             <div class="row">
@@ -138,7 +137,7 @@
                                                 <span>none</span>
                                             <?php else: ?>
                                                 <span class="media justify-content-center">
-                                                    <img class="mr-3" src="<?php echo UPLOAD_DIR.$chosenPasspartout["Image"] ?>" width="50%" alt="
+                                                    <img class="mr-3" src="<?php echo UPLOAD_DIR.$chosenPasspartout["Image"] ?>" alt="
                                                     <?php echo $chosenPasspartout["Passpartout_id"] ?>">
                                                     <span class="media-body">
                                                         <span class="h5 d-block"><?php echo $chosenPasspartout["Passpartout_id"] ?></span>

@@ -20,7 +20,6 @@ if(isUserLoggedIn(UserType::Seller)) {
             $order = $order[0];
             $order["Total_amount"] = $dbh->getTotalAmountFromOrder($order_id)[0]["Total_amount"];
             $order["Number_prints_ordered"] = $dbh->getNumberPrintsOrdered($order_id)[0]["Number_prints_ordered"];
-            var_dump_plus($order);
         }
     } else {
         $templateParams["order_selected"] =  false;

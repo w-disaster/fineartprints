@@ -328,7 +328,7 @@ class DatabaseHelper{
         }
 
         $stmt = $this->db->prepare("INSERT INTO prints_order (Order_id, Ship_city, Ship_postal_code, Ship_address,
-        Order_date, Email, Card_number, Shipper_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
+        Order_date, Email, Card_number, Shipper_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("isisssss", $order_id, $city, $postalCode, $address, $orderDate, $email, $cardNumber, $shipperName);
 
         $stmt->execute();
@@ -372,13 +372,18 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function addNotification($data, $order_id, $status) {
+        $stmt = $this->db->prepare("INSERT INTO tracking_notification (Data, Order_id, Status) VALUES (?, ?, ?)");
+        $stmt->bind_param("isis", $track_not_id, $data, $order_id, $status);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getNotifications($email) {
         $status = "new";
-        $stmt = $this->db->prepare("SELECT tracking_notification.Order_id, Data,
-        prints_order.Status AS Order_status FROM user, tracking_notification, prints_order WHERE
-         prints_order.Order_id = tracking_notification.Order_id AND
-          user.Email = prints_order.Email AND user.Email = ?
-         AND tracking_notification.Status = ? ORDER BY Data DESC");
+        $stmt = $this->db->prepare("");
         $stmt->bind_param("ss", $email, $status);
 
         $stmt->execute();

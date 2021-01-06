@@ -6,6 +6,10 @@ h3 {
   width: 15em;
 }
 
+#print-image {
+  width: 75%; 
+}
+
 .section-title {
   border: none;
   border-top: solid 2px black;
