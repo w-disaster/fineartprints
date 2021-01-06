@@ -7,57 +7,62 @@
       <div class="col-12 col-md-3 mb-4">
         <aside class="h-100">
           <section class="bg-white border mt-4 px-5 py-3 w-100">
+            <h2 class="d-none">Filters</h2> 
             <form action="shop.php" method="POST">
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="select" id="all" value="all" <?php if($templateParams["select"] == "all"): echo "checked"; endif; ?>>
-                <label class="form-check-label ml-3" for="all">
-                  All
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="select" id="sale" value="sale" <?php if($templateParams["select"] == "sale"): echo "checked"; endif; ?>>
-                <label class="form-check-label ml-3" for="sale">
-                  Sales: %
-                </label>
-              </div>
-
-              <div class="form-group mt-3">
-                <label for="orderby_label"><h2>Order by</h2></label>
-                <select id="input" name="order" class="form-control">
-                  <option value="none" id="none" <?php if($templateParams["order"] == "none"): echo "selected"; endif; ?>>None</option>
-                  <option value="publish_date" id="publish_date" <?php if($templateParams["order"] == "publish_date"): echo "selected"; endif; ?>>Publish Date (latest)</option>
-                  <option value="cost_rising" id="cost_rising" <?php if($templateParams["order"] == "cost_rising"): echo "selected"; endif; ?>>Cost: rising</option>
-                  <option value="cost_decreasing" id="cost_decreasing" <?php if($templateParams["order"] == "cost_decreasing"): echo "selected"; endif; ?>>Cost: decreasing</option>
-
-                </select>
-              </div>
-
-              <p>
-              <h2>Categories</h2>
-              <?php foreach($templateParams["all_categories"] as $category): ?>
+              <fieldset>
+                <legend>Select</legend>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="categories[]" value="<?php echo $category["Name"]; ?>"  id="<?php echo $category["Name"]; ?>" 
-                    <?php if(in_array($category["Name"], $templateParams["filtered_categories"])): echo "checked"; endif;?>>
-                  <label class="form-check-label ml-3" for="<?php echo $category["Name"]; ?>">
-                  <?php echo $category["Name"]; ?>
+                  <input class="form-check-input" type="radio" name="select" id="all" value="all" <?php if($templateParams["select"] == "all"): echo "checked"; endif; ?>>
+                  <label class="form-check-label ml-3" for="all">
+                    All
                   </label>
                 </div>
-              <?php endforeach; ?>
-              </p>
-
-              <p class="mt-3">
-                <h2>Authors</h2>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="select" id="sale" value="sale" <?php if($templateParams["select"] == "sale"): echo "checked"; endif; ?>>
+                  <label class="form-check-label ml-3" for="sale">
+                    Sales: %
+                  </label>
+                </div>
+              </fieldset>
+              <fieldset class="mt-3">
+                <legend>Order by</legend>
+                <div class="form-group mt-2">
+                  <label class="d-none" for="input">order</label>
+                  <select id="input" name="order" class="form-control">
+                    <option value="none" id="none" <?php if($templateParams["order"] == "none"): echo "selected"; endif; ?>>None</option>
+                    <option value="publish_date" id="publish_date" <?php if($templateParams["order"] == "publish_date"): echo "selected"; endif; ?>>Publish Date (latest)</option>
+                    <option value="cost_rising" id="cost_rising" <?php if($templateParams["order"] == "cost_rising"): echo "selected"; endif; ?>>Cost: rising</option>
+                    <option value="cost_decreasing" id="cost_decreasing" <?php if($templateParams["order"] == "cost_decreasing"): echo "selected"; endif; ?>>Cost: decreasing</option>
+                  </select>
+                </div>
+              </fieldset>
+              
+              <fieldset class="mt-0">
+                <legend>Categories</legend>
+                <?php foreach($templateParams["all_categories"] as $category): ?>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="categories[]" value="<?php echo $category["Name"]; ?>"  id="<?php echo str_replace(" ", "%20", $category["Name"]); ?>" 
+                      <?php if(in_array($category["Name"], $templateParams["filtered_categories"])): echo "checked"; endif;?>>
+                    <label class="form-check-label ml-3" for="<?php echo str_replace(" ", "%20", $category["Name"]); ?>">
+                    <?php echo $category["Name"]; ?>
+                    </label>
+                  </div>
+                <?php endforeach; ?>
+              </fieldset>
+              
+              <fieldset class="mt-3">
+                <legend>Authors</legend>
                 <?php foreach($templateParams["authors"] as $author): ?>
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="authors[]" value="<?php echo $author["Author"] ?>" id="<?php echo $author["Author"] ?>"
+                    <input class="form-check-input" type="checkbox" name="authors[]" value="<?php echo $author["Author"] ?>" id="<?php echo str_replace(" ", "%20", $author["Author"]); ?>"
                     <?php if(in_array($author["Author"], $templateParams["filtered_authors"])): echo "checked"; endif;?>>
-                    <label class="form-check-label ml-3" for="<?php echo $author["Author"] ?>">
+                    <label class="form-check-label ml-3" for="<?php echo str_replace(" ", "%20", $author["Author"]); ?>">
                       <?php echo $author["Author"]; ?>
                     </label>
                   </div>
                 <?php endforeach; ?>
-              </p>
-
+              </fieldset>
+            
               <button type="submit" class="btn btn-primary mt-3 mb-3">Filter</button>
 
             </form>
@@ -99,6 +104,8 @@
             <?php if($i == 3): $i = -1; ?> </div> <?php endif; ?>
             <?php $i++ ?>
             <?php endforeach; ?>
+
+            <?php if($i != 0): ?> </div> <?php endif; ?>
           </main>
         </div>
       </div>
@@ -107,4 +114,4 @@
     </div>
   </div>
 
-<script src="js/shop-prints.js" type="text/javascript"></script>
+<script src="js/shop-prints.js"></script>

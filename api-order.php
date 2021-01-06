@@ -42,8 +42,10 @@ if(isUserLoggedIn("customer")){
         
         $finalProducts = $_SESSION["final_products"];
         foreach($finalProducts as $product){
-            $dbh->addFinalProduct($product["title"], $product["technique_id"], $product["frame_id"], $product["passpartout_id"], 
-                $product["width"], $product["height"],  $order_id, $product["price"]);
+            if(isset($product["print_id"])){
+                $dbh->addFinalProduct($product["title"], $product["technique_id"], $product["frame_id"], $product["passpartout_id"], 
+                    $product["width"], $product["height"],  $order_id, $product["price"]);
+            }
         }
 
         $_SESSION["final_products"] = [];

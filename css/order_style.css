@@ -3,17 +3,6 @@
     border-radius: 5px;
 }
 
-/*tr td:last-child{
-    text-align: right;
-    padding-right: 50px !important;
-    padding-left: 0 !important;
-}
-
-tr td:first-child{
-    padding-left: 50px !important;
-    padding-right: 0 !important;
-}*/
-
 .parallax {
     /* The image used */
     background-image: url("../upload/checkout-background.webp");

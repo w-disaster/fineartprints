@@ -7,8 +7,9 @@
     -ms-transition: all .3s ease-in-out;
 }
 
-h3{
-    margin: 0;
+fieldset legend{
+    font-size: 30px;
+    font-weight: normal;
 }
 
 .container-fluid > .col-12 h6{
