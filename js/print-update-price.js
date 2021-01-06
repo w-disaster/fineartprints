@@ -127,24 +127,10 @@ $(document).ready(function(){
             fullPrice.text(updatedPrice.toFixed(2) + " €");
             price = updatedPrice.toFixed(2);
         }
-        
-        /*console.log("priceDivider: " + priceDivider);
-        console.log("height: " + height);
-        console.log("width: " + width);
-        console.log("techniquePrice: " + techniquePrice);
-        console.log("framePrice: " + framePrice);
-        console.log("passpartoutPrice: " + passpartoutPrice);
-        console.log("delta: " + delta);
-        console.log("basePrice: " + basePrice);
-        console.log("basePriceDiscounted: " + basePriceDiscounted);
-        console.log("framePrice: " + framePrice);
-        console.log("updatedPrice: " + updatedPrice);*/
+
     }
 
     function update_session() {
-        /*console.log(techniqueId);
-        console.log(frameId);
-        console.log(passpartoutId);*/
         $.ajax({
             type: "POST",
             url: "api-cart.php",

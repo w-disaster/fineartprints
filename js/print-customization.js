@@ -28,7 +28,7 @@ $(document).ready(function() {
         if (choice.is("button#technique-choice")) {
             technique.children().remove();
             technique.append(data);
-            technique.find("img").attr("width", "50%");
+            //technique.find("img").attr("width", "50%");
         } else if (choice.is("button#frame-choice")) {
             frame.children().remove();
             frame.append(data);

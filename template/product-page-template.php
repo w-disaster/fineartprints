@@ -69,7 +69,7 @@
                                                 <span>none</span>
                                             <?php else: ?>
                                                 <span class="media justify-content-center">
-                                                    <img class="mr-3" src="<?php echo UPLOAD_DIR.$chosenTechnique["Image"] ?>" width="50%" alt="
+                                                    <img class="mr-3" src="<?php echo UPLOAD_DIR.$chosenTechnique["Image"] ?>" alt="
                                                     <?php echo $chosenTechnique["Technique_id"] ?>">
                                                     <span class="media-body">
                                                         <span class="h5 d-block"><?php echo $chosenTechnique["Technique_id"] ?></span>
@@ -82,7 +82,7 @@
                                                 <?php foreach ($techniques as $technique) : ?>
                                                 <button class="w-100 mt-1">
                                                     <span class="media justify-content-center">
-                                                        <img class="mr-3" src="<?php echo UPLOAD_DIR.$technique["Image"] ?>" width="50%" alt="
+                                                        <img class="mr-3" src="<?php echo UPLOAD_DIR.$technique["Image"] ?>" alt="
                                                         <?php echo $technique["Technique_id"] ?>">
                                                         <span class="media-body">
                                                             <span class="h5 d-block"><?php echo $technique["Technique_id"] ?></span>
@@ -103,7 +103,7 @@
                                                 <span>none</span>
                                             <?php else: ?>
                                                 <span class="media justify-content-center">
-                                                    <img class="mr-3" src="<?php echo UPLOAD_DIR.$chosenFrame["Image"] ?>" width="50%" alt="
+                                                    <img class="mr-3" src="<?php echo UPLOAD_DIR.$chosenFrame["Image"] ?>" alt="
                                                     <?php echo $chosenFrame["Frame_id"] ?>">
                                                     <span class="media-body">
                                                         <span class="h5 d-block"><?php echo $chosenFrame["Frame_id"] ?></span>

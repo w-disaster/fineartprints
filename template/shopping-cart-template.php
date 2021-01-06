@@ -18,9 +18,9 @@
                                 <img src="<?php echo UPLOAD_DIR.$final_product["image"] ?>" class="card-img" alt="<?php echo $final_product["title"] ?>">
                             </div>
                             <div class="col-md-6">
-                                <a href="product-page.php?title=<?php echo $final_product["title"] ?>&height=<?php echo $final_product["height"] ?>&width=<?php echo $final_product["width"] ?>&technique_id=<?php echo $final_product["technique_id"]?>&frame_id=<?php echo $final_product["frame_id"] ?>&passpartout_id=<?php echo $final_product["passpartout_id"] ?>" class="stretched-link">
+                                <a href="product-page.php?title=<?php echo str_replace(" ", "%20", $final_product["title"]) ?>" class="stretched-link">
                                     <div class="card-body">
-                                        <h5 class="card-title"><?php echo $final_product["title"] ?></h5>
+                                        <h2 class="card-title h5"><?php echo $final_product["title"] ?></h2>
                                         <p class="card-text p-0 m-0 text-muted font-weight-normal font-italic">Print id: <?php echo $final_product["print_id"] ?></p>
                                         <p class="card-text p-0 m-0 text-muted font-weight-normal font-italic">Dimensions: <?php echo $final_product["height"] ?> cm &times; <?php echo $final_product["width"] ?> cm</p>
                                         <p class="card-text p-0 m-0 text-muted font-weight-normal font-italic"> Printing technique: <?php echo $final_product["technique"] ?></p>
