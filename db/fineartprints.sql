@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Gen 05, 2021 alle 20:38
+-- Creato il: Gen 06, 2021 alle 21:31
 -- Versione del server: 10.4.14-MariaDB
 -- Versione PHP: 7.4.11
 
@@ -528,14 +528,6 @@ CREATE TABLE `prints_order` (
   `Status` varchar(20) NOT NULL DEFAULT 'In production'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dump dei dati per la tabella `prints_order`
---
-
-INSERT INTO `prints_order` (`Order_id`, `Ship_city`, `Ship_postal_code`, `Ship_address`, `Order_date`, `Shipped_date`, `Email`, `Card_number`, `Shipper_name`, `Status`) VALUES
-(1, NULL, NULL, NULL, '2021-01-05', NULL, 'gino.lippa@prints.com', 1234567890123456, 'Bartolini', 'In production'),
-(2, NULL, NULL, NULL, '2021-01-05', NULL, 'gino.lippa@prints.com', 2345678901234567, 'Bartolini', 'In production');
-
 -- --------------------------------------------------------
 
 --
@@ -626,7 +618,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`Email`, `Birth_date`, `Password`, `Salt`, `Name`, `Surname`, `Phone`, `City`, `Postal_code`, `Province`, `Address`, `Role`) VALUES
-('cippa.pino@prints.com', '1990-01-20', 'bd3a3c4068f7fefddf9b3387ec20ab8c9e1dbd4a99635ffce42c91634398123790918b91d502887d1ed188890b5cb0080a15797b16fd95c959a8a922645ac7e7', 'c67768c0111914b41e133d752cfb56b90873324f8433ac6eac780d7c83e349dd2cb487674f4a87a2d62ae6f4ce31ea6b01a0aa1e81f6883cbaccb01f3a5c5cc0', 'Cippa', 'Pino', '0714512309', 'Cesena', 47521, 'FC', 'Via Giuseppe Ungaretti', 'seller'),
+('cippa.pino@prints.com', '1990-01-20', '9cadaf9f0e4a1f96bb9a496d3fddef248ecdd5b1d678abb0ab1ed1d1d816f012fa39b45d7381b5eedf73f6f61a6791c6f9c5bf90e179c5c1ece868b8eccb3198', '9ae419866fa9d3705ccd86071d4fee30bc9fd23970fc9e39bdd0a9ea9eef878aedbcfa61a2aaab1b5f2634e3796dc4b573dd28920a70c2d5d4d5a7dd381b83f3', 'Cippa', 'Pino', '0714512309', 'Cesena', 47521, 'FC', 'Via Giuseppe Ungaretti', 'seller'),
 ('gino.lippa@prints.com', '1996-10-17', '5bfbd82c6885742c68ff2b2a2a9168fb13757c184b3dfe86fe9c2c04ef8483a12680fe31dbab9aab8c8c1dc712d25038397a360a0011c493060954d323377dcc', 'f82544562507f6ac3c0d89daee50e2999f411bcdd52305ef25e56e5bb2db7c7c422584f0a8ef616c74304e6a5c0c1cc31a36f1d365bdd90f7c82edaed5fd79f2', 'Gino', 'Lippa', '714529816', 'Senigallia', 60019, 'AN', 'Viale dei pini 11', 'customer');
 
 --
