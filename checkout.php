@@ -3,7 +3,7 @@ require_once 'bootstrap.php';
 require_once 'utils/functions.php';
 
 
-if(isUserLoggedIn("customer") && count($_SESSION["final_products"]) > 0){
+if(isUserLoggedIn("customer") && isset($_SESSION["final_products"])){
 
     if(isset($_SESSION["final_products"])){
         $finalProducts = $_SESSION["final_products"];
@@ -56,7 +56,8 @@ if(isUserLoggedIn("customer") && count($_SESSION["final_products"]) > 0){
 
     require 'template/base.php';
 } else{
-    require 'home.php';
+
+    require 'index.php';
 }
 
 ?>

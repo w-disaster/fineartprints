@@ -13,6 +13,7 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
 
 if (isUserLoggedIn(UserType::Customer)) {
     header("Location: customer-area.php");
+
 } else if (isUserLoggedIn(UserType::Seller)) {
     header("Location: seller-profile.php");
 } else {
