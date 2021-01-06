@@ -10,6 +10,11 @@ abstract class CartAction {
     const Remove_item = 0;
 }
 
+abstract class Orientation {
+    const Landscape = "landscape";
+    const Portrait = "portrait";
+}
+
 function isUserLoggedIn($role){
     return !empty($_SESSION["role"]) && $_SESSION["role"] == $role;
 }
@@ -39,12 +44,21 @@ function validate_width($width) {
     }
 }
 
+function getOrientation($image) {
+    $image_properties = getimagesize($image);
+    if($image_properties[0] >= $image_properties[1]) {
+        return Orientation::Landscape;
+    } else {
+        return Orientation::Portrait;
+    }
+}
+
 function uploadImage($path, $image){
     $imageName = basename($image["name"]);
     $fullPath = $path.$imageName;
     
     $maxKB = 500;
-    $acceptedExtensions = array("jpg", "jpeg", "png", "gif");
+    $acceptedExtensions = array("jpg", "jpeg", "webp");
     $result = 0;
     $msg = "";
     //Controllo se immagine è veramente un'immagine
@@ -58,7 +72,7 @@ function uploadImage($path, $image){
     }
 
     //Controllo estensione del file
-    $imageFileType = strtolower(pathinfo($fullPath,PATHINFO_EXTENSION));
+    $imageFileType = strtolower(pathinfo($fullPath, PATHINFO_EXTENSION));
     if(!in_array($imageFileType, $acceptedExtensions)){
         $msg .= "Accettate solo le seguenti estensioni: ".implode(",", $acceptedExtensions);
     }
