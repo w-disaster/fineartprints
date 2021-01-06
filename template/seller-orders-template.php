@@ -127,13 +127,7 @@
                         <h3 class="section-title">Order status</h3>
                         <div class="form-group">
                           <label for="status">Current state</label>
-                          <select class="form-control" id="status" name="status">
-                            <option><?php echo $order["Status"]?></option>
-                            <option>In production</option>
-                            <option>Order shipped</option>
-                            <option>Order incoming</option>
-                            <option>Order sent</option>
-                          </select>
+                          <input id="status" type="text" class="form-control" value="<?php echo $order["Status"]?>" readonly>
                         </div>
                       </div>
                       <div class="col-md-5 offset-md-1">

@@ -383,7 +383,11 @@ class DatabaseHelper{
 
     public function getNotifications($email) {
         $status = "new";
-        $stmt = $this->db->prepare("");
+        $stmt = $this->db->prepare("SELECT tracking_notification.Order_id, Data,
+        prints_order.Status AS Order_status FROM user, tracking_notification, prints_order WHERE
+         prints_order.Order_id = tracking_notification.Order_id AND
+          user.Email = prints_order.Email AND user.Email = ?
+         AND tracking_notification.Status = ? ORDER BY Data DESC");
         $stmt->bind_param("ss", $email, $status);
 
         $stmt->execute();
