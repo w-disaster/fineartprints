@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Creato il: Gen 06, 2021 alle 21:31
+-- Host: 127.0.0.1
+-- Creato il: Gen 06, 2021 alle 22:27
 -- Versione del server: 10.4.14-MariaDB
--- Versione PHP: 7.4.11
+-- Versione PHP: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -315,6 +315,23 @@ CREATE TABLE `final_product` (
   `Price` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dump dei dati per la tabella `final_product`
+--
+
+INSERT INTO `final_product` (`Picture_title`, `Technique_id`, `Frame_id`, `Passpartout_id`, `Art_print_width`, `Art_print_height`, `Order_id`, `Price`) VALUES
+('Abstract print n.1', 4, 7824, 8006, 30, 30, 4, 423),
+('Abstract print n.2', 3, 7826, 8002, 30, 30, 5, 269),
+('Abstract print n.4', 4, 7819, 8000, 30, 30, 2, 418),
+('Abstract print n.5', 5, 7823, 8002, 30, 30, 7, 296),
+('Abstract print n.6', 5, 7821, 8004, 30, 30, 3, 323),
+('Girl with a Pearl Earring', 2, 7825, 8005, 30, 30, 6, 865),
+('Modern spiral building', 4, 7821, 8004, 30, 30, 1, 493),
+('Skyscraper on fog', 7, 7824, 8004, 30, 30, 1, 667),
+('Space print n.1', 9, 7821, 8001, 30, 30, 3, 373),
+('Street print n.3', 5, 7821, 8001, 70, 50, 2, 442),
+('White building', 3, 7820, 8004, 30, 30, 1, 220);
+
 -- --------------------------------------------------------
 
 --
@@ -528,6 +545,19 @@ CREATE TABLE `prints_order` (
   `Status` varchar(20) NOT NULL DEFAULT 'In production'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dump dei dati per la tabella `prints_order`
+--
+
+INSERT INTO `prints_order` (`Order_id`, `Ship_city`, `Ship_postal_code`, `Ship_address`, `Order_date`, `Shipped_date`, `Email`, `Card_number`, `Shipper_name`, `Status`) VALUES
+(1, NULL, NULL, NULL, '2019-10-08', '2019-10-10', 'gino.lippa@prints.com', 1234567890123456, 'Bartolini', 'Arrived'),
+(2, NULL, NULL, NULL, '2020-12-06', '2020-12-07', 'gino.lippa@prints.com', 2345678901234567, 'Bartolini', 'Arrived'),
+(3, NULL, NULL, NULL, '2021-01-06', NULL, 'gino.lippa@prints.com', 2345678901234567, 'DHL Express', 'In production'),
+(4, NULL, NULL, NULL, '2021-01-05', '2021-01-06', 'gino.lippa@prints.com', 1234567890123456, 'Bartolini', 'Shipped'),
+(5, NULL, NULL, NULL, '2020-07-09', '2020-07-11', 'gino.lippa@prints.com', 1234567890123456, 'Bartolini', 'Arrived'),
+(6, NULL, NULL, NULL, '2021-01-06', NULL, 'gino.lippa@prints.com', 1234567890123456, 'Bartolini', 'In production'),
+(7, NULL, NULL, NULL, '2021-01-06', NULL, 'gino.lippa@prints.com', 1234567890123456, 'Bartolini', 'In production');
+
 -- --------------------------------------------------------
 
 --
@@ -591,6 +621,15 @@ CREATE TABLE `tracking_notification` (
   `Order_id` int(11) NOT NULL,
   `Status` varchar(4) DEFAULT 'new'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `tracking_notification`
+--
+
+INSERT INTO `tracking_notification` (`Tracking_notification_id`, `Data`, `Order_id`, `Status`) VALUES
+(1, '2019-10-10', 1, 'new'),
+(2, '2021-01-06', 3, 'new'),
+(3, '2019-07-13', 5, 'new');
 
 -- --------------------------------------------------------
 
