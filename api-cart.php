@@ -47,7 +47,7 @@ if (isset($_POST["action"])) {
         if (isset($_POST["passpartout_id"])) {
             $chosenPasspartout = $dbh->getPasspartoutFromId($_POST["passpartout_id"]);
             if (!empty($chosenPasspartout)) {
-                $passpartout = $passpartout[0];
+                $passpartout = $chosenPasspartout[0];
                 $templateParams["passpartout_id"] = $chosenPasspartout["Passpartout_id"];
                 $price_calculator->setPasspartoutPrice($chosenPasspartout["Price_per_cm2"]);
                 $passpartout_id = $passpartout["Passpartout_id"];

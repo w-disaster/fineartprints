@@ -9,7 +9,7 @@ function updateShippingCosts(value){
     $("#shipping-cost-summary").html(shippingCost + " €");
     const articles_total_cost = $("#articles-total-cost > h5").html().split("€")[0];
 
-    $("#total-order-cost").html("<h4>" + parseFloat(articles_total_cost) + parseFloat(shippingCost) + " €</h4>");
+    $("#total-order-cost").html("<h4>" + (parseFloat(articles_total_cost) + parseFloat(shippingCost)) + " €</h4>");
 }
 
 
@@ -37,18 +37,14 @@ $(document).ready(function(){
     $(".btn-add-credit-card").click(function(){
 
         const owner = $("#creditCardOwner");
-        const number = $("#creditCardNumber");
         const expire_date = $("#creditCardExpireDate");
         const numberInputField = $("#altCardNumber");
+        const number = $("#creditCardNumber");
         
         numberInputField.removeClass("d-none");
 
         $.getJSON("api-add-credit-card.php?owner=" + owner.val() + "&number=" + number.val() + "&expire_date=" + expire_date.val(), function(result){
-            if(result){
-                numberInputField.val(number);
-            } else{
-                numberInputField.val("Card not valid");
-            }
+            numberInputField.val(result);
         });
 
         owner.val("");

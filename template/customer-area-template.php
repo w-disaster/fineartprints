@@ -16,16 +16,17 @@
                     <form method="POST" id="personal-form" class="m-0">
                         <h2 class="text-center py-3">Personal information</h2>
                         <fieldset id="personal_fieldset" class="px-0" disabled>
-                            <?php foreach($templateParams["personal_info"] as $info): ?>
                             <div class="form-group row text-center">
                                 <label for="name" class="col-5">Name</label>
                                 <input type="text" class="form-control col-6" id="name"
-                                value="<?php echo $info["Name"] ?>" name="namef" required/>
+                                value="<?php echo $templateParams["personal_info"][0]["Name"] ?>"
+                                 name="namef" required/>
                             </div>
                             <div class="form-group row text-center">
                                 <label for="surname" class="col-5">Surname</label>
                                 <input type="text" class="form-control col-6" id="surname"
-                                value="<?php echo $info["Surname"] ?>" name="surname" required/>
+                                value="<?php echo $templateParams["personal_info"][0]["Surname"] ?>"
+                                 name="surname" required/>
                             </div>
                             <div id="form-old-password" class="form-group row text-center d-none">
                                 <label for="old-password"  class="col-5">Old password</label>
@@ -45,42 +46,48 @@
                             <div class="form-group row text-center">
                                 <label for="email" class="col-5">Email</label>
                                 <input type="email" class="form-control col-6" id="email"
-                                value="<?php echo $info["Email"] ?>" name="emailf" disabled/>
+                                value="<?php echo$templateParams["personal_info"][0]["Email"] ?>"
+                                 name="emailf" disabled/>
                             </div>
                             <div class="form-group row text-center">
                                 <label for="phone"  class="col-5">Phone</label>
                                 <input type="number" class="form-control col-6" id="phone"
-                                value="<?php echo $info["Phone"] ?>" name="phone" required/>
+                                value="<?php echo $templateParams["personal_info"][0]
+                                ["Phone"] ?>" name="phone" required/>
                             </div>
                             <div class="form-group row text-center">
                                 <label for="city"  class="col-5">City</label>
                                 <input type="text" class="form-control col-6" id="city"
-                                value="<?php echo $info["City"] ?>" name="city" required/>
+                                value="<?php echo $templateParams["personal_info"][0]["City"] ?>"
+                                 name="city" required/>
                             </div>
                             <div class="form-group row text-center">
                                 <label for="province"  class="col-5">Province</label>
                                 <input type="text" class="form-control col-6" id="province"
-                                value="<?php echo $info["Province"] ?>" name="province" required/>
+                                value="<?php echo$templateParams["personal_info"][0]["Province"] ?>"
+                                 name="province" required/>
                             </div>
                             <div class="form-group row text-center">
                                 <label for="address"  class="col-5">Address</label>
                                 <input type="text" class="form-control col-6" id="address"
-                                value="<?php echo $info["Address"] ?>" name="address" required/>
+                                value="<?php echo $templateParams["personal_info"][0]["Address"] ?>"
+                                 name="address" required/>
                             </div>
                             <div class="form-group row text-center">
                                 <label for="postal-code"  class="col-5">Postal Code</label>
                                 <input type="number" class="form-control col-6" id="postal-code"
-                                value="<?php echo $info["Postal_code"] ?>" name="postal-code" required/>
+                                value="<?php echo $templateParams["personal_info"][0]["Postal_code"] ?>"
+                                 name="postal-code" required/>
                             </div>
                             <div class="form-group row text-center">
                                 <label for="birth-date" class="col-5">Birth date</label>
                                 <input type="date" class="form-control col-6" id="birth-date"
-                                value="<?php echo $info["Birth_date"] ?>" name="birth-date" required/>
+                                value="<?php echo $templateParams["personal_info"][0]["Birth_date"] ?>"
+                                 name="birth-date" required/>
                             </div>
-                            <?php endforeach;?>
                         </fieldset>
                         <div class="form-group col-12">
-                            <p id="msgerr" class="text-center <?php echo $msgerrcolor?>"><?php echo $msgerr ?></p>
+                            <p id="msgform" class="text-center <?php echo $msgformcolor?>"><?php echo $msgform ?></p>
                             <button id="edit" type="button" class="btn btn-primary col-4 col-md-4 offset-4 p-2">Edit</button>
                             <button id="cancel" type="submit" class="btn btn-primary col-4 col-md-4 offset-2 p-2 d-none">Cancel</button>
                             <button id="save" type="submit" class="btn btn-primary col-4 col-md-4 p-2 d-none">Save</button>
@@ -98,18 +105,22 @@
                             <?php else:?>   
                             <table class="table table-bordered text-center">
                                 <tr>
-                                    <th id="owner">Owner</th><th id="last_digits">Last 4 digits</th><th id="expire date">Expire Date</th><th id="action">Action</th>
+                                    <th id="owner_">Owner</th>
+                                    <th id="last_digits">Last 4 digits</th>
+                                    <th id="expire_date">Expire Date</th>
+                                    <th id="action">Action</th>
                                 </tr> 
                                 <?php foreach($templateParams["pay_info"] as $cards): ?>
                                 <tr>
-                                    <th id="<?php echo $cards["Owner"]?>"><?php echo $cards["Owner"]?></th>
-                                    <td headers="digits <?php echo $cards["Owner"]?>"><?php echo substr($cards["Card_number"],12,4)?></td>
-                                    <td headers="expdate <?php echo $cards["Owner"]?>"><?php echo $cards["Expire_date"]?></td>
-                                    <td headers="action <?php echo $cards["Owner"]?>">
+                                    <td headers="owner_" id="<?php echo $cards["Owner"]?>"><?php echo $cards["Owner"]?></td>
+                                    <td headers="last_digits"><?php echo substr($cards["Card_number"],12,4)?></td>
+                                    <td headers="expire_date"><?php echo $cards["Expire_date"]?></td>
+                                    <td headers="action">
                                         <form method="POST" id="remove-form" class="m-0">
-                                            <input type="text" class="d-none" name="remove_number" value="<?php echo $cards["Card_number"]?>"/>
-                                            <input type="submit" class="btn btn-primary border col-md-12" href="#"
-                                                value="Remove"/>           
+                                            <input type="text" class="d-none" name="remove_number"
+                                             value="<?php echo $cards["Card_number"]?>"/>
+                                            <input type="submit" class="btn btn-primary border col-md-12"
+                                             value="Remove"/>           
                                         </form>
                                     </td>
                                 </tr>

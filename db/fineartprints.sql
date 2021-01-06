@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Gen 05, 2021 alle 11:41
+-- Creato il: Gen 05, 2021 alle 20:38
 -- Versione del server: 10.4.14-MariaDB
 -- Versione PHP: 7.4.11
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `art_print` (
-  `Technique_id` int(5) NOT NULL,
+  `Technique_id` int(5) NOT NULL DEFAULT 0,
   `Picture_title` char(140) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -37,36 +37,43 @@ CREATE TABLE `art_print` (
 --
 
 INSERT INTO `art_print` (`Technique_id`, `Picture_title`) VALUES
+(0, 'Abstract print n.1'),
 (1, 'Abstract print n.1'),
 (2, 'Abstract print n.1'),
 (3, 'Abstract print n.1'),
 (4, 'Abstract print n.1'),
 (5, 'Abstract print n.1'),
+(0, 'Abstract print n.2'),
 (2, 'Abstract print n.2'),
 (3, 'Abstract print n.2'),
 (4, 'Abstract print n.2'),
 (5, 'Abstract print n.2'),
 (6, 'Abstract print n.2'),
+(0, 'Abstract print n.3'),
 (3, 'Abstract print n.3'),
 (4, 'Abstract print n.3'),
 (5, 'Abstract print n.3'),
 (6, 'Abstract print n.3'),
 (7, 'Abstract print n.3'),
+(0, 'Abstract print n.4'),
 (4, 'Abstract print n.4'),
 (5, 'Abstract print n.4'),
 (6, 'Abstract print n.4'),
 (7, 'Abstract print n.4'),
 (8, 'Abstract print n.4'),
+(0, 'Abstract print n.5'),
 (5, 'Abstract print n.5'),
 (6, 'Abstract print n.5'),
 (7, 'Abstract print n.5'),
 (8, 'Abstract print n.5'),
 (9, 'Abstract print n.5'),
+(0, 'Abstract print n.6'),
 (5, 'Abstract print n.6'),
 (6, 'Abstract print n.6'),
 (7, 'Abstract print n.6'),
 (8, 'Abstract print n.6'),
 (9, 'Abstract print n.6'),
+(0, 'After Lunch (The Trellis)'),
 (1, 'After Lunch (The Trellis)'),
 (2, 'After Lunch (The Trellis)'),
 (3, 'After Lunch (The Trellis)'),
@@ -76,21 +83,28 @@ INSERT INTO `art_print` (`Technique_id`, `Picture_title`) VALUES
 (7, 'After Lunch (The Trellis)'),
 (8, 'After Lunch (The Trellis)'),
 (9, 'After Lunch (The Trellis)'),
+(0, 'Black and white building'),
 (1, 'Black and white building'),
 (2, 'Black and white building'),
 (3, 'Black and white building'),
 (4, 'Black and white building'),
 (5, 'Black and white building'),
+(0, 'Film print n.1'),
 (5, 'Film print n.1'),
 (9, 'Film print n.1'),
+(0, 'Film print n.2'),
 (5, 'Film print n.2'),
 (9, 'Film print n.2'),
+(0, 'Film print n.3'),
 (5, 'Film print n.3'),
 (9, 'Film print n.3'),
+(0, 'Film print n.4'),
 (5, 'Film print n.4'),
 (9, 'Film print n.4'),
+(0, 'Film print n.5'),
 (5, 'Film print n.5'),
 (9, 'Film print n.5'),
+(0, 'Girl with a Pearl Earring'),
 (1, 'Girl with a pearl earring'),
 (2, 'Girl with a pearl earring'),
 (3, 'Girl with a pearl earring'),
@@ -100,6 +114,7 @@ INSERT INTO `art_print` (`Technique_id`, `Picture_title`) VALUES
 (7, 'Girl with a pearl earring'),
 (8, 'Girl with a pearl earring'),
 (9, 'Girl with a pearl earring'),
+(0, 'Golconda'),
 (1, 'Golconda'),
 (2, 'Golconda'),
 (3, 'Golconda'),
@@ -109,6 +124,7 @@ INSERT INTO `art_print` (`Technique_id`, `Picture_title`) VALUES
 (7, 'Golconda'),
 (8, 'Golconda'),
 (9, 'Golconda'),
+(0, 'Impression, Sunrise'),
 (1, 'Impression, Sunrise'),
 (2, 'Impression, Sunrise'),
 (3, 'Impression, Sunrise'),
@@ -118,6 +134,7 @@ INSERT INTO `art_print` (`Technique_id`, `Picture_title`) VALUES
 (7, 'Impression, Sunrise'),
 (8, 'Impression, Sunrise'),
 (9, 'Impression, Sunrise'),
+(0, 'Lady with an Ermine'),
 (1, 'Lady with an Ermine'),
 (2, 'Lady with an Ermine'),
 (3, 'Lady with an Ermine'),
@@ -127,25 +144,34 @@ INSERT INTO `art_print` (`Technique_id`, `Picture_title`) VALUES
 (7, 'Lady with an Ermine'),
 (8, 'Lady with an Ermine'),
 (9, 'Lady with an Ermine'),
+(0, 'Modern spiral building'),
 (3, 'Modern spiral building'),
 (4, 'Modern spiral building'),
 (5, 'Modern spiral building'),
 (6, 'Modern spiral building'),
 (7, 'Modern spiral building'),
+(0, 'Nature print n.1'),
 (5, 'Nature print n.1'),
 (9, 'Nature print n.1'),
+(0, 'Nature print n.2'),
 (5, 'Nature print n.2'),
 (9, 'Nature print n.2'),
+(0, 'Nature print n.3'),
 (5, 'Nature print n.3'),
 (9, 'Nature print n.3'),
+(0, 'Nature print n.4'),
 (5, 'Nature print n.4'),
 (9, 'Nature print n.4'),
+(0, 'Nature print n.5'),
 (5, 'Nature print n.5'),
 (9, 'Nature print n.5'),
+(0, 'Nature print n.6'),
 (5, 'Nature print n.6'),
 (9, 'Nature print n.6'),
+(0, 'Nature print n.7'),
 (5, 'Nature print n.7'),
 (9, 'Nature print n.7'),
+(0, 'Portrait of Joseph Roulin'),
 (1, 'Portrait of Joseph Roulin'),
 (2, 'Portrait of Joseph Roulin'),
 (3, 'Portrait of Joseph Roulin'),
@@ -155,6 +181,7 @@ INSERT INTO `art_print` (`Technique_id`, `Picture_title`) VALUES
 (7, 'Portrait of Joseph Roulin'),
 (8, 'Portrait of Joseph Roulin'),
 (9, 'Portrait of Joseph Roulin'),
+(0, 'Portrait of Lucina Brembati'),
 (1, 'Portrait of Lucina Brembati'),
 (2, 'Portrait of Lucina Brembati'),
 (3, 'Portrait of Lucina Brembati'),
@@ -164,25 +191,38 @@ INSERT INTO `art_print` (`Technique_id`, `Picture_title`) VALUES
 (7, 'Portrait of Lucina Brembati'),
 (8, 'Portrait of Lucina Brembati'),
 (9, 'Portrait of Lucina Brembati'),
+(0, 'Skyscraper on fog'),
 (5, 'Skyscraper on fog'),
 (6, 'Skyscraper on fog'),
 (7, 'Skyscraper on fog'),
 (8, 'Skyscraper on fog'),
 (9, 'Skyscraper on fog'),
+(0, 'Space print n.1'),
 (5, 'Space print n.1'),
 (9, 'Space print n.1'),
+(0, 'Space print n.2'),
 (5, 'Space print n.2'),
 (9, 'Space print n.2'),
+(0, 'Space print n.3'),
 (5, 'Space print n.3'),
 (9, 'Space print n.3'),
+(0, 'Street print n.1'),
 (5, 'Street print n.1'),
 (9, 'Street print n.1'),
+(0, 'Street print n.2'),
 (5, 'Street print n.2'),
 (9, 'Street print n.2'),
+(0, 'Street print n.3'),
 (5, 'Street print n.3'),
 (9, 'Street print n.3'),
+(0, 'Street print n.4'),
 (5, 'Street print n.4'),
 (9, 'Street print n.4'),
+(0, 'Texture and patterns n.1'),
+(0, 'Texture and patterns n.2'),
+(0, 'Texture and patterns n.3'),
+(0, 'Texture and patterns n.4'),
+(0, 'The Cardsharps'),
 (1, 'The Cardsharps'),
 (2, 'The Cardsharps'),
 (3, 'The Cardsharps'),
@@ -192,6 +232,7 @@ INSERT INTO `art_print` (`Technique_id`, `Picture_title`) VALUES
 (7, 'The Cardsharps'),
 (8, 'The Cardsharps'),
 (9, 'The Cardsharps'),
+(0, 'The Persistence of Memory'),
 (1, 'The persistence of memory'),
 (2, 'The persistence of memory'),
 (3, 'The persistence of memory'),
@@ -201,6 +242,8 @@ INSERT INTO `art_print` (`Technique_id`, `Picture_title`) VALUES
 (7, 'The persistence of memory'),
 (8, 'The persistence of memory'),
 (9, 'The persistence of memory'),
+(0, 'Wheatfield with Crows'),
+(0, 'White building'),
 (2, 'White building'),
 (3, 'White building'),
 (4, 'White building'),
@@ -268,7 +311,6 @@ CREATE TABLE `final_product` (
   `Passpartout_id` int(5) NOT NULL,
   `Art_print_width` int(11) NOT NULL,
   `Art_print_height` int(11) NOT NULL,
-  `Passpartout_width` int(11) NOT NULL,
   `Order_id` int(11) NOT NULL,
   `Price` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -291,6 +333,7 @@ CREATE TABLE `frame` (
 --
 
 INSERT INTO `frame` (`Frame_id`, `Image`, `Description`, `Price`) VALUES
+(7819, 'none-pf.webp', 'none', 0),
 (7820, 'frame01.webp', 'Vienna Chateau 20 Silver', 47),
 (7821, 'frame02.webp', 'Vienna Chateau 20 Gold', 59),
 (7822, 'frame03.webp', 'Affresco Oro', 47),
@@ -317,6 +360,7 @@ CREATE TABLE `make_frame_available` (
 --
 
 INSERT INTO `make_frame_available` (`Email`, `Frame_id`) VALUES
+('cippa.pino@prints.com', 7819),
 ('cippa.pino@prints.com', 7820),
 ('cippa.pino@prints.com', 7821),
 ('cippa.pino@prints.com', 7822),
@@ -343,6 +387,7 @@ CREATE TABLE `make_passpartout_available` (
 --
 
 INSERT INTO `make_passpartout_available` (`Email`, `Passpartout_id`) VALUES
+('cippa.pino@prints.com', 8000),
 ('cippa.pino@prints.com', 8001),
 ('cippa.pino@prints.com', 8002),
 ('cippa.pino@prints.com', 8003),
@@ -368,6 +413,7 @@ CREATE TABLE `passpartout` (
 --
 
 INSERT INTO `passpartout` (`Passpartout_id`, `Image`, `Specifications`, `Price_per_cm2`) VALUES
+(8000, 'none-pf.webp', 'none', 0),
 (8001, 'pass01.webp', 'Bianco', 11),
 (8002, 'pass02.webp', 'Bianco Naturale', 12.24),
 (8003, 'pass03.webp', 'Nero', 12.24),
@@ -392,7 +438,8 @@ CREATE TABLE `payment_info` (
 --
 
 INSERT INTO `payment_info` (`Card_number`, `Email`, `Status`) VALUES
-(1234567890123456, 'gino.lippa@prints.com', 'in use');
+(1234567890123456, 'gino.lippa@prints.com', 'in use'),
+(2345678901234567, 'gino.lippa@prints.com', 'in use');
 
 -- --------------------------------------------------------
 
@@ -481,6 +528,14 @@ CREATE TABLE `prints_order` (
   `Status` varchar(20) NOT NULL DEFAULT 'In production'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dump dei dati per la tabella `prints_order`
+--
+
+INSERT INTO `prints_order` (`Order_id`, `Ship_city`, `Ship_postal_code`, `Ship_address`, `Order_date`, `Shipped_date`, `Email`, `Card_number`, `Shipper_name`, `Status`) VALUES
+(1, NULL, NULL, NULL, '2021-01-05', NULL, 'gino.lippa@prints.com', 1234567890123456, 'Bartolini', 'In production'),
+(2, NULL, NULL, NULL, '2021-01-05', NULL, 'gino.lippa@prints.com', 2345678901234567, 'Bartolini', 'In production');
+
 -- --------------------------------------------------------
 
 --
@@ -499,6 +554,7 @@ CREATE TABLE `print_technique` (
 --
 
 INSERT INTO `print_technique` (`Technique_id`, `Image`, `Description`, `Price_per_cm2`) VALUES
+(0, 'none.webp', 'none', 0),
 (1, 'canvas.webp', 'Print on Artist\'s Canvas', 12),
 (2, 'handmade.webp', 'Hand painted oil painting on Canvas', 12),
 (3, 'varnished.webp', 'Print on Varnished Canvas', 2),
