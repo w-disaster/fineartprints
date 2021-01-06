@@ -11,15 +11,10 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
 }
 
 if (isUserLoggedIn(UserType::Customer)) {
-    $templateParams["title"] = "Customer Area";
-    $templateParams["name"] = "customer-area.php";
     header("Location: customer-area.php");
 
 } else if (isUserLoggedIn(UserType::Seller)) {
-    $templateParams["title"] = "Seller Area";
-    $templateParams["name"] = "template/seller-profile-template.php";
-    require "template/base.php";
-    
+    header("Location: seller-profile.php");
 } else {
     $templateParams["title"] = "Login";
     $templateParams["name"] = "template/login-template.php";

@@ -179,7 +179,7 @@ class DatabaseHelper{
         $stmt->execute();
     }
 
-    public function updatePicture($parameters) {
+    public function updatePicture($parameters, $title) {
         $description = $parameters["description"];
         $author = $parameters["author"];
         $image = $parameters["image"];
@@ -190,7 +190,7 @@ class DatabaseHelper{
         $email = $parameters["email"];
 
         $stmt = $this->db->prepare("UPDATE picture SET Description = ?, Author = ?, Image = ?, Base_price = ?, Discount = ?, Orientation = ?, Category_name = ?, Email = ? WHERE Title = ?");
-        $stmt->bind_param("sssiisss", $description, $author, $image, $base_price, $discount, $orientation, $category_name, $email);
+        $stmt->bind_param("sssiissss", $description, $author, $image, $base_price, $discount, $orientation, $category_name, $email, $title);
         $stmt->execute();
     }
 

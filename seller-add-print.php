@@ -4,6 +4,8 @@ require_once 'bootstrap.php';
 if(isUserLoggedIn(UserType::Seller)) {
     $templateParams["title"] = "Seller Area - Add print";
     $templateParams["name"] = "seller-add-print-template.php";
+    $templateParams["sidebar"] = "seller-sidebar.php";
+
     $email = htmlspecialchars($_SESSION["email"]);
 
     if(isset($_POST["author"])) {
